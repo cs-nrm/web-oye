@@ -1,71 +1,36 @@
-<div id="player" class="w-10/12 m-auto fixed bottom-0 left-0 right-0 border rounded-t-lg">
-<div id="td_container"></div>
-<button id="play" > PLAY </button>
+<div id="player" class="w-10/12 m-auto fixed bottom-0 left-0 right-0 border-black border-2 rounded-t-lg bg-white">
+    <div id="td_container"></div>
+    <div id="player-inner" class="flex">        
+        <div class="w-1/3 flex justify-center">INFO</div>
+        <div class="w-1/3 flex justify-center" id="buttons"> 
+            <div id="loading" class="animate-spin max-w-[44px] min-w-[44px] show">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader-3" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M3 12a9 9 0 0 0 9 9a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9" />
+                    <path d="M17 12a5 5 0 1 0 -5 5" />
+                  </svg>
+            </div>
+            <div id="play-pause" class="max-w-[44px] min-w-[44px] hide cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" stroke-width="0" fill="currentColor" />
+                  </svg>
+            </div>            
+        </div>
+        <div class="w-1/3 vol flex justify-center">
+            VOL
+        </div>
+        
+    </div>
+    
 </div>
 
-<style>
-
-</style>
-
-
-<script>
-var streaming:any;
-    function initPlayerSDK()
-    {
-        console.log( 'TD Player SDK is ready' );
-        //Player SDK is ready to be used, this is where you can instantiate a new TDSdk instance.
-        //Player configuration: list of modules        
-        var tdPlayerConfig = {
-        coreModules: [{
-                id: 'MediaPlayer',
-                playerId: 'td_container',
-                audioAdaptive: true,
-                plugins: [ {id:"vastAd"}]
-            }],
-            playerReady: onPlayerReady,
-            configurationError: onConfigurationError,
-            moduleError: onModuleError,
-            adBlockerDetected: onAdBlockerDetected            
-        };
-        //Player instance
-        streaming = new TDSdk( tdPlayerConfig );
-        streaming.addEventListener('onPlay', onPlay);
-    }
-    function onPlay(){
-        streaming.play( {station:'XEOYEFM'} );
-    }
-    /* Callback function called to notify that the SDK is ready to be used */
-    function onPlayerReady(){        
-        //Play the stream: station is TRITONRADIOMUSIC
-        console.log('streaming ready');
-    }
-    /* Callback function called to notify that the player configuration has an error. */
-    function onConfigurationError( e:any ) {
-        console.log(e);
-        console.log(e.data.errors);
-        //Error code : object.data.errors[0].code
-        //Error message : object.data.errors[0].message
-    }
-    /* Callback function called to notify that a module has not been loaded properly */
-    function onModuleError( object:any ){
-        console.log(object);
-        console.log(object.data.errors);
-        //Error code : object.data.errors[0].code
-        //Error message : object.data.errors[0].message
-    }
-    
-    /* Callback function called to notify that an Ad-Blocker was detected */
-    function onAdBlockerDetected(){
-        console.log( 'AdBlockerDetected' );
-    }
-
-    initPlayerSDK();
-    document.getElementById('play')?.addEventListener('click', function(){
-        console.log(streaming);
-        streaming.play( {station:'XEOYEFM'} );
-    });
-
-
-</script>
 
 <script is:inline src="//sdk.listenlive.co/web/2.9/td-sdk.min.js"></script>
+<script  src="/src/js/streaming.js"></script>
+
+<style>
+    #player .show{ display: block;}
+    #player .hide { display: none;}
+
+</style>
