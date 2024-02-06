@@ -1,0 +1,31 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts");
+const posts = await res.json();
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		
+	</head>
+	<body>
+		<Header title={SITE_TITLE} />
+		
+		<main>
+			
+				{
+				posts.map((post) => (
+					<h2 set:html={post.title.rendered} />
+					<p set:html={post.content.rendered} />
+				))
+				}
+		</main>
+		<Footer />
+	</body>
+</html>
