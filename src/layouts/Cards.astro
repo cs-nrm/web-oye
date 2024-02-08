@@ -1,21 +1,66 @@
 ---
-import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
-
-interface Props {
+/*interface Props {
    imagePath: string;
-   altText: string;
    name: string;
-   age: string;
+   }
+
+const { imagePath, name} = Astro.props;
+*/
+
+export interface Props {
+    post: {
+      imagePath: string;
+      title: {
+         rendered: string;
+      }
+      content: string;
+      slug: string;
+      yoast_head_json: {
+         og_image: [
+            {
+               url: string;
+            }
+         ]
+      }
+    };
 }
 
-const { imagePath, altText, name , age} = Astro.props;
+let postExcerpt = (post:any) =>{
+    let content = post.content.rendered.split('.');
+    return `${content[0]}. ${content[1]}...`;
+};
 
+const { post } = Astro.props;
 ---
 
-
-<div class="gid grid-cols-3">
-    <!--img class="w-full aspect-video" src={imagePath} alt={altText} /-->
-    <h2>{name}</h2>
+<div class="card w-full shadow-xl">
+    <a href={`/promociones/${post.slug}/`}>
+    <figure class="bg-white">
+        <img
+            src={post.yoast_head_json.og_image[0].url}
+            alt={post.title.rendered}
+        />
+    </figure>
+    </a>
+    <div class="card-body bg-gray-300 p-4 rounded-b-md">
+        <a href={`/promociones/${post.slug}/`}>
+            <h2
+                class="card-title hover:underline hover:decoration-double decoration-gray-400 decoration-3"
+                set:html={post.title.rendered}
+            />
+        </a>
+        <p class="m-0 text-sm" set:html={postExcerpt(post)} />
+        <div class="card-actions justify-end">
+            <a href={`/promociones/${post.slug}/`}>
+                <button class="btn btn-primary"> Learn more</button>
+            </a>
+        </div>
+    </div>
 </div>
 
+<!--div class="card">
+   <a href={link}>
+    <img class="object-contain" src={imagePath} alt={altText} />
+    <h2>{name}</h2>
+   </a> 
+</div-->
