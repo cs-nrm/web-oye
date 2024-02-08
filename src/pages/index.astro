@@ -20,7 +20,7 @@ const posts = await res.json();
 		<main>
 			
 				{
-				posts.map((post) => (
+				posts.map((post:any) => (
 					<h2 set:html={post.title.rendered} />
 					<p set:html={post.content.rendered} />
 				))
@@ -28,4 +28,5 @@ const posts = await res.json();
 		</main>
 		<Footer />
 	</body>
+	<script is:inline src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </html>
