@@ -1,13 +1,13 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
-import Player from './Player.astro';
-import { ViewTransitions } from 'astro:transitions';
+/*import Player from './Player.astro';
+import { ViewTransitions } from 'astro:transitions';*/
 import Menu from './Menu.astro';
 ---
 
 <header>
-	<ViewTransitions />
+	<!--ViewTransitions /-->
 	<!--nav>
 		<a href="/"><img src="https://oyedigital.mx/wp-content/uploads/2021/07/logo-oye-2023.png"/></a>
 		<div class="internal-links">
@@ -29,7 +29,7 @@ import Menu from './Menu.astro';
 	</nav>
 
 </header>
-<div><Player client:visible transition:persist /></div>
+<!--div><Player client:visible transition:persist /></div-->
 <!--style>
 	header {
 		margin: 0;

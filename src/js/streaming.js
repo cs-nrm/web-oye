@@ -1,10 +1,8 @@
 var streaming;
-var local_status = '';
-var live = [{}];
-var status = [{}];
-
-
-$(document).ready(function(){
+var local_status;
+const buttonPause = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-pause" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /></svg>';
+const buttonPlay = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" stroke-width="0" fill="currentColor" /></svg>';
+//function initPlayer(){
     function initPlayerSDK(){
         console.log( 'TD Player SDK is ready' );
         //Player SDK is ready to be used, this is where you can instantiate a new TDSdk instance.
@@ -27,20 +25,36 @@ $(document).ready(function(){
         streaming.addEventListener( 'ad-playback-complete', completeAd );
         streaming.addEventListener( 'ad-playback-start', startAd );
         streaming.addEventListener( 'ad-playback-error', errorAd );
-
-        $('#play-pause').on('click', function(){
-            console.log(local_status);
-            console.log(live); 
-            console.log(live.status);            
-            streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
-        });
+       
     }
     
      function getStatus(s){
-        local_status = s.data.code;
-        live.status = local_status;        
-         //console.log(local_status);       
+        local_status = s.data.code;        
+         console.log(local_status);
+         if( local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING' ){
+            document.getElementById('loading').classList.add('show');
+            document.getElementById('loading').classList.remove('hide');
+            document.getElementById('play-pause').classList.remove('show');
+            document.getElementById('play-pause').classList.add('hide');    
+         }
+         if (local_status == 'LIVE_PLAYING'){            
+            document.getElementById('play-pause').innerHTML = buttonPause;
+            document.getElementById('loading').classList.remove('show');
+            document.getElementById('loading').classList.add('hide');
+            document.getElementById('play-pause').classList.add('show');
+            document.getElementById('play-pause').classList.remove('hide'); 
+            
+         }
+         if(local_status == 'LIVE_STOP' || local_status == 'LIVE_PAUSE') {
+            document.getElementById('loading').classList.remove('show');
+            document.getElementById('loading').classList.add('hide');
+            document.getElementById('play-pause').classList.add('show');
+            document.getElementById('play-pause').classList.remove('hide'); 
+            document.getElementById('play-pause').innerHTML = buttonPlay;            
+         }
+
      }
+     
 
     function completeAd(e){        
         streaming.play({
@@ -50,9 +64,31 @@ $(document).ready(function(){
             }
         });        
       }
+
       function startAd(e){
-        
+        console.log(local_status);                
+        streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
       }
+      
+      function pause(){
+        streaming.pause();
+      }
+
+      function play(){
+        streaming.play({
+            station:'XEOYEFM',
+            trackingParameters:{
+            Dist: 'WebOye'
+            }
+        });
+      }
+
+      function stop(){
+        console.log('stopped');
+        streaming.stop();
+      }
+
+   
       function errorAd(e){        
         streaming.play({
             station:'XEOYEFM',
@@ -63,13 +99,21 @@ $(document).ready(function(){
         
       }
     /* Callback function called to notify that the SDK is ready to be used */
-    function onPlayerReady(){        
-        //Play the stream: station is TRITONRADIOMUSIC
+    function onPlayerReady(){                
         console.log('streaming ready');
+        streaming.addEventListener( 'track-cue-point', onTrackCuePoint );
         document.getElementById('loading').classList.remove('show');
         document.getElementById('loading').classList.add('hide');
         document.getElementById('play-pause').classList.add('show');
-        document.getElementById('play-pause').classList.remove('hide');
+        document.getElementById('play-pause').classList.remove('hide');                   
+    }
+
+    function onTrackCuePoint( e )
+    {
+        console.log( 'onTrackCuePoint' );
+        console.log( e.data.cuePoint );
+        //Display now playing information in the "onair" div element.
+        /*document.getElementById('onair').innerHTML = 'Artist: ' + e.data.cuePoint.artistName + '<BR>Title: ' + e.data.cuePoint.cueTitle;*/
     }
     /* Callback function called to notify that the player configuration has an error. */
     function onConfigurationError( e ) {
@@ -92,13 +136,38 @@ $(document).ready(function(){
     }
 
     initPlayerSDK();
-      
-    /*    
+              
         document.getElementById('play-pause').addEventListener('click', function(){               
             console.log(local_status);
-            streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
+            //streaming.startAd();
+            if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){
+                console.log('play');
+                //streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
+                streaming.play({
+                    station:'XEOYEFM',
+                    trackingParameters:{
+                    Dist: 'WebOye'
+                    }
+                });
+            }else if( local_status == 'LIVE_PLAYING' || local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING'){
+                streaming.pause();
+            }
+                    
         });    
-    */
-   
+    
+ /*return {
+    'initPlayerSDK' : initPlayerSDK,
+    'startAd': startAd,
+    'pause': pause   
+ };*/
         
+//}        
+
+/*$(document).ready(function(){
+   initPlayer().initPlayerSDK();    
 });
+
+$('#play-pause').on('click', function(){
+    console.log('button clicked');    
+    console.log(status);           
+});*/

@@ -1,16 +1,20 @@
-<div id="player" class="w-10/12 m-auto fixed bottom-0 left-0 right-0 border-black border-2 rounded-t-lg bg-white">
+<div id="player" class="w-10/12 m-auto fixed bottom-0 left-0 right-0 border-black border-4 rounded-t-lg bg-white h-24 z-100 border-b-0">
     <div id="td_container"></div>
-    <div id="player-inner" class="flex">        
-        <div class="w-1/3 flex justify-center">INFO</div>
+    <div id="player-inner" class="flex h-24 items-center">        
+        <div class="w-1/3 flex justify-center">
+            <div>Ahora escuchas:</div>
+			<div>**</div>	
+            <div>**</div>
+        </div>
         <div class="w-1/3 flex justify-center" id="buttons"> 
-            <div id="loading" class="animate-spin max-w-[44px] min-w-[44px] show">
+            <div id="loading" class="animate-spin max-w-[44px] min-w-[44px] hide">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader-3" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M3 12a9 9 0 0 0 9 9a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9" />
                     <path d="M17 12a5 5 0 1 0 -5 5" />
                   </svg>
             </div>
-            <div id="play-pause" class="max-w-[44px] min-w-[44px] hide cursor-pointer">
+            <div id="play-pause" class="max-w-[44px] min-w-[44px] show cursor-pointer" transition:persist>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" stroke-width="0" fill="currentColor" />
@@ -28,6 +32,7 @@
 
 <script is:inline src="//sdk.listenlive.co/web/2.9/td-sdk.min.js"></script>
 <script  src="/src/js/streaming.js"></script>
+
 
 <style>
     #player .show{ display: block;}
