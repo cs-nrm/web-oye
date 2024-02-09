@@ -8,12 +8,15 @@ import Cards from '../../layouts/Cards.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=20&categories=1616,1606&_fields[]=title&_fields[]=slug&_fields[]=yoast_head_json&_fields[]=content");
 const posts = await res.json();
+
+
+export const seccion = "Promociones";
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={SITE_TITLE} seccion={seccion} description={SITE_DESCRIPTION} />
 		
 	</head>
 	<body>
@@ -21,6 +24,7 @@ const posts = await res.json();
 		
 		<main>
             <div class="container mx-auto">
+				<h1>{seccion}</h1>
 				<div class="grid grid-cols-3 gap-8">
 				{
 				posts.map((post) => (

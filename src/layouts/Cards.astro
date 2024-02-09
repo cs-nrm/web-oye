@@ -25,7 +25,7 @@ export interface Props {
     };
 }
 
-let postExcerpt = (post:any) =>{
+let postExcerpt = (post:any) => {
     let content = post.content.rendered.split('.');
     return `${content[0]}. ${content[1]}...`;
 };
@@ -33,29 +33,33 @@ let postExcerpt = (post:any) =>{
 const { post } = Astro.props;
 ---
 
-<div class="card w-full shadow-xl">
-    <a href={`/promociones/${post.slug}/`}>
-    <figure class="bg-white">
-        <img
-            src={post.yoast_head_json.og_image[0].url}
-            alt={post.title.rendered}
-        />
-    </figure>
-    </a>
-    <div class="card-body bg-gray-300 p-4 rounded-b-md">
-        <a href={`/promociones/${post.slug}/`}>
-            <h2
-                class="card-title hover:underline hover:decoration-double decoration-gray-400 decoration-3"
-                set:html={post.title.rendered}
-            />
-        </a>
-        <p class="m-0 text-sm" set:html={postExcerpt(post)} />
-        <div class="card-actions justify-end">
-            <a href={`/promociones/${post.slug}/`}>
-                <button class="btn btn-primary"> Learn more</button>
-            </a>
-        </div>
-    </div>
+<div class="card w-full shadow-xl bg-gray-300 rounded-b-md">
+   <div>
+   <a href={`/promociones/${post.slug}/`}>
+      <figure class="bg-white">
+      <img
+         src={post.yoast_head_json.og_image[0].url}
+         alt={post.title.rendered}
+      />
+      </figure>
+   </a>
+   </div>
+   <div class="card-body bg-gray-300 p-4 rounded-b-md">
+      <a href={`/promociones/${post.slug}/`}>
+         <h4
+            class="card-title uppercase font-bold hover:underline hover:decoration-double decoration-gray-400 decoration-3"
+            set:html={post.title.rendered}
+         />
+      </a>
+      <!--div class="text-sm">
+         <p set:html={postExcerpt(post)} />
+      </div-->
+      <div class="card-actions justify-end text-right">
+         <a href={`/promociones/${post.slug}/`}>
+            <button class="btn btn-primary text-gray-700 italic text-sm text-right"> Ver Más</button>
+         </a>
+      </div>
+   </div>
 </div>
 
 <!--div class="card">
