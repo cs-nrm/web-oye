@@ -2,6 +2,10 @@ var streaming;
 var local_status;
 const buttonPause = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-pause" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /></svg>';
 const buttonPlay = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" stroke-width="0" fill="currentColor" /></svg>';
+var volume;
+var artist;
+var cancion;
+var hora;
 //function initPlayer(){
     function initPlayerSDK(){
         console.log( 'TD Player SDK is ready' );
@@ -100,21 +104,17 @@ const buttonPlay = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tab
       }
     /* Callback function called to notify that the SDK is ready to be used */
     function onPlayerReady(){                
-        console.log('streaming ready');
-        streaming.addEventListener( 'track-cue-point', onTrackCuePoint );
+        console.log('streaming ready');        
         document.getElementById('loading').classList.remove('show');
         document.getElementById('loading').classList.add('hide');
         document.getElementById('play-pause').classList.add('show');
-        document.getElementById('play-pause').classList.remove('hide');                   
+        document.getElementById('play-pause').classList.remove('hide'); 
+        vol = streaming.getVolume();
+        console.log(vol);
+
     }
 
-    function onTrackCuePoint( e )
-    {
-        console.log( 'onTrackCuePoint' );
-        console.log( e.data.cuePoint );
-        //Display now playing information in the "onair" div element.
-        /*document.getElementById('onair').innerHTML = 'Artist: ' + e.data.cuePoint.artistName + '<BR>Title: ' + e.data.cuePoint.cueTitle;*/
-    }
+  
     /* Callback function called to notify that the player configuration has an error. */
     function onConfigurationError( e ) {
         console.log(e);
@@ -153,7 +153,43 @@ const buttonPlay = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tab
                 streaming.pause();
             }
                     
-        });    
+        });   
+        
+        volume = document.getElementById('vol');
+        volume.addEventListener('input', function(){
+            //console.log(volume.value);
+            streaming.setVolume(volume.value);
+
+        });
+
+        function getInfoMusic(){
+            fetch("https://cdn.nrm.com.mx/cdn/oye/playlist/cancion.json")
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error
+                        ('HTTP error! Status: ${res.status}');
+                }
+                return res.json();
+            })
+            .then((data) => {
+                if(data.categoria == 'PCRADIOS'){
+                    artist = 'CORTE';
+                    cancion = '';
+                } else {
+                    artist = data.artista;
+                    cancion = data.title;
+                    hora = data.hora_real;
+                }      
+                if (cancion == ''){
+                    document.getElementById('infoMusic').innerHTML = artist;
+                }else{
+                    document.getElementById('infoMusic').innerHTML = artist + ' / ' + cancion;
+                }
+            })
+            console.log('repetido');   
+        }
+        getInfoMusic();
+        setInterval( getInfoMusic, 30000);
     
  /*return {
     'initPlayerSDK' : initPlayerSDK,
