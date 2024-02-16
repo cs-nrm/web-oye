@@ -11,10 +11,10 @@ let [post] = await res.json();
 
 
 export async function getStaticPaths() {
-  let data = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts");
-  let posts = await data.json();
+  const data = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts");
+  const posts = await data.json();
 
-  return posts.map((post) => ({
+  return posts.map((post:any) => ({
     params: { slug: post.slug },
     props: { post: post },
   }));
