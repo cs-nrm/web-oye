@@ -33,7 +33,7 @@ let postExcerpt = (post:any) => {
 const { post } = Astro.props;
 ---
 
-<div class="card w-full shadow-xl bg-gray-300 rounded-b-md">
+<div class="card w-full shadow-xl bg-gray-400">
    <div>
    <a href={`/promociones/${post.slug}/`}>
       <figure class="bg-white">
@@ -47,14 +47,14 @@ const { post } = Astro.props;
    <div class="card-body bg-gray-300 p-4 rounded-b-md">
       <a href={`/promociones/${post.slug}/`}>
          <h4
-            class="card-title uppercase font-bold hover:underline hover:decoration-double decoration-gray-400 decoration-3"
+            class="card-title uppercase hover:underline hover:decoration-double decoration-gray-400 decoration-3"
             set:html={post.title.rendered}
          />
       </a>
-      <!--div class="text-sm">
+      <div class="text-sm">
          <p set:html={postExcerpt(post)} />
-      </div-->
-      <div class="card-actions justify-end text-right">
+      </div>
+      <div class="card-actions justify-end">
          <a href={`/promociones/${post.slug}/`}>
             <button class="btn btn-primary text-gray-700 italic text-sm text-right"> Ver Más</button>
          </a>

@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layoutq.astro';
+import Card from '../../layouts/Cardsq.astro';
+/*import { getPosts } from '../../lib/api';*/
+
+const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=20&categories=149");
+const posts = await res.json();
+
+---
+
+<Layout title="Quickys">
+    <section
+        class="p-2 grid gap-4 overflow-hidden grid-cols-1 place-items-center md:grid-cols-3"
+    >
+        {
+            posts.map((post) => (
+                <>
+                    <Card {post} />
+                </>
+            ))
+        }
+    </section>
+</Layout>

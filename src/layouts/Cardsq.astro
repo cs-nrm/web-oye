@@ -1,0 +1,27 @@
+---
+export interface Props {
+    post: {};
+}
+
+const { post } = Astro.props;
+---
+
+<div class="card w-full bg-base-100 shadow-xl rounded-t-md md:w-96">
+    <figure class="bg-white">
+        <img
+            src={post.yoast_head_json.og_image[0].url}
+            alt={post.title.rendered}
+        />
+    </figure>
+    <div class="card-body bg-gray-700 rounded-b-md">
+        <a href={`/quickys/${post.slug}/`}>
+            <h2
+                class="card-title hover:underline hover:decoration-wavy decoration-red-600 decoration-4"
+                set:html={post.title.rendered}
+            />
+        </a>
+        <a href={`/quickys/${post.slug}/`}>
+                <button class="btn btn-primary"> Ver Más</button>
+        </a>
+    </div>
+</div>

@@ -10,13 +10,12 @@ const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_pa
 const posts = await res.json();
 
 
-export const seccion = "Promociones";
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title={SITE_TITLE} seccion={seccion} description={SITE_DESCRIPTION} />
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		
 	</head>
 	<body>
@@ -24,7 +23,7 @@ export const seccion = "Promociones";
 		
 		<main>
             <div class="container mx-auto">
-				<h1>{seccion}</h1>
+				<h1>PROMOCIONES</h1>
 				<div class="grid grid-cols-3 gap-8">
 				{
 				posts.map((post) => (

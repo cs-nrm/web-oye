@@ -1,13 +1,15 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-
 const { slug } = Astro.params;
+
+import Layout from '../../layouts/Layout.astro';
 
 let res = await fetch(`https://oyedigital.mx/wp-json/wp/v2/posts?slug=${slug}`);
 let [post] = await res.json();
 
 // Se requiere la función getStaticPaths() para sitios estáticos en Astro.
 // Si estás utilizando SSR, no necesitarás esta función.
+
+
 export async function getStaticPaths() {
   let data = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts");
   let posts = await data.json();
@@ -17,6 +19,7 @@ export async function getStaticPaths() {
     props: { post: post },
   }));
 }
+
 ---
 
 <Layout title={post.title.rendered}>
