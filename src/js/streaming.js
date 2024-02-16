@@ -172,14 +172,35 @@ var hora;
                 return res.json();
             })
             .then((data) => {
-                if(data.categoria == 'PCRADIOS'){
-                    artist = 'CORTE';
-                    cancion = '';
-                } else {
-                    artist = data.artista;
-                    cancion = data.title;
-                    hora = data.hora_real;
-                }      
+                
+                switch( data.categoria ){
+                    case 'PCRADIOS' :
+                        artist = 'CORTE';
+                        cancion = '';
+                    break;
+                    case 'OYE-DEBRAYE':
+                        artist = 'EL DEBRAYE';
+                        cancion = '';
+                    break;
+                    case 'OYE-PRO':
+                        artist = data.artista;
+                        cancion = data.title;
+                        hora = data.hora_real;
+                    break;
+                    case 'OYE-MUS':
+                        artist = data.artista;
+                        cancion = data.title;
+                        hora = data.hora_real;
+                    break;
+                    default:
+                        artist = data.artista;
+                        cancion = data.title;
+                        hora = data.hora_real;
+                    break;
+                    
+
+                } 
+                
                 if (cancion == ''){
                     document.getElementById('infoMusic').innerHTML = artist;
                 }else{
