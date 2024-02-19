@@ -14,9 +14,13 @@ const { post } = Astro.props;
         />
     </figure>
     <div class="card-body bg-gray-700 rounded-b-md">
+         <h4
+            class="card-title"
+            set:html={post.slug}
+         />
         <a href={`/quickys/${post.slug}/`}>
             <h2
-                class="card-title hover:underline hover:decoration-wavy decoration-red-600 decoration-4"
+                class="card-title uppercase hover:underline hover:decoration-wavy decoration-red-600 decoration-4"
                 set:html={post.title.rendered}
             />
         </a>
