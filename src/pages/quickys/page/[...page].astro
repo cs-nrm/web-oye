@@ -5,12 +5,13 @@ import Footer from '../../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts.js';
 
 import {getArticles} from '../../../lib/api.js';
-import Article from '../../../components/Article.astro';
+import Layout from '../../../layouts/Layoutq.astro';
+import Card from '../../../layouts/Cardsq.astro';
 
 
 export async function getStaticPaths( { paginate } ) {
   const data = await getArticles();
-  return paginate(data, { pageSize: 4 });
+  return paginate(data, { pageSize: 9 });
 }
 const {page} = Astro.props;
 ---
@@ -24,17 +25,40 @@ const {page} = Astro.props;
 		<Header title={SITE_TITLE} />
 		
 		<main>
-            <article class="prose lg:prose-xl mx-auto">
-            <h1>Articles archive</h1>
-            <div>
+            <!--div>
                 <ul>
                     {page.data.map(post => <li><Article post={post}/></li>)}
                 </ul>
-            </div>
+            </div-->
+      <div class="container mx-auto">
+				<h1>QUICKYS</h1>
+        <Layout title="Quickys">
+          <!--section class="p-2 grid gap-4 overflow-hidden grid-cols-1 place-items-center md:grid-cols-3">
+              {
+                posts.map((post:any) => ( 
+                <>
+                <Card {post} />
+                </>
+                ))
+              }
+          </section-->
+          <section class="p-2 grid gap-4 overflow-hidden grid-cols-1 place-items-center md:grid-cols-3">
+              {
+                page.data.map((post:any) => ( 
+                <>
+                <Card post={post} />
+                </>
+                ))
+              }
+          </section>
+          {page.url.prev && <a href={page.url.prev}>Previous page</a>}
+          {page.url.next && <a href={page.url.next}>Next page</a>}
+    
+        </Layout>
+      </div>  
 
-            {page.url.prev && <a href={page.url.prev}>Previous page</a>}
-            {page.url.next && <a href={page.url.next}>Next page</a>}
-            </article>
+
+
 		</main>
 		<Footer />
 	</body>
