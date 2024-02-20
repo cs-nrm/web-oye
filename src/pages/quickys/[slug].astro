@@ -33,12 +33,12 @@ import Layout from '../../layouts/Layout.astro';
 
 const { slug } = Astro.params;
 
-let res = await fetch(`http://oyedigital.mx/index.php/wp-json/wp/v2/posts?slug=${slug}`);
+let res = await fetch(`http://oyedigital.mx/wp-json/wp/v2/posts?slug=${slug}`);
 let [post] = await res.json();
 
 
 export async function getStaticPaths() {
-  let data = await fetch("https://oyedigital.mx/index.php/wp-json/wp/v2/posts?_embed&per_page=100&_fields[]=title&_fields[]=slug&_fields[]=content");
+  let data = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&_fields[]=title&_fields[]=slug&_fields[]=content");
   let posts = await data.json();
 
   return posts.map((post) => ({

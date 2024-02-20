@@ -1,23 +1,50 @@
 ---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+
 import Layout from '../../layouts/Layoutq.astro';
 import Card from '../../layouts/Cardsq.astro';
 /*import { getPosts } from '../../lib/api';*/
 
-const res = await fetch("http://oyedigital.mx/index.php/wp-json/wp/v2/posts?_embed&per_page=10&categories=149");
+const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=9&categories=149");
 const posts = await res.json();
 
 ---
 
-<Layout title="Quickys">
-    <section
-        class="p-2 grid gap-4 overflow-hidden grid-cols-1 place-items-center md:grid-cols-3"
-    >
-        {
-            posts.map((post) => ( 
-                <>
-                    <Card {post} />
-                </>
-            ))
-        }
-    </section>
-</Layout>
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		
+	</head>
+	<body>
+		<Header title={SITE_TITLE} />
+		
+		<main>
+            <div class="container mx-auto">
+				<h1>PROMOCIONES</h1>
+                <Layout title="Quickys">
+                    <section
+                        class="p-2 grid gap-4 overflow-hidden grid-cols-1 place-items-center md:grid-cols-3"
+                    >
+                        {
+                            posts.map((post:any) => ( 
+                                <>
+                                    <Card {post} />
+                                </>
+                            ))
+                        }
+                    </section>
+                    <div class="text-center mt-20">
+                        <div>
+                            <a href="/quickys/page/" class="w-full bg-blue-500 px-4 py-3 rounded text-white font-semibold hover:bg-blue-600 transition duration-200 each-in-out">See more articles</a>
+                        </div>
+                    </div>
+                </Layout>
+            </div>
+		</main>
+		<Footer />
+	</body>
+</html>

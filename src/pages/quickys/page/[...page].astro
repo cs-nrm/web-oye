@@ -1,0 +1,41 @@
+---
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts.js';
+
+import {getArticles} from '../../../lib/api.js';
+import Article from '../../../components/Article.astro';
+
+
+export async function getStaticPaths( { paginate } ) {
+  const data = await getArticles();
+  return paginate(data, { pageSize: 4 });
+}
+const {page} = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		
+	</head>
+	<body>
+		<Header title={SITE_TITLE} />
+		
+		<main>
+            <article class="prose lg:prose-xl mx-auto">
+            <h1>Articles archive</h1>
+            <div>
+                <ul>
+                    {page.data.map(post => <li><Article post={post}/></li>)}
+                </ul>
+            </div>
+
+            {page.url.prev && <a href={page.url.prev}>Previous page</a>}
+            {page.url.next && <a href={page.url.next}>Next page</a>}
+            </article>
+		</main>
+		<Footer />
+	</body>
+</html>
