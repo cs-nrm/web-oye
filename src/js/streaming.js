@@ -211,7 +211,7 @@ var hora;
         }
         getInfoMusic();
         setInterval( getInfoMusic, 30000);
-        console.log(plyr);
+        
     
  /*return {
     'initPlayerSDK' : initPlayerSDK,

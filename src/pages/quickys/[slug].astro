@@ -1,7 +1,6 @@
 ---
 import { parseJsonConfigFileContent } from 'typescript';
 import Layout from '../../layouts/Layout.astro';
-import ConvertMedia from '../../components/ConvertMedia.astro';
 
 const { slug } = Astro.params;
 
@@ -13,7 +12,7 @@ export async function getStaticPaths() {
   let data = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=100&_fields[]=title&_fields[]=slug&_fields[]=content");
   let posts = await data.json();
 
-  return posts.map((post) => ({
+  return posts.map((post:any) => ({
     params: { slug: post.slug },
     props: { post: post },
   }));
@@ -41,4 +40,3 @@ export async function getStaticPaths() {
         </div>
     </section>
 </Layout>
-<ConvertMedia></ConvertMedia>
