@@ -1,35 +1,7 @@
 ---
-/*
-const { slug } = Astro.params;
-
-import Layout from '~/layouts/Layout.astro';
-
-export async function getStaticPaths() {
-    let dinos = await getPosts();
-
-    return dinos.map((post) => {
-        return {
-            params: { slug: post.slug },
-            props: {
-                title: post.title.rendered,
-                content: post.content.rendered,
-                image: post._embedded['wp:featuredmedia']['0'].source_url,
-
-                // Spreading the Custom Fields into a meta object
-                meta: {
-                    ...post.acf,
-                },
-            },
-        };
-    });
-}
-
-const { title, content, image, meta } = Astro.props;
-*/
-
-
 import { parseJsonConfigFileContent } from 'typescript';
 import Layout from '../../layouts/Layout.astro';
+import ConvertMedia from '../../components/ConvertMedia.astro';
 
 const { slug } = Astro.params;
 
@@ -38,7 +10,7 @@ let [post] = await res.json();
 
 
 export async function getStaticPaths() {
-  let data = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&_fields[]=title&_fields[]=slug&_fields[]=content");
+  let data = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=100&_fields[]=title&_fields[]=slug&_fields[]=content");
   let posts = await data.json();
 
   return posts.map((post) => ({
@@ -69,3 +41,4 @@ export async function getStaticPaths() {
         </div>
     </section>
 </Layout>
+<ConvertMedia></ConvertMedia>

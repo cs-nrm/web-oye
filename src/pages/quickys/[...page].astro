@@ -1,12 +1,12 @@
 ---
-import BaseHead from '../../../components/BaseHead.astro';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts.js';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts.js';
 
-import {getArticles} from '../../../lib/api.js';
-import Layout from '../../../layouts/Layoutq.astro';
-import Card from '../../../layouts/Cardsq.astro';
+import {getArticles} from '../../lib/api.js';
+import Layout from '../../layouts/Layoutq.astro';
+import Card from '../../layouts/Cardsq.astro';
 
 
 export async function getStaticPaths( { paginate } ) {

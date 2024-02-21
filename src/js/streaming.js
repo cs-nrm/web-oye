@@ -207,10 +207,11 @@ var hora;
                     document.getElementById('infoMusic').innerHTML = artist + ' / ' + cancion;
                 }
             })
-            console.log('repetido');   
+           // console.log('repetido');   
         }
         getInfoMusic();
         setInterval( getInfoMusic, 30000);
+        console.log(plyr);
     
  /*return {
     'initPlayerSDK' : initPlayerSDK,
