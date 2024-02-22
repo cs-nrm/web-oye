@@ -13,7 +13,12 @@ export async function getStaticPaths( { paginate } ) {
   const data = await getArticles();
   return paginate(data, { pageSize: 9 });
 }
-const {page} = Astro.props;
+
+interface Props{
+  page: any;  
+}
+
+const {page=[]} = Astro.props;
 ---
 <!doctype html>
 <html lang="es">
