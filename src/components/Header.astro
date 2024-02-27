@@ -1,23 +1,12 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
-/*import Player from './Player.astro';
-import { ViewTransitions } from 'astro:transitions';*/
+import { ViewTransitions } from 'astro:transitions';
 import Menu from './Menu.astro';
 ---
 
 <header>
-	<!--ViewTransitions /-->
-	<!--nav>
-		<a href="/"><img src="https://oyedigital.mx/wp-content/uploads/2021/07/logo-oye-2023.png"/></a>
-		<div class="internal-links">
-			<HeaderLink href="/">INICIO</HeaderLink>
-			<HeaderLink href="/promociones">PROMOCIONES</HeaderLink>
-			<HeaderLink href="/noticias">QUICKYS</HeaderLink>
-			<HeaderLink href="/peticiones">PETICIONES</HeaderLink>
-		</div>				
-	</nav-->
-
+	<ViewTransitions />	
 	<nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
 	  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
 		<a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -29,7 +18,7 @@ import Menu from './Menu.astro';
 	</nav>
 
 </header>
-<!--div><Player client:visible transition:persist /></div-->
+
 <!--style>
 	header {
 		margin: 0;
