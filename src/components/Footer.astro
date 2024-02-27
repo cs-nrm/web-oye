@@ -1,12 +1,12 @@
 ---
 import Player from './Player.astro';
-import { ViewTransitions } from 'astro:transitions';
+/*import { ViewTransitions } from 'astro:transitions';*/
 
 const today = new Date();
 ---
-<ViewTransitions />
+<!--ViewTransitions /-->
 
-<div><Player client:component-hydration transition:persist /></div>
+<div><Player transition:persist /></div>
 
 <footer>
 	
