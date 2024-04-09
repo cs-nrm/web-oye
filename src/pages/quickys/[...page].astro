@@ -47,9 +47,18 @@ const {page=[]} = Astro.props;
                 ))
               }
           </section>
-          {page.url.prev && <a href={page.url.prev}>Previous page</a>}
-          {page.url.next && <a href={page.url.next}>Next page</a>}
-    
+          <div class="text-center mt-20">
+          {page.url.prev && <a href={page.url.prev}>
+            <button class="group relative h-8 w-36 overflow-hidden rounded-lg bg-gray-100 text-base shadow">
+              <div class="absolute inset-y-0 right-0 w-3 bg-amber-400 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+              <span class="relative text-black group-hover:text-white">Anterior</span>
+            </button></a>}
+          {page.url.next && <a href={page.url.next}>
+            <button class="group relative h-8 w-36 overflow-hidden rounded-lg bg-gray-100 text-base shadow">
+              <div class="absolute inset-0 w-3 bg-amber-400 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+              <span class="relative text-black group-hover:text-white">Siguiente</span>
+            </button></a>}
+          </div>
         </Layout>
       </div>  
 		</main>

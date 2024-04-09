@@ -1,4 +1,6 @@
 ---
+
+
 export interface Props {
     post: {
       imagePath: string;
@@ -22,7 +24,30 @@ export interface Props {
 const { post } = Astro.props;
 ---
 
-<div class="card w-full ">
+<div class="card w-full">
+    <article class="overflow-hidden rounded-lg shadow-lg">
+        <a href={`/quickys/${post.slug}/`}>
+            <img class="block h-auto w-full" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} />
+        </a>
+        <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+            <h1 class="text-lg">
+                <a class="no-underline hover:underline text-black" href={`/quickys/${post.slug}/`}>
+                    {post.title.rendered}
+                </a>
+            </h1>
+        </header>
+        <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+            <div class="text-grey-darker text-sm">
+                <p class="ml-2 text-sm">{post.yoast_head_json.author}</p>
+            </div>
+            <div class="text-grey-darker text-sm">
+                <span class="hidden">Like</span>
+                {post.yoast_head_json.article_published_time.substring(0, 10)}
+            </div>
+        </footer>
+    </article>
+</div>
+<!--div class="card w-full ">
     <a href={`/quickys/${post.slug}/`}>
         <figure class="bg-white">
             <img
@@ -34,16 +59,18 @@ const { post } = Astro.props;
     <div class="card-body p-4 rounded-b-md">
         <a href={`/quickys/${post.slug}/`}>
             <h5
-                class="card-title uppercase min-h-28 transition duration-300 -inset-full h-full block transform -skew-x-12 bg-gradient-to-r from-gray-300 to-white group-hover:animate-shine"
+                class="card-title uppercase min-h-32 transition duration-300 -inset-full h-full block transform -skew-x-12 bg-gradient-to-r from-gray-300 to-white group-hover:animate-shine"
                 set:html={post.title.rendered}
             />
         </a>
         <div class="card-actions justify-end relative">
-            <span class="absolute left-0">{post.yoast_head_json.article_published_time}</span>
+            <span class="text-left">{post.yoast_head_json.article_published_time.substring(0, 10)}</span>
             <span class="absolute right-0">{post.yoast_head_json.author}</span>
+        </div>
+        <div class="relative">
             <a href={`/promociones/${post.slug}/`}>
-                <button class="btn btn-primary text-gray-700 italic text-sm text-right"> Ver Más</button>
+                <p class="text-gray-700 italic text-sm text-right"> Ver Más</p>
             </a>
         </div>
     </div>
-</div>
+</div-->
