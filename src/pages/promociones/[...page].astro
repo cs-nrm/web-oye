@@ -1,0 +1,67 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts.js';
+
+import {getArticles} from '../../lib/api.js';
+import Layout from '../../layouts/Layoutq.astro';
+import Card from '../../layouts/Cardsq.astro';
+
+
+export async function getStaticPaths( { paginate } ) {
+  const data = await getArticles();
+  return paginate(data, { pageSize: 9 });
+}
+
+interface Props{
+  page: any;  
+}
+
+const {page=[]} = Astro.props;
+---
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead title={SITE_TITLE} seccion="Promociones" description={SITE_DESCRIPTION} />
+		
+	</head>
+	<body>
+		<Header title={SITE_TITLE} />
+		
+		<main>
+            <!--div>
+                <ul>
+                    {page.data.map(post => <li><Article post={post}/></li>)}
+                </ul>
+            </div-->
+      <div class="container mx-auto">
+				<h1>Promociones</h1>
+        <Layout title="Promociones">
+          <section class="p-2 grid gap-4 overflow-hidden grid-cols-1 place-items-center md:grid-cols-3">
+              {
+                page.data.map((post:any) => ( 
+                <>
+                <Card post={post} />
+                </>
+                ))
+              }
+          </section>
+          <div class="text-center mt-20">
+          {page.url.prev && <a href={page.url.prev}>
+            <button class="group relative h-8 w-36 overflow-hidden rounded-lg bg-gray-100 text-base shadow">
+              <div class="absolute inset-y-0 right-0 w-3 bg-amber-400 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+              <span class="relative text-black group-hover:text-white">Anterior</span>
+            </button></a>}
+          {page.url.next && <a href={page.url.next}>
+            <button class="group relative h-8 w-36 overflow-hidden rounded-lg bg-gray-100 text-base shadow">
+              <div class="absolute inset-0 w-3 bg-amber-400 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+              <span class="relative text-black group-hover:text-white">Siguiente</span>
+            </button></a>}
+          </div>
+        </Layout>
+      </div>  
+		</main>
+		<Footer />
+	</body>
+</html>

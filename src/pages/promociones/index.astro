@@ -2,37 +2,51 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
-import Cards from '../../layouts/Cards.astro';
-
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=20&categories=1616,1606&_fields[]=title&_fields[]=slug&_fields[]=yoast_head_json&_fields[]=content");
-const posts = await res.json();
 
+import Layout from '../../layouts/Layoutq.astro';
+import Card from '../../layouts/Cardsq.astro';
+
+
+const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=9&categories=1606");
+const posts = await res.json();
+export const seccion =  "promociones" ;
 
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={SITE_TITLE} seccion={seccion} description={SITE_DESCRIPTION} />
 		
 	</head>
 	<body>
 		<Header title={SITE_TITLE} />
 		
 		<main>
-            <div class="container mx-auto">
+            <div class="container my-12 mx-auto px-4 md:px-12">
 				<h1>PROMOCIONES</h1>
-				<div class="grid grid-cols-3 gap-8">
-				{
-				posts.map((post) => (
-					<>
-                    <Cards {post} />
-                	</>
-                ))
-				}
-				</div>
+                <Layout title="Promociones">
+                    <section
+                        class="flex flex-wrap -mx-1 lg:-mx-4"
+                    >
+                        {
+                            posts.map((post:any) => ( 
+                                <>
+                                    <Card {post} />
+                                </>
+                            ))
+                        }
+                    </section>
+                    <div class="text-center mt-20">
+                        <a href="/promociones/2">
+                        <button class="group relative h-8 w-36 overflow-hidden rounded-lg bg-gray-100 text-base shadow">
+                            <div class="absolute inset-0 w-3 bg-amber-400 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                            <span class="relative text-black group-hover:text-white">Siguiente</span>
+                        </button>
+                        </a>
+                    </div>
+                </Layout>
             </div>
 		</main>
 		<Footer />
