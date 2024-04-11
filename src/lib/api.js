@@ -16,8 +16,8 @@ export async function fetchAPI( query='' ) {
     }
 }
 
-export async function getArticles() {
-    const data = await fetchAPI( 'posts?_embed&per_page=30&categories=149' );
+export async function getArticles(cat) {
+    const data = await fetchAPI( 'posts?_embed&per_page=70&categories='+cat );
 
     return data;
 }
