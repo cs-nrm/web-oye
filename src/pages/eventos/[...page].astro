@@ -10,7 +10,7 @@ import Card from '../../layouts/Cardsq.astro';
 
 
 export async function getStaticPaths( { paginate } ) {
-  const data = await getArticles(149);
+  const data = await getArticles(1207);
   return paginate(data, { pageSize: 9 });
 }
 
@@ -36,8 +36,8 @@ const {page=[]} = Astro.props;
                 </ul>
             </div-->
       <div class="container mx-auto">
-				<h1 class="p-4 font-bold [text-shadow:2px_2px_3px_rgb(88_29_135_/_64%)]">QUICKYS</h1>
-        <Layout title="Quickys">
+				<h1 class="p-4 font-bold [text-shadow:2px_2px_3px_rgb(88_29_135_/_64%)]">Eventos</h1>
+        <Layout title="Eventos">
           <section class="flex flex-wrap -mx-4">
               {
                 page.data.map((post:any) => ( 

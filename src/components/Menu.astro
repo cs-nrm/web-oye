@@ -15,14 +15,14 @@
     <ul class="nav__list">
       <li><a href="/" class="nav__link">INICIO</a></li>
       <li><a href="/promociones" class="nav__link">PROMOCIONES</a></li>
-      <li><a href="/quickys" class="nav__link">QUICKYS</a></li>
+      <li><a href="/popnews" class="nav__link">POP NEWS</a></li>
       <!--=============== DROPDOWN 1 ===============-->
       <li class="dropdown__item">
         <div class="nav__link">
           PODCAST <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down dropdown__arrow" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
         </div>
-        <ul class="dropdown__menu">
+        <ul class="dropdown__menu rounded" >
           <li><a href="#" class="dropdown__link">Al otro lado de la radio</a></li>
           <li><a href="#" class="dropdown__link">Pop trends</a></li>
           <li><a href="#" class="dropdown__link">Respira</a></li>
@@ -64,11 +64,11 @@
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
         </div>
         <ul class="dropdown__menu">
-          <li><a href="#" class="dropdown__link">Programación</a></li>
-          <li><a href="#" class="dropdown__link">Pop Trends</a></li>
-          <li><a href="#" class="dropdown__link">Eventos</a></li>
-          <li><a href="#" class="dropdown__link">Talento</a></li>
-          <li><a href="#" class="dropdown__link">Entrevistas</a></li>
+          <li><a href="/programacion" class="dropdown__link">Programación</a></li>
+          <li><a href="/poptrends" class="dropdown__link">Pop Trends</a></li>
+          <li><a href="/eventos" class="dropdown__link">Eventos</a></li>
+          <li><a href="/talento" class="dropdown__link">Talento</a></li>
+          <li><a href="/entrevistas" class="dropdown__link">Entrevistas</a></li>
         </ul>
       </li>
     </ul>
@@ -83,9 +83,9 @@
 
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
-  --black-color: hsl(220, 24%, 12%);
-  --black-color-light: hsl(220, 24%, 15%);
-  --black-color-lighten: hsl(220, 20%, 18%);
+  --black-color: #c026d3;
+  --black-color-light: #4c1d95;
+  --black-color-lighten: #c026d3;
   --white-color: #fff;
   --body-color: hsl(220, 100%, 97%);
 
@@ -168,7 +168,6 @@ a {
 
 .nav__link {
   color: var(--white-color);
-  background-color: var(--black-color);
   font-weight: var(--font-semi-bold);
   padding: 1.25rem 1.5rem;
   display: flex;
@@ -179,6 +178,7 @@ a {
 
 .nav__link:hover {
   background-color: var(--black-color-light);
+  border-radius: 4px;
 }
 
 /* Show menu */
@@ -202,7 +202,7 @@ a {
 .dropdown__item {
   cursor: pointer;
 }
-
+ 
 .dropdown__arrow {
   font-size: 1.25rem;
   font-weight: initial;
@@ -211,7 +211,7 @@ a {
 
 .dropdown__link, 
 .dropdown__sublink {
-  padding: 1.25rem 1.25rem 0.25rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   color: var(--white-color);
   background-color: var(--black-color-light);
   display: flex;
@@ -237,6 +237,7 @@ a {
   max-height: 0;
   overflow: hidden;
   transition: max-height .4s ease-out;
+  border-radius: 4px;
 }
 
 /* Show dropdown menu & submenu */
@@ -293,12 +294,13 @@ a {
   }
   .nav__link {
     height: 100%;
-    padding: 0;
+    padding: 0 5px;
     justify-content: initial;
     column-gap: .25rem;
   }
   .nav__link:hover {
-    background-color: transparent;
+    background-color: var(--black-color-lighten);
+    border-radius: 4px;
   }
 
   .dropdown__item, 
@@ -340,6 +342,7 @@ a {
     pointer-events: initial;
     transition: top .3s;
     width: 150%;
+    border-radius: 4px;
   }
 
   /* Show dropdown submenu */

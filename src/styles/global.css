@@ -44,9 +44,8 @@ body {
 }
 main {
 	width: 100%;
-	max-width: calc(100% - 2em);
+	max-width: calc(100% - 1em);
 	margin: auto;
-	padding: 3em 1em;
 }
 h1,
 h2,
@@ -129,8 +128,11 @@ hr {
 	body {
 		font-size: 18px;
 	}
-	main {
+	/*main {
 		padding: 1em;
+	}*/
+	h1{
+		font-size: 250%;
 	}
 }
 

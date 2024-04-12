@@ -1,12 +1,4 @@
 ---
-/*interface Props {
-   imagePath: string;
-   name: string;
-   }
-
-const { imagePath, name} = Astro.props;
-*/
-
 export interface Props {
     post: {
       imagePath: string;
@@ -15,56 +7,38 @@ export interface Props {
       }
       content: string;
       slug: string;
+      categories : {};
       yoast_head_json: {
          og_image: [
             {
                url: string;
             }
          ]
+         article_published_time: string;
+         author:string;         
       }
     };
+    
 }
 
-let postExcerpt = (post:any) => {
-    let content = post.content.rendered.split('.');
-    return `${content[0]}. ${content[1]}...`;
-};
-
 const { post } = Astro.props;
+
+var url_seccion;
+
+switch (post.categories[0]){
+    case 149:        
+        url_seccion = 'pop-news';
+    break;
+    case 1606:        
+        url_seccion = 'promociones';
+    break;    
+}
 ---
 
-<div class="card w-full shadow-xl bg-gray-400">
-   <div>
-   <a href={`/promociones/${post.slug}/`}>
-      <figure class="bg-white">
-      <img
-         src={post.yoast_head_json.og_image[0].url}
-         alt={post.title.rendered}
-      />
-      </figure>
-   </a>
-   </div>
-   <div class="card-body bg-gray-300 p-4 rounded-b-md">
-      <a href={`/promociones/${post.slug}/`}>
-         <h4
-            class="card-title uppercase hover:underline hover:decoration-double decoration-gray-400 decoration-3"
-            set:html={post.title.rendered}
-         />
-      </a>
-      <div class="text-sm">
-         <p set:html={postExcerpt(post)} />
-      </div>
-      <div class="card-actions justify-end">
-         <a href={`/promociones/${post.slug}/`}>
-            <button class="btn btn-primary text-gray-700 italic text-sm text-right"> Ver Más</button>
-         </a>
-      </div>
-   </div>
+<div class="card w-full md:w-1/2 lg:w-1/2 md:p-4 pb-4 ">
+    <article class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl border-2 border-pink-600">
+        <a href={`/${url_seccion}/${post.slug}/`}>
+            <img class="block h-auto w-full" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} />
+        </a>
+    </article>
 </div>
-
-<!--div class="card">
-   <a href={link}>
-    <img class="object-contain" src={imagePath} alt={altText} />
-    <h2>{name}</h2>
-   </a> 
-</div-->
