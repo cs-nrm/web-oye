@@ -21,3 +21,21 @@ export async function getArticles(cat) {
 
     return data;
 }
+
+/*export async function conn() {
+    const res = await fetch('',{
+
+    });
+
+    if ( res.ok ) {
+        return res.json();
+    } else {
+        const error = await res.json();
+
+        throw new Error(
+            '❗ Failed to fetch API for ' + query + "\n" +
+            'Code: ' + error.code + "\n" +
+            'Message: ' + error.message + "\n"
+        );
+    }
+}*/

@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Preloader from '../components/Preloader.astro';
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts");
@@ -11,7 +12,7 @@ const posts = await res.json();
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={SITE_TITLE} seccion="home" description={SITE_DESCRIPTION} />
 		
 	</head>
 	<body>
@@ -26,7 +27,9 @@ const posts = await res.json();
 				))
 				}
 		</main>
+		<Preloader />
 		<Footer />
 	</body>
 	<!--script is:inline src="https://code.jquery.com/jquery-3.7.0.min.js"></script-->
+	<script src="../js/fn.js"></script>
 </html>

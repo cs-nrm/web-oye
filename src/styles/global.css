@@ -155,3 +155,8 @@ hr {
 .container{
 	max-width: 1280px !important;
 }
+
+.loading{
+	opacity: 0.3;
+	transition: opacity 2s;
+}
