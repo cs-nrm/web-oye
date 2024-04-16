@@ -34,12 +34,12 @@ export async function GET({ params }: APIContext) {
 
 export async function getStaticPaths() {
   const posts = [
-    {id: '1', category: "astro", title: "API Reference"},
-    {id: '2', category: "react", title: "Creating a React Counter!"}
+    {id: '6734', podcast: "respira"},
+    {id: '6581', podcast: "pop trends"}
   ];
   return posts.map((post) => {
     return {
-      params: { id: post.id },
+      params: { id: post.id, podcast: post.podcast},
       props: { post }
     };
   });
@@ -50,7 +50,9 @@ const {post} = Astro.props;
 const { id } = Astro.params;
 const { podcast } = Astro.params;
 
-
+const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=10&categories="+{id}); 
+console.log(res);
+const posts = await res.json();
 ---
 
 <!doctype html>
