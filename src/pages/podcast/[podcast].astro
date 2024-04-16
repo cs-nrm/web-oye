@@ -3,13 +3,12 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import type { APIContext } from 'astro';
 
 import Layout from '../../layouts/Layoutq.astro';
 import Card from '../../layouts/Cardsq.astro';
 
-
-/*export function getStaticPaths() {
+/*
+export function getStaticPaths() {
     
   return [
     {params: {podcast: 'al otro lado de la radio', id: '6806'}},
@@ -21,38 +20,32 @@ import Card from '../../layouts/Cardsq.astro';
     {params: {podcast: 'el debraye', id: '3449'}},
   ];
 }
+*/
 
-export async function GET({ params }: APIContext) {
-    const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=10&categories="+[id]); 
-    console.log(res);
-    const posts = await res.json();
-  return {
-    posts
-    
-  };
-}*/
 
 export async function getStaticPaths() {
-  const posts = [
-    {id: '6734', podcast: "respira"},
-    {id: '6581', podcast: "pop trends"}
-  ];
-  return posts.map((post) => {
-    return {
-      params: { id: post.id, podcast: post.podcast},
-      props: { post }
-    };
-  });
+  return [
+    {params: {podcast: 'al otro lado de la radio', id: '6806'}},
+    {params: {podcast: 'pop trends', id: '6581'}},
+    {params: {podcast: 'respira', id: '6734'}},
+    {params: {podcast: 'top gaming', id: '3801'}},
+    {params: {podcast: 'top tech', id: '3813'}},
+    {params: {podcast: 'tu fandom', id: '3788'}},
+    {params: {podcast: 'el debraye', id: '3449'}},
+  ];  
+  
 }
+
+const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=10&categories=6581"); 
+    console.log(res);
+    const posts = await res.json();
 
 const {post} = Astro.props;
 
 const { id } = Astro.params;
 const { podcast } = Astro.params;
 
-const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=10&categories="+{id}); 
-console.log(res);
-const posts = await res.json();
+
 ---
 
 <!doctype html>
