@@ -7,44 +7,15 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import Layout from '../../layouts/Layoutq.astro';
 import Card from '../../layouts/Cardsq.astro';
 
-/*
-export function getStaticPaths() {
-    
-  return [
-    {params: {podcast: 'al otro lado de la radio', id: '6806'}},
-    {params: {podcast: 'pop trends', id: '6581'}},
-    {params: {podcast: 'respira', id: '6734'}},
-    {params: {podcast: 'top gaming', id: '3801'}},
-    {params: {podcast: 'top tech', id: '3813'}},
-    {params: {podcast: 'tu fandom', id: '3788'}},
-    {params: {podcast: 'el debraye', id: '3449'}},
+
+export function getStaticPaths () {
+ return [
+    {params: {podcast: 'respira', nodo: '6734'}},
+    {params: {podcast: 'pop trends', nodo: '6581'}},
   ];
 }
-*/
 
-
-export async function getStaticPaths() {
-  return [
-    {params: {podcast: 'al otro lado de la radio', id: '6806'}},
-    {params: {podcast: 'pop trends', id: '6581'}},
-    {params: {podcast: 'respira', id: '6734'}},
-    {params: {podcast: 'top gaming', id: '3801'}},
-    {params: {podcast: 'top tech', id: '3813'}},
-    {params: {podcast: 'tu fandom', id: '3788'}},
-    {params: {podcast: 'el debraye', id: '3449'}},
-  ];  
-  
-}
-
-const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=10&categories=6581"); 
-    console.log(res);
-    const posts = await res.json();
-
-const {post} = Astro.props;
-
-const { id } = Astro.params;
-const { podcast } = Astro.params;
-
+const { podcast, nodo } = Astro.params;
 
 ---
 
@@ -59,16 +30,16 @@ const { podcast } = Astro.params;
 		
 		<main>
             <div class="container my-12 mx-auto">
-				<h1 class="p-4 font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">{podcast}</h1>
+				<h1 class="p-4 font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Podcast</h1>
                 <Layout title="Eventos">
                     <section class="flex flex-wrap -mx-4">
-                        {
+                        {/*
                             posts.map((post:any) => ( 
                                 <>
                                     <Card {post} />
                                 </>
                             ))
-                        }
+                        */}
                     </section>
                     <div class="text-center mt-20">
                         <a href="/eventos/2">
