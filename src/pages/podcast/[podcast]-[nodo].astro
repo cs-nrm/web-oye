@@ -5,30 +5,23 @@ import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 
 import Layout from '../../layouts/Layoutq.astro';
-import Card from '../../layouts/Cardsq.astro';
+import Card from '../../layouts/CardsPodcast.astro';
 
 export function getStaticPaths() {
     
   return [
     {params: {podcast: 'al otro lado de la radio', nodo: '6806'}},
     {params: {podcast: 'pop trends', nodo: '6581'}},
-    {params: {nodo: '6734', podcast: 'respira'}},
+    {params: {podcast: 'respira', nodo: '6734'}},
     {params: {podcast: 'top gaming', nodo: '3801'}},
     {params: {podcast: 'top tech', nodo: '3813'}},
     {params: {podcast: 'tu fandom', nodo: '3788'}},
     {params: {podcast: 'el debraye', nodo: '3449'}},
   ];
 }
-
-
 const { nodo, podcast } = Astro.params;
-
-
 const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=10&categories="+nodo); 
-console.log(res);
 const posts = await res.json();
-
-
 ---
 
 <!doctype html>
