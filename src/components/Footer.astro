@@ -1,12 +1,23 @@
 ---
 import Player from './Player.astro';
-/*import { ViewTransitions } from 'astro:transitions';*/
+
 
 const today = new Date();
 ---
-<!--ViewTransitions /-->
 
 <div><Player transition:persist /></div>
+
+<div class="preloader">
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+</div>
 
 <footer>
 	
@@ -31,4 +42,6 @@ const today = new Date();
 	.social-links a:hover {
 		color: rgb(var(--gray-dark));
 	}
+	
 </style>
+
