@@ -1,0 +1,73 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+
+import Layout from '../../layouts/Layoutq.astro';
+import Card from '../../layouts/CardsPodcast.astro';
+
+ export function getStaticPaths() {    
+    const arrpodcast = [
+        {nodo: '6806',title: 'Al otro lado de la Radio', link: 'al-otro-lado-de-la-radio'},
+        {nodo: '6581',title: 'Pop Trends', link: 'pop-trends'},
+        {nodo: '6734',title: 'Respira', link: 'respira'},
+        {nodo: '3801',title: 'Top Gaming', link: 'top-gaming'},
+        {nodo: '3813',title: 'Top Tech', link: 'top-tech'},
+        {nodo: '3788',title: 'Tu Fandom', link: 'tu-fandom'},
+        {nodo: '3449',title: 'El Debraye', link: 'el-debraye'},
+        
+    ]; 
+    return arrpodcast.map((podcast) => {
+      return {
+        params: { link: podcast.link },
+        props: { podcast }
+      };
+  });
+}
+
+//const { nodo, podcast } = Astro.params;
+const { link } = Astro.params;
+const { podcast } = Astro.props;
+
+
+const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=9&categories="+podcast.nodo); 
+const posts = await res.json();
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <BaseHead title={SITE_TITLE} seccion="Podcast" description={SITE_DESCRIPTION} />
+         <meta charset="utf-8"/>
+    </head>
+    <body>
+        <Header title={SITE_TITLE} />
+        
+        <main>
+            <div class="container my-12 mx-auto">
+                <h1 class="p-4 font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">{podcast.title} </h1>        
+                <Layout title="Eventos">
+                    <section class="flex flex-wrap -mx-4">
+                        {
+                            posts.map((post:any) => ( 
+                                <>
+                                    <Card {post} />
+                                </>
+                            ))
+                        }
+                    </section>
+                    <div class="text-center mt-20">
+                        <a href={`/podcast/${link}/2`}>
+                        <button class="group relative h-8 w-36 overflow-hidden rounded-lg bg-gray-100 text-base shadow">
+                            <div class="absolute inset-0 w-3 bg-pink-600 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                            <span class="relative text-black group-hover:text-white">Siguiente</span>
+                        </button>
+                        </a>
+                    </div>
+                </Layout>
+            </div>
+        </main>
+        <Footer />
+    </body>
+</html>
