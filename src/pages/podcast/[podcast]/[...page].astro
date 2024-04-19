@@ -1,29 +1,31 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts.js';
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts.js';
 
-import {getArticles} from '../../lib/api.js';
-import Layout from '../../layouts/Layoutq.astro';
-import Card from '../../layouts/Cardsq.astro';
+import {getArticles} from '../../../lib/api.js';
+import Layout from '../../../layouts/Layoutq.astro';
+import Card from '../../../layouts/CardsPodcast.astro';
+import {posts} from './[nodo].astro';
 
-
-export async function getStaticPaths( { paginate } ) {
-  const data = await getArticles(1207);
-  return paginate(data, { pageSize: 9 });
-}
 
 interface Props{
-  page: any;  
+  page: any;
+  posts: any;  
+}
+export async function getStaticPaths( { paginate } ) {
+  const data = await getArticles(`${posts.categories}`);
+  return paginate(data, { pageSize: 10 });
 }
 
+const { nodo } = Astro.params;
 const {page=[]} = Astro.props;
 ---
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title={SITE_TITLE} seccion="Quickys" description={SITE_DESCRIPTION} />
+		<BaseHead title={SITE_TITLE} seccion="Podcast" description={SITE_DESCRIPTION} />
 		
 	</head>
 	<body>
@@ -36,8 +38,8 @@ const {page=[]} = Astro.props;
                 </ul>
             </div-->
       <div class="container mx-auto">
-				<h1 class="p-4 font-bold [text-shadow:2px_2px_3px_rgb(88_29_135_/_64%)]">Eventos</h1>
-        <Layout title="Eventos">
+				<h1 class="p-4 font-bold [text-shadow:2px_2px_3px_rgb(88_29_135_/_64%)]">Podcast</h1>
+        <Layout title="Podcast">
           <section class="flex flex-wrap -mx-4">
               {
                 page.data.map((post:any) => ( 
