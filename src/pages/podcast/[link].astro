@@ -38,7 +38,7 @@ const {cat} = Astro.props ;
 
 
 
-const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=9&categories=" + cat); 
+const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=10&categories=" + cat); 
 const posts = await res.json();
 ---
 
