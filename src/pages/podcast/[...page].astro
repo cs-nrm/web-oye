@@ -10,15 +10,16 @@ import Card from '../../layouts/Cardsq.astro';
 
 
 export async function getStaticPaths( { paginate } ) {
-  const data = await getArticles(1207);
+  const data = await getArticles(podcast.nodo);
   return paginate(data, { pageSize: 9 });
 }
 
 interface Props{
-  page: any;  
+  page: any;
+  podcast:any;  
 }
 
-const {page=[]} = Astro.props;
+const {page=[] , podcast} = Astro.props;
 ---
 <!doctype html>
 <html lang="es">

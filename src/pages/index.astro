@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts");
+const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=10&categories=6806");
 const posts = await res.json();
 ---
 
@@ -24,6 +24,7 @@ const posts = await res.json();
 				posts.map((post:any) => (
 					<h2 set:html={post.title.rendered} />
 					<p set:html={post.content.rendered} />
+					<p set:html={post.acf.ds} />
 				))
 				}
 		</main>		
@@ -31,4 +32,5 @@ const posts = await res.json();
 	</body>
 	<!--script is:inline src="https://code.jquery.com/jquery-3.7.0.min.js"></script-->
 	<script src="../js/fn.js"></script>
+	<script is:inline src="https://storage.googleapis.com/nrm-web/nrm/lib/player-0.1.0.min.js"></script>
 </html>
