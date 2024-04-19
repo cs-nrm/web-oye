@@ -32,17 +32,24 @@ export function getStaticPaths() {
     return arrpodcast.map((podcast) => {
       return {
         params: { link: podcast.link },
-        props: { podcast }
+        props: { podcast, cat:podcast.nodo }
       };
   });
 }
 
+
+interface Props{ 
+  podcast:any; 
+  cat:string; 
+}
 //const { nodo, podcast } = Astro.params;
 const { link } = Astro.params;
 const { podcast } = Astro.props;
+const {cat} = Astro.props ;
 
 
-const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=9&categories="+podcast.nodo); 
+
+const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=9&categories=" + cat); 
 const posts = await res.json();
 ---
 
@@ -69,7 +76,7 @@ const posts = await res.json();
                         }
                     </section>
                     <div class="text-center mt-20">
-                        <a href="/podcast/${link}/2">
+                        <a href={`/podcast/${link}/2`}>
                         <button class="group relative h-8 w-36 overflow-hidden rounded-lg bg-gray-100 text-base shadow">
                             <div class="absolute inset-0 w-3 bg-pink-600 transition-all duration-[250ms] ease-out group-hover:w-full"></div>
                             <span class="relative text-black group-hover:text-white">Siguiente</span>

@@ -9,22 +9,28 @@ import Layout from '../../layouts/Layoutq.astro';
 import Card from '../../layouts/Cardsq.astro';
 
 
-export async function getStaticPaths( { paginate } ) {
-  const data = await getArticles(podcast.nodo);
-  return paginate(data, { pageSize: 9 });
-}
+
 
 interface Props{
   page: any;
-  podcast:any;  
+  cat:any;  
 }
 
-const {page=[] , podcast} = Astro.props;
+const { page=[] } = Astro.props;
+const { cat } = Astro.props;
+const { link } = Astro.params;
+
+export async function getStaticPaths( { paginate } ) {
+  
+  const data = await getArticles(6581);
+  return paginate(data, { pageSize: 9 });
+}
+
 ---
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title={SITE_TITLE} seccion="Quickys" description={SITE_DESCRIPTION} />
+		<BaseHead title={SITE_TITLE} seccion="Podcast" description={SITE_DESCRIPTION} />
 		
 	</head>
 	<body>
