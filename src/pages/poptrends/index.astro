@@ -1,0 +1,43 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+
+import Layout from '../../layouts/Layoutq.astro';
+import Card from '../../layouts/CardsPoptrends.astro';
+
+
+const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=20&categories=280");
+const posts = await res.json();
+
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead title={SITE_TITLE} seccion="Pop Trends" description={SITE_DESCRIPTION} />
+		 <meta charset="utf-8"/>
+	</head>
+	<body>
+		<Header title={SITE_TITLE} />
+		
+		<main>
+            <div class="container my-12 mx-auto">
+				<h1 class="p-4 font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop Trends</h1>
+                <Layout title="Pop Trends">
+                    <section class="flex flex-wrap -mx-4">
+                        {
+                            posts.map((post:any) => ( 
+                                <>
+                                    <Card {post} />
+                                </>
+                            ))
+                        }
+                    </section>
+                </Layout>
+            </div>
+		</main>
+		<Footer />
+	</body>
+</html>
