@@ -6,6 +6,11 @@ var volume;
 var artist;
 var cancion;
 var hora;
+const radioButton = document.getElementById('radiobutton');
+const player = document.getElementById('player');
+
+
+
 //function initPlayer(){
     function initPlayerSDK(){
         console.log( 'TD Player SDK is ready' );
@@ -41,7 +46,7 @@ var hora;
             document.getElementById('play-pause').classList.remove('show');
             document.getElementById('play-pause').classList.add('hide');    
          }
-         if (local_status == 'LIVE_PLAYING'){            
+         if (local_status == 'LIVE_PLAYING'){                        
             document.getElementById('play-pause').innerHTML = buttonPause;
             document.getElementById('loading').classList.remove('show');
             document.getElementById('loading').classList.add('hide');
@@ -84,7 +89,7 @@ var hora;
             trackingParameters:{
             Dist: 'WebOye'
             }
-        });
+        });        
       }
 
       function stop(){
@@ -136,12 +141,11 @@ var hora;
     }
 
     initPlayerSDK();
-              
+        /*      
         document.getElementById('play-pause').addEventListener('click', function(){               
             console.log(local_status);
             //streaming.startAd();
-            if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){
-                console.log('play');
+            if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){                
                 //streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
                 streaming.play({
                     station:'XEOYEFM',
@@ -150,11 +154,11 @@ var hora;
                     }
                 });
             }else if( local_status == 'LIVE_PLAYING' || local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING'){
-                streaming.pause();
+                streaming.pause();                
             }
                     
         });   
-        
+        */
         volume = document.getElementById('vol');
         volume.addEventListener('input', function(){
             //console.log(volume.value);
@@ -180,6 +184,10 @@ var hora;
                     break;
                     case 'OYE-DEBRAYE':
                         artist = 'EL DEBRAYE';
+                        cancion = '';
+                    break;
+                    case 'OYE-CAP':
+                        artist = 'CORTE';
                         cancion = '';
                     break;
                     case 'OYE-PRO':
@@ -212,20 +220,102 @@ var hora;
         getInfoMusic();
         setInterval( getInfoMusic, 30000);
         
-    
- /*return {
-    'initPlayerSDK' : initPlayerSDK,
-    'startAd': startAd,
-    'pause': pause   
- };*/
-        
-//}        
+/* abrir barra*/
+const openbarra = function(){
+    player.classList.remove('h-0');
+    player.classList.add('h-16');
+    player.classList.add('border-4');    
+}
 
-/*$(document).ready(function(){
-   initPlayer().initPlayerSDK();    
+const hidebarra = function(){
+    player.classList.remove('h-16');
+    player.classList.add('h-0');
+    player.classList.remove('border-4');                
+}
+
+const transitionBarra = function(){    
+    hidebarra();
+    setTimeout( function(){        
+        openbarra();
+    }, 500);
+}
+
+const radioActive = function(){
+    $('#player-inner').addClass('active');
+    $('#player-v-podcast').removeClass('active');
+    $('#player-v-video').removeClass('active');
+}
+
+const podcastActive = function(){
+    $('#player-inner').removeClass('active');
+    $('#player-v-podcast').add('active');
+    $('#player-v-video').removeClass('active');
+}
+
+const videoActive = function(){
+    $('#player-inner').removeClass('active');
+    $('#player-v-podcast').removeClass('active');
+    $('#player-v-video').addClass('active');
+}
+
+const radioStop = function(){
+        streaming.pause();
+        $('#player').attr('data-status','init');                
+        hidebarra();
+        $('#player-inner').removeClass('active');
+}
+
+
+const playerstatus = function(){
+    var state  = $('#player').attr('data-status');
+    return state;
+};
+
+const playstopRadio = function(){
+            console.log(local_status);
+                                    
+            if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){                
+                //streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
+                streaming.play({
+                    station:'XEOYEFM',
+                    trackingParameters:{
+                    Dist: 'WebOye'
+                    }
+                });             
+             $('#player').attr('data-status','radio-playing');
+             transitionBarra(); 
+             radioActive();   
+            }else if( local_status == 'LIVE_PLAYING' || local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING'){
+                /*streaming.pause();
+                $('#player').attr('data-status','init');                
+                hidebarra();
+                $('#player-inner').removeClass('active');*/
+                radioStop();
+            }
+};
+
+
+$('#radiobutton').on('click',function(){
+     const state = playerstatus();
+     console.log(state);
+     if (state == 'init'){        
+        playstopRadio();
+        openbarra();
+     }
 });
 
 $('#play-pause').on('click', function(){
-    console.log('button clicked');    
-    console.log(status);           
-});*/
+    playstopRadio();
+});
+
+/* podcast*/ 
+
+
+$('.audiopod').each(function(){   
+    $(this).on('click',function(){
+        radioStop();
+        podcastActive();
+        transitionBarra();
+    });
+});
+  

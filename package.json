@@ -16,6 +16,7 @@
     "@astrojs/sitemap": "^3.0.5",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.2.4",
+    "astro-tabs": "^0.1.8",
     "tailwindcss": "^3.4.1",
     "tailwindcss-dropdown": "^1.0.0",
     "typescript": "^5.3.3"
