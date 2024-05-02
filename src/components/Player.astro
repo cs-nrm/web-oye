@@ -45,7 +45,7 @@
 <script  src="/src/js/streaming.js"></script>
 
 <style>
-    #player { transition: all 0.5s;}
+    #player { transition: all 0.5s; background-image: linear-gradient(202.03deg, #741da9 14.4%, #7CDADA 78.24%); box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;}    
     #player .show { display:block }
     #player .hide{ display: none; }
     #player .active{ display: flex!important;  transition: all 1s;}
@@ -54,7 +54,7 @@
     .marquee { white-space: nowrap; overflow: hidden; width: 100%;}
     .marquee div{  display: inline-block; animation: animate 10s linear infinite; padding-left: 100%;}
     .label-ahora {padding: 0 10px;     font-size: 95%;    font-weight: bold;    white-space: nowrap;}
-    input[type=range] {    -webkit-appearance: none;    margin: 10px 0;    width: 60%;  }
+    input[type=range] {    -webkit-appearance: none;    margin: 10px 0;    width: 60%;  background: transparent;}
     input[type=range]:focus {    outline: none;    }
     input[type=range]::-webkit-slider-runnable-track {    width: 100%;    height: 12.8px;    cursor: pointer;    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;    background: #000000;    border-radius: 25px;    border: 0px solid #000101;}
     input[type=range]::-webkit-slider-thumb {    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;    border: 2px solid #000000;    height: 20px;    width: 39px;    border-radius: 7px;    background: #fff;    cursor: pointer;    -webkit-appearance: none;    margin-top: -3.6px;   }
@@ -67,6 +67,7 @@
     input[type=range]::-ms-thumb {    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;    border: 0px solid #000000;    height: 20px;    width: 39px;    border-radius: 7px;    background: #545454;    cursor: pointer;    }
     input[type=range]:focus::-ms-fill-lower {    background: #fafafa;    }
     input[type=range]:focus::-ms-fill-upper {    background: #ffffff;    }
+    
     @keyframes animate {
          100% {        transform: translate(-100%, 0);        }
     }

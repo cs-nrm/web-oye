@@ -55,13 +55,6 @@ export async function getStaticPaths() {
     </section>
 </Layout>
 
-<script>
-var imagen = document.getElementById("imagen-nota");
-var original = imagen.getElementsByTagName('img');
-var original2 = original[0].getAttribute('src');
-imagen.style.backgroundImage = "url("+original2+")";
-</script>
-
 <style>
 #imagen-nota::before{
   content:"";

@@ -323,6 +323,11 @@ document.addEventListener('astro:page-load', ev => {
     document.querySelector('main').classList.remove('loading');    
     document.querySelector('.preloader').classList.remove('showpreloader');
     const getplayingstatus = playerstatus();
+
+    const imagenNota = document.getElementById("imagen-nota");
+    const imgNotaOriginal = imagenNota.getElementsByTagName('img');
+    const imgNotaOriginal2 = imgNotaOriginal[0].getAttribute('src');
+    imagenNota.style.backgroundImage = "url("+imgNotaOriginal2+")";
     
     if( getplayingstatus == 'podcast-playing'){
         const containerpodcast  = document.getElementById('iframepodcast');
@@ -348,13 +353,14 @@ document.addEventListener('astro:page-load', ev => {
             playerpodcast.setAttribute('height','300');
             playerpodcast.setAttribute('frameborder','0');
             playerpodcast.setAttribute('allow','autoplay');
-            playerpodcast.classList.add('iframestyle');
+            
 
             //console.log(playerpodcast);
             containerpodcast.appendChild(playerpodcast);            
             const ply =  new playerjs.Player(playerpodcast);
             ply.on('ready', ()=> {
                 $('#player').attr('data-status','podcast-playing');
+                playerpodcast.classList.add('iframestyle');s
                 ply.play(); 
             });            
 
@@ -364,22 +370,3 @@ document.addEventListener('astro:page-load', ev => {
    
 });
 
-/*
-<iframe src="https://omny.fm/shows/al-otro-lado-de-la-radio/al-otro-lado-de-la-radio-cap-7-rumberos/embed?image=0&share=0&download=1&description=0&follow=0" 
-allow="autoplay; clipboard-write" 
-width="100%" 
-height="180" 
-frameborder="0" 
-title="Al Otro Lado de la Radio.- Cap 7.-  Rumberos">    
-</iframe>
-
-<iframe src=&quot;https://omny.fm/shows/al-otro-lado-de-la-radio/al-otro-lado-de-la-radio-cap-7-rumberos/embed&quot; 
-allow=&quot;autoplay; 
-clipboard-write&quot; 
-width=&quot;100%&quot; 
-height=&quot;180&quot; 
-frameborder=&quot;0&quot; 
-title=&quot;Al Otro Lado de la Radio.- Cap 7.-  Rumberos&quot;>
-</iframe>
-
-*/
