@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 
+
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=10&categories=6806");
 const posts = await res.json();
@@ -27,11 +28,10 @@ const posts = await res.json();
 					<p set:html={post.acf.ds} />
 				))
 				}
-		</main>		
+		</main>
+		
 		<Footer />
 	</body>
 		
-	<script src="../js/fn.js"></script>
-	
-	
+
 </html>

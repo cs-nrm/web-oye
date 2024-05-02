@@ -1,8 +1,4 @@
 ---
-import { string } from 'astro/zod';
-import { seccion } from '../pages/promociones/index.astro';
-
-
 export interface Props {
     post: {
       imagePath: string;
@@ -32,16 +28,14 @@ const { post } = Astro.props;
 
 ---
 
-<div class="card w-full lg:w-1/2 md:p-4 p-2 pb-4 ">
+<div class="card w-full lg:w-1/2 md:p-4 p-2 pb-4 audiopod">
     <article class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl border-2 border-pink-600">
         <header class="flex items-center justify-between leading-tight p-2 md:p-4 min-h-28">
             <h2 class="text-base text-purple-900 font-bold" >   
-                    {post.title.rendered}
-                
-            </h2>
-           
+                    {post.title.rendered}                
+            </h2>           
         </header>
-        <div  data-iframe={post.acf.ds}></div>
+        <div class="data-iframe" data-iframe={post.acf.ds}></div>
     </article>
 </div>
 
