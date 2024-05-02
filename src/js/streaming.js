@@ -325,9 +325,12 @@ document.addEventListener('astro:page-load', ev => {
     const getplayingstatus = playerstatus();
 
     const imagenNota = document.getElementById("imagen-nota");
-    const imgNotaOriginal = imagenNota.getElementsByTagName('img');
-    const imgNotaOriginal2 = imgNotaOriginal[0].getAttribute('src');
-    imagenNota.style.backgroundImage = "url("+imgNotaOriginal2+")";
+    if( imagenNota ){
+        const imgNotaOriginal = imagenNota.getElementsByTagName('img');
+        const imgNotaOriginal2 = imgNotaOriginal[0].getAttribute('src');
+        imagenNota.style.backgroundImage = "url("+imgNotaOriginal2+")";
+    }
+    
     
     if( getplayingstatus == 'podcast-playing'){
         const containerpodcast  = document.getElementById('iframepodcast');
@@ -360,7 +363,7 @@ document.addEventListener('astro:page-load', ev => {
             const ply =  new playerjs.Player(playerpodcast);
             ply.on('ready', ()=> {
                 $('#player').attr('data-status','podcast-playing');
-                playerpodcast.classList.add('iframestyle');s
+                playerpodcast.classList.add('iframestyle');
                 ply.play(); 
             });            
 
