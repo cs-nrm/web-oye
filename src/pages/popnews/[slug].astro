@@ -36,14 +36,17 @@ export async function getStaticPaths() {
                 <article class="text-elipsis overflow-hidden lg:mr-10 text-lg">
                     <Fragment set:html={post.content.rendered} />
                 </article>
-                <div class="bg-slate-700 p-5 rounded-md my-2 w-1/2">
+                <div class="bg-slate-700 p-5 rounded-md my-2 sm:min-w-[350px] relative text-center md:text-left">
+                  <div class="sticky top-0 left-0 right-0">
                     <h3 class="text-xl text-white font-extrabold">PUBLICIDAD</h3>
                     <div>
-                        <img style="w-[300px]" src="https://oyedigital.mx/wp-content/uploads/2024/05/publicidad-convers.jpg"/>
+                        <img src="https://oyedigital.mx/wp-content/uploads/2024/05/publicidad-convers.jpg"/>
                     </div>
+                    </br>
                     <div>
                         <img src="https://oyedigital.mx/wp-content/uploads/2024/05/13667542338706503595.jpg"/>
                     </div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -56,15 +59,6 @@ export async function getStaticPaths() {
 var imagen = document.getElementById("imagen-nota");
 var original = imagen.getElementsByTagName('img');
 var original2 = original[0].getAttribute('src');
-/*
-var imagenbefore = window.getComputedStyle(document.querySelector('#imagen-nota', ':before'));
-imagenbefore.backgroundImage = "url("+original2+")";*/
-
-var h3 = document.querySelector("#imagen-nota");
-var result = window.getComputedStyle(imagen, ':before');
-//result.backgroundImage = "url("+original2+")";
-
-//imagen.style.backgroundImage = "url('https://htmlmasters.tech/wp-content/uploads/logo_small.png')";
 imagen.style.backgroundImage = "url("+original2+")";
 </script>
 
@@ -87,7 +81,4 @@ imagen.style.backgroundImage = "url("+original2+")";
   opacity: 0.6;
 }
 
-#imagen-nota{
-
-}
 </style>
