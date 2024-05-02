@@ -4,6 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 
 const { slug } = Astro.params;
 
+
 let res = await fetch(`http://oyedigital.mx/wp-json/wp/v2/posts?slug=${slug}`);
 let [post] = await res.json();
 
@@ -22,21 +23,71 @@ export async function getStaticPaths() {
 
 <Layout title={post.title.rendered}>
     <section class="w-full p-4">
-        <figure class="bg-white flex justify-center rounded-sm">
-            <img src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} />
-        </figure>
-
-        <div class="bg-slate-700 p-5 rounded-sm my-2">
-            <h2>{post.title.rendered}</h2>
+        <div class="h-full">
+            <figure id="imagen-nota" class="imagen-nota flex justify-center rounded-sm w-auto bg-purple-700 bg-contain backdrop-opacity-80 backdrop-blur-2xl">
+               <img class="w-auto max-h-96 h-full" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} />
+            </figure>
         </div>
-        <div class="flex flex-col lg:flex-row">
-            <div class="bg-slate-700 p-5 rounded-md my-2 w-1/2">
-                <h3 class="text-4xl font-extrabold">Info</h3>
+        <div class="container mx-auto">
+            <div class="my-4 font-bold">
+                <h1 set:html={post.title.rendered}></h1>
             </div>
-
-            <article class="text-elipsis overflow-hidden lg:p-3">
-                <Fragment set:html={post.content.rendered} />
-            </article>
+            <div class="flex flex-col lg:flex-row">
+                <article class="text-elipsis overflow-hidden lg:mr-10 text-lg">
+                    <Fragment set:html={post.content.rendered} />
+                </article>
+                <div class="bg-slate-700 p-5 rounded-md my-2 w-1/2">
+                    <h3 class="text-xl text-white font-extrabold">PUBLICIDAD</h3>
+                    <div>
+                        <img style="w-[300px]" src="https://oyedigital.mx/wp-content/uploads/2024/05/publicidad-convers.jpg"/>
+                    </div>
+                    <div>
+                        <img src="https://oyedigital.mx/wp-content/uploads/2024/05/13667542338706503595.jpg"/>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
     </section>
 </Layout>
+
+<script>
+var imagen = document.getElementById("imagen-nota");
+var original = imagen.getElementsByTagName('img');
+var original2 = original[0].getAttribute('src');
+/*
+var imagenbefore = window.getComputedStyle(document.querySelector('#imagen-nota', ':before'));
+imagenbefore.backgroundImage = "url("+original2+")";*/
+
+var h3 = document.querySelector("#imagen-nota");
+var result = window.getComputedStyle(imagen, ':before');
+//result.backgroundImage = "url("+original2+")";
+
+//imagen.style.backgroundImage = "url('https://htmlmasters.tech/wp-content/uploads/logo_small.png')";
+imagen.style.backgroundImage = "url("+original2+")";
+</script>
+
+<style>
+#imagen-nota::before{
+  content:"";
+  background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/10x10-transparenteb.jpg');  
+  opacity:0.1;
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  width:auto;
+  height:auto;
+  z-index:-3;
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+  opacity: 0.6;
+}
+
+#imagen-nota{
+
+}
+</style>

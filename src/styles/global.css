@@ -284,3 +284,36 @@ hr {
     width: 100%;
     height: 100%;
 }
+
+/* PROGRAMACIÓN */
+.tabs.programacion nav{
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: calc(1em + 1vw);
+    font-weight: bold;
+    text-transform: uppercase;
+    background: radial-gradient(circle at top left, #8114b8, rgb(217,64,172,0.75), #f4a3cc);
+    width: 100%;
+    justify-content: space-between;
+    color: rgb(68 68 68);
+    letter-spacing: 3px;
+    text-shadow: 1px 2px rgb(255 242 249 / 61%);
+}
+
+.tabs.programacion .tab-wrapper{
+  padding: 10px 10px 0px 10px;
+}
+
+/*#imagen-nota:before{
+  content:"";
+  background-image: url('https://oyedigital.mx/wp-content/uploads/2024/04/ccxp-1.jpg');
+  opacity:0.5;
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  width:auto;
+  height:auto;
+  z-index:-3;
+}*/
