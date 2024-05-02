@@ -6,6 +6,11 @@ var volume;
 var artist;
 var cancion;
 var hora;
+const radioButton = document.getElementById('radiobutton');
+const player = document.getElementById('player');
+
+
+
 //function initPlayer(){
     function initPlayerSDK(){
         console.log( 'TD Player SDK is ready' );
@@ -41,7 +46,7 @@ var hora;
             document.getElementById('play-pause').classList.remove('show');
             document.getElementById('play-pause').classList.add('hide');    
          }
-         if (local_status == 'LIVE_PLAYING'){            
+         if (local_status == 'LIVE_PLAYING'){                        
             document.getElementById('play-pause').innerHTML = buttonPause;
             document.getElementById('loading').classList.remove('show');
             document.getElementById('loading').classList.add('hide');
@@ -84,7 +89,7 @@ var hora;
             trackingParameters:{
             Dist: 'WebOye'
             }
-        });
+        });        
       }
 
       function stop(){
@@ -135,26 +140,7 @@ var hora;
         console.log( 'AdBlockerDetected' );
     }
 
-    initPlayerSDK();
-              
-        document.getElementById('play-pause').addEventListener('click', function(){               
-            console.log(local_status);
-            //streaming.startAd();
-            if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){
-                console.log('play');
-                //streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
-                streaming.play({
-                    station:'XEOYEFM',
-                    trackingParameters:{
-                    Dist: 'WebOye'
-                    }
-                });
-            }else if( local_status == 'LIVE_PLAYING' || local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING'){
-                streaming.pause();
-            }
-                    
-        });   
-        
+    initPlayerSDK();        
         volume = document.getElementById('vol');
         volume.addEventListener('input', function(){
             //console.log(volume.value);
@@ -180,6 +166,14 @@ var hora;
                     break;
                     case 'OYE-DEBRAYE':
                         artist = 'EL DEBRAYE';
+                        cancion = '';
+                    break;
+                    case 'OYE-TURNOS':
+                        artist = 'EL DEBRAYE';
+                        cancion = '';
+                    break;                    
+                    case 'OYE-CAP':
+                        artist = 'CORTE';
                         cancion = '';
                     break;
                     case 'OYE-PRO':
@@ -212,20 +206,180 @@ var hora;
         getInfoMusic();
         setInterval( getInfoMusic, 30000);
         
-    
- /*return {
-    'initPlayerSDK' : initPlayerSDK,
-    'startAd': startAd,
-    'pause': pause   
- };*/
-        
-//}        
+/* abrir barra*/
+const openbarra = function(){
+    player.classList.remove('h-0');
+    player.classList.add('h-16');
+    player.classList.add('border-4');    
+}
 
-/*$(document).ready(function(){
-   initPlayer().initPlayerSDK();    
+const hidebarra = function(){
+    player.classList.remove('h-16');
+    player.classList.add('h-0');
+    player.classList.remove('border-4');                
+}
+
+const transitionBarra = function(){    
+    hidebarra();
+    setTimeout( function(){        
+        openbarra();
+    }, 500);
+}
+
+const radioActive = function(){
+    $('#player-inner').addClass('active');
+    $('#player-v-podcast').removeClass('active');
+    $('#player-v-video').removeClass('active');
+}
+
+const podcastActive = function(){
+    $('#player-inner').removeClass('active');
+    $('#player-v-podcast').addClass('active');
+    $('#player-v-video').removeClass('active');
+}
+
+const videoActive = function(){
+    $('#player-inner').removeClass('active');
+    $('#player-v-podcast').removeClass('active');
+    $('#player-v-video').addClass('active');
+}
+
+const radioStop = function(){
+        streaming.pause();
+        $('#player').attr('data-status','init');                
+        hidebarra();
+        $('#player-inner').removeClass('active');
+}
+
+
+const playerstatus = function(){
+    var state  = $('#player').attr('data-status');
+    return state;
+};
+
+
+
+const playstopRadio = function(){
+            console.log(local_status);
+            const getplayingstatus = playerstatus();
+            console.log(getplayingstatus);
+            if (getplayingstatus == 'init'){
+                openbarra();
+            }
+
+            if(getplayingstatus == 'podcast-playing'){
+                transitionBarra();
+                const containerpodcast  = document.getElementById('iframepodcast');
+                containerpodcast.innerHTML ='';                
+            }                
+                                               
+            if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){                
+                //streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
+                streaming.play({
+                    station:'XEOYEFM',
+                    trackingParameters:{
+                    Dist: 'WebOye'
+                    }
+                });             
+             $('#player').attr('data-status','radio-playing');
+             transitionBarra(); 
+             radioActive();   
+            }else if( local_status == 'LIVE_PLAYING' || local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING'){
+                
+                radioStop();
+            }
+};
+
+
+$('#radiobutton').on('click',function(){    
+        playstopRadio();      
 });
 
+$('#return-live').on('click',function(){    
+       playstopRadio();    
+});
+
+
 $('#play-pause').on('click', function(){
-    console.log('button clicked');    
-    console.log(status);           
-});*/
+    playstopRadio();
+});
+
+/* podcast*/ 
+
+
+
+  
+
+/* NAVIGATION */ 
+document.addEventListener('astro:before-preparation', ev => {
+    console.log('insert spin');    
+    document.querySelector('main').classList.add('loading');    
+    document.querySelector('.preloader').classList.add('showpreloader');
+});
+
+
+document.addEventListener('astro:page-load', ev => {
+    console.log('pageload');
+    document.querySelector('main').classList.remove('loading');    
+    document.querySelector('.preloader').classList.remove('showpreloader');
+    const getplayingstatus = playerstatus();
+    
+    if( getplayingstatus == 'podcast-playing'){
+        const containerpodcast  = document.getElementById('iframepodcast');
+        containerpodcast.innerHTML ='';
+        hidebarra();
+    }
+
+    $('.audiopod').each(function(){   
+        $(this).on('click',function(){
+            radioStop();
+            podcastActive();
+            transitionBarra();
+
+            const ifr = $(this).find('.data-iframe').attr('data-iframe');
+            const ifrsrc = ifr.split('src="');
+            const src = ifrsrc[1].split('"');
+            //const playerpodcast = document.getElementById('playerpodcast');
+            const containerpodcast  = document.getElementById('iframepodcast');
+            containerpodcast.innerHTML ='';
+            const playerpodcast = document.createElement('iframe');
+            playerpodcast.setAttribute('src',src[0]+"?image=0&share=0&download=1&description=0&follow=0");
+            playerpodcast.setAttribute('width','300');
+            playerpodcast.setAttribute('height','300');
+            playerpodcast.setAttribute('frameborder','0');
+            playerpodcast.setAttribute('allow','autoplay');
+            playerpodcast.classList.add('iframestyle');
+
+            //console.log(playerpodcast);
+            containerpodcast.appendChild(playerpodcast);            
+            const ply =  new playerjs.Player(playerpodcast);
+            ply.on('ready', ()=> {
+                $('#player').attr('data-status','podcast-playing');
+                ply.play(); 
+            });            
+
+
+        });
+    });
+   
+});
+
+/*
+<iframe src="https://omny.fm/shows/al-otro-lado-de-la-radio/al-otro-lado-de-la-radio-cap-7-rumberos/embed?image=0&share=0&download=1&description=0&follow=0" 
+allow="autoplay; clipboard-write" 
+width="100%" 
+height="180" 
+frameborder="0" 
+title="Al Otro Lado de la Radio.- Cap 7.-  Rumberos">    
+</iframe>
+
+<iframe src=&quot;https://omny.fm/shows/al-otro-lado-de-la-radio/al-otro-lado-de-la-radio-cap-7-rumberos/embed&quot; 
+allow=&quot;autoplay; 
+clipboard-write&quot; 
+width=&quot;100%&quot; 
+height=&quot;180&quot; 
+frameborder=&quot;0&quot; 
+title=&quot;Al Otro Lado de la Radio.- Cap 7.-  Rumberos&quot;>
+</iframe>
+
+*/
