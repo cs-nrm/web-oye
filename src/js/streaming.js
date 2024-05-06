@@ -273,6 +273,11 @@ const playstopRadio = function(){
                 containerpodcast.innerHTML ='';                
             }                
                                                
+            if(getplayingstatus == 'video-playing'){
+                
+
+            }
+
             if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){                
                 //streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
                 streaming.play({
@@ -407,24 +412,44 @@ document.addEventListener('astro:page-load', ev => {
                     hidebarra();
                 }*/
                 //containerpodcast.innerHTML = '';
-                //hidebarra();
-                
+                //hidebarra();                
                 const playerpodcast = document.getElementById('iframepodcast').getElementsByTagName('iframe')[0];
                 //console.log(playerpodcast);
                 const ply =  new playerjs.Player(playerpodcast);
                 ply.on('ready', ()=> {
                     ply.pause();
                     podactive.attr('data-podcast-status','ready');
-                });
-                
+                });                
                 
             }
 
-                    
-
-
         });
     });
+
+    const poptrends = document.getElementById('poptrends');
+    if (poptrends){
+        //console.log('sccion pop');
+        $('.poptrend-video').find('iframe').each(function(el,e){
+            //console.log(e);            
+            const plyr = new Plyr($(this).parent());
+            plyr.on('playing',function(){
+                const getstatus = playerstatus();
+                if( getstatus == 'radio-playing'){
+                    radioStop();   
+                    hidebarra();
+                    $('#player').attr('data-status','video-playing');
+                }
+            });
+            
+            $('#radiobutton').on('click', function(){
+                plyr.pause();
+            });
+             
+        });
+        
+    }
+
+
    
 });
 
