@@ -238,4 +238,5 @@ hr {
 
 /* player */
 .iframestyle {box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/8p7m.gif'); background-size:contain; background-color:#15181f; border: 1px solid  black; border-radius: 6px;}
+.loading-gif {	width: 20px; height: auto;}
 
