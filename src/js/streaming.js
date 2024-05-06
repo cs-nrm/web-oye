@@ -266,7 +266,7 @@ const playstopRadio = function(){
             if (getplayingstatus == 'init'){
                 openbarra();
             }
-
+            
             if(getplayingstatus == 'podcast-playing'){
                 transitionBarra();
                 const containerpodcast  = document.getElementById('iframepodcast');
@@ -280,12 +280,12 @@ const playstopRadio = function(){
                     trackingParameters:{
                     Dist: 'WebOye'
                     }
-                });             
+                });     
+
              $('#player').attr('data-status','radio-playing');
              transitionBarra(); 
              radioActive();   
-            }else if( local_status == 'LIVE_PLAYING' || local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING'){
-                
+            }else if( local_status == 'LIVE_PLAYING' || local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING'){                
                 radioStop();
             }
 };
@@ -307,7 +307,6 @@ $('#play-pause').on('click', function(){
 /* podcast*/ 
 
 
-
   
 
 /* NAVIGATION */ 
@@ -322,50 +321,106 @@ document.addEventListener('astro:page-load', ev => {
     console.log('pageload');
     document.querySelector('main').classList.remove('loading');    
     document.querySelector('.preloader').classList.remove('showpreloader');
-    const getplayingstatus = playerstatus();
-
+    
     const imagenNota = document.getElementById("imagen-nota");
     if( imagenNota ){
         const imgNotaOriginal = imagenNota.getElementsByTagName('img');
         const imgNotaOriginal2 = imgNotaOriginal[0].getAttribute('src');
         imagenNota.style.backgroundImage = "url("+imgNotaOriginal2+")";
     }
-    
+
+    const getplayingstatus = playerstatus();
     
     if( getplayingstatus == 'podcast-playing'){
         const containerpodcast  = document.getElementById('iframepodcast');
         containerpodcast.innerHTML ='';
-        hidebarra();
     }
-
+    
     $('.audiopod').each(function(){   
         $(this).on('click',function(){
-            radioStop();
-            podcastActive();
-            transitionBarra();
-
-            const ifr = $(this).find('.data-iframe').attr('data-iframe');
-            const ifrsrc = ifr.split('src="');
-            const src = ifrsrc[1].split('"');
-            //const playerpodcast = document.getElementById('playerpodcast');
+            const getstatus = playerstatus();
+            const podactive = $(this).find('.play-pause-podcast');
+            const podcaststatus = podactive.attr('data-podcast-status');
             const containerpodcast  = document.getElementById('iframepodcast');
-            containerpodcast.innerHTML ='';
-            const playerpodcast = document.createElement('iframe');
-            playerpodcast.setAttribute('src',src[0]+"?image=0&share=0&download=1&description=0&follow=0");
-            playerpodcast.setAttribute('width','300');
-            playerpodcast.setAttribute('height','300');
-            playerpodcast.setAttribute('frameborder','0');
-            playerpodcast.setAttribute('allow','autoplay');
             
+            
+            podcastActive();
+            
+            if (getstatus == 'radio-playing'){
+                radioStop();                
+            }            
+                                                
+            podactive.html('<img class="loading-gif" src="https://storage.googleapis.com/nrm-web/oye/recursos/loading-normal.gif" />');
+            
+            if (getstatus == 'podcast-playing'){
+                
+                const playerpodcast = document.getElementById('iframepodcast').getElementsByTagName('iframe')[0];
+                //console.log(playerpodcast);
+                const ply =  new playerjs.Player(playerpodcast);
+                ply.on('ready', ()=> {
+                    ply.pause();
+                    podactive.attr('data-podcast-status','ready');
+                });
+                $('.audiopod').each(function(){
+                    $('.audiopod').find('.play-pause-podcast').html(buttonPlay);
+                    $('.audiopod').find('.play-pause-podcast').attr('data-podcast-status','ready');
+                });
+            }
+            //console.log(podcaststatus);            
+            if(podcaststatus == 'ready'){
+                transitionBarra();
+                const ifr = $(this).find('.data-iframe').attr('data-iframe');
+                const ifrsrc = ifr.split('src="');
+                const src = ifrsrc[1].split('"');
+                //const playerpodcast = document.getElementById('playerpodcast');
+                            
+                containerpodcast.innerHTML ='';
+                const playerpodcast = document.createElement('iframe');
+                playerpodcast.setAttribute('src',src[0]+"?image=0&share=0&download=1&description=0&follow=0");
+                playerpodcast.setAttribute('width','300');
+                playerpodcast.setAttribute('height','300');
+                playerpodcast.setAttribute('frameborder','0');
+                playerpodcast.setAttribute('allow','autoplay');                
+                //console.log(playerpodcast);
+                containerpodcast.appendChild(playerpodcast);            
+                const ply =  new playerjs.Player(playerpodcast);
+                ply.on('ready', ()=> {
+                    podactive.attr('data-podcast-status','active');
+                    $('#player').attr('data-status','podcast-playing');
+                    playerpodcast.classList.add('iframestyle');
+                    ply.play(); 
+                    
+                    ply.on('play', ()=>{
+                        podactive.html(buttonPause); 
+                    });
+    
+                    ply.on('pause', ()=>{
+                        podactive.html(buttonPlay); 
+                    });
+                    
+                });   
+            }
+            else if(podcaststatus == 'active'){
+                /*if( getplayingstatus == 'podcast-playing'){
+                    const containerpodcast  = document.getElementById('iframepodcast');
+                    containerpodcast.innerHTML ='';
+                    hidebarra();
+                }*/
+                //containerpodcast.innerHTML = '';
+                //hidebarra();
+                
+                const playerpodcast = document.getElementById('iframepodcast').getElementsByTagName('iframe')[0];
+                //console.log(playerpodcast);
+                const ply =  new playerjs.Player(playerpodcast);
+                ply.on('ready', ()=> {
+                    ply.pause();
+                    podactive.attr('data-podcast-status','ready');
+                });
+                
+                
+            }
 
-            //console.log(playerpodcast);
-            containerpodcast.appendChild(playerpodcast);            
-            const ply =  new playerjs.Player(playerpodcast);
-            ply.on('ready', ()=> {
-                $('#player').attr('data-status','podcast-playing');
-                playerpodcast.classList.add('iframestyle');
-                ply.play(); 
-            });            
+                    
 
 
         });
