@@ -6,6 +6,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 
 import Layout from '../../layouts/Layoutq.astro';
 import Card from '../../layouts/CardsPoptrends.astro';
+import DoubleBox from '../../components/DoubleBox.astro';
+import BoxBanner from '../../components/BoxBanner.astro';
+import LeaderBoard from '../../components/LeaderBoard.astro';
+import SuperLeader from '../../components/SuperLeader.astro';
 
 
 const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=20&categories=280");
@@ -25,17 +29,30 @@ const posts = await res.json();
 		<main>
             <div class="container my-12 mx-auto" id="poptrends">
 				<h1 class="p-4 font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop Trends</h1>
-                <Layout title="Pop Trends">
-                    <section class="flex flex-wrap -mx-4">
-                        {
-                            posts.map((post:any) => ( 
-                                <>
-                                    <Card {post} />
-                                </>
-                            ))
-                        }
-                    </section>
-                </Layout>
+                <div class="flex flex-col lg:flex-row">
+                    <div class="sm:min-w-[calc(100%-400px)] lg:mr-10">
+                        <Layout title="Pop Trends">
+                            <section class="flex flex-wrap -mx-4">
+                                {
+                                    posts.map((post:any) => ( 
+                                        <>
+                                            <Card {post} />
+                                        </>
+                                    ))
+                                }
+                            </section>
+                        </Layout>
+                    </div>
+                    <div class="bg-gray-300 p-5 rounded-md sm:min-w-[350px] relative text-center md:text-left">
+                        <div class="sticky top-0 left-0 right-0">
+                            <h3 class="text-xl text-black font-extrabold">PUBLICIDAD</h3>
+                            <BoxBanner />
+                            </br>
+                            <DoubleBox />
+                        </div>
+                    </div>
+                </div>
+
             </div>
 		</main>
 		<Footer />
