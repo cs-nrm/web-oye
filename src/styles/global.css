@@ -221,10 +221,10 @@ hr {
   padding: 10px 10px 0px 10px;
 }
 
-/*#imagen-nota:before{
+#imagen-nota::before{
   content:"";
-  background-image: url('https://oyedigital.mx/wp-content/uploads/2024/04/ccxp-1.jpg');
-  opacity:0.5;
+  background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/10x10-transparenteb.jpg');  
+  opacity:0.1;
   position:absolute;
   top:0;
   bottom:0;
@@ -233,8 +233,11 @@ hr {
   width:auto;
   height:auto;
   z-index:-3;
-}*/
-
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+  opacity: 0.6;
+}
 
 /* player */
 .iframestyle {box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/8p7m.gif'); background-size:contain; background-color:#15181f; border: 1px solid  black; border-radius: 6px;}

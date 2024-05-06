@@ -1,6 +1,10 @@
 ---
 import { parseJsonConfigFileContent } from 'typescript';
 import Layout from '../../layouts/Layout.astro';
+import DoubleBox from '../../components/DoubleBox.astro';
+import BoxBanner from '../../components/BoxBanner.astro';
+import LeaderBoard from '../../components/LeaderBoard.astro';
+import SuperLeader from '../../components/SuperLeader.astro';
 
 const { slug } = Astro.params;
 
@@ -22,21 +26,30 @@ export async function getStaticPaths() {
 
 <Layout title={post.title.rendered}>
     <section class="w-full p-4">
-        <figure class="bg-white flex justify-center rounded-sm">
-            <img src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} />
-        </figure>
-
-        <div class="bg-slate-700 p-5 rounded-sm my-2">
-            <h2>{post.title.rendered}</h2>
+        <div class="h-full">
+            <figure id="imagen-nota" class="imagen-nota flex justify-center rounded-sm w-auto bg-purple-700 bg-contain backdrop-opacity-80 backdrop-blur-2xl">
+               <img class="w-auto max-h-96 h-full" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} />
+            </figure>
         </div>
-        <div class="flex flex-col lg:flex-row">
-            <div class="bg-slate-700 p-5 rounded-md my-2 w-1/2">
-                <h3 class="text-4xl font-extrabold">Info</h3>
+        <LeaderBoard />
+        <div class="container mx-auto">
+            <div class="my-4 font-bold">
+                <h1 set:html={post.title.rendered}></h1>
             </div>
-
-            <article class="text-elipsis overflow-hidden lg:p-3">
-                <Fragment set:html={post.content.rendered} />
-            </article>
+            <div class="flex flex-col lg:flex-row">
+                <article class="sm:min-w-[calc(100%-400px)] text-elipsis overflow-hidden lg:mr-10 text-lg">
+                    <Fragment set:html={post.content.rendered} />
+                </article>
+                <div class="bg-gray-300 p-5 rounded-md my-2 sm:min-w-[350px] relative text-center md:text-left">
+                  <div class="sticky top-0 left-0 right-0">
+                    <h3 class="text-xl text-black font-extrabold">PUBLICIDAD</h3>
+                    <BoxBanner />
+                    </br>
+                    <DoubleBox />
+                  </div>
+                </div>
+            </div>
         </div>
+        <SuperLeader />
     </section>
 </Layout>
