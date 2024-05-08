@@ -339,6 +339,7 @@ document.addEventListener('astro:page-load', ev => {
     if( getplayingstatus == 'podcast-playing'){
         const containerpodcast  = document.getElementById('iframepodcast');
         containerpodcast.innerHTML ='';
+        hidebarra();
     }
     
     $('.audiopod').each(function(){   
@@ -425,13 +426,31 @@ document.addEventListener('astro:page-load', ev => {
 
         });
     });
-
-    const poptrends = document.getElementById('poptrends');
-    if (poptrends){
+    
+    const containvideo = document.getElementById('content-w-video');
+    if (containvideo){
         //console.log('sccion pop');
         $('.poptrend-video').find('iframe').each(function(el,e){
             //console.log(e);            
             const plyr = new Plyr($(this).parent());
+            plyr.on('playing',function(){
+                const getstatus = playerstatus();
+                if( getstatus == 'radio-playing'){
+                    radioStop();   
+                    hidebarra();
+                    $('#player').attr('data-status','video-playing');
+                }
+            });
+            
+            $('#radiobutton').on('click', function(){
+                plyr.pause();
+            });
+             
+        });
+
+        $('.youtube').each(function(el,e){
+            //console.log(e);            
+            const plyr = new Plyr($(this));
             plyr.on('playing',function(){
                 const getstatus = playerstatus();
                 if( getstatus == 'radio-playing'){
