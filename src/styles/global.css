@@ -44,7 +44,7 @@ body {
 }
 main {
 	width: 100%;
-	max-width: calc(100% - 1em);
+	/*max-width: calc(100% - 1em);*/
 	margin: auto;
 }
 h1,
@@ -215,12 +215,14 @@ hr {
     color: rgb(68 68 68);
     letter-spacing: 3px;
     text-shadow: 1px 2px rgb(255 242 249 / 61%);
+	border-radius: 4px;
 }
 
 .tabs.programacion .tab-wrapper{
   padding: 10px 10px 0px 10px;
 }
 
+/* CONTENIDO NOTAS */
 #imagen-nota::before{
   content:"";
   background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/10x10-transparenteb.jpg');  
@@ -236,7 +238,11 @@ hr {
   background-position: center;
   background-repeat: repeat;
   background-size: cover;
-  opacity: 0.6;
+  opacity: 0.6;  
+}
+
+article iframe {
+    margin: 3rem auto !important;
 }
 
 /* player */

@@ -45,11 +45,11 @@
 <script  src="/src/js/streaming.js"></script>
 
 <style>
-    #player { transition: all 0.5s; background-image: linear-gradient(202.03deg, #741da9 14.4%, #7CDADA 78.24%); box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;}    
+    #player { transition: all 0.5s; background: linear-gradient(202.03deg, #741da9 14.4%, #7CDADA 78.24%); box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; animation: gradient 15s ease infinite; background-size:400%;}    
     #player .show { display:block }
     #player .hide{ display: none; }
     #player .active{ display: flex!important;  transition: all 1s;}
-    
+
     
     
     .marquee { white-space: nowrap; overflow: hidden; width: 100%;}
@@ -71,6 +71,12 @@
     
     @keyframes animate {
          100% {        transform: translate(-100%, 0);        }
+    }
+    
+    @keyframes gradient {
+        0% {	background-position: 0% 50%;    }
+    	50% {	background-position: 100% 50%;	}
+	    100% {		background-position: 0% 50%;	}
     }
 
 
