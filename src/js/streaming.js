@@ -224,10 +224,10 @@ const player = document.getElementById('player');
                     if(prog.acf[dia] === true){
                         if( prog.acf.hora_fin >= hora &&  prog.acf.hora_inicio <= hora){
                            // console.log(prog.acf.hora_inicio);
-                            /*console.log(prog.acf.hora_inicio);
+                            console.log(prog.acf.hora_inicio);
                             console.log(prog.acf.hora_fin);
                             console.log(prog.acf.programa);
-                            console.log(prog.acf);*/
+                            console.log(prog.acf);
                             if( document.getElementById('nombreprog') ){
                                 document.getElementById('nombreprog').innerHTML = prog.acf.programa;
                             }
@@ -255,7 +255,7 @@ const player = document.getElementById('player');
            // console.log('repetido');   
         }
         getInfoProg();
-        setInterval( getInfoProg, 30000);       
+        setInterval( getInfoProg, 300000);       
         
 /* abrir barra*/
 const openbarra = function(){
