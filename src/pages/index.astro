@@ -13,21 +13,26 @@ const posts = await res.json();
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title={SITE_TITLE} seccion="home" description={SITE_DESCRIPTION} />
+		<BaseHead title={SITE_TITLE} seccion="Home" description={SITE_DESCRIPTION} />
 		
 	</head>
 	<body>
 		<Header title={SITE_TITLE} />
 		
 		<main>
-			
-				{
+				<header>
+					<div class="container px-8" id="infoprog">
+						<div id="nombreprog"></div>
+						<div id="imgprog"></div>
+					</div>
+				</header>
+				{ /*
 				posts.map((post:any) => (
 					<h2 set:html={post.title.rendered} />
 					<p set:html={post.content.rendered} />
 					<p set:html={post.acf.ds} />
 				))
-				}
+				*/	}
 		</main>
 		
 		<Footer />

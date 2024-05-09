@@ -10,7 +10,6 @@ const radioButton = document.getElementById('radiobutton');
 const player = document.getElementById('player');
 
 
-
 //function initPlayer(){
     function initPlayerSDK(){
         console.log( 'TD Player SDK is ready' );
@@ -157,8 +156,7 @@ const player = document.getElementById('player');
                 }
                 return res.json();
             })
-            .then((data) => {
-                
+            .then((data) => {                
                 switch( data.categoria ){
                     case 'PCRADIOS' :
                         artist = 'CORTE';
@@ -193,8 +191,7 @@ const player = document.getElementById('player');
                     break;
                     
 
-                } 
-                
+                }                 
                 if (cancion == ''){
                     document.getElementById('infoMusic').innerHTML = artist;
                 }else{
@@ -205,6 +202,54 @@ const player = document.getElementById('player');
         }
         getInfoMusic();
         setInterval( getInfoMusic, 30000);
+
+        function getInfoProg(){
+            fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312")
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error
+                        ('HTTP error! Status: ${res.status}');
+                }
+                return res.json();
+            })
+            .then((data) => {                
+                //console.log(data);
+                const fecha = new Date();                
+                //const hora = fecha.getHours() + ':' + fecha.getUTCMinutes() + ':' + fecha.getSeconds();
+                const dias = ['domingo','lunes','martes','miercoles','jueves','viernes','sabado'];
+                const dia = dias[fecha.getDay()];                
+                const hora = dayjs(fecha).format('HH:mm:ss');
+                //console.log(hora);
+                data.map(function(prog){                    
+                    if(prog.acf[dia] === true){
+                        if( prog.acf.hora_fin >= hora &&  prog.acf.hora_inicio <= hora){
+                           // console.log(prog.acf.hora_inicio);
+                            /*console.log(prog.acf.hora_inicio);
+                            console.log(prog.acf.hora_fin);
+                            console.log(prog.acf.programa);
+                            console.log(prog.acf);*/
+                            document.getElementById('nombreprog').innerHTML = prog.acf.programa;                            
+                            fetch("https://oyedigital.mx/wp-json/wp/v2/media/"+prog.acf.imagen_ahora_escuchas+"?_fields[]=link")
+                            .then((rs) => {
+                                if (!rs.ok) {
+                                    throw new Error
+                                        ('HTTP error! Status: ${res.status}');
+                                }
+                                return rs.json();
+                            })
+                            .then(function(d){
+                                //console.log(d.link);
+                                document.getElementById('imgprog').innerHTML = '<img src="'+ d.link +'" />';
+                            });                                                        
+                        }
+                    }
+
+                });                                                
+            });
+           // console.log('repetido');   
+        }
+        getInfoProg();
+        setInterval( getInfoProg, 30000);       
         
 /* abrir barra*/
 const openbarra = function(){
@@ -212,13 +257,13 @@ const openbarra = function(){
     player.classList.add('h-16');
     player.classList.add('border-4');    
 }
-
+/* cerrar barra*/
 const hidebarra = function(){
     player.classList.remove('h-16');
     player.classList.add('h-0');
     player.classList.remove('border-4');                
 }
-
+/* cerrar y abrir barra*/
 const transitionBarra = function(){    
     hidebarra();
     setTimeout( function(){        
@@ -257,8 +302,6 @@ const playerstatus = function(){
     return state;
 };
 
-
-
 const playstopRadio = function(){
             console.log(local_status);
             const getplayingstatus = playerstatus();
@@ -275,7 +318,6 @@ const playstopRadio = function(){
                                                
             if(getplayingstatus == 'video-playing'){
                 
-
             }
 
             if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){                
@@ -309,21 +351,18 @@ $('#play-pause').on('click', function(){
     playstopRadio();
 });
 
-/* podcast*/ 
-
-
   
 
 /* NAVIGATION */ 
 document.addEventListener('astro:before-preparation', ev => {
-    console.log('insert spin');    
+  //  console.log('insert spin');    
     document.querySelector('main').classList.add('loading');    
     document.querySelector('.preloader').classList.add('showpreloader');
 });
 
 
 document.addEventListener('astro:page-load', ev => {
-    console.log('pageload');
+   // console.log('pageload');
     document.querySelector('main').classList.remove('loading');    
     document.querySelector('.preloader').classList.remove('showpreloader');
     
@@ -462,13 +501,8 @@ document.addEventListener('astro:page-load', ev => {
             
             $('#radiobutton').on('click', function(){
                 plyr.pause();
-            });
-             
-        });
-        
-    }
-
-
-   
+            });             
+        });        
+    }   
 });
 
