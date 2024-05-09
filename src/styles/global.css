@@ -158,6 +158,18 @@ hr {
 	max-width: 1280px !important;
 }
 
+@media (max-width: 1279px) {
+  .container{
+	padding-right: 5%;
+	padding-left: 5%;
+}
+
+
+
+}
+
+
+
 /*preloader*/
 .loading{    opacity: 0.3;    transition: opacity 2s; }
 .showpreloader {    display:blocK!important;    transition: opacity 2s; }
