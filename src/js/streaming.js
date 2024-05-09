@@ -228,7 +228,10 @@ const player = document.getElementById('player');
                             console.log(prog.acf.hora_fin);
                             console.log(prog.acf.programa);
                             console.log(prog.acf);*/
-                            document.getElementById('nombreprog').innerHTML = prog.acf.programa;                            
+                            if( document.getElementById('nombreprog') ){
+                                document.getElementById('nombreprog').innerHTML = prog.acf.programa;
+                            }
+                             
                             fetch("https://oyedigital.mx/wp-json/wp/v2/media/"+prog.acf.imagen_ahora_escuchas+"?_fields[]=link")
                             .then((rs) => {
                                 if (!rs.ok) {
@@ -239,7 +242,10 @@ const player = document.getElementById('player');
                             })
                             .then(function(d){
                                 //console.log(d.link);
-                                document.getElementById('imgprog').innerHTML = '<img src="'+ d.link +'" />';
+                                if(document.getElementById('imgprog')){
+                                    document.getElementById('imgprog').innerHTML = '<img src="'+ d.link +'" />';
+                                }
+                                
                             });                                                        
                         }
                     }
