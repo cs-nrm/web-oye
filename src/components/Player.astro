@@ -1,12 +1,12 @@
 <div id="radiobutton" class="bg-red-600 text-white border-1 p-1 rounded-md m-auto right-10  top-20 cursor-pointer absolute" transition:persist>streaming en vivo</div>
-<div id="player" class="w-10/12 m-auto fixed bottom-0 left-0 right-0 border-black  rounded-t-lg bg-white z-100 border-b-0 h-0" transition:persist data-status="init">
+<div id="player" class="w-[96%] lg:w-10/12 m-auto fixed bottom-0 left-0 right-0 border-black  rounded-t-lg bg-white z-100 border-b-0 h-0" transition:persist data-status="init">
     <div id="td_container" class="w-1 h-1 absolute bottom-16 right-0"></div>
     <div id="player-inner" class="flex h-16 items-center hide transition:persist">        
-        <div class="w-2/4 flex">
+        <div class="w-3/4 lg:w-2/4 flex">
             <div class="label-ahora">Ahora escuchas: </div>
 			<div class=" marquee"><div id="infoMusic" transition:persist></div></div>	            
         </div>
-        <div class="w-1/4 flex" id="buttons"> 
+        <div class="w-1/4 flex justify-center md:justify-start" id="buttons"> 
             <div id="loading" class="animate-spin max-w-[44px] min-w-[44px] hide">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader-3" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -21,7 +21,7 @@
                   </svg>
             </div>            
         </div>
-        <div class="w-1/4 vol flex justify-center" transition:persist>
+        <div class="hidden md:block w-1/4 vol flex justify-center" transition:persist>
             <input type="range" min="0.1" max="1" step="0.1" value="1" id="vol"> 
         </div>
         
