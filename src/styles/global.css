@@ -237,8 +237,15 @@ hr {
 .tabs.programacion .tab-wrapper{
   padding: 10px 10px 0px 10px;
 }
+.tabs.programacion .tab-wrapper input:checked + label, .tabs.programacion .tab-wrapper label:hover{
+    color: rgb(238, 238, 238);
+    text-shadow: 1px 2px rgb(14 14 14 / 61%);
+}
 
 /* CONTENIDO NOTAS */
+#imagen-nota{
+	position: relative;
+}
 #imagen-nota::before{
   content:"";
   background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/10x10-transparenteb.jpg');  
