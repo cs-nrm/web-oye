@@ -2,6 +2,8 @@ var streaming;
 var local_status;
 const buttonPause = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-pause" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /></svg>';
 const buttonPlay = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" stroke-width="0" fill="currentColor" /></svg>';
+const bigButtonPause = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-pause" width="65" height="65" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /></svg>';
+const bigButtonPlay = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play-filled" width="65" height="65" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" stroke-width="0" fill="currentColor" /></svg>';
 var volume;
 var artist;
 var cancion;
@@ -43,7 +45,8 @@ const player = document.getElementById('player');
             document.getElementById('loading').classList.add('show');
             document.getElementById('loading').classList.remove('hide');
             document.getElementById('play-pause').classList.remove('show');
-            document.getElementById('play-pause').classList.add('hide');    
+            document.getElementById('play-pause').classList.add('hide'); 
+
          }
          if (local_status == 'LIVE_PLAYING'){                        
             document.getElementById('play-pause').innerHTML = buttonPause;
@@ -51,6 +54,7 @@ const player = document.getElementById('player');
             document.getElementById('loading').classList.add('hide');
             document.getElementById('play-pause').classList.add('show');
             document.getElementById('play-pause').classList.remove('hide'); 
+            document.getElementById('big-play').innerHTML = bigButtonPause;
             
          }
          if(local_status == 'LIVE_STOP' || local_status == 'LIVE_PAUSE') {
@@ -58,7 +62,8 @@ const player = document.getElementById('player');
             document.getElementById('loading').classList.add('hide');
             document.getElementById('play-pause').classList.add('show');
             document.getElementById('play-pause').classList.remove('hide'); 
-            document.getElementById('play-pause').innerHTML = buttonPlay;            
+            document.getElementById('play-pause').innerHTML = buttonPlay;
+            document.getElementById('big-play').innerHTML = bigButtonPlay;            
          }
 
      }
@@ -354,6 +359,10 @@ $('#return-live').on('click',function(){
 
 
 $('#play-pause').on('click', function(){
+    playstopRadio();
+});
+
+$('#big-play').on('click', function(){
     playstopRadio();
 });
 
