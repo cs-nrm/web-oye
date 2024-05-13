@@ -21,9 +21,20 @@ const posts = await res.json();
 		
 		<main>
 				<header>
-					<div class="container px-8" id="infoprog">
-						<div id="nombreprog"></div>
-						<div id="imgprog"></div>
+					<div class="relative" id="infoprog">
+						<div class= "container mx-auto flex justify-center items-center" >
+							<div class="items-center">
+								<label class="p-1 rounded bg-teal-600/[0.6] shadow-xl">AHORA EN VIVO</label>
+								<div class="font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)] w-9/12" id="nombreprog">Oye 89.7FM</div>
+							</div>
+							<div id="imgprog"></div>
+						</div>
+						<div class="absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 border-2 rounded-full border-black">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play" width="60" height="60" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M7 4v16l13 -8z" />
+						  	</svg>
+						</div>
 					</div>
 				</header>
 				{ /*
