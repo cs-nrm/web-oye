@@ -20,12 +20,11 @@ import Card from '../../layouts/CardsPodcast.astro';
     ]; 
     return arrpodcast.map((podcast) => {
       return {
-        params: { link: podcast.link, imagen: podcast.imagen },
+        params: { link: podcast.link, imagen: podcast.imagen, nodo:podcast.nodo },
         props: { podcast, cat:podcast.nodo }
       };
   });
 }
-
 
 interface Props{ 
   podcast:any; 
@@ -37,10 +36,8 @@ const { podcast } = Astro.props;
 const {cat} = Astro.props ;
 
 
-
 const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=10&categories=" + cat); 
 const posts = await res.json();
-
 
 ---
 

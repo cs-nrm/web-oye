@@ -12,15 +12,21 @@ import LeaderBoard from '../../components/LeaderBoard.astro';
 import SuperLeader from '../../components/SuperLeader.astro';
 
 
-const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&_fields[]=title&_fields[]=content&_fields[]=acf&_fields[]=yoast_head_json&categories=3312");
+const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&_fields[]=title&_fields[]=content&_fields[]=acf&_fields[]=yoast_head_json&categories=3312&filter[orderby]=acf[inicio]&order=asc");
 const posts = await res.json();
 
-posts.sort();
 
-/*posts = posts.sort(function(a, b){
-    return a.posts.acf.hora_inicio - b.posts.acf.hora_inicio;
+
+
+posts.sort(function(a, b){
+    //return a.acf.hora_inicio < b.acf.hora_inicio;    
+    return ((a.acf.hora_inicio > b.acf.hora_inicio) ? 1 : (a.acf.hora_inicio < b.acf.hora_inicio) ? -1 : 0);
 });
 
+//console.log(posts);
+
+/*
+return a.posts.acf.hora_inicio - b.posts.acf.hora_inicio;
 posts.sort((a, b) => a.posts.acf.hora_inicio - b.posts.acf.hora_inicio);
 
 const hora = {posts.acf.hora_inicio};
