@@ -10,7 +10,7 @@ import SuperLeader from '../components/SuperLeader.astro';
 <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/nrm-web/nrm/lib/flickity.css">			
 
 
-<div class="main-carousel" data-flickity='{  "contain": true, "pageDots": false, "cellAlign": "center"}'>
+<div class="main-carousel" data-flickity='{  "contain": true, "pageDots": false, "cellAlign": "center", "wrapAround": true}'>
 	<div class="carousel-cell"><a href=""><img src="https://oyedigital.mx/wp-content/uploads/2024/03/OYE_alternativa-PODCAST-min.png"/></a></div>
 	<div class="carousel-cell"><a href="/podcast/al-otro-lado-de-la-radio"><img src="https://oyedigital.mx/wp-content/uploads/2024/01/DETRASdelaRADIO11-min.jpg"/></a></div>
 	<div class="carousel-cell"><a href="/podcast/respira"><img src="https://oyedigital.mx/wp-content/uploads/2023/12/poscast-repira2.jpg"/></a></div>
@@ -28,8 +28,8 @@ import SuperLeader from '../components/SuperLeader.astro';
 
 
 .carousel-cell {
-  width: 350px;
-  height: 400px;
+  width: 300px;
+  height: 350px;
   margin-right: 40px;
   border-radius: 20px;
 }
