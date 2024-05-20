@@ -13,11 +13,11 @@ const posts = await res.json();
 <div class="flex flex-wrap">
     <div class="w-full sm:w-1/2 lg:w-full px-8 mb-4">
         <img class="block h-auto w-full aspect-video shadow-[0_2px_12px_7px_rgba(0,0,0,0.4)] rounded object-fill" src={posts[0].yoast_head_json.og_image[0].url} alt={posts[0].title.rendered} />
-         <p class="font-bold leading-none my-1 text-lg text-center" set:html={posts[0].title.rendered}></p>
+         <p class="font-bold leading-none my-4 text-lg text-center" set:html={posts[0].title.rendered}></p>
     </div>
     <div class="w-full sm:w-1/2 lg:w-full px-8">
         <img class="block h-auto w-full aspect-video shadow-[0_2px_12px_7px_rgba(0,0,0,0.4)] rounded object-fill" src={posts[1].yoast_head_json.og_image[0].url} alt={posts[1].title.rendered} />
-        <p class="font-bold leading-none my-1 text-lg text-center" set:html={posts[1].title.rendered}></p>
+        <p class="font-bold leading-none my-4  text-lg text-center" set:html={posts[1].title.rendered}></p>
     </div>
 
 <!--div class="flex items-center mb-4">

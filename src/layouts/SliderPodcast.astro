@@ -10,7 +10,7 @@ import SuperLeader from '../components/SuperLeader.astro';
 <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/nrm-web/nrm/lib/flickity.css">			
 
 
-<div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'>
+<div class="main-carousel" data-flickity='{  "contain": true, "pageDots": false, "cellAlign": "center"}'>
 	<div class="carousel-cell"><img src="https://oyedigital.mx/wp-content/uploads/2024/03/OYE_alternativa-PODCAST-min.png"/></div>
 	<div class="carousel-cell"><img src="https://oyedigital.mx/wp-content/uploads/2024/01/DETRASdelaRADIO11-min.jpg"/></div>
 	<div class="carousel-cell"><img src="https://oyedigital.mx/wp-content/uploads/2023/12/poscast-repira2.jpg"/></div>
@@ -24,19 +24,23 @@ import SuperLeader from '../components/SuperLeader.astro';
 <script is:inline src="https://storage.googleapis.com/nrm-web/nrm/lib/flickity.pkgd.min.js"></script>
 
 <style>
+
+
+
 .carousel-cell {
-  width: 28%;
-  height: 200px;
-  margin-right: 10px;
-  border-radius: 5px;
+  width: 350px;
+  height: 400px;
+  margin-right: 40px;
+  border-radius: 20px;
 }
 
 .carousel-cell img{
-	border-radius: 0.25rem;
+	border-radius: 1rem;
 	box-shadow: 0 2px 12px 7px rgba(0,0,0,0.4);
+	margin-top: 20px;
 }
 
 .carousel-cell.is-selected {
-  background: #ED2;
+  /*background: #ED2;*/
 }
 </style>

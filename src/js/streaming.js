@@ -383,12 +383,16 @@ document.addEventListener('astro:before-preparation', ev => {
 
 document.addEventListener('astro:page-load', ev => {
    // console.log('pageload');
+   const getplayingstatus = playerstatus();
     document.querySelector('main').classList.remove('loading');    
     document.querySelector('.preloader').classList.remove('showpreloader');
     
     const secchome = document.getElementById('home');
     if ( secchome ){
         getInfoProg();
+        if( getplayingstatus == 'radio-playing'){
+             document.getElementById('big-play').innerHTML = bigButtonPause; 
+        }
     }
     
     const imagenNota = document.getElementById("imagen-nota");
@@ -397,8 +401,7 @@ document.addEventListener('astro:page-load', ev => {
         const imgNotaOriginal2 = imgNotaOriginal[0].getAttribute('src');
         imagenNota.style.backgroundImage = "url("+imgNotaOriginal2+")";
     }
-
-    const getplayingstatus = playerstatus();
+    
     
     if( getplayingstatus == 'podcast-playing'){
         const containerpodcast  = document.getElementById('iframepodcast');

@@ -10,22 +10,24 @@ import Card from '../../layouts/CardsPodcast.astro';
 
 
 export async function getStaticPaths( { paginate } ) {  
-  const podcast = 'el-debraye';    
+  const link = 'el-debraye';    
   const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=100&categories=3449"); 
   const posts = await res.json();  
     
   return paginate(posts,{
-    //params:{ podcast },
+    params:{ link },
     pageSize: 10
   });
 }
 
 interface Props{
-  page: any;  
+  page: any; 
+  link: any; 
 }
 
 const { page } = Astro.props;
-
+const { link } = Astro.props;
+console.log(page);
 ---
 <!doctype html>
 <html lang="es">
