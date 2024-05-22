@@ -17,11 +17,12 @@ export async function getStaticPaths( { paginate } ) {
         {nodo: 3801,title: 'Top Gaming', link: 'top-gaming', imagen: 'https://oyedigital.mx/wp-content/uploads/2023/04/TOP-GAMING.jpg', descripcion: 'Un clavado al mundo de los gamers en el cual conocerás todo sobre los lanzamientos, mejores juegos del momento y los que vienen.'},
         {nodo: 3813,title: 'Top Tech', link: 'top-tech', imagen: 'https://oyedigital.mx/wp-content/uploads/2023/04/TOP-TECH.jpg', descripcion: 'Top Tech con Diego Gil y Geekzilla. un podcast en el que conoceremos todo sobre la tecnología que nos está rodeando.'},
         {nodo: 3788,title: 'Tu Fandom', link: 'tu-fandom', imagen: 'https://oyedigital.mx/wp-content/uploads/2023/04/podcast-FANDOM-PORTADA-PAG.jpg', descripcion: 'Pone el reflector sobre los fandoms más activos de las redes sociales, bajo la premisa de “USTEDES HACEN LA PLAYLIST”, a través del #OyeTuFandom seleccionamos los Idols más votados.'},
-        {nodo: 3449,title: 'El Debraye', link: 'el-debraye', imagen:'https://oyedigital.mx/wp-content/uploads/2023/03/podcast-debraye.jpg', descripcion:''},        
+        {nodo: 3449,title: 'El Debraye', link: 'el-debraye', imagen:'https://oyedigital.mx/wp-content/uploads/2023/03/podcast-debraye.jpg', descripcion:''},
+        {nodo: 7404,title: 'La Alternativa', link: 'la-alternativa', imagen:'https://oyedigital.mx/wp-content/uploads/2024/03/OYE_alternativa-PODCAST-min.png', descripcion:'El espacio donde toda la música se escucha, sin distinción, entrevistas de todos los géneros en un solo lugar. '},        
   ];
 
   
-  const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=200&_fields[]=title&_fields[]=slug&_fields[]=yoast_head_json&_fields[]=categories&_fields[]=acf&categories=3449,3788,3813,3801,6734,6581,6806" ); 
+  const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=200&_fields[]=title&_fields[]=slug&_fields[]=yoast_head_json&_fields[]=categories&_fields[]=acf&categories=3449,3788,3813,3801,6734,6581,6806,7404" ); 
   const posts = await res.json();
   //console.log(posts);
   
