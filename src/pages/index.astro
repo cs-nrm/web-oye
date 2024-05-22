@@ -7,8 +7,10 @@ import CardEntrevistas from '../layouts/CardsHomeEntrevistas.astro';
 import SliderPodcast from '../layouts/SliderPodcast.astro';
 import Separator from '../components/Separator.astro';
 import HomeHeader from '../layouts/HomeHeader.astro';
+import DoubleBox from '../components/DoubleBox.astro';
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import SliderPromociones from '../layouts/SliderPromociones.astro';
 
 ---
 
@@ -25,6 +27,23 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				<header>
 					<HomeHeader />
 				</header>
+				<section>
+					<div class="container my-12 mx-auto">
+						<h1 class="p-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Promociones</h1>
+						<div class="flex flex-wrap">
+							<div class="w-full lg:w-2/3">
+
+								<SliderPromociones />
+
+							</div>
+							<div class="w-full lg:w-1/3 content-center">
+							<DoubleBox />
+							</div>
+						</div>
+
+					</div>
+				</section>
+				<Separator />
 				<secttion>
 					<div class="container my-12 mx-auto">
 						<div class="flex flex-wrap">
