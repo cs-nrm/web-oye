@@ -515,6 +515,51 @@ document.addEventListener('astro:page-load', ev => {
              
         });
 
+        /*voto*/
+        $('.voto-pop').each(function(){
+            $(this).on('click', function(){
+                console.log($(this).attr('data-voto-id'));
+                const id = $(this).attr('data-voto-id');                                
+                /*const params = {
+                    "search": id, 
+                    "per_page": 1000                    
+                };*/
+                const params = {
+                    "item_id":id,
+                    "user_id":15,
+                    "type":"post",
+                    "user_ip":"0.0.0.0",
+                    "status":"like"
+                };
+                
+                const Rparamas = {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer 31ifYsZyDJTM2ZZ9PxjDvTbUjRB7DgSNvG9eiJZZNT33Z3LEMo3RK7jlNc9XzXOvg3gwB2JuoDbT1L3KW6xoQBfqbsBoyBDYhQ597HPpFd8tremnnBpArzDW',
+                        'Content-Type': 'application/json'
+                    },                    
+                    body: JSON.stringify( params )
+                };
+                    
+                fetch('https://oyedigital.mx/wp-json/wp-ulike-pro/v1/vote/', Rparamas)
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error
+                            ('HTTP error! Status: ${res.status}');
+                    }
+                    return res.json();
+                })
+                .then((data) => { 
+                        console.log(data);
+                        $(this).addClass('voted');
+                        $(this).find('svg').attr('fill','white');
+                });
+
+            });            
+        });
+        
+        /*------------------- */
+
         $('.youtube').each(function(el,e){
             //console.log(e);            
             const plyr = new Plyr($(this));
