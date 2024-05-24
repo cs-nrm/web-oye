@@ -214,7 +214,7 @@ const secchome = document.getElementById('home');
         setInterval( getInfoMusic, 30000);
 
         function getInfoProg(){
-            fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312")
+            fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312&_fields[]=acf")
             .then((res) => {
                 if (!res.ok) {
                     throw new Error
@@ -252,8 +252,8 @@ const secchome = document.getElementById('home');
                             })
                             .then(function(d){
                                 //console.log(d.link);
-                                if(document.getElementById('imgprog')){
-                                    document.getElementById('imgprog').innerHTML = '<img src="'+ d.link +'" />';
+                                if(document.getElementById('imgprog')){                                    
+                                    document.getElementById('imgprog').getElementsByClassName('imgprog')[0].src = d.link;
                                 }
                                 
                             });                                                        
