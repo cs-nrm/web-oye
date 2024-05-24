@@ -65,7 +65,7 @@ h1 {
 	font-size: 3.052em;
 }
 h2 {
-	font-size: 2.441em;
+	font-size: 2.2em;
 }
 h3 {
 	font-size: 1.953em;
@@ -136,7 +136,10 @@ hr {
 		padding: 1em;
 	}*/
 	h1{
-		font-size: 250%;
+		font-size: 210%;
+	}
+	h2{
+		font-size: 130%;
 	}
 }
 
