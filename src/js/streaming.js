@@ -214,7 +214,7 @@ const secchome = document.getElementById('home');
         setInterval( getInfoMusic, 30000);
 
         function getInfoProg(){
-            fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312")
+            fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312&_fields[]=acf")
             .then((res) => {
                 if (!res.ok) {
                     throw new Error
