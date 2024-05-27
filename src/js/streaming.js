@@ -464,7 +464,7 @@ const showMenu = (toggleId, navId) =>{
                 containerpodcast.innerHTML ='';
                 const playerpodcast = document.createElement('iframe');
                 playerpodcast.setAttribute('src',src[0]+"?image=0&share=0&download=1&description=0&follow=0");
-                playerpodcast.setAttribute('width','300');
+                playerpodcast.setAttribute('width','250');
                 playerpodcast.setAttribute('height','300');
                 playerpodcast.setAttribute('frameborder','0');
                 playerpodcast.setAttribute('allow','autoplay');                
