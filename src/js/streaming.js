@@ -212,7 +212,7 @@ const secchome = document.getElementById('home');
         }
         getInfoMusic();
         setInterval( getInfoMusic, 30000);
-        setTimeout(function(){
+        
 
         
         function getInfoProg(){
@@ -255,7 +255,9 @@ const secchome = document.getElementById('home');
                             .then(function(d){
                                 //console.log(d.link);
                                 if(document.getElementById('imgprog')){                                    
-                                    document.getElementById('imgprog').getElementsByClassName('imgprog')[0].src = d.link;
+                                    setTimeout(function(){
+                                        document.getElementById('imgprog').getElementsByClassName('imgprog')[0].src = d.link;
+                                    },5000);
                                 }
                                 
                             });                                                        
@@ -266,7 +268,7 @@ const secchome = document.getElementById('home');
             });
            // console.log('repetido');   
         }
-        },20000);
+        
         //setTimeout(getInfoProg, 20000);
         setInterval( getInfoProg, 300000);       
         
