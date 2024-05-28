@@ -264,7 +264,7 @@ const secchome = document.getElementById('home');
             });
            // console.log('repetido');   
         }
-        getInfoProg();
+        setTimeout(getInfoProg, 20000);
         setInterval( getInfoProg, 300000);       
         
 /* abrir barra*/
