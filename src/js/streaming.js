@@ -367,9 +367,7 @@ $('#play-pause').on('click', function(){
     playstopRadio();
 });
 
-$('#big-play').on('click', function(){
-    playstopRadio();
-});
+
 
   
 
@@ -422,6 +420,10 @@ const showMenu = (toggleId, navId) =>{
         containerpodcast.innerHTML ='';
         hidebarra();
     }
+
+    $('#big-play').on('click', function(){
+        playstopRadio();
+    });
     
     $('.audiopod').each(function(){   
         $(this).on('click',function(){
