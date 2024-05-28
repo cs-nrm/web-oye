@@ -5,32 +5,13 @@ import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { Tabs } from 'astro-tabs';
 
-import Layout from '../../layouts/Layoutq.astro';
-import DoubleBox from '../../components/DoubleBox.astro';
-import BoxBanner from '../../components/BoxBanner.astro';
-import LeaderBoard from '../../components/LeaderBoard.astro';
-import SuperLeader from '../../components/SuperLeader.astro';
-
-
-const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&_fields[]=title&_fields[]=content&_fields[]=acf&_fields[]=yoast_head_json&categories=3312&filter[orderby]=acf[inicio]&order=asc");
+const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&_fields=title,content,acf,yoast_head_json&categories=3312&filter[orderby]=acf[inicio]&order=asc");
 const posts = await res.json();
-
-
-
 
 posts.sort(function(a, b){
     //return a.acf.hora_inicio < b.acf.hora_inicio;    
     return ((a.acf.hora_inicio > b.acf.hora_inicio) ? 1 : (a.acf.hora_inicio < b.acf.hora_inicio) ? -1 : 0);
 });
-
-//console.log(posts);
-
-/*
-return a.posts.acf.hora_inicio - b.posts.acf.hora_inicio;
-posts.sort((a, b) => a.posts.acf.hora_inicio - b.posts.acf.hora_inicio);
-
-const hora = {posts.acf.hora_inicio};
-posts.sort((a, b) => a.hora - b.hora);*/
 ---
 
 <!doctype html>
@@ -44,136 +25,137 @@ posts.sort((a, b) => a.hora - b.hora);*/
 		
 		<main>
             <div class="container my-12 mx-auto">
-				<h1 class="p-4 font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Programación</h1>
+				<h1 class="py-4 font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Programación</h1>
                 <div class="flex flex-col lg:flex-row">
                     <div class="sm:min-w-[calc(100%-400px)] lg:mr-10">
-                        <Layout title="Programación">
-                            <Tabs class="programacion" class:list={['programacion']}>
+                        <Tabs class="programacion" class:list={['programacion']}>
+                            <Fragment slot="tab-1">Lun</Fragment>
+                            <Fragment slot="tab-2">Mar</Fragment>
+                            <Fragment slot="tab-3">Mié</Fragment>
+                            <Fragment slot="tab-4">Jue</Fragment>
+                            <Fragment slot="tab-5">Vie</Fragment>
+                            <Fragment slot="tab-6">Sáb</Fragment>
+                            <Fragment slot="tab-7">Dom</Fragment>
                                 
-                                <Fragment slot="tab-1">Lun</Fragment>
-                                <Fragment slot="tab-2">Mar</Fragment>
-                                <Fragment slot="tab-3">Mié</Fragment>
-                                <Fragment slot="tab-4">Jue</Fragment>
-                                <Fragment slot="tab-5">Vie</Fragment>
-                                <Fragment slot="tab-6">Sáb</Fragment>
-                                <Fragment slot="tab-7">Dom</Fragment>
-                                
-                                <Fragment slot="panel-1">
-                                    <section>
-                                        {
-                                        posts.map((post:any) => (
-                                            post.acf.lunes && <div class="flex items-center min-h-24 p-4">
-                                                <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
-                                                <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
-                                                <div class="w-3/4 md:w-4/6 p-4">
-                                                    <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
-                                                    <p class="leading-none m-0" set:html={post.content.rendered}></p>
-                                                </div>
+                            <Fragment slot="panel-1">
+                                <section>
+                                {
+                                    posts.map((post:any) => (
+                                        post.acf.lunes && <div class="flex items-center min-h-24 p-4">
+                                            <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
+                                            <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
+                                            <div class="w-3/4 md:w-4/6 p-4">
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
-                                        ))
-                                        }
-                                    </section>
-                                </Fragment>
+                                        </div>
+                                    ))
+                                }
+                                </section>
+                            </Fragment>
 
-                                <Fragment slot="panel-2">
-                                    <section>
-                                        {
-                                        posts.map((post:any) => (
-                                            post.acf.martes && <div class="flex items-center min-h-24 p-4">
-                                                <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
+                            <Fragment slot="panel-2">
+                                <section>
+                                {
+                                    posts.map((post:any) => (
+                                        post.acf.martes && <div class="flex items-center min-h-24 p-4">
+                                            <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
                                                 <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
                                                 <div class="w-3/4 md:w-4/6 p-4">
-                                                    <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
-                                                    <p class="leading-none m-0" set:html={post.content.rendered}></p>
-                                                </div>
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
-                                        ))
-                                        }
-                                    </section>
-                                </Fragment>
+                                        </div>
+                                    ))
+                                }
+                                </section>
+                            </Fragment>
 
-                                <Fragment slot="panel-3">
-                                    <section>
-                                        {
-                                        posts.map((post:any) => (
-                                            post.acf.miercoles && <div class="flex items-center min-h-24 p-4">
-                                                <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
-                                                <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
-                                                <div class="w-3/4 md:w-4/6 p-4">
-                                                    <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
-                                                    <p class="leading-none m-0" set:html={post.content.rendered}></p>
-                                                </div>
+                            <Fragment slot="panel-3">
+                                <section>
+                                {
+                                    posts.map((post:any) => (
+                                        post.acf.miercoles && <div class="flex items-center min-h-24 p-4">
+                                            <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
+                                            <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
+                                            <div class="w-3/4 md:w-4/6 p-4">
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
-                                        ))
-                                        }
-                                    </section>
-                                </Fragment>
-                                <Fragment slot="panel-4">
-                                    <section>
-                                        {
-                                        posts.map((post:any) => (
-                                            post.acf.jueves && <div class="flex items-center min-h-24 p-4">
-                                                <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
-                                                <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
-                                                <div class="w-3/4 md:w-4/6 p-4">
-                                                    <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
-                                                    <p class="leading-none m-0" set:html={post.content.rendered}></p>
-                                                </div>
+                                        </div>
+                                    ))
+                                }
+                                </section>
+                            </Fragment>
+                            
+                            <Fragment slot="panel-4">
+                                <section>
+                                {
+                                    posts.map((post:any) => (
+                                        post.acf.jueves && <div class="flex items-center min-h-24 p-4">
+                                            <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
+                                            <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
+                                            <div class="w-3/4 md:w-4/6 p-4">
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
-                                        ))
-                                        }
-                                    </section>
-                                </Fragment>
-                                <Fragment slot="panel-5">
-                                    <section>
-                                        {
-                                        posts.map((post:any) => (
-                                            post.acf.viernes && <div class="flex items-center min-h-24 p-4">
-                                                <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
-                                                <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
-                                                <div class="w-3/4 md:w-4/6 p-4">
-                                                    <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
-                                                    <p class="leading-none m-0" set:html={post.content.rendered}></p>
-                                                </div>
+                                        </div>
+                                    ))
+                                }
+                                </section>
+                            </Fragment>
+                            
+                            <Fragment slot="panel-5">
+                                <section>
+                                {
+                                    posts.map((post:any) => (
+                                        post.acf.viernes && <div class="flex items-center min-h-24 p-4">
+                                            <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
+                                            <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
+                                            <div class="w-3/4 md:w-4/6 p-4">
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
-                                        ))
-                                        }
-                                    </section>
-                                </Fragment>
-                                <Fragment slot="panel-6">
-                                    <section>
-                                        {
-                                        posts.map((post:any) => (
-                                            post.acf.sabado && <div class="flex items-center min-h-24 p-4">
-                                                <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
-                                                <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
-                                                <div class="w-3/4 md:w-4/6 p-4">
-                                                    <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
-                                                    <p class="leading-none m-0" set:html={post.content.rendered}></p>
-                                                </div>
+                                        </div>
+                                    ))
+                                }
+                                </section>
+                            </Fragment>
+                            
+                            <Fragment slot="panel-6">
+                                <section>
+                                {
+                                    posts.map((post:any) => (
+                                        post.acf.sabado && <div class="flex items-center min-h-24 p-4">
+                                            <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
+                                            <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
+                                            <div class="w-3/4 md:w-4/6 p-4">
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
-                                        ))
-                                        }
-                                    </section>
-                                </Fragment>
-                                <Fragment slot="panel-7">
-                                    <section>
-                                        {
-                                        posts.map((post:any) => (
-                                            post.acf.domingo && <div class="flex items-center min-h-24 p-4">
-                                                <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
-                                                <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
-                                                <div class="w-3/4 md:w-4/6 p-4">
-                                                    <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
-                                                    <p class="leading-none m-0" set:html={post.content.rendered}></p>
-                                                </div>
+                                        </div>
+                                    ))
+                                }
+                                </section>
+                            </Fragment>
+                           
+                            <Fragment slot="panel-7">
+                                <section>
+                                {
+                                    posts.map((post:any) => (
+                                        post.acf.domingo && <div class="flex items-center min-h-24 p-4">
+                                            <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
+                                            <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
+                                            <div class="w-3/4 md:w-4/6 p-4">
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
-                                        ))
-                                        }
-                                    </section>
-                                </Fragment>
-                            </Tabs>
-                        </Layout>
+                                        </div>
+                                    ))
+                                }
+                                </section>
+                            </Fragment>
+                        </Tabs>
                     </div>
                     <!--div class="bg-gray-300 p-5 rounded-md sm:min-w-[350px] relative text-center md:text-left">
                         <div class="sticky top-0 left-0 right-0">
