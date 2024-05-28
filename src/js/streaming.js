@@ -212,7 +212,9 @@ const secchome = document.getElementById('home');
         }
         getInfoMusic();
         setInterval( getInfoMusic, 30000);
+        setTimeout(function(){
 
+        
         function getInfoProg(){
             fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312&_fields[]=acf")
             .then((res) => {
@@ -264,6 +266,7 @@ const secchome = document.getElementById('home');
             });
            // console.log('repetido');   
         }
+        },20000);
         setTimeout(getInfoProg, 20000);
         setInterval( getInfoProg, 300000);       
         
