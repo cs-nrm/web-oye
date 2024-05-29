@@ -18,13 +18,13 @@ posts.sort(function(a, b){
 <html lang="es">
 	<head>
 		<BaseHead title={SITE_TITLE} seccion="Programación" description={SITE_DESCRIPTION} />
-		 <meta charset="utf-8"/>
+		<meta charset="utf-8"/>
 	</head>
 	<body>
 		<Header title={SITE_TITLE} />
 		
 		<main>
-            <div class="container my-12 mx-auto">
+            <div class="container my-12 mx-auto px-4 md:px-12">
 				<h1 class="py-4 font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Programación</h1>
                 <div class="flex flex-col lg:flex-row">
                     <div class="sm:min-w-[calc(100%-400px)] lg:mr-10">
@@ -45,7 +45,7 @@ posts.sort(function(a, b){
                                             <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
                                             <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
                                             <div class="w-3/4 md:w-4/6 p-4">
-                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.acf.programa}</p>
                                                 <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
                                         </div>
@@ -62,7 +62,7 @@ posts.sort(function(a, b){
                                             <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
                                                 <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
                                                 <div class="w-3/4 md:w-4/6 p-4">
-                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.acf.programa}</p>
                                                 <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
                                         </div>
@@ -79,7 +79,7 @@ posts.sort(function(a, b){
                                             <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
                                             <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
                                             <div class="w-3/4 md:w-4/6 p-4">
-                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.acf.programa}</p>
                                                 <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
                                         </div>
@@ -96,7 +96,7 @@ posts.sort(function(a, b){
                                             <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
                                             <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
                                             <div class="w-3/4 md:w-4/6 p-4">
-                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.acf.programa}</p>
                                                 <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
                                         </div>
@@ -113,7 +113,7 @@ posts.sort(function(a, b){
                                             <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
                                             <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
                                             <div class="w-3/4 md:w-4/6 p-4">
-                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.acf.programa}</p>
                                                 <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
                                         </div>
@@ -130,7 +130,7 @@ posts.sort(function(a, b){
                                             <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
                                             <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
                                             <div class="w-3/4 md:w-4/6 p-4">
-                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.acf.programa}</p>
                                                 <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
                                         </div>
@@ -147,7 +147,7 @@ posts.sort(function(a, b){
                                             <div class="w-1/4 md:w-1/6 text-2xl md:text-3xl font-bold text-center text-gray-500">{post.acf.hora_inicio.substring(0, 5)}</div>
                                             <div class="w-1/6 max-[600px]:hidden"><img class="block h-auto w-full rounded object-fill" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} /></div>
                                             <div class="w-3/4 md:w-4/6 p-4">
-                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.title.rendered}</p>
+                                                <p class="font-bold uppercase leading-none m-0 text-xl">{post.acf.programa}</p>
                                                 <p class="leading-none m-0" set:html={post.content.rendered}></p>
                                             </div>
                                         </div>
