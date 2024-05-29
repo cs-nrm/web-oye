@@ -272,10 +272,23 @@ hr {
   background-size: cover;
   opacity: 0.6;  
 }
+article .wp-block-embed-twitter{
+	display: ruby-text;
+	text-align: center;
+}
 
-article iframe {
+article .wp-block-embed-instagram iframe {
     margin: 3rem auto !important;
 }
+
+article figure img {
+    text-align: center;
+    margin: 3rem auto;
+}
+/*article figure{
+	display: flex;
+	justify-content: center;
+}*/
 
 /* player */
 .iframestyle {box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/8p7m.gif'); background-size:contain; background-color:#15181f; border: 1px solid  black; border-radius: 6px;}

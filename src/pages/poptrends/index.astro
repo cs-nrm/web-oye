@@ -11,9 +11,6 @@ import BoxBanner from '../../components/BoxBanner.astro';
 import LeaderBoard from '../../components/LeaderBoard.astro';
 import SuperLeader from '../../components/SuperLeader.astro';
 
-
-
-
 const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=20&categories=280&_fields[]=id&_fields[]=title&_fields[]=yoast_head_json&_fields[]=content&_fields[]=slug&_fields[]=categories");
 const posts = await res.json();
 
@@ -62,6 +59,10 @@ const posts = await res.json();
     
     <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/nrm-web/nrm/lib/plyr.css" />
     <script is:inline src="https://storage.googleapis.com/nrm-web/nrm/lib/plyr.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/nrm-web/nrm/lib/toastify.css" />
+    <script is:inline src="https://storage.googleapis.com/nrm-web/nrm/lib/toastify.js"></script>
+    
     
     
 </html>
+

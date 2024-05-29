@@ -574,6 +574,19 @@ const showMenu = (toggleId, navId) =>{
                         console.log(data);
                         $(this).addClass('voted');
                         $(this).find('svg').attr('fill','white');
+                        Toastify({
+                            text: "Gracias por tu voto",
+                            className: "info",
+                            style: {
+                              background: "linear-gradient(to right, #ec4899, #a855f7)",
+                              'border-radius': '6px',
+                              'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
+                            },
+                            offset:{
+                                x:'10rem',
+                                y:'20rem'
+                            }
+                        }).showToast();
                 });
 
             });            
@@ -596,7 +609,12 @@ const showMenu = (toggleId, navId) =>{
             $('#radiobutton').on('click', function(){
                 plyr.pause();
             });             
-        });        
+        }); 
+        
+        $('.wp-block-image').each(function(){
+            const datasrc = $(this).find('img').attr('data-src');
+            $(this).find('img').attr('src',datasrc);
+        });
     }   
 });
 
