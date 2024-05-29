@@ -212,7 +212,9 @@ const secchome = document.getElementById('home');
         }
         getInfoMusic();
         setInterval( getInfoMusic, 30000);
+        
 
+        
         function getInfoProg(){
             fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312&_fields[]=acf")
             .then((res) => {
@@ -253,7 +255,9 @@ const secchome = document.getElementById('home');
                             .then(function(d){
                                 //console.log(d.link);
                                 if(document.getElementById('imgprog')){                                    
-                                    document.getElementById('imgprog').getElementsByClassName('imgprog')[0].src = d.link;
+                                    setTimeout(function(){
+                                        document.getElementById('imgprog').getElementsByClassName('imgprog')[0].src = d.link;
+                                    },5000);
                                 }
                                 
                             });                                                        
@@ -264,7 +268,8 @@ const secchome = document.getElementById('home');
             });
            // console.log('repetido');   
         }
-        getInfoProg();
+        
+        //setTimeout(getInfoProg, 20000);
         setInterval( getInfoProg, 300000);       
         
 /* abrir barra*/
