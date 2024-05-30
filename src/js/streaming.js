@@ -595,6 +595,9 @@ const showMenu = (toggleId, navId) =>{
         /*------------------- */
 
         $('.youtube').each(function(){
+            setTimeout(function(){
+
+            
             //console.log(e);            
             const plyr = new Plyr($(this),{
                 debug:true,
@@ -632,6 +635,7 @@ const showMenu = (toggleId, navId) =>{
                 plyr.pause();
             });             
         }); 
+    },2000);
     } 
 
         $('.wp-block-image').each(function(){
