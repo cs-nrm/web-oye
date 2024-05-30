@@ -615,7 +615,8 @@ const showMenu = (toggleId, navId) =>{
                     'airplay', // Airplay (currently Safari only)
                     'download', // Show a download button with a link to either the current source or a custom URL you specify in your options
                     'fullscreen', 
-                ]
+                ],
+                playsinline: true
 
             });
             console.log(plyr);
