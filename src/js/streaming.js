@@ -611,11 +611,12 @@ const showMenu = (toggleId, navId) =>{
                 plyr.pause();
             });             
         }); 
-        
+    } 
+       
         $('.wp-block-image').each(function(){
             const datasrc = $(this).find('img').attr('data-src');
             $(this).find('img').attr('src',datasrc);
         });
-    }   
+       
 });
 
