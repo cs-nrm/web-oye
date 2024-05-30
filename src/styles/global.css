@@ -272,6 +272,7 @@ hr {
   background-size: cover;
   opacity: 0.6;  
 }
+/*
 article .wp-block-embed-twitter{
 	display: ruby-text;
 	text-align: center;
@@ -286,7 +287,7 @@ article .wp-block-embed-instagram iframe {
 article figure img {
     text-align: center;
     margin: 3rem auto;
-}
+}*/
 /*article figure{
 	display: flex;
 	justify-content: center;
