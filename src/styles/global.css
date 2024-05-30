@@ -277,9 +277,15 @@ article .wp-block-embed-twitter{
 	text-align: center;
 }
 
+article  iframe {
+    margin:  auto !important;
+}
+
 article .wp-block-embed-instagram iframe {
     margin: 3rem auto !important;
 }
+
+
 
 article figure img {
     text-align: center;
