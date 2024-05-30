@@ -518,7 +518,7 @@ const showMenu = (toggleId, navId) =>{
     const containvideo = document.getElementById('content-w-video');
     if (containvideo){
         //console.log('sccion pop');
-        $('.poptrend-video').find('iframe').each(function(el,e){
+        $('.poptrend-video').find('iframe').each(function(){
             //console.log(e);            
             const plyr = new Plyr($(this).parent());
             plyr.on('playing',function(){
@@ -594,7 +594,7 @@ const showMenu = (toggleId, navId) =>{
         
         /*------------------- */
 
-        $('.youtube').each(function(el,e){
+        $('.youtube').each(function(){
             //console.log(e);            
             const plyr = new Plyr($(this));
             console.log(plyr);
@@ -612,7 +612,7 @@ const showMenu = (toggleId, navId) =>{
             });             
         }); 
     } 
-       
+
         $('.wp-block-image').each(function(){
             const datasrc = $(this).find('img').attr('data-src');
             $(this).find('img').attr('src',datasrc);
