@@ -574,7 +574,7 @@ const showMenu = (toggleId, navId) =>{
                         console.log(data);
                         $(this).addClass('voted');
                         $(this).find('svg').attr('fill','white');
-                        Toastify({
+                        /*Toastify({
                             text: "Gracias por tu voto",
                             className: "info",
                             style: {
@@ -586,7 +586,7 @@ const showMenu = (toggleId, navId) =>{
                                 x:'10rem',
                                 y:'20rem'
                             }
-                        }).showToast();
+                        }).showToast();*/
                 });
 
             });            
