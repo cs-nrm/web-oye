@@ -518,6 +518,7 @@ const showMenu = (toggleId, navId) =>{
     const containvideo = document.getElementById('content-w-video');
     if (containvideo){
         //console.log('sccion pop');
+        /*
         $('.poptrend-video').find('iframe').each(function(){
             //console.log(e);            
             const plyr = new Plyr($(this).parent());
@@ -534,7 +535,67 @@ const showMenu = (toggleId, navId) =>{
                 plyr.pause();
             });
              
-        });
+        });*/
+        /*
+        $('.youtube').each(function(){
+            //console.log(e);            
+            const plyr = new Plyr($(this),{
+                debug:true,
+                controls:[
+                    'play-large', // The large play button in the center
+                    'restart', // Restart playback
+                    'rewind', // Rewind by the seek time (default 10 seconds)
+                    'play', // Play/pause playback
+                    'fast-forward', // Fast forward by the seek time (default 10 seconds)
+                    'progress', // The progress bar and scrubber for playback and buffering
+                    'current-time', // The current time of playback
+                    'duration', // The full duration of the media
+                    'mute', // Toggle mute
+                    'volume', // Volume control
+                    'captions', // Toggle captions
+                    'settings', // Settings menu
+                    'pip', // Picture-in-picture (currently Safari only)
+                    'airplay', // Airplay (currently Safari only)
+                    'download', // Show a download button with a link to either the current source or a custom URL you specify in your options
+                    'fullscreen', 
+                ],
+                playsinline: true
+
+            });
+            console.log(plyr);
+            plyr.on('playing',function(){
+                const getstatus = playerstatus();
+                if( getstatus == 'radio-playing'){
+                    radioStop();   
+                    hidebarra();
+                    $('#player').attr('data-status','video-playing');
+                }
+            });
+            
+            $('#radiobutton').on('click', function(){
+                plyr.pause();
+            });             
+        }); */
+
+        $('.youtube').each(function(){
+            var player;
+            const ifr = $(this).find('iframe');
+            console.log(ifr);
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player(ifr, {
+                    events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                    }
+                });
+            }
+            function onPlayerReady(event) {
+                console.log('creado');    
+            }
+
+
+
+        });        
 
         /*voto*/
         $('.voto-pop').each(function(){
@@ -593,46 +654,7 @@ const showMenu = (toggleId, navId) =>{
         });
         
         /*------------------- */
-
-        $('.youtube').each(function(){
-            //console.log(e);            
-            const plyr = new Plyr($(this),{
-                debug:true,
-                controls:[
-                    'play-large', // The large play button in the center
-                    'restart', // Restart playback
-                    'rewind', // Rewind by the seek time (default 10 seconds)
-                    'play', // Play/pause playback
-                    'fast-forward', // Fast forward by the seek time (default 10 seconds)
-                    'progress', // The progress bar and scrubber for playback and buffering
-                    'current-time', // The current time of playback
-                    'duration', // The full duration of the media
-                    'mute', // Toggle mute
-                    'volume', // Volume control
-                    'captions', // Toggle captions
-                    'settings', // Settings menu
-                    'pip', // Picture-in-picture (currently Safari only)
-                    'airplay', // Airplay (currently Safari only)
-                    'download', // Show a download button with a link to either the current source or a custom URL you specify in your options
-                    'fullscreen', 
-                ],
-                playsinline: true
-
-            });
-            console.log(plyr);
-            plyr.on('playing',function(){
-                const getstatus = playerstatus();
-                if( getstatus == 'radio-playing'){
-                    radioStop();   
-                    hidebarra();
-                    $('#player').attr('data-status','video-playing');
-                }
-            });
-            
-            $('#radiobutton').on('click', function(){
-                plyr.pause();
-            });             
-        }); 
+        
     } 
 
         $('.wp-block-image').each(function(){
