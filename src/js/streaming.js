@@ -576,22 +576,38 @@ const showMenu = (toggleId, navId) =>{
                 plyr.pause();
             });             
         }); */
-
+        var tag = document.createElement('script');
+        tag.id = 'iframe-demo';
+        tag.src = 'https://www.youtube.com/iframe_api';
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        //console.log(firstScriptTag.parentNode);        
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        
         $('.youtube').each(function(){
-            var player;
+            console.log($(this));
+             
             const ifr = $(this).find('iframe');
-            console.log(ifr);
+            
             function onYouTubeIframeAPIReady() {
-                player = new YT.Player(ifr, {
+                console.log(ifr);
+             var player = new YT.Player(ifr, {
                     events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
                     }
                 });
+                console.log(player);
+                
             }
             function onPlayerReady(event) {
                 console.log('creado');    
             }
+            function onPlayerStateChange(event) {
+                console.log(event.data);    
+            }
+            
+            onYouTubeIframeAPIReady();
+            
 
 
 
