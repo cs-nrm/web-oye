@@ -515,6 +515,11 @@ const showMenu = (toggleId, navId) =>{
         });
     });
     
+    $('.wp-block-image').each(function(){        
+        const datasrc = $(this).find('img').attr('data-src');        
+        $(this).find('img').attr('src',datasrc);
+    });
+
     const containvideo = document.getElementById('content-w-video');
     if (containvideo){
         //console.log('sccion pop');
@@ -536,7 +541,7 @@ const showMenu = (toggleId, navId) =>{
             });
              
         });*/
-        /*
+        
         $('.youtube').each(function(){
             //console.log(e);            
             const plyr = new Plyr($(this),{
@@ -575,7 +580,8 @@ const showMenu = (toggleId, navId) =>{
             $('#radiobutton').on('click', function(){
                 plyr.pause();
             });             
-        }); */
+        }); 
+        /*
         var tag = document.createElement('script');
         tag.id = 'iframe-demo';
         tag.src = 'https://www.youtube.com/iframe_api';
@@ -583,36 +589,28 @@ const showMenu = (toggleId, navId) =>{
         //console.log(firstScriptTag.parentNode);        
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
         
-        $('.youtube').each(function(){
-            console.log($(this));
-             
-            const ifr = $(this).find('iframe');
-            
+        $('.youtube iframe').each(function(t,el){
+                        
             function onYouTubeIframeAPIReady() {
-                console.log(ifr);
-             var player = new YT.Player(ifr, {
+                //console.log((el));                
+             var player = new YT.Player(el, {
                     events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
                     }
                 });
                 console.log(player);
-                
+                function onPlayerReady(event) {
+                    console.log('creado');    
+                }
+    
+                function onPlayerStateChange(event) {
+                    console.log(event.data);    
+                }    
             }
-            function onPlayerReady(event) {
-                console.log('creado');    
-            }
-            function onPlayerStateChange(event) {
-                console.log(event.data);    
-            }
-            
-            onYouTubeIframeAPIReady();
-            
-
-
-
+            onYouTubeIframeAPIReady();                        
         });        
-
+        */
         /*voto*/
         $('.voto-pop').each(function(){
             $(this).on('click', function(){
@@ -673,10 +671,7 @@ const showMenu = (toggleId, navId) =>{
         
     } 
 
-        $('.wp-block-image').each(function(){
-            const datasrc = $(this).find('img').attr('data-src');
-            $(this).find('img').attr('src',datasrc);
-        });
+        
        
 });
 
