@@ -213,6 +213,7 @@ hr {
     100% {      transform: translate(0);    }
   }
 
+  
 .flex-video.youtube {
     position: relative;
     padding-bottom: 56.25%;
@@ -272,14 +273,17 @@ hr {
   background-size: cover;
   opacity: 0.6;  
 }
+
 article .wp-block-embed-twitter{
 	display: ruby-text;
 	text-align: center;
 }
 
+
 article .wp-block-embed-instagram iframe {
     margin: 3rem auto !important;
 }
+
 
 article figure img {
     text-align: center;

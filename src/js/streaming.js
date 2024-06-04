@@ -14,6 +14,7 @@ const player = document.getElementById('player');
 const secchome = document.getElementById('home');
 
 
+
 //function initPlayer(){
     function initPlayerSDK(){
         console.log( 'TD Player SDK is ready' );
@@ -515,12 +516,62 @@ const showMenu = (toggleId, navId) =>{
         });
     });
     
+    $('.wp-block-image').each(function(){        
+        const datasrc = $(this).find('img').attr('data-src');        
+        $(this).find('img').attr('src',datasrc);
+    });
+
+    
+        
+  
+
     const containvideo = document.getElementById('content-w-video');
     if (containvideo){
-        //console.log('sccion pop');
-        $('.poptrend-video').find('iframe').each(function(el,e){
+        //console.log('sccion pop');  
+        console.log(navigator.userAgent);
+        if(navigator.userAgent.indexOf("iPhone") != -1){
+            
+        $('.youtube iframe').each(function(t,el){
+            console.log($(this));   
+            //const ele = $(this).attr('id','el-'+t);     
+            $(this).on('click',function(){
+                const getstatus = playerstatus();
+                if( getstatus == 'radio-playing'){
+                    radioStop();   
+                    hidebarra();
+                    $('#player').attr('data-status','video-playing');
+                }
+            });            
+            
+        });        
+
+        }else{                      
+        $('.youtube').each(function(){
             //console.log(e);            
-            const plyr = new Plyr($(this).parent());
+            const plyr = new Plyr($(this),{
+                debug:true,
+                controls:[
+                    'play-large', // The large play button in the center
+                    'restart', // Restart playback
+                    'rewind', // Rewind by the seek time (default 10 seconds)
+                    'play', // Play/pause playback
+                    'fast-forward', // Fast forward by the seek time (default 10 seconds)
+                    'progress', // The progress bar and scrubber for playback and buffering
+                    'current-time', // The current time of playback
+                    'duration', // The full duration of the media
+                    'mute', // Toggle mute
+                    'volume', // Volume control
+                    'captions', // Toggle captions
+                    'settings', // Settings menu
+                    'pip', // Picture-in-picture (currently Safari only)
+                    'airplay', // Airplay (currently Safari only)
+                    'download', // Show a download button with a link to either the current source or a custom URL you specify in your options
+                    'fullscreen', 
+                ],
+                playsinline: true
+
+            });
+            console.log(plyr);
             plyr.on('playing',function(){
                 const getstatus = playerstatus();
                 if( getstatus == 'radio-playing'){
@@ -532,10 +583,11 @@ const showMenu = (toggleId, navId) =>{
             
             $('#radiobutton').on('click', function(){
                 plyr.pause();
-            });
-             
-        });
-
+            });             
+        }); 
+        }
+        
+        
         /*voto*/
         $('.voto-pop').each(function(){
             $(this).on('click', function(){
@@ -593,28 +645,10 @@ const showMenu = (toggleId, navId) =>{
         });
         
         /*------------------- */
-
-        $('.youtube').each(function(el,e){
-            //console.log(e);            
-            const plyr = new Plyr($(this));
-            plyr.on('playing',function(){
-                const getstatus = playerstatus();
-                if( getstatus == 'radio-playing'){
-                    radioStop();   
-                    hidebarra();
-                    $('#player').attr('data-status','video-playing');
-                }
-            });
-            
-            $('#radiobutton').on('click', function(){
-                plyr.pause();
-            });             
-        }); 
         
-        $('.wp-block-image').each(function(){
-            const datasrc = $(this).find('img').attr('data-src');
-            $(this).find('img').attr('src',datasrc);
-        });
-    }   
+    } 
+
+        
+       
 });
 
