@@ -527,8 +527,25 @@ const showMenu = (toggleId, navId) =>{
 
     const containvideo = document.getElementById('content-w-video');
     if (containvideo){
-        //console.log('sccion pop');                
-     /*   $('.youtube').each(function(){
+        //console.log('sccion pop');  
+        if(navigator.userAgent.indexOf("Safari") != -1){
+            
+        $('.youtube iframe').each(function(t,el){
+            console.log($(this));   
+            //const ele = $(this).attr('id','el-'+t);     
+            $(this).on('click',function(){
+                const getstatus = playerstatus();
+                if( getstatus == 'radio-playing'){
+                    radioStop();   
+                    hidebarra();
+                    $('#player').attr('data-status','video-playing');
+                }
+            });            
+            
+        });        
+
+        }else{                      
+        $('.youtube').each(function(){
             //console.log(e);            
             const plyr = new Plyr($(this),{
                 debug:true,
@@ -566,33 +583,9 @@ const showMenu = (toggleId, navId) =>{
             $('#radiobutton').on('click', function(){
                 plyr.pause();
             });             
-        }); */
+        }); 
+        }
         
-        
-        $('.youtube iframe').each(function(t,el){
-            console.log($(this));   
-            const ele = $(this).attr('id','el-'+t);     
-            console.log(navigator.userAgent);   
-            /* 
-            var player = new YT.Player(ele, {
-                    events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                    }
-                });
-                console.log(player);                    
-            
-            
-
-            function onPlayerReady(event) {
-                console.log('creado');    
-            }
-
-            function onPlayerStateChange(event) {
-                console.log(event.data);    
-            }
-            */
-        });        
         
         /*voto*/
         $('.voto-pop').each(function(){
