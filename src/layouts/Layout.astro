@@ -17,6 +17,7 @@ const { img } = Astro.props;
 	<head>
 		<BaseHead title={SITE_TITLE} seccion={''} description={SITE_DESCRIPTION} />
 		<meta property="og:image" content={new URL(img, Astro.url)}>
+        <meta property="og:title" content={title} />
 	</head>
 	<body>
 		<Header title={title} />
