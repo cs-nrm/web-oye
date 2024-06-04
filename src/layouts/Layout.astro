@@ -5,16 +5,18 @@ import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 export interface Props {
     title: string;
+    img: string;
 }
 
 const { title } = Astro.props;
+const { img } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} seccion={''} description={SITE_DESCRIPTION} />
-		
+		<meta property="og:image" content={new URL(img, Astro.url)}>
 	</head>
 	<body>
 		<Header title={SITE_TITLE} />
