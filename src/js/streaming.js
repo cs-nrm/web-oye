@@ -14,6 +14,7 @@ const player = document.getElementById('player');
 const secchome = document.getElementById('home');
 
 
+
 //function initPlayer(){
     function initPlayerSDK(){
         console.log( 'TD Player SDK is ready' );
@@ -520,29 +521,14 @@ const showMenu = (toggleId, navId) =>{
         $(this).find('img').attr('src',datasrc);
     });
 
+    
+        
+  
+
     const containvideo = document.getElementById('content-w-video');
     if (containvideo){
-        //console.log('sccion pop');
-        /*
-        $('.poptrend-video').find('iframe').each(function(){
-            //console.log(e);            
-            const plyr = new Plyr($(this).parent());
-            plyr.on('playing',function(){
-                const getstatus = playerstatus();
-                if( getstatus == 'radio-playing'){
-                    radioStop();   
-                    hidebarra();
-                    $('#player').attr('data-status','video-playing');
-                }
-            });
-            
-            $('#radiobutton').on('click', function(){
-                plyr.pause();
-            });
-             
-        });*/
-        
-        $('.youtube').each(function(){
+        //console.log('sccion pop');                
+     /*   $('.youtube').each(function(){
             //console.log(e);            
             const plyr = new Plyr($(this),{
                 debug:true,
@@ -580,37 +566,34 @@ const showMenu = (toggleId, navId) =>{
             $('#radiobutton').on('click', function(){
                 plyr.pause();
             });             
-        }); 
-        /*
-        var tag = document.createElement('script');
-        tag.id = 'iframe-demo';
-        tag.src = 'https://www.youtube.com/iframe_api';
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        //console.log(firstScriptTag.parentNode);        
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }); */
+        
         
         $('.youtube iframe').each(function(t,el){
-                        
-            function onYouTubeIframeAPIReady() {
-                //console.log((el));                
-             var player = new YT.Player(el, {
+            console.log($(this));   
+            const ele = $(this).attr('id','el-'+t);     
+            console.log(navigator.userAgent);   
+            /* 
+            var player = new YT.Player(ele, {
                     events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
                     }
                 });
-                console.log(player);
-                function onPlayerReady(event) {
-                    console.log('creado');    
-                }
-    
-                function onPlayerStateChange(event) {
-                    console.log(event.data);    
-                }    
+                console.log(player);                    
+            
+            
+
+            function onPlayerReady(event) {
+                console.log('creado');    
             }
-            onYouTubeIframeAPIReady();                        
+
+            function onPlayerStateChange(event) {
+                console.log(event.data);    
+            }
+            */
         });        
-        */
+        
         /*voto*/
         $('.voto-pop').each(function(){
             $(this).on('click', function(){
