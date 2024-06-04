@@ -528,7 +528,8 @@ const showMenu = (toggleId, navId) =>{
     const containvideo = document.getElementById('content-w-video');
     if (containvideo){
         //console.log('sccion pop');  
-        if(navigator.userAgent.indexOf("Safari") != -1){
+        console.log(navigator.userAgent);
+        if(navigator.userAgent.indexOf("iPhone") != -1){
             
         $('.youtube iframe').each(function(t,el){
             console.log($(this));   
