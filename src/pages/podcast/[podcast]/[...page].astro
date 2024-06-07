@@ -17,11 +17,12 @@ export async function getStaticPaths( { paginate } ) {
         {nodo: 3813,title: 'Top Tech', link: 'top-tech', imagen: 'https://oyedigital.mx/wp-content/uploads/2024/05/TOP-TECH-min.jpg', descripcion: 'Top Tech con Diego Gil y Geekzilla. un podcast en el que conoceremos todo sobre la tecnología que nos está rodeando.'},
         {nodo: 3788,title: 'Tu Fandom', link: 'tu-fandom', imagen: 'https://oyedigital.mx/wp-content/uploads/2024/05/podcast-FANDOM-PORTADA-PAG-min.jpg', descripcion: 'Pone el reflector sobre los fandoms más activos de las redes sociales, bajo la premisa de “USTEDES HACEN LA PLAYLIST”, a través del #OyeTuFandom seleccionamos los Idols más votados.'},
         {nodo: 3449,title: 'El Debraye', link: 'el-debraye', imagen:'https://oyedigital.mx/wp-content/uploads/2024/05/podcast-debraye-min.jpg', descripcion:''},
-        {nodo: 7404,title: 'La Alternativa', link: 'la-alternativa', imagen:'https://oyedigital.mx/wp-content/uploads/2024/05/OYE_alternativa-PODCAST-min-min.jpg', descripcion:'El espacio donde toda la música se escucha, sin distinción, entrevistas de todos los géneros en un solo lugar. '},   
+        {nodo: 7404,title: 'La Alternativa', link: 'la-alternativa', imagen:'https://oyedigital.mx/wp-content/uploads/2024/05/OYE_alternativa-PODCAST-min-min.jpg', descripcion:'El espacio donde toda la música se escucha, sin distinción, entrevistas de todos los géneros en un solo lugar. '},
+        {nodo: 7812,title: 'Oye la Zona Coder', link: 'zona-coder', imagen:'https://oyedigital.mx/wp-content/uploads/2024/06/zona-coder-min.jpg', descripcion:'Es el espacio de las Coders en Oye897fm donde podrán escuchar sus canciones favoritas de CD9 junto a Sergio Mejia. Somos la estación oficial de CD9.'},
   ];
 
   
-  const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=200&_fields=title,slug,yoast_head_json,categories,acf&categories=3449,3788,3813,3801,6734,6581,6806,7404" ); 
+  const res = await fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=200&_fields=title,slug,yoast_head_json,categories,acf&categories=3449,3788,3813,3801,6734,6581,6806,7404,7812" ); 
   const posts = await res.json();
   //console.log(posts);
   
