@@ -4,6 +4,7 @@ import DoubleBox from '../../components/DoubleBox.astro';
 import BoxBanner from '../../components/BoxBanner.astro';
 import LeaderBoard from '../../components/LeaderBoard.astro';
 import SuperLeader from '../../components/SuperLeader.astro';
+import MoreNews from '../../components/MoreNews.astro';
 
 const { slug } = Astro.params;
 
@@ -19,6 +20,9 @@ export async function getStaticPaths() {
     props: { post: post },
   }));
 }
+
+
+
 ---
 
 <Layout title={post.title.rendered} img={post.yoast_head_json.og_image[0].url}>
@@ -41,6 +45,8 @@ export async function getStaticPaths() {
           <div class="sticky top-0 left-0 right-0">
             <h3 class="text-xl text-black font-extrabold">PUBLICIDAD</h3>
             <BoxBanner />
+            </br>
+            <MoreNews />
             </br>
             <DoubleBox />
           </div>
