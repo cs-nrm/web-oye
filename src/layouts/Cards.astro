@@ -25,11 +25,17 @@ const { post } = Astro.props;
 
 var url_seccion;
 
+//console.log(post.categories);
+
+
 switch (post.categories[0]){
     case 149:        
         url_seccion = 'pop-news';
     break;
     case 1606:        
+        url_seccion = 'promociones';
+    break;
+    case 1616:        
         url_seccion = 'promociones';
     break;    
 }
