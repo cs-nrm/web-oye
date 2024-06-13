@@ -53,6 +53,17 @@ const { title, description, image = '/oye-share.jpg', seccion } = Astro.props;
 <meta property="twitter:description" content={description} />
 <!--meta property="twitter:image" content={new URL(image, Astro.url)} /-->
 
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M9RYDQ6Z9L"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M9RYDQ6Z9L');
+</script>
+
 <script defer>
     // Cargue GPT de forma síncrona (Expandibles y Creatividad Adaptable)
     (function() {
