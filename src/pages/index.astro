@@ -11,6 +11,7 @@ import DoubleBox from '../components/DoubleBox.astro';
 import BoxBanner from '../components/BoxBanner.astro';
 import LeaderBoard from'../components/LeaderBoard.astro';
 import SuperLeader from '../components/SuperLeader.astro';
+import BillBoard from '../components/BillBoard.astro';
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import SliderPromociones from '../layouts/SliderPromociones.astro';
@@ -29,7 +30,7 @@ import SliderPromociones from '../layouts/SliderPromociones.astro';
 				<header>
 					<HomeHeader />
 				</header>
-				<SuperLeader />
+				<LeaderBoard />
 				<section>
 					<div class="container-home lg:my-12 mx-auto">
 						<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Promociones</h1>
@@ -57,7 +58,7 @@ import SliderPromociones from '../layouts/SliderPromociones.astro';
 								<CardEntrevistas />
 							</div>
 						</div>
-						<LeaderBoard />
+						<SuperLeader />
 					</div>
 				</secttion>
 					<Separator />
@@ -67,6 +68,7 @@ import SliderPromociones from '../layouts/SliderPromociones.astro';
 						<SliderPodcast />
 					</div>
 				</section>
+				<BillBoard />
 					
 
      			</div>
