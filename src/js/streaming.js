@@ -217,7 +217,7 @@ const secchome = document.getElementById('home');
 
         
         function getInfoProg(){
-            fetch("https://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312&_fields[]=acf")
+            fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312&_fields[]=acf")
             .then((res) => {
                 if (!res.ok) {
                     throw new Error
@@ -245,7 +245,7 @@ const secchome = document.getElementById('home');
                                 document.getElementById('nombreprog').innerHTML = prog.acf.programa;
                             }
                              
-                            fetch("https://oyedigital.mx/wp-json/wp/v2/media/"+prog.acf.imagen_ahora_escuchas+"?_fields[]=link")
+                            fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/media/"+prog.acf.imagen_ahora_escuchas+"?_fields[]=link")
                             .then((rs) => {
                                 if (!rs.ok) {
                                     throw new Error
@@ -614,7 +614,7 @@ const showMenu = (toggleId, navId) =>{
                     body: JSON.stringify( params )
                 };
                     
-                fetch('https://oyedigital.mx/wp-json/wp-ulike-pro/v1/vote/', Rparamas)
+                fetch('https://contenido.oyedigital.mx/wp-json/wp-ulike-pro/v1/vote/', Rparamas)
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error

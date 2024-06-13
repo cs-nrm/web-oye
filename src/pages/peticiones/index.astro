@@ -6,8 +6,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import DoubleBox from '../../components/DoubleBox.astro';
 import BoxBanner from '../../components/BoxBanner.astro';
 
-const res = await fetch("http://oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=9&_fields=title,slug,yoast_head_json,categories&categories=149");
-const posts = await res.json();
+//const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=9&_fields=title,slug,yoast_head_json,categories&categories=149");
+//const posts = await res.json();
 
 ---
 
@@ -38,11 +38,6 @@ const posts = await res.json();
                         </div>
                     </div>
                 </div>
-
-
-
-
-
 
             </div>
 		</main>
