@@ -529,7 +529,7 @@ const showMenu = (toggleId, navId) =>{
     if (containvideo){
         //console.log('sccion pop');  
         console.log(navigator.userAgent);
-        if(navigator.userAgent.indexOf("iPhone") != -1){
+       /* if(navigator.userAgent.indexOf("iPhone") != -1){
             
         $('.wp-block-embed-youtube .wp-block-embed__wrapper iframe').each(function(t,el){
             console.log($(this));   
@@ -545,7 +545,7 @@ const showMenu = (toggleId, navId) =>{
             
         });        
 
-        }else{                      
+        }else{                 */     
         $('.wp-block-embed-youtube .wp-block-embed__wrapper').each(function(){
             //console.log(e);            
             const plyr = new Plyr($(this),{
@@ -585,7 +585,7 @@ const showMenu = (toggleId, navId) =>{
                 plyr.pause();
             });             
         }); 
-        }
+    //    }
         
         
         /*voto*/
