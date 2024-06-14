@@ -258,7 +258,7 @@ const secchome = document.getElementById('home');
                                 if(document.getElementById('imgprog')){                                    
                                     setTimeout(function(){
                                         document.getElementById('imgprog').getElementsByClassName('imgprog')[0].src = d.link;
-                                    },5000);
+                                    },2000);
                                 }
                                 
                             });                                                        
