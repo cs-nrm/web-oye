@@ -531,7 +531,7 @@ const showMenu = (toggleId, navId) =>{
         console.log(navigator.userAgent);
         if(navigator.userAgent.indexOf("iPhone") != -1){
             
-        $('.youtube iframe').each(function(t,el){
+        $('.wp-block-embed-youtube .wp-block-embed__wrapper iframe').each(function(t,el){
             console.log($(this));   
             //const ele = $(this).attr('id','el-'+t);     
             $(this).on('click',function(){
@@ -546,7 +546,7 @@ const showMenu = (toggleId, navId) =>{
         });        
 
         }else{                      
-        $('.youtube').each(function(){
+        $('.wp-block-embed-youtube .wp-block-embed__wrapper').each(function(){
             //console.log(e);            
             const plyr = new Plyr($(this),{
                 debug:true,
