@@ -13,24 +13,15 @@
 <!--=============== NAV MENU ===============-->
   <div class="nav__menu" id="nav-menu">
     <ul class="nav__list">
-      <li><a href="/" class="nav__link">INICIO</a></li>
-      <li><a href="/promociones" class="nav__link">PROMOCIONES</a></li>
-      <!--=============== DROPDOWN 1 ===============-->
-      <li class="dropdown__item">
-        <div class="nav__link">
-          POP NEWS <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down dropdown__arrow" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
-        </div>
-        <ul class="dropdown__menu podcast rounded z-50" >
-          <li><a href="/popnews" class="dropdown__link">Noticias</a></li>
-          <li><a href="/cine" class="dropdown__link">Cine</a></li>
-          <li><a href="/kpop" class="dropdown__link">K-Pop</a></li>
-        </ul>
-      </li>
+      <li><a href="/promociones" class="nav__link">Promociones</a></li>
+      <li><a href="/popnews" class="nav__link">Noticias</a></li>
+      <li><a href="/cine" class="nav__link">Cine</a></li>
+      <li><a href="/kpop" class="nav__link">K-Pop</a></li>
+
       <!--=============== DROPDOWN 2 ===============-->
       <li class="dropdown__item">
         <div class="nav__link">
-          PODCAST <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down dropdown__arrow" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          Podcast <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down dropdown__arrow" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
         </div>
         <ul class="dropdown__menu podcast rounded z-50" >
@@ -45,21 +36,14 @@
           <li><a href="/podcast/el-debraye" class="dropdown__link">El debraye</a></li>
         </ul>
       </li>
-      <li><a href="/peticiones" class="nav__link">PETICIONES</a></li>
-      <!--=============== DROPDOWN 3 ===============-->
-      <li class="dropdown__item">
-        <div class="nav__link">
-          MÁS SECCIONES <svg class="dropdown__arrow" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>
-        </div>
-        <ul class="dropdown__menu">
-          <li><a href="/programacion" class="dropdown__link">Programación</a></li>
-          <li><a href="/poptrends" class="dropdown__link">Pop Trends</a></li>
-          <li><a href="/eventos" class="dropdown__link">Eventos</a></li>
-          <li><a href="/talento" class="dropdown__link">Talento</a></li>
-          <li><a href="/entrevistas" class="dropdown__link">Entrevistas</a></li>
-        </ul>
-      </li>
+      <li><a href="/peticiones" class="nav__link">Peticiones</a></li>
+    </ul>
+    <ul class="nav__list mt-2">
+      <li><a href="/programacion" class="nav__link">Programación</a></li>
+      <li><a href="/poptrends" class="nav__link">Pop Trends</a></li>
+      <li><a href="/eventos" class="nav__link">Eventos</a></li>
+      <li><a href="/talento" class="nav__link">Talento</a></li>
+      <li><a href="/entrevistas" class="nav__link">Entrevistas</a></li>
     </ul>
   </div>
 
@@ -157,7 +141,7 @@ a {
 
 .nav__link {
   color: var(--white-color);
-  font-weight: var(--font-semi-bold);
+  /*font-weight: var(--font-semi-bold);*/
   padding: 1.25rem 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -282,7 +266,12 @@ a {
   .nav__list {
     height: 100%;
     display: flex;
-    column-gap: 1.4rem;
+    column-gap: 3.4rem;
+    justify-content: center;
+  }
+  .nav__list li{
+    padding: 0 5px;
+    border-radius: 4px;
   }
   .nav__link {
     height: 100%;
