@@ -51,13 +51,13 @@ switch (post.categories[0]){
         <a href={`/${url_seccion}/${post.slug}/`}>
             <img class="block h-auto w-full aspect-video object-cover" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} />
         </a>
-        <header class="flex items-center justify-between leading-tight ">
+        <div class="flex items-center justify-between leading-tight ">
             <a class="no-underline" href={`/${url_seccion}/${post.slug}/`}>
-                <h2 class="text-base text-purple-900 font-bold hover:text-gray-800" set:html={post.title.rendered}></h2>
+                <h2 class="text-base text-purple-900 font-bold hover:text-gray-800 leading-normal" set:html={post.title.rendered}></h2>
             </a>
-        </header>
-        <footer class="flex items-center justify-between p-2 text-xs font-bold uppercase text-gray-500">            
-            <div>{post.yoast_head_json.article_published_time.substring(0, 10)}</div>            
-        </footer>
+        </div>
+        <div class="flex items-center justify-between text-xs font-bold uppercase text-gray-500">            
+            <p>{post.yoast_head_json.article_published_time.substring(0, 10)}</p>            
+        </div>
     </div>
 </div>
