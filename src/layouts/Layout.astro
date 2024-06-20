@@ -20,6 +20,7 @@ const { img } = Astro.props;
 		<meta property="og:image" content={new URL(img, Astro.url)}>
         <meta property="og:title" content={title} />
         <meta property="twitter:image" content={new URL(img, Astro.url)}>
+        <title>{SITE_TITLE} | {title}</title>
 	</head>
 	<body>
 		<Header title={title} />
