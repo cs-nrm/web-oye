@@ -420,6 +420,14 @@ const showMenu = (toggleId, navId) =>{
         imagenNota.style.backgroundImage = "url("+imgNotaOriginal2+")";
     }
     
+    $('.wp-block-gallery').flickity({
+        cellAlign: 'left',
+        contain: true,
+        autoPlay: 3000,
+        pauseAutoPlayOnHover: false,
+        pageDots: false
+    });
+
     
     if( getplayingstatus == 'podcast-playing'){
         const containerpodcast  = document.getElementById('iframepodcast');
