@@ -424,8 +424,9 @@ const showMenu = (toggleId, navId) =>{
         cellAlign: 'left',
         contain: true,
         autoPlay: 3000,
-        pauseAutoPlayOnHover: false,
-        pageDots: false
+        pauseAutoPlayOnHover: true,
+        pageDots: false,
+        adaptiveHeight: true
     });
 
     
