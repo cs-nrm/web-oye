@@ -1,0 +1,122 @@
+<div class="relative min-h-[310px] md:min-h-[500px]" id="infoprog">
+    <ul class="ken-burns-slideshow">
+        <li class="slide" id="slide1"></li>
+        <li class="slide" id="slide2"></li>
+        <li class="slide" id="slide3"></li>
+        <li class="slide" id="slide4"></li>
+        <li class="slide" id="slide5"></li>
+        <li class="slide" id="slide6"></li>
+        <li class="slide" id="slide7"></li>
+    </ul>
+    <div class= "md:container mx-auto flex  md:justify-around items-center md:items-center" >
+        <div class="items-center text-center md:text-left">
+            <label class="text-white p-1 rounded bg-teal-600/[0.6] shadow-xl">AHORA EN VIVO</label>
+            <div class="text-white font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)] w-12/12 md:w-10/12 md:text-4xl" id="nombreprog">Oye 89.7FM</div>
+        </div>
+        <div id="imgprog"><img class="block h-auto w-full imgprog" src="https://storage.googleapis.com/nrm-web/oye/recursos/oye-bw-min.png" width="366" height="500" alt="Ahora en vivo" /></div>
+    </div>
+    <div id="big-play" class="z-10 absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 border-2 rounded-full border-white cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play" width="65" height="65" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M7 4v16l13 -8z" />
+          </svg>
+    </div>
+</div>
+
+<style>
+/* HOME HEADER*/
+#infoprog #imgprog img{
+	filter: drop-shadow(-4px 0px 0 white) 
+	drop-shadow(4px -2px 0px white);
+	/*aspect-ratio: 183/250;*/
+}
+.ken-burns-slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  list-style-type: none;
+}
+.ken-burns-slideshow .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.2);
+  animation: kenburns 44s linear infinite;
+}
+.ken-burns-slideshow .slide:nth-child(1) {
+  animation-delay: 2s;
+}
+.ken-burns-slideshow .slide:nth-child(2) {
+  animation-delay: 8s;
+}
+.ken-burns-slideshow .slide:nth-child(3) {
+  animation-delay: 14s;
+}
+.ken-burns-slideshow .slide:nth-child(4) {
+  animation-delay: 20s;
+}
+.ken-burns-slideshow .slide:nth-child(5) {
+  animation-delay: 26s;
+}
+.ken-burns-slideshow .slide:nth-child(6) {
+  animation-delay: 32s;
+}
+.ken-burns-slideshow .slide:nth-child(7) {
+  animation-delay: 38s;
+}
+
+#slide1 {
+  background-image: url("https://contenido.oyedigital.mx/wp-content/uploads/2024/06/mario-danna.jpg");
+}
+
+#slide2 {
+  background-image: url("https://contenido.oyedigital.mx/wp-content/uploads/2024/06/mario-bautista.jpg");
+}
+
+#slide3 {
+  background-image: url("https://contenido.oyedigital.mx/wp-content/uploads/2024/06/BTS.jpg");
+}
+
+#slide4 {
+  background-image: url("https://contenido.oyedigital.mx/wp-content/uploads/2024/06/mario-maluma2.jpg");
+}
+
+#slide5 {
+  background-image: url("https://contenido.oyedigital.mx/wp-content/uploads/2024/06/taylor.jpg");
+}
+
+#slide6 {
+  background-image: url("https://contenido.oyedigital.mx/wp-content/uploads/2024/06/kenia.jpg");
+}
+
+#slide7 {
+  background-image: url("https://contenido.oyedigital.mx/wp-content/uploads/2024/06/black-pink.jpg");
+}
+
+@keyframes kenburns {
+  10% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  40% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+
+</style>

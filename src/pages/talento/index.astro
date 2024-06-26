@@ -74,6 +74,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
         position: relative;
         overflow: hidden;
         border-radius: 1.5rem;
+
     }
 
     /*figure:after {
@@ -103,14 +104,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
     }
 
     img {
-    position: absolute;
-    left: 20%;
-    top: 0%;
-    width: 50%;
-    transform:
-        translateX(calc(var(--hover) * -15%))
+        position: absolute;
+        left: 20%;
+        top: 0%;
+        width: 50%;
+        transform: translateX(calc(var(--hover) * -15%))
         scale(calc(1 + (var(--hover) * 0.2)));
-    transition: transform 0.2s;
+        transition: transform 0.2s;
+        mask-image: linear-gradient(black:80%, transparent);
     }
 
     article {
