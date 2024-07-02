@@ -451,7 +451,10 @@ const showMenu = (toggleId, navId) =>{
 
     /* =======COMSCORE*/
 
-    
+    /* ==========   GOOGLE ANALYTICS */
+    googletag.pubads().refresh();
+    /* ==GOOGLE ANALYTICS      */ 
+
     if( getplayingstatus == 'podcast-playing'){
         const containerpodcast  = document.getElementById('iframepodcast');
         containerpodcast.innerHTML ='';
