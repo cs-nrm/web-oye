@@ -1,6 +1,6 @@
 <div class="heder-player relative">
   <div class="relative min-h-[300px] xl:min-h-[500px] max-h-[500px]" id="infoprog">
-      <ul class="ken-burns-slideshow">
+      <ul class="ken-burns-slideshow hidden md:block">
           <li class="slide" id="slide1"></li>
           <li class="slide" id="slide2"></li>
           <li class="slide" id="slide3"></li>
@@ -15,7 +15,7 @@
             <div class="text-white font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)] w-12/12 md:w-10/12 sm:text-xl lg:text-2xl xl:text-4xl" id="nombreprog">Oye 89.7FM</div>
           </div>
           <!--div id="imgprog"><img class="block h-auto w-auto imgprog" src="https://storage.googleapis.com/nrm-web/oye/recursos/oye-bw-min.png" width="366" height="500" alt="Ahora en vivo" /></div-->
-          <div class="w-[40%] mt-[15%] sm:mt-0"><img class="block h-auto w-auto m-auto" src="https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-fusion500-min.png" alt="Ahora en vivo" width="500" height="500" /></div>
+          <div class="w-[40%] mt-[15%] sm:mt-0 logo-home"><img class="block h-auto w-auto m-auto" src="https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-fusion500-min.png" alt="Ahora en vivo" width="500" height="500" /></div>
       </div>
 
   </div>
@@ -32,15 +32,21 @@
 /* HOME HEADER*/
 
 
+
 #infoprog{
     background-color: #BF29D3;
     z-index: -3;
+    background: linear-gradient(202.03deg, #741da9 14.4%, #7CDADA 78.24%); 
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; 
+    animation: gradient 15s ease infinite; 
+    background-size:400%;
 }
 #infoprog #imgprog img{
 	filter: drop-shadow(-4px 0px 0 white) 
 	drop-shadow(4px -2px 0px white);
 	/*aspect-ratio: 183/250;*/
 }
+
 .ken-burns-slideshow {
   position: absolute;
   top: 0;
