@@ -258,6 +258,14 @@ const secchome = document.getElementById('home');
                                 if(document.getElementById('imgprog')){                                    
                                     setTimeout(function(){
                                         document.getElementById('imgprog').getElementsByClassName('imgprog')[0].src = d.link;
+                                        document.getElementsByClassName('logo-home')[0].innerHTML = '<img class="block h-auto w-auto m-auto" src="https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-fusion500-min.png" alt="Ahora en vivo" width="500" height="500" />';
+                                        
+                                    },2000);
+                                }
+                                if(document.getElementsByClassName('logo-home')[0]){                                    
+                                    setTimeout(function(){                                        
+                                        document.getElementsByClassName('logo-home')[0].innerHTML = '<img class="block h-auto w-auto m-auto" src="https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-fusion500-min.png" alt="Ahora en vivo" width="500" height="500" />';
+                                        
                                     },2000);
                                 }
                                 
@@ -435,7 +443,7 @@ const showMenu = (toggleId, navId) =>{
    
     /* =======COMSCORE*/
         var ts = Math.round((new Date()).getTime() / 1000 * Math.random() * 10);
-       // console.log(ts);
+       // cowensole.log(ts);
         self.COMSCORE && COMSCORE.beacon({
 				c1: "2", c2: "6906652",
 				options: {
@@ -450,6 +458,7 @@ const showMenu = (toggleId, navId) =>{
         });  
 
     /* =======COMSCORE*/
+    
 
     /* ==========   GOOGLE ANALYTICS */
     /*googletag.pubads().refresh();*/
