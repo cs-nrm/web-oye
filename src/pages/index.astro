@@ -1,5 +1,5 @@
 ---
-import BaseHeadHome from '../components/BaseHeadHome.astro';
+import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CardNews from '../layouts/CardsHomeNews.astro';
@@ -18,7 +18,7 @@ import SliderPromociones from '../layouts/SliderPromociones.astro';
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHeadHome title={SITE_TITLE} seccion="Home" description={SITE_DESCRIPTION} />		
+		<BaseHead title={SITE_TITLE} seccion="Home" description={SITE_DESCRIPTION} />		
 	</head>
 	<body>
 		<Header title={SITE_TITLE} />
