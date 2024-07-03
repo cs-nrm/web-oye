@@ -1,5 +1,5 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
+import BaseHeadHome from '../components/BaseHeadHome.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CardNews from '../layouts/CardsHomeNews.astro';
@@ -8,10 +8,7 @@ import SliderPodcast from '../layouts/SliderPodcast.astro';
 import Separator from '../components/Separator.astro';
 import HomeHeader from '../layouts/HomeHeader2.astro';
 import DoubleBoxHome from '../components/DoubleBoxHome.astro';
-/*import BoxBanner from '../components/BoxBanner.astro';
-import LeaderBoard from'../components/LeaderBoard.astro';
-import SuperLeader from '../components/SuperLeader.astro';
-import BillBoard from '../components/BillBoard.astro';*/
+
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import SliderPromociones from '../layouts/SliderPromociones.astro';
@@ -21,7 +18,7 @@ import SliderPromociones from '../layouts/SliderPromociones.astro';
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title={SITE_TITLE} seccion="Home" description={SITE_DESCRIPTION} />		
+		<BaseHeadHome title={SITE_TITLE} seccion="Home" description={SITE_DESCRIPTION} />		
 	</head>
 	<body>
 		<Header title={SITE_TITLE} />
@@ -30,7 +27,6 @@ import SliderPromociones from '../layouts/SliderPromociones.astro';
 				<header>
 					<HomeHeader />
 				</header>
-				<!--LeaderBoard /-->
 				<section>
 					<div class="container-home lg:my-12 mx-auto">
 						<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Promociones</h1>
@@ -58,21 +54,15 @@ import SliderPromociones from '../layouts/SliderPromociones.astro';
 								<CardEntrevistas />
 							</div>
 						</div>
-						<!--SuperLeader /-->
 					</div>
 				</secttion>
-					<Separator />
+				<Separator />
 				<section>
 					<div class="container-home w-full mx-auto">
 						<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Podcast</h1>
 						<SliderPodcast />
 					</div>
 				</section>
-				<!--BillBoard /-->
-					
-
-     			</div>
-
 		</main>
 		
 		<Footer />
