@@ -460,10 +460,10 @@ const showMenu = (toggleId, navId) =>{
         });  
 
     /* =======COMSCORE*/
-    
+
 
     /* ==========   GOOGLE ANALYTICS */
-    /*googletag.pubads().refresh();*/
+    googletag.pubads().refresh();
     /* ==GOOGLE ANALYTICS      */ 
 
     if( getplayingstatus == 'podcast-playing'){
