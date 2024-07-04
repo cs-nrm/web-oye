@@ -3,7 +3,6 @@ import Player from './Player.astro';
 import { Image } from 'astro:assets';
 import Notificacion  from './Notificacion.astro';
 ---
-
 <div><Player transition:persist /></div>
 
 <div class="preloader">
@@ -77,23 +76,3 @@ import Notificacion  from './Notificacion.astro';
 </style>	
 
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M9RYDQ6Z9L"></script>
-<script is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-M9RYDQ6Z9L');
-</script>
-
-<script defer>
-    // Cargue GPT de forma síncrona (Expandibles y Creatividad Adaptable)
-    (function() {
-        var useSSL = 'https:' == document.location.protocol;
-        var src = (useSSL ? 'https:' : 'http:') +
-        '//www.googletagservices.com/tag/js/gpt.js';
-        document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-    })();
-</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7423640555477330" crossorigin="anonymous"></script>

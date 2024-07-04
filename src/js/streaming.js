@@ -463,7 +463,7 @@ const showMenu = (toggleId, navId) =>{
 
 
     /* ==========   GOOGLE ANALYTICS */
-    googletag.pubads().refresh();
+   googletag.pubads().refresh();
     /* ==GOOGLE ANALYTICS      */ 
 
     if( getplayingstatus == 'podcast-playing'){
