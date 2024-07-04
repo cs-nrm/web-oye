@@ -8,10 +8,9 @@ import SliderPodcast from '../layouts/SliderPodcast.astro';
 import Separator from '../components/Separator.astro';
 import HomeHeader from '../layouts/HomeHeader2.astro';
 import DoubleBoxHome from '../components/DoubleBoxHome.astro';
-
-
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import SliderPromociones from '../layouts/SliderPromociones.astro';
+import { Image } from 'astro:assets';
 
 ---
 
@@ -27,6 +26,13 @@ import SliderPromociones from '../layouts/SliderPromociones.astro';
 				<header>
 					<HomeHeader />
 				</header>
+				<section>
+					<div class="table mx-auto text-center mt-4 sm:hidden">
+						<a href="/peticiones">
+						<Image src="https://contenido.oyedigital.mx/wp-content/uploads/2024/07/BANNER-min.jpg" width="300" height="100" alt="Imagen Peticiones" />
+						</a>
+					</div>
+				</section>
 				<section>
 					<div class="container-home lg:my-12 mx-auto">
 						<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Promociones</h1>
