@@ -242,7 +242,9 @@ const secchome = document.getElementById('home');
                             console.log(prog.acf.programa);
                             console.log(prog.acf);
                             if( document.getElementById('nombreprog') ){
+                                setTimeout(function(){
                                 document.getElementById('nombreprog').innerHTML = prog.acf.programa;
+                                },2000);
                             }
                              
                             fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/media/"+prog.acf.imagen_ahora_escuchas+"?_fields[]=link")
@@ -263,7 +265,7 @@ const secchome = document.getElementById('home');
                                     },2000);
                                 }
                                 if(document.getElementsByClassName('logo-home')[0]){                                    
-                                    setTimeout(function(){                                        
+                                    setTimeout(function(){
                                         document.getElementsByClassName('logo-home')[0].innerHTML = '<img class="block h-auto w-auto m-auto" src="https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-fusion500-min.png" alt="Ahora en vivo" width="500" height="500" />';
                                         
                                     },2000);
