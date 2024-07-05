@@ -241,10 +241,8 @@ const secchome = document.getElementById('home');
                             console.log(prog.acf.hora_fin);
                             console.log(prog.acf.programa);
                             console.log(prog.acf);
-                            if( document.getElementById('nombreprog') ){
-                                setTimeout(function(){
-                                document.getElementById('nombreprog').innerHTML = prog.acf.programa;
-                                },1);
+                            if( document.getElementById('nombreprog') ){                                
+                                document.getElementById('nombreprog').innerHTML = prog.acf.programa;                            
                             }
                              
                             fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/media/"+prog.acf.imagen_ahora_escuchas+"?_fields[]=link")
@@ -260,17 +258,9 @@ const secchome = document.getElementById('home');
                                 if(document.getElementById('imgprog')){                                    
                                     setTimeout(function(){
                                         document.getElementById('imgprog').getElementsByClassName('imgprog')[0].src = d.link;
-                                        document.getElementsByClassName('logo-home')[0].innerHTML = '<img class="block h-auto w-auto m-auto" src="https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-fusion500-min.png" alt="Ahora en vivo" width="500" height="500" />';
-                                        
+                                        document.getElementsByClassName('logo-home')[0].innerHTML = '<img class="block h-auto w-auto m-auto" src="https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-fusion500-min.png" alt="Ahora en vivo" width="500" height="500" />';                                        
                                     },2000);
-                                }
-                                if(document.getElementsByClassName('logo-home')[0]){                                    
-                                    setTimeout(function(){
-                                        document.getElementsByClassName('logo-home')[0].innerHTML = '<img class="block h-auto w-auto m-auto" src="https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-fusion500-min.png" alt="Ahora en vivo" width="500" height="500" />';
-                                        
-                                    },1);
-                                }
-                                
+                                }                                                                
                             });                                                        
                         }
                     }
