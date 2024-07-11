@@ -5,7 +5,7 @@ import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import Card from '../../layouts/Cards.astro';
 
-const res = await fetch("http://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=50&_fields=title,slug,yoast_head_json,categories&categories=1606&exclude[0]=1616&filter[cat]=1606,-1616");
+const res = await fetch("http://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=10&_fields=title,slug,yoast_head_json,categories&categories=1606&exclude[0]=1616&filter[cat]=1606,-1616");
 const posts = await res.json();
 
 const filteredPosts = posts.filter((post) =>  post.categories[0]!='1616'  ); 
