@@ -11,6 +11,7 @@ import DoubleBoxHome from '../components/DoubleBoxHome.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import SliderPromociones from '../layouts/SliderPromociones.astro';
 import { Image } from 'astro:assets';
+import LeaderBoard from '../components/LeaderBoard.astro';
 
 ---
 
@@ -26,6 +27,7 @@ import { Image } from 'astro:assets';
 				<header>
 					<HomeHeader />
 				</header>
+				<LeaderBoard />
 				<section>
 					<div class="table mx-auto text-center mt-44 mb-12 sm:hidden">
 						<a href="/peticiones">
