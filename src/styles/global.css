@@ -352,64 +352,54 @@ article .wp-block-embed-youtube .wp-block-embed__wrapper iframe {
 	    100% {	background-position: 0% 50%;	}
     }
 
-/*notificacion*/
+/* PESTAÑA NOTIFICACIÓN */
+.ns-attached{max-width: 350px !important; left: auto !important; }
+.ns-effect-bouncyflip {
+  background: #1FD3F6 !important;
+  text-align: center;
+  left: auto !important;
+  right: 30px;
+}
+.ns-effect-bouncyflip p {  font-size: 16px;    }    
+.ns-effect-bouncyflip .icon {
+  position: relative !important;
+  display: block !important;
+  top: -45px !important;
+  left: 260px !important;
+}
+.ns-box {
+  padding: 5px !important;
+  z-index: 100000 !important;
+}        
+.ns-box a{opacity:1 !important;}    
+.ns-box-inner a, .ns-box-inner .fondo-live div:first-child{
+  position: relative;
+  top: 196px;
+  left: -30px;
+  text-decoration: none;
+  line-height: 0px;
+  color: #dc0d0d;
+  font-size: 17px;
+}
+.ns-box-inner .fondo-live div:first-child, .ns-box-inner a{color: white;}
+.ns-box-inner h3{margin: 0; font-size: 1.5rem; color: #fff;}
+.ns-box-inner i {font-size: 2.3rem; position: relative; top: 7px;}
 
-.ns-attached{max-width: 350px; left: auto }
-    .ns-effect-bouncyflip {
-        background: #DFAB1F;
-        text-align: center;
-        left: auto;
-        right: 30px;
-    }
-    .ns-effect-bouncyflip p {  font-size: 16px;    }    
-    .ns-effect-bouncyflip .icon {
-           position: relative;
-        display: block;
-        top: -45px;
-        left: 240px;
-    }
-    .ns-box {
-        padding: 5px;
-        z-index: 100000;
-    }        
-    .ns-box a{opacity:1;}    
-    .ns-box-inner a, .ns-box-inner .fondo-live div:first-child{
-        position: relative;
-        top: 196px;
-        left: -30px;
-        text-decoration: none;
-        line-height: 0px;
-        color: #dc0d0d;
-        font-size: 17px;
-    }
-    .ns-box-inner .fondo-live div:first-child, .ns-box-inner a{color: white;}
-    .ns-box-inner h3{margin: 0; font-size: 1.5rem; color: #000;}
-    .ns-box-inner i {
-        font-size: 2.3rem;
-        position: relative;
-        top: 7px;
-    }
-    #getting-started{
-        color: #634e7b;
-        position: absolute;
-        top: -6px;
-        width: 300px;            
-    }
-    #getting-started p{font-size: 16px; padding: 0px;}
-    #getting-started span{font-size: 20px; position: relative; top: 200px;}
-    #getting-started h1 { margin-bottom: 10px;}
-    .fondo-live{
-        width: 300px;
-        height: 256px;
-        background: #fff url('https://oyedigital.mx/wp-content/uploads/2024/06/Notificacion_SUMMERGAME.jpg') no-repeat;
-        background-position: top center;
-    }
-    .fondo-live .info{position: absolute; bottom: 0; font-size: 24px; bottom:35px; width: 300px;}
-    
-    .ns-effect-bouncyflip .ns-close::after, .ns-effect-bouncyflip .ns-close::before{
-        background: #fff;
-    }
-    .ns-close {
-        right: -3px;
-        top: -3px;
-    }
+/*.ns-effect-bouncyflip #getting-started{
+  color: #634e7b;
+  position: absolute;
+  top: -6px;
+  width: 300px;            
+}
+.ns-effect-bouncyflip #getting-started p{font-size: 16px; padding: 0px;}
+.ns-effect-bouncyflip #getting-started span{font-size: 20px; position: relative; top: 200px;}
+.ns-effect-bouncyflip #getting-started h1 { margin-bottom: 10px;}*/
+.ns-effect-bouncyflip .fondo-live{
+  width: 300px;
+  height: 256px;
+  background: #fff url('https://contenido.oyedigital.mx/wp-content/uploads/2024/07/notificacion-FUSION.jpg') no-repeat;
+  background-position: top center;
+}
+.ns-effect-bouncyflip .fondo-live .info{position: absolute; bottom: 0; font-size: 24px; bottom:35px; width: 300px;}
+.ns-effect-bouncyflip .ns-close::after, .ns-effect-bouncyflip .ns-close::before{background: #fff !important;}
+.ns-effect-bouncyflip .ns-close {right: -3px; top: -3px;}

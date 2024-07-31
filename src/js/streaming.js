@@ -411,6 +411,40 @@ const showMenu = (toggleId, navId) =>{
         if( getplayingstatus == 'radio-playing'){
              document.getElementById('big-play').innerHTML = bigButtonPause; 
         }
+
+        var elem = document.querySelector('.carousel-main');
+        var flkty = new Flickity( elem, {
+            // options
+            cellAlign: 'left',
+            contain: true,
+            sync: '.carousel-nav',
+            prevNextButtons: false,
+            autoPlay: 2000,
+            pageDots: false,
+            pauseAutoPlayOnHover: true
+        });
+        flkty.reloadCells();   
+
+        var elemnav = document.querySelector('.carousel-nav');
+        var flktynav = new Flickity( elemnav, {
+            // options
+            cellAlign: 'center',
+            contain: true,
+            asNavFor: '.carousel-main',
+            pageDots: false, 
+            pauseAutoPlayOnHover: true
+        }); 
+        var elempod = document.querySelector('.main-carousel');
+        var flktypod = new Flickity( elempod, {
+            contain: true,
+            lazyLoad: 1, 
+            wrapAround: true, 
+            cellAlign: 'center',
+            pageDots: false, 
+            autoPlay: true
+        });
+
+
     }
     
     const imagenNota = document.getElementById("imagen-nota");
