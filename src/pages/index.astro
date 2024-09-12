@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CardNews from '../layouts/CardsHomeNews.astro';
 import CardEntrevistas from '../layouts/CardsHomeEntrevistas.astro';
+import CardPopTrends from '../layouts/CardsHomePoptrends.astro';
 import SliderPodcast from '../layouts/SliderPodcast.astro';
 import Separator from '../components/Separator.astro';
 import HomeHeader from '../layouts/HomeHeader2.astro';
@@ -42,6 +43,29 @@ import LeaderBoard from '../components/LeaderBoard.astro';
 						</a>
 					</div>
 				</section>
+				<!--secttion>
+					<div class="container-home px-4 my-12 mx-auto">
+						<div class="flex flex-wrap">
+							<div class="w-full lg:w-2/3">
+								<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop News</h1>
+								<CardNews />
+							</div>
+							<div class="w-full lg:w-1/3 bg-purple-300 rounded">
+								<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl text-center [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop Trends</h1>
+								<CardPopTrends />
+							</div>
+						</div>
+					</div>
+				</secttion-->
+				<secttion>
+					<div class="container-home px-4 my-12 mx-auto">
+						<div class="w-full">
+							<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop News</h1>
+							<CardNews />
+						</div>
+					</div>
+				</secttion>
+				<Separator />
 				<section>
 					<div class="container-home lg:my-12 mx-auto">
 						<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Promociones</h1>
@@ -57,21 +81,15 @@ import LeaderBoard from '../components/LeaderBoard.astro';
 					</div>
 				</section>
 				<Separator />
-				<secttion>
+				<!--secttion>
 					<div class="container-home px-4 my-12 mx-auto">
-						<div class="flex flex-wrap">
-							<div class="w-full lg:w-2/3">
-								<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop News</h1>
-								<CardNews />
-							</div>
-							<div class="w-full lg:w-1/3 bg-purple-300 rounded">
-								<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl text-center [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Entrevistas</h1>
-								<CardEntrevistas />
-							</div>
+						<div class="w-full bg-purple-300 rounded">
+							<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl text-center [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop Trends</h1>
+							<CardPopTrends />
 						</div>
 					</div>
-				</secttion>
-				<Separator />
+				</secttion-->
+
 				<section>
 					<div class="container-home w-full mx-auto">
 						<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Podcast</h1>
