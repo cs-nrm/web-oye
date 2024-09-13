@@ -46,6 +46,11 @@ body {
 	background-size: 40px 40px;
 	background-position: 0 0,20px 20px;
 }
+header{
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
 main {
 	width: 100%;
 	/*max-width: calc(100% - 1em);*/

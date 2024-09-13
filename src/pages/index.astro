@@ -3,6 +3,8 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CardNews from '../layouts/CardsHomeNews.astro';
+import CardKpop from '../layouts/CardsHomeKpop.astro';
+import CardCine from '../layouts/CardsHomeCine.astro';
 import CardEntrevistas from '../layouts/CardsHomeEntrevistas.astro';
 import CardPopTrends from '../layouts/CardsHomePoptrends.astro';
 import SliderPodcast from '../layouts/SliderPodcast.astro';
@@ -25,9 +27,9 @@ import LeaderBoard from '../components/LeaderBoard.astro';
 		<Header title={SITE_TITLE} />
 		
 		<main id="home">
-				<header>
+				<section>
 					<HomeHeader />
-				</header>
+				</section>
 				<section>
 					<div class="flex flex-wrap container-home mx-auto">
 						<LeaderBoard />
@@ -65,6 +67,31 @@ import LeaderBoard from '../components/LeaderBoard.astro';
 						</div>
 					</div>
 				</secttion>
+				<secttion>
+					<div class="container-home px-4 my-12 mx-auto">
+						<div class="w-full bg-[#e6cdf5] rounded">
+							<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl text-center [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop Trends</h1>
+							<CardPopTrends />
+						</div>
+					</div>
+				</secttion>
+				<secttion>
+					<div class="container-home px-4 my-12 mx-auto">
+						<div class="w-full">
+							<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">K-Pop</h1>
+							<CardKpop />
+						</div>
+					</div>
+				</secttion>
+				<Separator />
+				<secttion>
+					<div class="container-home px-4 my-12 mx-auto">
+						<div class="w-full">
+							<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Oye de Cine</h1>
+							<CardCine />
+						</div>
+					</div>
+				</secttion>
 				<Separator />
 				<section>
 					<div class="container-home lg:my-12 mx-auto">
@@ -80,15 +107,6 @@ import LeaderBoard from '../components/LeaderBoard.astro';
 
 					</div>
 				</section>
-				<Separator />
-				<secttion>
-					<div class="container-home px-4 my-12 mx-auto">
-						<div class="w-full bg-[#e6cdf5] rounded">
-							<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl text-center [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop Trends</h1>
-							<CardPopTrends />
-						</div>
-					</div>
-				</secttion>
 
 				<section>
 					<div class="container-home w-full mx-auto">
