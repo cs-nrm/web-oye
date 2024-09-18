@@ -1,6 +1,6 @@
 <div class="heder-player relative">
   <div class="relative min-h-[300px] xl:min-h-[500px] max-h-[500px]" id="infoprog">
-      <ul class="ken-burns-slideshow hidden md:block">
+      <!--ul class="ken-burns-slideshow hidden md:block">
           <li class="slide" id="slide1"></li>
           <li class="slide" id="slide2"></li>
           <li class="slide" id="slide3"></li>
@@ -8,19 +8,19 @@
           <li class="slide" id="slide5"></li>
           <li class="slide" id="slide6"></li>
           <li class="slide" id="slide7"></li>
-      </ul>
+      </ul-->
       <div class= "lg:container mx-auto flex justify-around" >
-          <div class="w-[40%] items-center text-center sm:text-left mt-[6%]">
-            <label class="text-white p-1 rounded bg-[#eb2639] shadow-xl">AHORA EN VIVO</label>
-            <!--div class="text-white font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)] w-12/12 md:w-10/12 sm:text-xl lg:text-2xl xl:text-4xl" id="nombreprog">Oye 89.7FM</div-->
-            <div class="text-white font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)] w-12/12 md:w-10/12 sm:text-xl lg:text-2xl xl:text-4xl" id="nombreprog"></div>
-          </div>
           <!--div id="imgprog"><img class="block h-auto w-auto imgprog" src="https://storage.googleapis.com/nrm-web/oye/recursos/oye-bw-min.png" width="366" height="500" alt="Ahora en vivo" /></div-->
           <div class="w-[25%] mt-[15%] sm:mt-[4%] logo-home"><img class="block h-auto w-auto m-auto" src="https://storage.googleapis.com/nrm-web/oye/recursos/LOGO-OYE-500X500-min.png" alt="Ahora en vivo" width="500" height="500" /></div>
+          <div class="w-[40%] items-center text-center sm:text-right mt-[6%]">
+            <label class="text-white p-1 rounded bg-[#eb2639] shadow-xl">AHORA EN VIVO</label>
+            <!--div class="text-white font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)] w-12/12 md:w-10/12 sm:text-xl lg:text-2xl xl:text-4xl" id="nombreprog">Oye 89.7FM</div-->
+            <div class="text-white font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)] w-12/12 md:w-12/12 sm:text-xl lg:text-2xl xl:text-4xl" id="nombreprog"></div>
+          </div>
       </div>
 
   </div>
-  <div id="big-play" class="z-20 absolute bottom-[14%] lg:bottom-1/4 left-[14%] lg:left-1/4  border-8 rounded-full border-[#eb2639] shadow-[0_2px_12px_6px_rgba(163,53,53,0.4)] cursor-pointer">
+  <div id="big-play" class="z-1 absolute bottom-[14%] lg:bottom-1/4 right-[14%] lg:right-1/4  border-8 rounded-full border-[#eb2639] shadow-[0_2px_12px_6px_rgba(163,53,53,0.4)] cursor-pointer">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play" width="90" height="90" viewBox="0 0 24 24" stroke-width="2" stroke="#eb2639" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M7 4v16l13 -8z" />
@@ -38,9 +38,11 @@
     background-color: #BF29D3;
     z-index: -3;
     background: linear-gradient(202.03deg, #741da9 14.4%, #7CDADA 78.24%); 
+    background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/header/oye-foto-home.jpg');
+    background-size: cover;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; 
-    animation: gradient 15s ease infinite; 
-    background-size:400%;
+    /*animation: gradient 15s ease infinite; 
+    background-size:400%;*/
 }
 #infoprog #imgprog img{
 	filter: drop-shadow(-4px 0px 0 white) 
@@ -48,7 +50,7 @@
 	/*aspect-ratio: 183/250;*/
 }
 
-.ken-burns-slideshow {
+/*.ken-burns-slideshow {
   position: absolute;
   top: 0;
   left: 0;
@@ -134,7 +136,7 @@
     opacity: 0;
     transform: scale(1);
   }
-}
+}*/
 
 
 </style>

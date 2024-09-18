@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets';
+
+const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_fields=id,title,slug,yoast_head_json,_links,_embedded&_embed&per_page=10&categories=280");
+const posts = await res.json();
+---
+
+
+
+<div class="main-carousel-trends">
+		{
+		posts.map((post:any, index)=> (
+			<div class="carousel-cell relative md:hover:scale-[1.01] lg:hover:scale-[1.05] transition-all ease-linear duration-[250ms]">
+				<div class="absolute top-1 left-1 text-center align-center z-10">
+					<span class="text-5xl text-white font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]" set:html={index+1}></span>
+				</div>
+				<div class="relative">
+					<Image class="block h-auto w-full rounded object-fill" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url} width="300" height="150" alt="Imagen Ilustrativa Pop Trends"  />
+					<div class="voto-pop absolute bottom-[-9px] right-0" data-voto-id={post.id}>
+						<button class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
+							<span class="relative p-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-thumb-up" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+									<path d="M7 11v8a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1h3a4 4 0 0 0 4 -4v-1a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1 -2 2h-7a3 3 0 0 1 -3 -3" />
+								</svg>
+							</span>
+						</button>
+					</div>
+				</div>
+				<div class="">
+					<p class="font-bold leading-none p-4 text-md" set:html={post.title.rendered}></p>
+
+				</div>
+				<!--a class="flex flex-wrap items-center justify-center text-black" href={`/poptrends`}-->
+
+				<!--/a-->
+			</div>
+		))    
+		}
+</div>
+
+
+    <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/nrm-web/nrm/lib/toastify.css" />
+    <script is:inline src="https://storage.googleapis.com/nrm-web/nrm/lib/toastify.js"></script>
+	
+<style>
+.flickity-viewport{padding-top: 20px;}
+.carousel-cell {
+  width: 200px;
+  height: 330px;
+  margin-right: 40px;
+  border-radius: 0.25rem;
+  background: #ab98b6;
+}
+
+.carousel-cell img{
+	border-radius: 0.25rem;
+	box-shadow: 0 2px 12px 7px rgba(0,0,0,0.4);
+	/*margin-top: 20px;*/
+}
+
+.carousel-cell.is-selected {
+  /*background: #ED2;*/
+}
+</style>

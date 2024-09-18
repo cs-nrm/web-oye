@@ -444,6 +444,76 @@ const showMenu = (toggleId, navId) =>{
             autoPlay: true
         });
 
+        var elemtrends = document.querySelector('.main-carousel-trends');
+        var flktytrends = new Flickity( elemtrends, {
+            contain: true,
+            lazyLoad: 1, 
+            wrapAround: false, 
+            cellAlign: 'center',
+            pageDots: false, 
+            autoPlay: true
+        });
+
+
+ $('.voto-pop').each(function(){
+
+    
+    $(this).on('click', function(){
+        
+                console.log($(this).attr('data-voto-id'));
+                const id = $(this).attr('data-voto-id');                                
+                /*const params = {
+                    "search": id, 
+                    "per_page": 1000                    
+                };*/
+                const params = {
+                    "item_id":id,
+                    "user_id":15,
+                    "type":"post",
+                    "user_ip":"0.0.0.0",
+                    "status":"like"
+                };
+                
+                const Rparamas = {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer 31ifYsZyDJTM2ZZ9PxjDvTbUjRB7DgSNvG9eiJZZNT33Z3LEMo3RK7jlNc9XzXOvg3gwB2JuoDbT1L3KW6xoQBfqbsBoyBDYhQ597HPpFd8tremnnBpArzDW',
+                        'Content-Type': 'application/json'
+                    },                    
+                    body: JSON.stringify( params )
+                };
+                    
+                fetch('https://contenido.oyedigital.mx/wp-json/wp-ulike-pro/v1/vote/', Rparamas)
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error
+                            ('HTTP error! Status: ${res.status}');
+                    }
+                    return res.json();
+                })
+                .then((data) => { 
+                        console.log(data);
+                        $(this).addClass('voted');
+                        $(this).find('svg').attr('fill','white');
+                        Toastify({
+                            text: "Gracias por tu voto",
+                            className: "info",
+                            style: {
+                              background: "linear-gradient(to right, #ec4899, #a855f7)",
+                              'border-radius': '6px',
+                              'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
+                            },
+                            offset:{
+                                x:'10rem',
+                                y:'20rem'
+                            }
+                        }).showToast();
+                });
+
+            });            
+        });
+
+
 
     }
     

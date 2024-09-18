@@ -18,7 +18,7 @@ posts.map((post:any, index)=> (
             <span class="text-4xl font-bold" set:html={index+1}></span>
         </div>
         <div class="w-4/12">
-            <Image class="block h-auto w-full shadow-[0_2px_12px_7px_rgba(0,0,0,0.4)] rounded object-fill" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['small-feature'].source_url} width="300" height="150" alt="Imagen Ilustrativa Pop Trends"  />
+            <Image class="block h-auto w-full shadow-[0_2px_12px_7px_rgba(0,0,0,0.4)] rounded object-fill" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url} width="300" height="150" alt="Imagen Ilustrativa Pop Trends"  />
         </div>
         <div class="w-6/12">
             <p class="font-bold leading-none p-4 text-lg" set:html={post.title.rendered}></p>
