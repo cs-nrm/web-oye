@@ -10,7 +10,7 @@ import Card from '../../layouts/Cardsq.astro';
 
 export async function getStaticPaths( { paginate } ) {
   const data = await getArticles(149);  
-  return paginate(data, { pageSize: 9 });
+  return paginate(data, { pageSize: 12 });
 }
 
 interface Props{
