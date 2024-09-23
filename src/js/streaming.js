@@ -277,8 +277,7 @@ const secchome = document.getElementById('home');
 const openbarra = function(){
     player.classList.remove('h-0');
     player.classList.add('h-16');
-    player.classList.add('border-4');
-      $('#modal').css('display','flex');     
+    player.classList.add('border-4');   
 }
 /* cerrar barra*/
 const hidebarra = function(){
