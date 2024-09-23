@@ -419,10 +419,11 @@ const showMenu = (toggleId, navId) =>{
             cellAlign: 'left',
             contain: true,
             sync: '.carousel-nav',
-            prevNextButtons: false,
+            prevNextButtons: true,
             autoPlay: 2000,
             pageDots: false,
-            pauseAutoPlayOnHover: true
+            pauseAutoPlayOnHover: true,
+            wrapAround: true
         });
         flkty.reloadCells();   
 
