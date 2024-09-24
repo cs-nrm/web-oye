@@ -24,25 +24,26 @@ const posts = await res.json();
 						</button>
 					</div>
 				</div>
-				<div class="">
-					<p class="font-bold leading-none p-4 text-md" set:html={post.title.rendered}></p>
-
-				</div>
+					<div class="p-3">
+						<div class="overflow-hidden">
+							<p class="font-bold leading-none text-sm" set:html={post.title.rendered}></p>
+						</div>
+					</div>
 			</div>
-		))    
+		))
 		}
 </div>
 
 <div class="hidden md:flex flex-wrap">
 		{
 		posts.map((post:any, index)=> (
-			<div class="md:w-1/4 lg:w-[20%] p-4 ">
+			<div class="md:w-1/4 lg:w-[20%] md:p-4 ">
 				<div class="bg-[#ab98b6] rounded relative mb-4 md:hover:scale-[1.01] lg:hover:scale-[1.05] transition-all ease-linear duration-[250ms]">
 					<div class="absolute top-1 left-1 text-center align-center z-10">
 						<span class="text-5xl text-white font-bold [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]" set:html={index+1}></span>
 					</div>
 					<div class="relative">
-						<Image class="block h-auto w-full rounded object-fill" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url} width="300" height="150" alt="Imagen Ilustrativa Pop Trends"  />
+						<Image class="block h-auto w-full m-auto rounded object-fill" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url} width="300" height="150" alt="Imagen Ilustrativa Pop Trends"  />
 						<div class="voto-pop absolute bottom-[-9px] right-0" data-voto-id={post.id}>
 							<button class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
 								<span class="relative p-1 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
@@ -54,8 +55,10 @@ const posts = await res.json();
 							</button>
 						</div>
 					</div>
-					<div class="h-[140px]">
-						<p class="font-bold leading-none p-3 text-md" set:html={post.title.rendered}></p>
+					<div class="p-3">
+						<div class="overflow-hidden">
+							<p class="font-bold leading-none text-sm" set:html={post.title.rendered}></p>
+						</div>
 					</div>
 				</div>
 
@@ -75,7 +78,7 @@ const posts = await res.json();
 .flickity-viewport{padding-top: 20px;}
 .carousel-cell {
   width: 200px;
-  height: 330px;
+  height: 280px;
   margin-right: 40px;
   border-radius: 0.25rem;
   background: #ab98b6;
@@ -92,11 +95,11 @@ const posts = await res.json();
 }
 
 p{
-  height: 130px;
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-  margin-bottom: 0;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;  
+	overflow: hidden;
+	margin-bottom: 0;
+	height: 53px;
 }
 </style>
