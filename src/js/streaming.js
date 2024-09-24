@@ -433,6 +433,7 @@ const showMenu = (toggleId, navId) =>{
             cellAlign: 'center',
             contain: true,
             asNavFor: '.carousel-main',
+            prevNextButtons: false,
             pageDots: false, 
             pauseAutoPlayOnHover: true
         }); 
