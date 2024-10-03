@@ -421,4 +421,7 @@ article .wp-block-embed-youtube .wp-block-embed__wrapper iframe {
     bottom: 45px;
     left: 0;
   }
+  .plyr__video-embed iframe{
+    z-index: 99999999999999999999999;
+  }
 }
