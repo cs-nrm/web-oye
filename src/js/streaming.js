@@ -610,7 +610,7 @@ const showMenu = (toggleId, navId) =>{
                     debug:false,
                     controls:[
                         'play-large', // The large play button in the center
-                        'restart', // Restart playback
+                        'fullscreen',
                         'rewind', // Rewind by the seek time (default 10 seconds)
                         'play', // Play/pause playback
                         'fast-forward', // Fast forward by the seek time (default 10 seconds)
