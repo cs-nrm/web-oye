@@ -360,8 +360,7 @@ const playstopRadio = function(){
 };
 
 
-$('#radiobutton').on('click',function(){  
-   
+$('#radiobutton').on('click',function(){     
         playstopRadio();      
 });
 
@@ -569,10 +568,71 @@ const showMenu = (toggleId, navId) =>{
         hidebarra();
     }
 
+    if( getplayingstatus == 'video-playing'){
+        const containervideo  = document.getElementById('iframevideo');
+        containervideo.innerHTML ='';
+        hidebarra();
+    }
+
+    $('.close-video-barra').on('click', function(){
+        const containervideo  = document.getElementById('iframevideo');
+        containervideo.innerHTML ='';
+        hidebarra();
+    });
+
     $('#big-play').on('click', function(){
         playstopRadio();
     });
     
+    $('.el-video').each(function(){  
+        $(this).on('click',function(){
+            const getstatus = playerstatus();
+            const videostatus = $(this).attr('data-video-status');
+            const vid = $(this).attr('data-video');
+            const containervideo  = document.getElementById('iframevideo');
+
+            videoActive();
+            const info = $(this).find('.getinfovideo p').html();
+            console.log(info);
+            $('.info-video').html(info);
+            $('#player').attr('data-status','video-playing');
+            if (getstatus == 'radio-playing'){
+                radioStop();                
+            }
+
+            if(videostatus == 'ready'){
+                transitionBarra();
+                //console.log(vid);
+                containervideo.innerHTML = vid;
+                
+                                
+                const plyr = new Plyr($('#iframevideo iframe').parent(),{
+                    debug:false,
+                    controls:[
+                        'play-large', // The large play button in the center
+                        'restart', // Restart playback
+                        'rewind', // Rewind by the seek time (default 10 seconds)
+                        'play', // Play/pause playback
+                        'fast-forward', // Fast forward by the seek time (default 10 seconds)
+                        'progress', // The progress bar and scrubber for playback and buffering
+                        'current-time', // The current time of playback
+                        'duration', // The full duration of the media                                             
+                    ],
+                    playsinline: true
+    
+                });
+                plyr.on('ready', (event) => {
+                    plyr.play();    
+                });
+                
+            }
+
+
+
+        });
+
+    });
+
     $('.audiopod').each(function(){   
         $(this).on('click',function(){
             const getstatus = playerstatus();
@@ -603,7 +663,7 @@ const showMenu = (toggleId, navId) =>{
                     $('.audiopod').find('.play-pause-podcast').attr('data-podcast-status','ready');
                 });
             }
-            //console.log(podcaststatus);            
+            console.log(podcaststatus);            
             if(podcaststatus == 'ready'){
                 transitionBarra();
                 const ifr = $(this).find('.data-iframe').attr('data-iframe');
@@ -691,7 +751,7 @@ const showMenu = (toggleId, navId) =>{
         $('.wp-block-embed-youtube .wp-block-embed__wrapper').each(function(){
             //console.log(e);            
             const plyr = new Plyr($(this),{
-                debug:true,
+                debug:false,
                 controls:[
                     'play-large', // The large play button in the center
                     'restart', // Restart playback

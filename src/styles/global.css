@@ -134,56 +134,7 @@ hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
 }
-@media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-	/*main {
-		padding: 1em;
-	}*/
-	h1{
-		font-size: 210%;
-	}
-	h2{
-		font-size: 130%;
-	}
-}
 
-.sr-only {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute !important;
-	height: 1px;
-	width: 1px;
-	overflow: hidden;
-	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-	clip: rect(1px 1px 1px 1px);
-	/* maybe deprecated but we need to support legacy browsers */
-	clip: rect(1px, 1px, 1px, 1px);
-	/* modern browsers, clip-path works inwards from each corner */
-	clip-path: inset(50%);
-	/* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
-	white-space: nowrap;
-}
-
-@media (max-width: 1279px) {
-  .container-home{
-	max-width: 1280px !important;
-	width: 100%;
-  }
-  .container{
-	padding-right: 5%;
-	padding-left: 5%;
-	max-width: 100% !important;
-  }
-}
-
-@media (min-width: 1280px) {
-	.container-home, .container{
-		max-width: 1280px !important;
-	}
-}
 
 
 
@@ -323,11 +274,11 @@ article .wp-block-embed-youtube .wp-block-embed__wrapper iframe {
 .iframestyle {box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/8p7m.gif'); background-size:contain; background-color:#15181f; border: 1px solid  black; border-radius: 6px;}
 .loading-gif {	width: 20px; height: auto;}
 
-	#player { transition: all 0.5s; background: linear-gradient(202.03deg, #741da9 14.4%, #7CDADA 78.24%); box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; animation: gradient 15s ease infinite; background-size:400%;}    
+	#player { transition: all 0.5s; background: linear-gradient(202.03deg, #741da9 14.4%, #7CDADA 78.24%); box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; animation: gradient 15s ease infinite; background-size:400%; z-index:9999;}    
     #player .show { display:block }
     #player .hide{ display: none; }
     #player .active{ display: flex!important;  transition: all 1s;}
-
+    #player .wp-block-embed-youtube{   width: 340px; height: 250px; position: fixed; bottom: 0;    }
     
     
     .marquee { white-space: nowrap; overflow: hidden; width: 100%;}
@@ -408,3 +359,66 @@ article .wp-block-embed-youtube .wp-block-embed__wrapper iframe {
 .ns-effect-bouncyflip .fondo-live .info{position: absolute; bottom: 0; font-size: 24px; bottom:35px; width: 300px;}
 .ns-effect-bouncyflip .ns-close::after, .ns-effect-bouncyflip .ns-close::before{background: #fff !important;}
 .ns-effect-bouncyflip .ns-close {right: -3px; top: -3px;}
+
+
+
+
+.sr-only {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	/* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+	clip: rect(1px 1px 1px 1px);
+	/* maybe deprecated but we need to support legacy browsers */
+	clip: rect(1px, 1px, 1px, 1px);
+	/* modern browsers, clip-path works inwards from each corner */
+	clip-path: inset(50%);
+	/* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
+	white-space: nowrap;
+}
+
+
+@media (min-width: 1280px) {
+	.container-home, .container{
+		max-width: 1280px !important;
+	}
+}
+
+@media (max-width: 1279px) {
+  .container-home{
+	max-width: 1280px !important;
+	width: 100%;
+  }
+  .container{
+	padding-right: 5%;
+	padding-left: 5%;
+	max-width: 100% !important;
+  }
+}
+
+@media (max-width: 720px) {
+	body {
+		font-size: 18px;
+	}
+	/*main {
+		padding: 1em;
+	}*/
+	h1{
+		font-size: 210%;
+	}
+	h2{
+		font-size: 130%;
+	}
+  
+  #player .wp-block-embed-youtube {
+    width: 100%;
+    height: 250px;
+    position: fixed;
+    bottom: 45px;
+    left: 0;
+  }
+}

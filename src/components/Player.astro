@@ -46,7 +46,11 @@
     </div>
     
     <div id="player-v-video" class="hide flex h-16 items-center" transition:persist> 
-
+        <div class="flex w-2/4 justify-center info-video"> </div>
+        <div class="flex w-2/4 justify-center"> 
+                <div class="w-1/2" id="iframevideo" transition:persist></div>
+                <div class="w-1/2 flex justify-center text-white cursor-pointer font-bold close-video-barra" text-9xl> X </div>
+        </div>
     </div>
 </div>
 
@@ -56,7 +60,8 @@
 <script is:inline src="https://storage.googleapis.com/nrm-web/nrm/lib/dayjs.min.js"></script>
 <script is:inline src="https://storage.googleapis.com/nrm-web/nrm/lib/flickity.pkgd.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/nrm-web/nrm/lib/flickity.css">
+<link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/nrm-web/nrm/lib/plyr.css" />
+<script is:inline src="https://storage.googleapis.com/nrm-web/nrm/lib/plyr.js"></script>
 <script  src="/src/js/streaming.js"></script>
-
 
 
