@@ -339,7 +339,9 @@ const playstopRadio = function(){
             }                
                                                
             if(getplayingstatus == 'video-playing'){
-                
+                transitionBarra();
+                const containervideo  = document.getElementById('iframevideo');
+                containervideo.innerHTML = '';
             }
 
             if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){                
