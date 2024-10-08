@@ -16,6 +16,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import SliderPromociones from '../layouts/SliderPromociones.astro';
 import { Image } from 'astro:assets';
 import LeaderBoard from '../components/LeaderBoard.astro';
+import SuperLeader from '../components/SuperLeader.astro';
 
 ---
 
@@ -64,10 +65,11 @@ import LeaderBoard from '../components/LeaderBoard.astro';
 					<div class="container-home px-4 my-12 mx-auto">
 						<div class="w-full">
 							<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop News</h1>
-							<CardNews />
+							<CardNews />							
 						</div>
 					</div>
 				</secttion>
+				<SuperLeader />
 				<secttion>
 					<div class="container-home px-4 my-12 mx-auto">
 						<div class="w-full bg-[#e6cdf5] pb-12 rounded">
