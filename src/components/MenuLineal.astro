@@ -14,7 +14,7 @@
   <div class="nav__menu" id="nav-menu">
     <ul class="nav__list">
       <li><a href="/promociones" class="nav__link">Promociones</a></li>
-      <li><a href="/popnews" class="nav__link">Pop News</a></li>
+      <li><a href="/popnews" class="nav__link">Breaking News</a></li>
       <li><a href="/cine" class="nav__link">Oye de Cine</a></li>
       <li><a href="/kpop" class="nav__link">K-Pop</a></li>
 
@@ -40,10 +40,11 @@
     </ul>
     <ul class="nav__list lg:mt-2">
       <li><a href="/programacion" class="nav__link">Programación</a></li>
-      <li><a href="/poptrends" class="nav__link">Pop Trends</a></li>
+      <li><a href="/poptrends" class="nav__link">Top Ten</a></li>
       <li><a href="/eventos" class="nav__link">Eventos</a></li>
       <li><a href="/talento" class="nav__link">Talento</a></li>
       <li><a href="/entrevistas" class="nav__link">Entrevistas</a></li>
+      <li><a href="/oye-lifestyle" class="nav__link">Lifestyle</a></li>
     </ul>
   </div>
 
@@ -56,10 +57,11 @@
 
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
-  --black-color: #c026d3;
-  --black-color-light: #4c1d95;
-  --black-color-lighten: #c026d3;
+  --black-color: #fe0c01;
+  --black-color-light: #ffffff;
+  --black-color-lighten: #fff;
   --white-color: #fff;
+  --gray-color: #1f1f1f;
   --body-color: hsl(220, 100%, 97%);
 
   /*========== Font and typography ==========*/
@@ -73,11 +75,11 @@
 
   /*========== z index ==========*/
   --z-tooltip: 10;
-  --z-fixed: 100;
+  /*--z-fixed: 100;*/
 }
 
 /*========== Responsive typography ==========*/
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1140px) {
   :root {
     --normal-font-size: 1rem;
   }
@@ -118,7 +120,7 @@ a {
 }
 
 /* Navigation for mobile devices */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1140px) {
   .nav__menu {
     position: absolute;
     left: 0;
@@ -154,6 +156,7 @@ a {
 .nav__link:hover {
   background-color: var(--black-color-light);
   border-radius: 4px;
+  color: var(--gray-color);
 }
 
 /* Show menu */
@@ -188,7 +191,7 @@ a {
 .dropdown__link, 
 .dropdown__sublink {
   padding: 0.75rem 0.25rem;
-  color: var(--white-color);
+  color: var(--gray-color);
   background-color: var(--black-color-light);
   display: flex;
   align-items: center;
@@ -252,7 +255,7 @@ a {
 }
 
 /* For large devices */
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1141px) {
   .container {
     margin-inline: auto;
   }
