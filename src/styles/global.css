@@ -70,11 +70,11 @@ body {
 	background-size: 40px 40px;
 	background-position: 0 0,20px 20px;*/
 }
-/*header{
+header{
   position: sticky;
   top: 0;
   z-index: 11;
-}*/
+}
 main {
 	width: 100%;
 	/*max-width: calc(100% - 1em);*/
