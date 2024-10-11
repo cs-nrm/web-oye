@@ -195,7 +195,11 @@ hr {
     100% {      transform: translate(0);    }
   }
 
-  
+/* PUBLICIDAD   */
+.leader {position: relative;}
+.leader:hover iframe{ height: 400px!important; z-index: 10; position: absolute; }
+ 
+
 
 
 /* PROGRAMACIÓN */
