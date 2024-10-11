@@ -31,7 +31,7 @@ import LeaderBoard from '../components/LeaderBoard.astro';
 				<section>
 					<HomeHeader />
 				</section>
-				<section>
+				<section class="bg-[#1f1f1f]">
 					<div class="flex flex-wrap container-home mx-auto">
 						<LeaderBoard />
 						<!--div class="md:table my-7 mx-auto text-center">
@@ -40,13 +40,13 @@ import LeaderBoard from '../components/LeaderBoard.astro';
 					</div>
 				</section>
 				<section>
-					<div class="table mx-auto text-center mt-4 mb-12 sm:hidden">
+					<div class="table mx-auto text-center mb-12 sm:hidden">
 						<a href="/peticiones">
 						<img src="https://contenido.oyedigital.mx/wp-content/uploads/2024/07/BANNER-2.jpg" width="300" height="100" alt="Imagen Peticiones" />
 						</a>
 					</div>
 				</section>
-				<!--secttion>
+				<!--section>
 					<div class="container-home px-4 my-12 mx-auto">
 						<div class="flex flex-wrap">
 							<div class="w-full lg:w-2/3">
@@ -59,44 +59,43 @@ import LeaderBoard from '../components/LeaderBoard.astro';
 							</div>
 						</div>
 					</div>
-				</secttion-->
-				<secttion>
-					<div class="container-home px-4 my-12 mx-auto">
+				</section-->
+				<section>
+					<div class="container-home mx-auto">
 						<div class="w-full">
-							<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop News</h1>
+							<!--h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop News</h1-->
+							<h1 class="p-4 font-bold text-4xl md:text-5xl text-oye tracking-tight">Oye Breaking News</h1>
 							<CardNews />
 						</div>
 					</div>
-				</secttion>
-				<secttion>
+				</section>
+				<section class="bg-[#1f1f1f] py-0.5">
 					<div class="container-home px-4 my-12 mx-auto">
-						<div class="w-full bg-[#e6cdf5] pb-12 rounded">
-							<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl text-center [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop Trends</h1>
+						<div class="w-full bg-oye pb-12 rounded">
+							<h1 class="py-4 font-bold text-4xl md:text-5xl text-white text-center">Oye Top Ten</h1>
 							<SliderPoptrends />
 						</div>
 					</div>
-				</secttion>
-				<secttion>
-					<div class="container-home px-4 my-12 mx-auto">
+				</section>
+				<section>
+					<div class="container-home mx-auto">
 						<div class="w-full">
-							<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">K-Pop</h1>
+							<h1 class="p-4 font-bold text-4xl md:text-5xl text-oye tracking-tight">K-Pop</h1>
 							<CardKpop />
 						</div>
 					</div>
-				</secttion>
-				<Separator />
-				<secttion>
-					<div class="container-home px-4 my-12 mx-auto">
+				</section>
+				<section class="bg-[#1f1f1f]">
+					<div class="container-home mx-auto py-2">
 						<div class="w-full">
-							<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Oye de Cine</h1>
+							<h1 class="p-4 font-bold text-4xl md:text-5xl text-oye tracking-tight">Oye de Cine</h1>
 							<CardCine />
 						</div>
 					</div>
-				</secttion>
-				<Separator />
+				</section>
 				<section>
-					<div class="container-home lg:my-12 mx-auto">
-						<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Promociones</h1>
+					<div class="container-home mx-auto">
+						<h1 class="p-4 font-bold text-4xl md:text-5xl text-oye tracking-tight">Promociones</h1>
 						<div class="flex flex-wrap">
 							<div class="w-full lg:w-2/3">
 								<SliderPromociones />
@@ -109,9 +108,9 @@ import LeaderBoard from '../components/LeaderBoard.astro';
 					</div>
 				</section>
 
-				<section>
+				<section class="bg-[#1f1f1f]">
 					<div class="container-home w-full mx-auto">
-						<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Podcast</h1>
+						<h1 class="p-4 font-bold text-4xl md:text-5xl text-oye tracking-tight">Podcast</h1>
 						<SliderPodcast />
 					</div>
 				</section>
