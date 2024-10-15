@@ -46,10 +46,22 @@ body {
 	background-size: 40px 40px;
 	background-position: 0 0,20px 20px;
 }
+body, a{
+  cursor: url(https://stereociendigital.mx/wp-content/uploads/2024/10/CURSOR-MUERTOS.png), pointer;
+}
+a:hover {
+  cursor: url(https://stereociendigital.mx/wp-content/uploads/2024/10/CURSOR-MUERTOS2.png), pointer;
+}
 header{
   position: sticky;
   top: 0;
   z-index: 11;
+}
+header nav {
+  background-image: url(https://contenido.oyedigital.mx/wp-content/uploads/2024/10/octubre-muertos-oye.png) !important; 
+  background-repeat: no-repeat; 
+  background-position: top center; 
+  background-color: #39033f;
 }
 main {
 	width: 100%;
