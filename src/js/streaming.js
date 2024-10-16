@@ -503,7 +503,7 @@ const showMenu = (toggleId, navId) =>{
                             text: "Gracias por tu voto",
                             className: "info",
                             style: {
-                              background: "linear-gradient(to right, #ec4899, #a855f7)",
+                              background: '#1f1f1f',
                               'border-radius': '6px',
                               'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
                             },
@@ -834,7 +834,7 @@ const showMenu = (toggleId, navId) =>{
                             text: "Gracias por tu voto",
                             className: "info",
                             style: {
-                              background: "linear-gradient(to right, #ec4899, #a855f7)",
+                              background: '#1f1f1f',
                               'border-radius': '6px',
                               'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
                             },
