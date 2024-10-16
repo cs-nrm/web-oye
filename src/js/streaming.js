@@ -403,11 +403,11 @@ const showMenu = (toggleId, navId) =>{
  
  showMenu('nav-toggle','nav-menu');
 
-   const getplayingstatus = playerstatus();
-    document.querySelector('main').classList.remove('loading');    
-    document.querySelector('.preloader').classList.remove('showpreloader');
-    
-    const secchome = document.getElementById('home');
+const getplayingstatus = playerstatus();
+document.querySelector('main').classList.remove('loading');    
+document.querySelector('.preloader').classList.remove('showpreloader');
+const secchome = document.getElementById('home');
+
     if ( secchome ){
         getInfoProg();
         if( getplayingstatus == 'radio-playing'){
@@ -458,26 +458,17 @@ const showMenu = (toggleId, navId) =>{
             autoPlay: true
         });
 
-
- $('.voto-pop').each(function(){
-
-    
-    $(this).on('click', function(){
-        
+        $('.voto-pop').each(function(){    
+        $(this).on('click', function(){        
                 console.log($(this).attr('data-voto-id'));
-                const id = $(this).attr('data-voto-id');                                
-                /*const params = {
-                    "search": id, 
-                    "per_page": 1000                    
-                };*/
+                const id = $(this).attr('data-voto-id');                                                
                 const params = {
                     "item_id":id,
                     "user_id":15,
                     "type":"post",
                     "user_ip":"0.0.0.0",
                     "status":"like"
-                };
-                
+                };                
                 const Rparamas = {
                     method: 'POST',
                     headers: {
@@ -513,12 +504,8 @@ const showMenu = (toggleId, navId) =>{
                             }
                         }).showToast();
                 });
-
             });            
         });
-
-
-
     }
     
     const imagenNota = document.getElementById("imagen-nota");
