@@ -515,7 +515,7 @@ const secchome = document.getElementById('home');
                             text: "Gracias por tu voto",
                             className: "info",
                             style: {
-                              background: "linear-gradient(to right, #ec4899, #a855f7)",
+                              background: "#000",
                               'border-radius': '6px',
                               'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
                             },
@@ -532,7 +532,7 @@ const secchome = document.getElementById('home');
                     text: "Espera un minuto para poder volver a votar",
                     className: "info",
                     style: {
-                      background: "linear-gradient(to right, #ec4899, #a855f7)",
+                      background: "#000",
                       'border-radius': '6px',
                       'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
                     },
@@ -822,7 +822,7 @@ const secchome = document.getElementById('home');
         /*voto*/
         var yavoto = 0;
         var allowvote = 60;
-        
+
         $('.voto-pop').each(function(){    
             $(this).on('click', function(){
                 console.log(yavoto);
@@ -877,7 +877,7 @@ const secchome = document.getElementById('home');
                                 text: "Gracias por tu voto",
                                 className: "info",
                                 style: {
-                                  background: "linear-gradient(to right, #ec4899, #a855f7)",
+                                  background: "#000",
                                   'border-radius': '6px',
                                   'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
                                 },
@@ -894,7 +894,7 @@ const secchome = document.getElementById('home');
                         text: "Espera un minuto para poder volver a votar",
                         className: "info",
                         style: {
-                          background: "linear-gradient(to right, #ec4899, #a855f7)",
+                          background: "#000",
                           'border-radius': '6px',
                           'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
                         },
