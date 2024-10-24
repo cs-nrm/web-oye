@@ -28,8 +28,8 @@
 /* BACK DIA DE MUERTOS */
 /*header nav {background-image: url(https://contenido.oyedigital.mx/wp-content/uploads/2024/10/octubre-muertos-oye.png) !important; background-repeat: no-repeat; background-position: top center; background-color: #39033f;}*/
 
-body, a{cursor: url(https://stereociendigital.mx/wp-content/uploads/2024/10/CURSOR-MUERTOS.png), pointer;}
-a:hover {cursor: url(https://stereociendigital.mx/wp-content/uploads/2024/10/CURSOR-MUERTOS2.png), pointer;}
+/*body, a{cursor: url(https://stereociendigital.mx/wp-content/uploads/2024/10/CURSOR-MUERTOS.png), pointer;}
+a:hover {cursor: url(https://stereociendigital.mx/wp-content/uploads/2024/10/CURSOR-MUERTOS2.png), pointer;}*/
 /* FIN DIA DE MUERTOS */
 @font-face {
 	font-family: 'Fredoka';
@@ -317,7 +317,7 @@ hr {
   }
 
 /* PUBLICIDAD   */
-.leader {position: relative; width: 100%; height: 90px;}
+.leader {position: relative; width: 728px; height: 90px;}
 .leader:hover iframe{ height: 400px!important; z-index: 10; position: absolute; left: 0; right: 0; margin: 0 auto;}
  
 
