@@ -150,7 +150,8 @@ const secchome = document.getElementById('home');
         console.log( 'AdBlockerDetected' );
     }
 
-    initPlayerSDK();        
+    initPlayerSDK();
+            
         volume = document.getElementById('vol');
         volume.addEventListener('input', function(){
             //console.log(volume.value);
