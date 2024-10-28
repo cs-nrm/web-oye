@@ -290,12 +290,13 @@ article .wp-block-embed-youtube .wp-block-embed__wrapper iframe {
 .iframestyle {box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/8p7m.gif'); background-size:contain; background-color:#15181f; border: 1px solid  black; border-radius: 6px;}
 .loading-gif {	width: 20px; height: auto;}
 
-	#player { transition: all 0.5s; background: linear-gradient(202.03deg, #741da9 14.4%, #7CDADA 78.24%); box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; animation: gradient 15s ease infinite; background-size:400%; z-index:9999;}    
+	  #player { transition: all 0.5s; background: linear-gradient(202.03deg, #741da9 14.4%, #7CDADA 78.24%); box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; animation: gradient 15s ease infinite; background-size:400%; z-index:9999;}    
     #player .show { display:block }
     #player .hide{ display: none; }
     #player .active{ display: flex!important;  transition: all 1s;}
     #player .wp-block-embed-youtube{   width: 340px; height: 250px; position: fixed; bottom: 0;    }
     
+    #player #td_container{ width: 1px; height: 1px;}
     
     .marquee { white-space: nowrap; overflow: hidden; width: 100%;}
     .marquee div{  display: inline-block; animation: animate 10s linear infinite; padding-left: 100%;}

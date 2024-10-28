@@ -1,0 +1,6 @@
+google.com, pub-4277095995979687, DIRECT, f08c47fec0942fa0
+adswizz.com, 347, RESELLER
+adswizz.com, 347, DIRECT
+entravision.com, 1529, RESELLER
+entravision.com, 1529, DIRECT
+
