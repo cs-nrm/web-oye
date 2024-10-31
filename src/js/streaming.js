@@ -703,7 +703,7 @@ const secchome = document.getElementById('home');
                             
                 containerpodcast.innerHTML ='';
                 const playerpodcast = document.createElement('iframe');
-                playerpodcast.setAttribute('src',src[0]+"?image=0&share=0&download=1&description=0&follow=0");
+                playerpodcast.setAttribute('src',src[0]+"?image=0&share=0&download=1&description=0&follow=0&background=000000&foreground=ffffff&highlight=fe0c01");
                 playerpodcast.setAttribute('width','250');
                 playerpodcast.setAttribute('height','300');
                 playerpodcast.setAttribute('frameborder','0');
