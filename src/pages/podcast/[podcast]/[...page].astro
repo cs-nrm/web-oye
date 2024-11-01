@@ -9,17 +9,17 @@ import Card from '../../../layouts/CardsPodcast.astro';
 
 export async function getStaticPaths( { paginate } ) {
     
-  const arrpodcast = [
-        {nodo: 6806,title: 'Al otro lado de la Radio', link: 'al-otro-lado-de-la-radio', imagen: 'https://contenido.oyedigital.mx/wp-content/uploads/2024/05/DETRASdelaRADIO11-min-min.jpg', descripcion: 'Un podcast donde podrás escuchar a tus artistas favoritos y conocer más sobre ellos.'},
-        {nodo: 6581,title: 'Pop Trends', link: 'pop-trends', imagen: 'https://contenido.oyedigital.mx/wp-content/uploads/2024/05/POP-TRENDS-portada-min.jpg', descripcion: 'La música más top, nueva y relevante que escuchas, tu votas por tener tu canción en los 10 primero lugares.'},
-        {nodo: 6734,title: 'Respira', link: 'respira', imagen: 'https://contenido.oyedigital.mx/wp-content/uploads/2024/05/poscast-repira2-min.jpg', descripcion: 'Descubrir que tienes un problema de salud mental es una noticia impactante que puede transformar tu vida por completo.'},
-        {nodo: 3801,title: 'Top Gaming', link: 'top-gaming', imagen: 'https://contenido.oyedigital.mx/wp-content/uploads/2024/05/TOP-GAMING-min.jpg', descripcion: 'Un clavado al mundo de los gamers en el cual conocerás todo sobre los lanzamientos, mejores juegos del momento y los que vienen.'},
-        {nodo: 3813,title: 'Top Tech', link: 'top-tech', imagen: 'https://contenido.oyedigital.mx/wp-content/uploads/2024/05/TOP-TECH-min.jpg', descripcion: 'Top Tech con Diego Gil y Geekzilla. un podcast en el que conoceremos todo sobre la tecnología que nos está rodeando.'},
-        {nodo: 3788,title: 'Tu Fandom', link: 'tu-fandom', imagen: 'https://contenido.oyedigital.mx/wp-content/uploads/2024/05/podcast-FANDOM-PORTADA-PAG-min.jpg', descripcion: 'Pone el reflector sobre los fandoms más activos de las redes sociales, bajo la premisa de “USTEDES HACEN LA PLAYLIST”, a través del #OyeTuFandom seleccionamos los Idols más votados.'},
-        {nodo: 3449,title: 'El Debraye', link: 'el-debraye', imagen:'https://contenido.oyedigital.mx/wp-content/uploads/2024/05/podcast-debraye-min.jpg', descripcion:''},
-        {nodo: 7404,title: 'Oye la Alternativa', link: 'la-alternativa', imagen:'https://contenido.oyedigital.mx/wp-content/uploads/2024/05/OYE_alternativa-PODCAST-min-min.jpg', descripcion:'El espacio donde toda la música se escucha, sin distinción, entrevistas de todos los géneros en un solo lugar. '},
-        {nodo: 7812,title: 'Oye la Zona Coder', link: 'zona-coder', imagen:'https://contenido.oyedigital.mx/wp-content/uploads/2024/06/zona-coder-min.jpg', descripcion:'Es el espacio de las Coders en Oye897fm donde podrán escuchar sus canciones favoritas de CD9 junto a Sergio Mejia. Somos la estación oficial de CD9.'},
-  ];
+    const arrpodcast = [
+        {nodo: 9046,title: 'El camino de las estrellas con Jaidy Robles', link: 'el-camino-de-las-estrellas', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_elcamino-min.jpg', descripcion: '¿Te gustaría saber, cómo iniciaron tus artistas  favoritos?  Jaidy Robles te dirá detalle a detalle de tu artista y mucho más. '},
+        {nodo: 9047,title: 'Aquí y Ahora platicamos con Sergio Mejía', link: 'aqui-y-ahora', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_aqui-min.jpg', descripcion: 'Lo importante de la vida es vivir en el Aquí y en el Ahora. Expertos llegan con Sergio Mejía para contarnos sobre sus experiencias y todo lo que saben. '},
+        {nodo: 9048,title: 'Noticias que parecen broma pero no son con Aura Ramírez', link: 'noticias-que-parecen-broma-pero-no-son', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_noticias-min.jpg', descripcion: 'Ya llegóoooo el que será tu próximo podcast favorito. Soy Aura Ramírez y cada semana te traeré un combo de noticias que parecen falsas pero en realidad NO lo son. Prepara tu café, sírvete un pan y entérate de lo que pasa en el mundo con un toque de jiribilla, claro que sí.'},
+        {nodo: 9049,title: 'Quiero ser viral con Emilio Catalán', link: 'quiero-ser-viral', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_viral2-min.jpg', descripcion: 'Los trends de la semana y temas virales en redes sociales.'},
+        {nodo: 3813,title: 'Top Tech con Diego Gil y Geekzilla', link: 'top-tech', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_top-tech-min.jpg', descripcion: 'Top Tech con Diego Gil y Geekzilla. un podcast en el que conoceremos todo sobre la tecnología que nos está rodeando.'},
+        {nodo: 9050,title: 'Tips y recomendaciones con Sharon Azoulay', link: 'tips-y-recomendaciones', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_tips-min.jpg', descripcion: 'Los mejores libros para leer y la belleza en un solo podcast. '},
+        {nodo: 9051,title: 'Receta fit con la pelirroja de la radio', link: 'receta-fit', imagen:'', descripcion:'Las mejores recetas fitness para tu día a día de forma fácil y rápida.'},
+        {nodo: 9052,title: 'Alguien lo tiene que hacer con Poncho Yezka', link: 'alguien-lo-tiene-que-hacer', imagen:'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_alguien-min.jpg', descripcion:''},
+        {nodo: 9053,title: 'Memorias con Arturo Forzán', link: 'memorias', imagen:'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_memorias-min.jpg', descripcion:''},
+    ]; 
 
   
   const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=200&_fields=title,slug,yoast_head_json,categories,acf&categories=3449,3788,3813,3801,6734,6581,6806,7404,7812" ); 
