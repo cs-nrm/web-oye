@@ -337,9 +337,8 @@ hr {
     background: #1f1f1f;
     width: 100%;
     justify-content: space-between;
-    color: rgb(68 68 68);
+    color: rgb(255, 255, 255);
     letter-spacing: 3px;
-    text-shadow: 1px 2px rgb(254 12 1 / 61%);
 	border-radius: 4px;
 }
 
@@ -347,8 +346,7 @@ hr {
   padding: 10px 10px 0px 10px;
 }
 .tabs.programacion .tab-wrapper input:checked + label, .tabs.programacion .tab-wrapper label:hover{
-    color: rgb(238, 238, 238);
-    text-shadow: 1px 2px rgb(254 12 1 / 61%);
+    color: var(--rojo-oye);
 }
 
 /* CONTENIDO NOTAS */
