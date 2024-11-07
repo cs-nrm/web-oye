@@ -8,9 +8,12 @@ import DoubleBox from '../../components/DoubleBox.astro';
 import BoxBanner from '../../components/BoxBanner.astro';
 
 
-const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=20&categories=280&_fields=id,title,yoast_head_json,content,slug,categories");
+const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=20&categories=280&_fields=id,title,yoast_head_json,content,slug,categories,acf");
 const posts = await res.json();
 
+posts.sort(function(a, b){ 
+    return ((a.acf.posicion > b.acf.posicion) ? 1 : (a.acf.posicion < b.acf.posicion) ? -1 : 0);
+});
 ---
 
 <!doctype html>
