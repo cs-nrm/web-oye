@@ -591,3 +591,18 @@ article .wp-block-embed-youtube .wp-block-embed__wrapper iframe {
   background: linear-gradient(0deg, rgba(31, 31, 31, 1) 1%, rgba(254, 12, 1, 1) 100%) !important;
   color: white !important;
 }
+
+/* POP TRENDS */
+.poptrend-video .aspect-video .plyr__video-wrapper.plyr__video-embed{
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+.poptrend-video .aspect-video .plyr__video-wrapper.plyr__video-embed iframe{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
