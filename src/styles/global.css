@@ -593,13 +593,13 @@ article .wp-block-embed-youtube .wp-block-embed__wrapper iframe {
 }
 
 /* POP TRENDS */
-.poptrend-video .aspect-video .plyr__video-wrapper.plyr__video-embed{
+.poptrend-video .wp-block-embed__wrapper{
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
 }
-.poptrend-video .aspect-video .plyr__video-wrapper.plyr__video-embed iframe{
+.poptrend-video .wp-block-embed__wrapper iframe{
     position: absolute;
     top:0;
     left: 0;
