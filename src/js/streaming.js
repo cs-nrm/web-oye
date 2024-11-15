@@ -542,7 +542,7 @@ const secchome = document.getElementById('home');
                 const Rparamas = {
                     method: 'POST',
                     headers: {
-                        'Authorization': 'Bearer 31ifYsZyDJTM2ZZ9PxjDvTbUjRB7DgSNvG9eiJZZNT33Z3LEMo3RK7jlNc9XzXOvg3gwB2JuoDbT1L3KW6xoQBfqbsBoyBDYhQ597HPpFd8tremnnBpArzDW',
+                        'Authorization': 'Bearer ngXupo2jqRcdogAaVAwfiVZhEDULq9kRRKrWZzpsnE6ETAbBu5abURCmA98SvA2SOXKjtC3uqW15DV2dEhWP1QrGkkSZb8c8vhI8Snbszb94oXYGmewSgTW3',
                         'Content-Type': 'application/json'
                     },                    
                     body: JSON.stringify( params )
@@ -904,7 +904,7 @@ const secchome = document.getElementById('home');
                     const Rparamas = {
                         method: 'POST',
                         headers: {
-                            'Authorization': 'Bearer 31ifYsZyDJTM2ZZ9PxjDvTbUjRB7DgSNvG9eiJZZNT33Z3LEMo3RK7jlNc9XzXOvg3gwB2JuoDbT1L3KW6xoQBfqbsBoyBDYhQ597HPpFd8tremnnBpArzDW',
+                            'Authorization': 'Bearer ngXupo2jqRcdogAaVAwfiVZhEDULq9kRRKrWZzpsnE6ETAbBu5abURCmA98SvA2SOXKjtC3uqW15DV2dEhWP1QrGkkSZb8c8vhI8Snbszb94oXYGmewSgTW3',
                             'Content-Type': 'application/json'
                         },                    
                         body: JSON.stringify( params )
