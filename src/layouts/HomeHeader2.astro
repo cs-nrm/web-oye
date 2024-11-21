@@ -1,3 +1,6 @@
+---
+import Navidad from '../components/Navidad.astro';
+---
 <div class="heder-player relative">
   <div class="relative min-h-[300px] xl:min-h-[500px] max-h-[500px]" id="infoprog">
       <!--ul class="ken-burns-slideshow hidden md:block">
@@ -19,8 +22,11 @@
           </div>
       </div-->
 
-      <div class="absolute left-[5%] lg:left-[10%]">
-        <img class="max-h-[300px] xl:max-h-[500px] w-auto" src="https://storage.googleapis.com/nrm-web/oye/recursos/OYE_TRIANGULOS%203-min.png" alt="Ahora en vivo" width="500" height="500" />
+      <div class="w-[50%] absolute left-[5%] lg:left-[10%]">
+        <img class="block xl:hidden max-h-[300px] xl:max-h-[500px] w-auto" src="https://storage.googleapis.com/nrm-web/oye/recursos/OYE_TRIANGULOS%203-min.png" alt="Ahora en vivo" width="500" height="500" /-->
+        <div class="hidden xl:block">
+        <Navidad />
+        </div>
       </div>
       <div class="absolute z-50 p-1 right-0 bottom-0 bg-[#00000094] rounded hidden md:block">
         <div class="flex items-center justify-center">
@@ -64,7 +70,8 @@
     z-index: 1;
     /*background-color: #BF29D3;
     background: linear-gradient(202.03deg, #741da9 14.4%, #7CDADA 78.24%); */
-    background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/oye-foto-home-opacidad.jpg');
+    /*background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/oye-foto-home-opacidad.jpg');*/
+    background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/oye-foto-navidad-opacidad.jpg');
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;

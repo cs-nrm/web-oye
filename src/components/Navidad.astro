@@ -1,0 +1,1477 @@
+<div class="navidad">
+<div class="container-navidad">
+  <div class="gift2-aux2"></div>
+  <div class="gift2"></div>
+
+  <div class="gift3-aux3"></div>
+  <div class="gift3"></div>
+
+  <div class="tree">
+    <div class="tree__branch-1"></div>
+    <div class="tree__branch-2"></div>
+    <div class="tree__branch-3"></div>
+    <div class="tree__branch-4"></div>
+    <div class="tree__base"></div>
+    <div class="tree__shadow"></div>
+    <div class="balls">
+      <div class="balls-1"></div>
+      <div class="balls-2"></div>
+      <div class="balls-3"></div>
+      <div class="balls-4"></div>
+      <div class="balls-5"></div>
+      <div class="balls-6"></div>
+      <div class="balls-7"></div>
+      <div class="balls-8"></div>
+    </div>
+    <div class="star"></div>
+    <div class="star-shadow"></div>
+  </div>
+
+  <div class="gift-aux"></div>
+  <div class="gift">
+    <div class="base"></div>
+    <div class="lace"></div>
+    <div class="lace2"></div>
+  </div>
+
+  <div class="shelf"></div>
+  <div class="shelf__pe"></div>
+  <div class="shelf__re"></div>
+
+  <div class="window">
+    <div class="montain"></div>
+    <div class="snow"></div>
+  </div>
+
+  <div class="santa">
+    <div class="santa__body">
+      <div class="santa__leg">
+        <div class="santa__body__foot--r"></div>
+        <div class="santa__body__foot--l"></div>
+        <div class="santa__body__leg--r"></div>
+        <div class="santa__body__leg--l"></div>
+      </div>
+
+      <div class="santa__body__chest">
+        <div class="santa__body__chest--base"></div>
+        <div class="santa__body__chest--belt"></div>
+        <div class="santa__body__chest--aux"></div>
+      </div>
+
+      <div class="santa__body__arm">
+        <div class="santa__body__arm--r"></div>
+        <div class="santa__body__arm--l"></div>
+        <div class="santa__bag"></div>
+        <div class="santa__body__hand--r"></div>
+        <div class="santa__body__hand--l"></div>
+        <div class="santa__bag--aux"></div>
+      </div>
+    </div>
+
+    <div class="santa__head">
+      <div class="santa__head--backofhead"></div>
+      <div class="santa__head--beard"></div>
+      <div class="santa__head--face"></div>
+      <div class="santa__head--eye-r"></div>
+      <div class="santa__head--eye-l"></div>
+      <div class="santa__head--nose"></div>
+    </div>
+
+    <div class="santa__hat">
+      <div class="santa__hat--fluffy-aux"></div>
+      <div class="santa__hat--base-aux"></div>
+      <div class="santa__hat--base"></div>
+      <div class="santa__hat--fluffy"></div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<style>
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC");
+@import url("https://fonts.cdnfonts.com/css/star-jedi");
+/*.footer {
+  bottom: -4rem;
+  color: white;
+  font-size: 2rem;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+}
+.footer .title {
+  font-family: "Amatic SC";
+  font-size: 2.3rem;
+  display: flex;
+  justify-content: space-between;
+}
+.footer .title .heart {
+  color: red;
+}
+.footer .credits {
+  width: 18.3rem;
+}
+.footer .sub {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.4rem;
+  font-family: "Amatic SC";
+}
+.footer .sub a {
+  color: grey;
+  text-decoration: none;
+}
+.footer .sub a:hover {
+  color: white;
+}*/
+
+.navidad {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-navidad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  bottom: 0;
+  width: 500px;
+  border-radius: 62rem;
+  overflow: hidden;
+  height: 500px;
+  background-color: #171a21;
+  position: absolute;
+  border: 6px solid #dedede;
+}
+
+.tree {
+  position: absolute;
+  height: 22rem;
+  width: 0rem;
+  transform: scale(0.85);
+  right: 10rem;
+  z-index: 99;
+}
+.tree__branch-1 {
+  width: 0;
+  height: 0;
+  border-left: 4.5rem solid transparent;
+  border-right: 4.5rem solid transparent;
+  border-bottom: 6.6rem solid #5b393c;
+  position: absolute;
+  z-index: 10;
+  border-radius: 3.2rem;
+}
+.tree__branch-1:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 4rem solid transparent;
+  border-right: 4rem solid transparent;
+  border-bottom: 6rem solid #b5ce58;
+  position: absolute;
+  left: -80px;
+  top: 5px;
+  border-radius: 3.2rem;
+}
+.tree__branch-2 {
+  width: 0;
+  height: 0;
+  border-left: 5.5rem solid transparent;
+  border-right: 5.5rem solid transparent;
+  border-bottom: 7.6rem solid #5b393c;
+  position: absolute;
+  top: 2rem;
+  left: -1rem;
+  border-radius: 3.2rem;
+  z-index: 8;
+}
+.tree__branch-2:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 5rem solid transparent;
+  border-right: 5rem solid transparent;
+  border-bottom: 7rem solid #94a94b;
+  position: absolute;
+  left: -98.8px;
+  top: 5px;
+  border-radius: 3.2rem;
+}
+.tree__branch-3 {
+  width: 0;
+  height: 0;
+  border-left: 7.5rem solid transparent;
+  border-right: 7.5rem solid transparent;
+  border-bottom: 9.6rem solid #5b393c;
+  position: absolute;
+  top: 3.4rem;
+  left: -3rem;
+  border-radius: 3.2rem;
+  z-index: 6;
+}
+.tree__branch-3:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 7rem solid transparent;
+  border-right: 7rem solid transparent;
+  border-bottom: 9rem solid #778641;
+  position: absolute;
+  left: -7rem;
+  top: 5px;
+  border-radius: 3.2rem;
+}
+.tree__branch-4 {
+  width: 0;
+  height: 0;
+  border-left: 9.5rem solid transparent;
+  border-right: 9.5rem solid transparent;
+  border-bottom: 11.6rem solid #5b393c;
+  position: absolute;
+  top: 6rem;
+  left: -5rem;
+  border-radius: 3.2rem;
+  z-index: 5;
+}
+.tree__branch-4:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 9rem solid transparent;
+  border-right: 9rem solid transparent;
+  border-bottom: 11rem solid #92aa4c;
+  position: absolute;
+  left: -9rem;
+  top: 5px;
+  border-radius: 3.2rem;
+}
+.tree__base {
+  width: 5rem;
+  height: 5rem;
+  background-color: #916363;
+  position: absolute;
+  z-index: 1;
+  top: 16rem;
+  left: 2rem;
+  border-radius: 2rem;
+  box-shadow: inset -17px 30px 0px #7a4e4d;
+}
+.tree__shadow {
+  z-index: 1;
+  width: 4rem;
+  height: 4.5rem;
+  position: absolute;
+  z-index: 2;
+  top: 17rem;
+  left: 2rem;
+  border-radius: 14rem;
+  box-shadow: 3px 102px 4px 4px #0000004d;
+  transform: rotateX(75deg);
+}
+.tree .balls {
+  position: absolute;
+}
+.tree .balls-1 {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #e8604b;
+  background-image: url("https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-home-min.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  z-index: 60;
+  border-radius: 50%;
+  box-shadow: inset 2px -1px #e3e3e3;
+  border: 3px solid #5b3a3c;
+  left: 2rem;
+  top: 2rem;
+  animation: red-light 1s 0.3s infinite;
+}
+.tree .balls-1:before {
+  content: "";
+  width: 2.1rem;
+  height: 0.2rem;
+  background: #5b393c;
+  position: absolute;
+  left: 1.4rem;
+  top: 1.4rem;
+  transform: rotate(26deg);
+}
+.tree .balls-2 {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #fdb934;
+  background-image: url("https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-home-min.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  z-index: 60;
+  border-radius: 50%;
+  box-shadow: inset 2px -1px #e3e3e3;
+  border: 3px solid #5b3a3c;
+  left: 5.4rem;
+  top: 3.3rem;
+  animation: yellow-light 1s 0.1s infinite;
+}
+.tree .balls-3 {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #efefef;
+  background-image: url("https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-home-min.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  z-index: 60;
+  border-radius: 50%;
+  box-shadow: inset 2px -1px #e3e3e3;
+  border: 3px solid #5b3a3c;
+  left: 3.2rem;
+  top: 6.7rem;
+  animation: white-light 1s infinite;
+}
+.tree .balls-3:before {
+  content: "";
+  width: 3.1rem;
+  height: 0.2rem;
+  background: #5b393c;
+  position: absolute;
+  left: 1.5rem;
+  top: 0.3rem;
+  transform: rotate(-16deg);
+}
+.tree .balls-3:after {
+  content: "";
+  width: 2.7rem;
+  height: 0.2rem;
+  background: #5b393c;
+  position: absolute;
+  left: -2.6rem;
+  top: 1.4rem;
+  transform: rotate(-16deg);
+}
+.tree .balls-4 {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #fdb934;
+  background-image: url("https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-home-min.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  z-index: 60;
+  border-radius: 50%;
+  box-shadow: inset 2px -1px #e3e3e3;
+  border: 3px solid #5b3a3c;
+  left: -1.2rem;
+  top: 9.4rem;
+  animation: yellow-light 1s 0.5s infinite;
+}
+.tree .balls-4:before {
+  content: "";
+  width: 6.1rem;
+  height: 0.2rem;
+  background: #5b393c;
+  position: absolute;
+  left: 4.5rem;
+  top: 2.2rem;
+  transform: rotate(-8deg);
+}
+.tree .balls-5 {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #e8604b;
+  background-image: url("https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-home-min.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  z-index: 60;
+  border-radius: 50%;
+  box-shadow: inset 2px -1px #e3e3e3;
+  border: 3px solid #5b3a3c;
+  left: 1.8rem;
+  top: 11.4rem;
+  animation: red-light 1s 0.2s infinite;
+}
+.tree .balls-5:before {
+  content: "";
+  width: 2.1rem;
+  height: 0.2rem;
+  background: #5b393c;
+  position: absolute;
+  left: -1.9rem;
+  top: -0.2rem;
+  transform: rotate(35deg);
+}
+.tree .balls-6 {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #5768a5;
+  background-image: url("https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-home-min.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  z-index: 60;
+  border-radius: 50%;
+  box-shadow: inset 2px -1px #e3e3e3;
+  border: 3px solid #5b3a3c;
+  left: 8.8rem;
+  top: 10.4rem;
+  animation: blue-light 1s 0.2s infinite;
+}
+.tree .balls-6:before {
+  content: "";
+  width: 3.9rem;
+  height: 0.2rem;
+  background: #5b393c;
+  position: absolute;
+  left: -1.9rem;
+  top: 3.8rem;
+  transform: rotate(-18deg);
+}
+.tree .balls-7 {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #efefef;
+  background-image: url("https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-home-min.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  z-index: 60;
+  border-radius: 50%;
+  box-shadow: inset 2px -1px #e3e3e3;
+  border: 3px solid #5b3a3c;
+  left: 5.8rem;
+  top: 14.4rem;
+  animation: white-light 1s 0.3s infinite;
+}
+.tree .balls-7:before {
+  content: "";
+  width: 6.9rem;
+  height: 0.2rem;
+  background: #5b393c;
+  position: absolute;
+  left: -6.9rem;
+  top: 1.2rem;
+  transform: rotate(-7deg);
+}
+.tree .balls-8 {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #5768a5;
+  background-image: url("https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-home-min.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  z-index: 60;
+  border-radius: 50%;
+  box-shadow: inset 2px -1px #e3e3e3;
+  border: 3px solid #5b3a3c;
+  left: -2.2rem;
+  top: 15.4rem;
+  animation: blue-light 1s infinite;
+}
+.tree .balls-8:before {
+  content: "";
+  width: 1.9rem;
+  height: 0.2rem;
+  background: #5b393c;
+  position: absolute;
+  left: -1.9rem;
+  top: 0.8rem;
+  transform: rotate(-7deg);
+}
+.tree .star {
+  --star-color: orange;
+  margin: 1em auto;
+  font-size: 1rem;
+  position: absolute;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-right: 1em solid transparent;
+  border-bottom: 0.7em solid var(--star-color);
+  border-left: 1em solid transparent;
+  top: -2.4rem;
+  left: 3.6rem;
+  transform: rotate(36deg);
+  z-index: 80;
+}
+.tree .star:before {
+  border-bottom: 0.8em solid var(--star-color);
+  border-left: 0.3em solid transparent;
+  border-right: 0.3em solid transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -0.45em;
+  left: -0.65em;
+  display: block;
+  content: "";
+  transform: rotate(-35deg);
+}
+.tree .star:after {
+  position: absolute;
+  display: block;
+  top: 0.03em;
+  left: -1.05em;
+  width: 0;
+  height: 0;
+  border-right: 1em solid transparent;
+  border-bottom: 0.7em solid var(--star-color);
+  border-left: 1em solid transparent;
+  transform: rotate(-70deg);
+  content: "";
+}
+.tree .star-shadow {
+  --star-color: #5b3a3c;
+  margin: 1em auto;
+  font-size: 1.2rem;
+  position: absolute;
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-right: 1em solid transparent;
+  border-bottom: 0.7em solid var(--star-color);
+  border-left: 1em solid transparent;
+  top: -2.67rem;
+  left: 3.46rem;
+  transform: rotate(36deg);
+}
+.tree .star-shadow:before {
+  border-bottom: 0.8em solid var(--star-color);
+  border-left: 0.3em solid transparent;
+  border-right: 0.3em solid transparent;
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -0.45em;
+  left: -0.65em;
+  display: block;
+  content: "";
+  transform: rotate(-35deg);
+}
+.tree .star-shadow:after {
+  position: absolute;
+  display: block;
+  top: 0.03em;
+  left: -1.05em;
+  width: 0;
+  height: 0;
+  border-right: 1em solid transparent;
+  border-bottom: 0.7em solid var(--star-color);
+  border-left: 1em solid transparent;
+  transform: rotate(-70deg);
+  content: "";
+}
+
+.santa {
+  position: absolute;
+  top: -14rem;
+  left: 0rem;
+  animation: santaMove 15s 0s infinite;
+  z-index: 99999;
+  height: 22rem;
+  width: 0rem;
+  transform: scale(0.9);
+}
+.santa__head {
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  z-index: 178;
+  animation: headMove 2s infinite;
+  transform: scale(0.8);
+}
+.santa__head--face {
+  width: 9rem;
+  height: 4rem;
+  background-color: #ffddbe;
+  position: absolute;
+  border-radius: 5rem 4rem 4rem 4rem;
+  left: 50.4rem;
+  top: 26.4rem;
+  transform: skew(-19deg, 10deg);
+}
+.santa__head--eye-r {
+  width: 2rem;
+  height: 1rem;
+  position: absolute;
+  top: 27.9rem;
+  left: 51.1rem;
+  box-shadow: inset -1px 4px black;
+  border-radius: 50%;
+}
+.santa__head--eye-l {
+  width: 2rem;
+  height: 1rem;
+  position: absolute;
+  top: 28.5rem;
+  left: 55.5rem;
+  box-shadow: inset -1px 4px black;
+  border-radius: 50%;
+  transform: rotate(12deg);
+}
+.santa__head--nose {
+  width: 2rem;
+  height: 1.7rem;
+  position: absolute;
+  top: 29rem;
+  left: 52.7rem;
+  background-color: #e79f9f;
+  border-radius: 50%;
+}
+.santa__head--beard {
+  width: 9.8rem;
+  height: 7.6rem;
+  position: absolute;
+  top: 28.1rem;
+  background-color: #ffffff;
+  border-radius: 9rem 0rem 18rem 11rem;
+  left: 49.4rem;
+  transform: rotate(6deg);
+}
+.santa__head--backofhead {
+  width: 10rem;
+  height: 10rem;
+  background-color: #d1d3c7;
+  position: absolute;
+  border-radius: 5rem 4rem 5rem 4rem;
+  left: 50rem;
+  top: 25.8rem;
+  transform: skew(-19deg, 10deg);
+}
+.santa__hat {
+  position: absolute;
+  left: 0rem;
+  top: 0rem;
+  z-index: 200;
+  transform: scale(0.8);
+}
+.santa__hat--fluffy {
+  width: 8.2rem;
+  height: 2.7rem;
+  background-color: #fff;
+  position: absolute;
+  top: 24rem;
+  left: 50.5rem;
+  border-radius: 3rem 4rem 0rem 1rem;
+}
+.santa__hat--fluffy:after {
+  content: "";
+  width: 8.2rem;
+  height: 2.7rem;
+  background-color: #fff;
+  position: absolute;
+  top: 0.4rem;
+  left: 1.6rem;
+  border-radius: 3rem 9rem 0rem 0rem;
+  transform: skewY(10deg);
+}
+.santa__hat--fluffy:before {
+  content: "";
+  width: 3.5rem;
+  height: 2.7rem;
+  background-color: #fff;
+  position: absolute;
+  top: 1rem;
+  left: 7.6rem;
+  border-radius: 50rem;
+  transform: skewY(27deg);
+}
+.santa__hat--base {
+  width: 6.6rem;
+  height: 4rem;
+  background: #bd4443;
+  position: absolute;
+  top: 21.9rem;
+  left: 52.3rem;
+  border-radius: 9rem 3rem 6rem 4rem;
+  transform: skew(-33deg, 10deg);
+}
+.santa__hat--fluffy-aux {
+  width: 2rem;
+  height: 2rem;
+  background: white;
+  position: absolute;
+  top: 23.4rem;
+  left: 62.4rem;
+  border-radius: 50%;
+}
+.santa__hat--base-aux {
+  width: 6.6rem;
+  height: 2rem;
+  background: #bd4443;
+  position: absolute;
+  top: 22.7rem;
+  left: 55.3rem;
+  border-radius: 9rem 3rem 6rem 4rem;
+  transform: skew(-56deg, 25deg);
+  animation: hatMove 2s infinite;
+}
+.santa__body {
+  position: absolute;
+  top: 0rem;
+  animation: bodyMove 3s infinite;
+  transform: scale(0.8);
+}
+.santa__body__chest {
+  z-index: 50;
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+}
+.santa__body__chest--base {
+  width: 12.5rem;
+  height: 10rem;
+  background-color: #bd4443;
+  position: absolute;
+  top: 33rem;
+  left: 49.5rem;
+  border-radius: 7rem 5rem 2rem 3rem;
+  transform: rotate(-4deg);
+}
+.santa__body__chest--belt {
+  width: 13.2rem;
+  height: 2.5rem;
+  background-color: #0c0d32;
+  position: absolute;
+  top: 38.3rem;
+  left: 49.3rem;
+  border-radius: 3rem 4rem 2rem 2rem;
+  transform: rotate(2deg);
+}
+.santa__body__chest--belt:after {
+  content: "";
+  width: 2.3rem;
+  height: 2rem;
+  border-radius: 1rem;
+  border: 1rem solid #f2cc54;
+  position: absolute;
+  left: 1.7rem;
+  top: -0.6rem;
+}
+.santa__body__chest--aux {
+  width: 13rem;
+  height: 4rem;
+  position: absolute;
+  top: 38.6rem;
+  left: 49.4rem;
+  border-radius: 50%;
+  transform: rotate(1deg);
+  box-shadow: 1px 16px white;
+}
+.santa__body__arm--r {
+  width: 4rem;
+  height: 6rem;
+  position: absolute;
+  top: 33.8rem;
+  background-color: #953b3a;
+  left: 48.3rem;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  animation: rightArmMove 2s 0s infinite;
+}
+.santa__body__arm--r:before {
+  content: "";
+  width: 2rem;
+  height: 3rem;
+  position: absolute;
+  top: 3rem;
+  background-color: #953b3a;
+  left: 0rem;
+  transform: rotate(1deg);
+}
+.santa__body__arm--r:after {
+  content: "";
+  width: 3.3rem;
+  height: 3.3rem;
+  position: absolute;
+  top: 2.7rem;
+  background-color: #ffffff;
+  left: -2rem;
+  transform: rotate(-1deg);
+  border-radius: 50%;
+}
+.santa__body__arm--l {
+  width: 4.4rem;
+  height: 6rem;
+  position: absolute;
+  top: 33.8rem;
+  background-color: #bd4443;
+  left: 58.3rem;
+  border-radius: 50%;
+  transform: rotate(12deg);
+  z-index: 160;
+}
+.santa__body__arm--l:before {
+  content: "";
+  width: 2rem;
+  height: 3rem;
+  position: absolute;
+  top: 3rem;
+  background-color: #bd4443;
+  left: 0rem;
+  transform: rotate(1deg);
+}
+.santa__body__arm--l:after {
+  content: "";
+  width: 3.3rem;
+  height: 3.3rem;
+  position: absolute;
+  top: 2.7rem;
+  background-color: #ffffff;
+  left: -2rem;
+  transform: rotate(-1deg);
+  border-radius: 50%;
+}
+.santa__body__hand--r {
+  width: 3rem;
+  height: 3.5rem;
+  background-color: #101130;
+  position: absolute;
+  top: 33.1rem;
+  left: 44.8rem;
+  border-radius: 50%;
+  animation: rightHandMove 2s 0s infinite;
+}
+.santa__body__hand--r:before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background-color: #101130;
+  position: absolute;
+  top: 0.5rem;
+  left: 1.5rem;
+  border-radius: 50%;
+}
+.santa__body__hand--l {
+  width: 3rem;
+  height: 3.5rem;
+  background-color: #101130;
+  position: absolute;
+  top: 35.1rem;
+  left: 55.8rem;
+  border-radius: 50%;
+  z-index: 180;
+}
+.santa__body__hand--l:before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background-color: #101130;
+  position: absolute;
+  top: 0.8rem;
+  left: -0.3rem;
+  border-radius: 50%;
+}
+.santa__body__leg {
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  z-index: 10;
+}
+.santa__body__leg--r {
+  width: 4.4rem;
+  height: 4rem;
+  background-color: #953b3a;
+  position: absolute;
+  top: 42.2rem;
+  left: 51.1rem;
+  border-radius: 1rem 1rem 2rem 2rem;
+  transform: rotate(26deg);
+  animation: rightLegMove 2s 0s infinite;
+}
+.santa__body__leg--l {
+  width: 4.4rem;
+  height: 4.5rem;
+  background-color: #bd4443;
+  position: absolute;
+  top: 41.7rem;
+  left: 56.1rem;
+  border-radius: 1rem 1rem 2rem 4rem;
+  transform: rotate(-37deg);
+  animation: leftLegMove 2s 0s infinite;
+}
+.santa__body__foot {
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  z-index: 5;
+}
+.santa__body__foot--r {
+  width: 2.8rem;
+  height: 3rem;
+  background-color: #10112f;
+  position: absolute;
+  top: 45.2rem;
+  left: 50.7rem;
+  border-radius: 0rem 0rem 1rem 0rem;
+  transform: rotate(26deg);
+  animation: rightFootMove 2s 0s infinite;
+}
+.santa__body__foot--r:after {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background-color: #10112f;
+  position: absolute;
+  top: 1rem;
+  left: -1.4rem;
+  border-radius: 1rem 0rem 0rem 1rem;
+  transform: rotate(0deg);
+}
+.santa__body__foot--l {
+  width: 2.5rem;
+  height: 3rem;
+  background-color: #10112f;
+  position: absolute;
+  top: 42.8rem;
+  left: 60.3rem;
+  border-radius: 0rem 0rem 1rem 0rem;
+  transform: rotate(-89deg);
+  animation: leftFootMove 2s 0s infinite;
+}
+.santa__body__foot--l:after {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background-color: #10112f;
+  position: absolute;
+  top: 1rem;
+  left: -1.4rem;
+  border-radius: 1rem 0rem 0rem 1rem;
+  transform: rotate(0deg);
+}
+.santa__bag {
+  width: 9rem;
+  height: 8rem;
+  background-color: #bf2423;
+  background-image: url("https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-home-min.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  top: 29.5rem;
+  left: 60.5rem;
+  border-radius: 0rem 5rem 8rem 5rem;
+  transform: rotate(-70deg) scaleY(1.5);
+  box-shadow: inset 3px -12px 0px #a5201f;
+  z-index: 177;
+  animation: bagMove 1.3s infinite;
+}
+.santa__bag--aux {
+  width: 2rem;
+  height: 8rem;
+  background-color: #bf2423;
+  position: absolute;
+  top: 32.5rem;
+  left: 57.7rem;
+  border-radius: 0rem 5rem 8rem 1rem;
+  transform: rotate(67deg);
+  z-index: 177;
+}
+
+.shelf {
+  width: 15rem;
+  height: 1rem;
+  background-color: #715334;
+  position: relative;
+  top: 0rem;
+  border-top-right-radius: 0.3rem;
+  border-top-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.1rem;
+  border-bottom-left-radius: 0.1rem;
+  left: -5rem;
+  transform: scale(0.8);
+}
+.shelf:after {
+  width: 15rem;
+  height: 0.2rem;
+  content: "";
+  position: absolute;
+  bottom: -0.2rem;
+  background-color: rgba(82, 57, 30, 0.4);
+}
+.shelf__pe {
+  background-color: #715334;
+  position: absolute;
+  width: 1rem;
+  height: 0.9rem;
+  border-bottom-right-radius: 0.7rem;
+  border-bottom-left-radius: 0.7rem;
+  top: 13.1rem;
+  left: 3rem;
+}
+.shelf__pe:before {
+  width: 0.4rem;
+  content: "";
+  height: 0.9rem;
+  background-color: #52391e;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-bottom-right-radius: 0.8rem;
+}
+.shelf__re {
+  background-color: #715334;
+  position: absolute;
+  width: 1rem;
+  height: 0.9rem;
+  border-bottom-right-radius: 0.7rem;
+  border-bottom-left-radius: 0.7rem;
+  top: 13.1rem;
+  left: 11rem;
+}
+.shelf__re:before {
+  width: 0.4rem;
+  content: "";
+  height: 0.9rem;
+  background-color: #52391e;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-bottom-right-radius: 0.8rem;
+}
+
+.window {
+  width: 14.2rem;
+  height: 11rem;
+  background-color: #161c3f;
+  border: 5px solid #715334;
+  position: absolute;
+  left: 0.6rem;
+  top: 2rem;
+  overflow: hidden;
+  transform: scale(0.8);
+}
+.window:before {
+  content: "";
+  background: #715334;
+  width: 0.4rem;
+  height: 11.1rem;
+  position: absolute;
+  left: 6.6rem;
+  z-index: 8;
+}
+.window:after {
+  content: "";
+  background: #715334;
+  width: 14.2rem;
+  height: 0.4rem;
+  position: absolute;
+  left: 0rem;
+  top: 5.6rem;
+}
+.window .snow,
+.window .snow:before,
+.window .snow:after {
+  position: absolute;
+  top: -600px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: radial-gradient(6px 6px at 275px 331px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 369px 305px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 548px 299px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 87px 284px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 416px 392px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 548px 276px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 566px 510px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 496px 188px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 428px 576px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 351px 428px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 44px 534px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 557px 566px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 167px 156px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 570px 145px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 383px 506px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 254px 237px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 266px 133px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 79px 17px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 412px 530px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 536px 160px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 106px 7px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 148px 171px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 396px 547px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 44px 371px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 252px 517px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 66px 125px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 450px 445px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 341px 107px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 82px 528px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 383px 442px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 140px 211px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 94px 66px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 43px 178px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 580px 418px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 37px 472px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 164px 341px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 330px 94px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 336px 560px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 287px 524px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 93px 231px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 445px 272px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 180px 74px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 528px 278px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 195px 210px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 197px 56px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 427px 577px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 370px 327px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 490px 176px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 388px 162px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 360px 238px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 192px 40px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 525px 51px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 159px 338px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 365px 565px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 203px 502px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 168px 37px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 381px 508px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 564px 327px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 280px 506px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 485px 584px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 462px 363px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 491px 153px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 209px 299px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 150px 45px, white 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 287px 214px, rgba(255, 255, 255, 0.7) 50%, rgba(0, 0, 0, 0)), radial-gradient(4px 4px at 77px 380px, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0)), radial-gradient(6px 6px at 67px 373px, rgba(255, 255, 255, 0.8) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 322px 575px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(5px 5px at 315px 371px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0)), radial-gradient(3px 3px at 288px 123px, rgba(255, 255, 255, 0.9) 50%, rgba(0, 0, 0, 0));
+  background-size: 600px 600px;
+  animation: snow 3s linear infinite;
+  content: "";
+}
+.window .snow {
+  z-index: 4;
+}
+.window .snow:after {
+  margin-left: -200px;
+  opacity: 0.4;
+  animation-duration: 6s;
+  animation-direction: reverse;
+  filter: blur(3px);
+}
+.window .snow:before {
+  animation-duration: 9s;
+  animation-direction: reverse;
+  margin-left: -300px;
+  opacity: 0.65;
+  filter: blur(1.5px);
+}
+.window .montain {
+  width: 18rem;
+  height: 9rem;
+  background: #091035;
+  position: absolute;
+  bottom: -6rem;
+  border-radius: 50%;
+  left: -2rem;
+  z-index: 1;
+  box-shadow: inset -20px 4px #ffffff4d;
+}
+.window .montain:before {
+  content: "";
+  width: 19rem;
+  height: 18rem;
+  position: absolute;
+  background: #101637;
+  left: -5rem;
+  top: -1rem;
+  border-radius: 50%;
+  box-shadow: inset 18px 20px #ffffff24;
+}
+
+.gift {
+  width: 6rem;
+  height: 6rem;
+  background-color: #5a994e;
+  position: absolute;
+  top: 17rem;
+  left: 11em;
+  z-index: 9999;
+  transform: scale(0.6);
+}
+.gift .base {
+  width: 1rem;
+  height: 0.8rem;
+  position: absolute;
+  background-color: #932626;
+  left: 2.4rem;
+  z-index: 99;
+  border: 3px solid #cbcb79;
+  border-bottom: 0px;
+}
+.gift .lace {
+  width: 1.5rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #812525;
+  position: absolute;
+  left: 1.6rem;
+  top: -1rem;
+  border: 3px solid #cbcb79;
+  transform: rotate(45deg);
+}
+.gift .lace2 {
+  width: 1.5rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #812525;
+  position: absolute;
+  left: 2.5rem;
+  top: -1rem;
+  border: 3px solid #cbcb79;
+  transform: rotate(111deg);
+}
+.gift:before {
+  content: "";
+  width: 1rem;
+  height: 5.6rem;
+  background: #812525;
+  position: absolute;
+  left: 40%;
+  border: 3px solid #cbcb79;
+}
+.gift:after {
+  content: "";
+  width: 6rem;
+  height: 1rem;
+  position: absolute;
+  top: 0rem;
+  background: #5a994e;
+  box-shadow: 0px 4px 3px #00000047;
+}
+.gift-aux {
+  width: 7rem;
+  height: 4rem;
+  background-color: #0000002e;
+  position: absolute;
+  top: 32rem;
+  left: 19.6rem;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: rotateX(79deg);
+}
+
+.gift2 {
+  width: 9rem;
+  height: 8rem;
+  background-color: #bf613d;
+  position: absolute;
+  top: 15rem;
+  left: 8rem;
+  z-index: 10;
+  transform: scale(0.6);
+}
+.gift2:before {
+  content: "";
+  width: 1rem;
+  height: 8rem;
+  background: #4131cd;
+  position: absolute;
+  left: 47%;
+}
+.gift2:after {
+  content: "";
+  width: 9rem;
+  height: 1rem;
+  position: absolute;
+  top: 0rem;
+  background: #bf613d;
+  box-shadow: 0px 4px 3px #00000047;
+}
+.gift2-aux2 {
+  width: 7rem;
+  height: 4rem;
+  background-color: #0000002e;
+  position: absolute;
+  top: 31rem;
+  left: 16.9rem;
+  border-radius: 50%;
+  transform: rotateX(79deg);
+}
+.gift3 {
+  width: 9rem;
+  height: 8rem;
+  background-color: #307f7b;
+  position: absolute;
+  top: 14rem;
+  left: 12.1rem;
+  z-index: 10;
+  transform: scale(0.6);
+}
+.gift3-aux3 {
+  width: 7rem;
+  height: 4rem;
+  background-color: #0000002e;
+  position: absolute;
+  top: 30.2rem;
+  left: 22.9rem;
+  border-radius: 50%;
+  transform: rotateX(79deg);
+}
+
+@keyframes red-light {
+  0% {
+    background-color: #e54d35;
+  }
+  50% {
+    background-color: #d33820;
+  }
+  100% {
+    background-color: #e54d35;
+  }
+}
+@keyframes yellow-light {
+  0% {
+    background-color: #fdb934;
+  }
+  50% {
+    background-color: #e99b03;
+  }
+  100% {
+    background-color: #fdb934;
+  }
+}
+@keyframes blue-light {
+  0% {
+    background-color: #5768a5;
+  }
+  50% {
+    background-color: #354b9b;
+  }
+  100% {
+    background-color: #5768a5;
+  }
+}
+@keyframes white-light {
+  0% {
+    background-color: #efefef;
+  }
+  50% {
+    background-color: #ffffff;
+  }
+  100% {
+    background-color: #efefef;
+  }
+}
+@keyframes rightLegMove {
+  0% {
+    left: 51.1rem;
+    transform: rotate(26deg);
+    background-color: #953b3a;
+  }
+  50% {
+    left: 56rem;
+    transform: rotate(-10deg);
+    background-color: #bd4443;
+  }
+  100% {
+    left: 51.1rem;
+    transform: rotate(26deg);
+    background-color: #953b3a;
+  }
+}
+@keyframes leftFootMove {
+  0% {
+    top: 42.8rem;
+    left: 60.3rem;
+    transform: rotate(-89deg);
+  }
+  50% {
+    top: 45.8rem;
+    left: 50.8rem;
+    transform: rotate(10deg);
+  }
+  100% {
+    top: 42.8rem;
+    left: 60.3rem;
+    transform: rotate(-89deg);
+  }
+}
+@keyframes leftLegMove {
+  0% {
+    left: 56.1rem;
+    transform: rotate(-37deg);
+    background-color: #bd4443;
+  }
+  50% {
+    left: 50.1rem;
+    transform: rotate(32deg);
+    background-color: #953b3a;
+  }
+  100% {
+    left: 56.1rem;
+    transform: rotate(-37deg);
+    background-color: #bd4443;
+  }
+}
+@keyframes rightFootMove {
+  0% {
+    top: 45.2rem;
+    left: 50.7rem;
+    transform: rotate(26deg);
+  }
+  50% {
+    top: 43.2rem;
+    left: 59.7rem;
+    transform: rotate(-81deg);
+  }
+  100% {
+    top: 45.2rem;
+    left: 50.7rem;
+    transform: rotate(26deg);
+  }
+}
+@keyframes bagMove {
+  0% {
+    transform: rotate(-70deg) scaleY(1.5);
+    top: 29.5rem;
+  }
+  50% {
+    transform: rotate(-72deg) scaleY(1.5);
+    top: 29.4rem;
+  }
+  100% {
+    transform: rotate(-70deg) scaleY(1.5);
+    top: 29.5rem;
+  }
+}
+@keyframes headMove {
+  0% {
+    top: 0rem;
+  }
+  50% {
+    top: 0.1rem;
+  }
+  100% {
+    top: 0rem;
+  }
+}
+@keyframes hatMove {
+  0% {
+    transform: skew(-56deg, 25deg);
+  }
+  50% {
+    transform: skew(-60deg, 25deg);
+  }
+  100% {
+    transform: skew(-56deg, 25deg);
+  }
+}
+@keyframes bodyMove {
+  0% {
+    top: 0rem;
+  }
+  50% {
+    top: 0.2rem;
+  }
+  100% {
+    top: 0rem;
+  }
+}
+@keyframes rightHandMove {
+  0% {
+    top: 33.1rem;
+  }
+  50% {
+    top: 35.1rem;
+  }
+  100% {
+    top: 33.1rem;
+  }
+}
+@keyframes rightArmMove {
+  0% {
+    left: 48.3rem;
+    transform: rotate(45deg);
+    top: 33.8rem;
+  }
+  50% {
+    left: 48.3rem;
+    transform: rotate(30deg);
+    top: 35rem;
+  }
+  100% {
+    left: 48.3rem;
+    transform: rotate(45deg);
+    top: 33.8rem;
+  }
+}
+@keyframes santaMove {
+  0% {
+    left: -4rem;
+    transform: scale(1, 1);
+  }
+  49% {
+    left: -72rem;
+    transform: scale(1, 1);
+  }
+  50% {
+    left: 42rem;
+    transform: scale(-1, 1);
+  }
+  99% {
+    left: 113rem;
+    transform: scale(-1, 1);
+  }
+  100% {
+    left: -4rem;
+    transform: scale(1, 1);
+  }
+}
+@keyframes snow {
+  to {
+    transform: translateY(600px);
+  }
+}
+</style>
+

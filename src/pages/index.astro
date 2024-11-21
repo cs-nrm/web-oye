@@ -17,7 +17,9 @@ import SliderPromociones from '../layouts/SliderPromociones.astro';
 import { Image } from 'astro:assets';
 import LeaderBoard from '../components/LeaderBoard.astro';
 import SuperLeader from '../components/SuperLeader.astro';
-
+import BloqueNavidad from '../components/BloqueNavidad.astro';
+import OtroBloque from '../components/OtroBloque.astro';
+import Nieve from '../components/Nieve.astro';
 
 ---
 
@@ -30,8 +32,12 @@ import SuperLeader from '../components/SuperLeader.astro';
 		<Header title={SITE_TITLE} />
 		
 		<main id="home">
+				<Nieve />
 				<section>
 					<HomeHeader />
+				</section>
+				<section class="block xl:hidden">
+					<BloqueNavidad />
 				</section>
 				<section class="bg-[#1f1f1f]">					
 					<div class="p-1 text-center container-home mx-auto">
