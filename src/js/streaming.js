@@ -962,6 +962,14 @@ const secchome = document.getElementById('home');
         
     } 
 
+(function($){
+	$('.open-modal-tesla').click(function(){
+		$('.modal-window-tesla').addClass('mostrar-tesla');
+	});
+	$('.modal-close-tesla').click(function(){
+		$('.modal-window-tesla').removeClass('mostrar-tesla');
+	});
+})(jQuery);
         
        
 });
