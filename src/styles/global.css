@@ -633,7 +633,7 @@ article .wp-block-embed-youtube .wp-block-embed__wrapper iframe {
     max-height: 800px;
     overflow: scroll;
     position: absolute;
-    top: 50%;
+    top: 430px;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 2em;
