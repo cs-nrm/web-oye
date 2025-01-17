@@ -96,7 +96,7 @@ const secchome = document.getElementById('home');
       }
       
       function pause(){
-        streaming.pause();
+        streaming.stop();
       }
 
       function play(){
@@ -121,12 +121,12 @@ const secchome = document.getElementById('home');
    
       function errorAd(e){        
         console.log('errorad');
-        /*streaming.play({
+        streaming.play({
             station:'XEOYEFM',
             trackingParameters:{
             Dist: 'WebOye'
             }
-        });*/        
+        });
       }
     /* Callback function called to notify that the SDK is ready to be used */
     function onPlayerReady(){                
@@ -361,7 +361,7 @@ const videoActive = function(){
 }
 
 const radioStop = function(){
-        streaming.pause();
+        streaming.stop();
         $('#player').attr('data-status','init');                
         hidebarra();
         $('#player-inner').removeClass('active');
