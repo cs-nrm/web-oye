@@ -223,11 +223,11 @@ const secchome = document.getElementById('home');
                         cancion = '';
                     break;
                     case 'OYE-DEBRAYE':
-                        artist = 'EL DEBRAYE';
+                        artist = '---';
                         cancion = '';
                     break;
                     case 'OYE-TURNOS':
-                        artist = 'EL DEBRAYE';
+                        artist = '---';
                         cancion = '';
                     break;                    
                     case 'OYE-CAP':
