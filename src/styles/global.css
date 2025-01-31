@@ -3,6 +3,7 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
  :root {
 	--accent: #2337ff;
 	--accent-dark: #000d8a;
@@ -80,6 +81,7 @@ body {
 	background-size: 40px 40px;
 	background-position: 0 0,20px 20px;*/
 }
+
 header{
   position: sticky;
   top: 0;
