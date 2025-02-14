@@ -424,6 +424,14 @@ article .wp-block-embed-youtube .wp-block-embed__wrapper iframe {
   height: 100%;
 }
 
+/* PLAYER NUEVO */
+#playernuevo { z-index: 100; max-height: 150px; transition: all 0.5s ease-in-out;}    
+#playernuevo .show { display:block; transition: all 0.5s ease-in-out;}
+#playernuevo .hide{ display: none; transition: all 0.5s ease-in-out;}
+#playernuevo .active{ display: flex!important;  transition: all 1s;}
+#playernuevo .wp-block-embed-youtube{   width: 340px; height: 250px; position: fixed; bottom: 0;    }
+#playernuevo #td_container{ width: 1px; height: 1px;}
+
 /* player */
 .iframestyle {box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px; background-image: url('https://storage.googleapis.com/nrm-web/oye/recursos/8p7m.gif'); background-size:contain; background-color:#15181f; border: 1px solid  black; border-radius: 6px;}
 .loading-gif {	width: 20px; height: auto;}
