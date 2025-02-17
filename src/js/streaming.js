@@ -274,6 +274,7 @@ const secchome = document.getElementById('home');
                 }
 
                 var current_title = $('.song-title').html();
+                var cover;
                 console.log('aqui' + current_title);
                 var coverbase = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=0aa2713d85e04243944924876ba71f05&format=json";
                 console.log('coverbase' + coverbase);
@@ -298,18 +299,20 @@ const secchome = document.getElementById('home');
 						if ( dataalbum.track.album.image[2]['#text']){
                             cover = dataalbum.track.album.image[2]['#text'];
                         }else{
-            				cover = 'https://storage.googleapis.com/nrm-web/nrm/images/footer/sabrosita.png';
-                            document.getElementById('infoCover').innerHTML = cover;	
+            				cover = 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
+                            document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;	
                         }
                         
                         
-                        console.log(cover);
+                       // console.log(cover);
                         
 						if(cover == '' || cover == 'undefined' || cover == null){
-							cover = 'https://storage.googleapis.com/nrm-web/nrm/images/footer/sabrosita.png';
-                            document.getElementById('infoCover').innerHTML = cover;		
+							cover = 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
+                            //document.getElementById('infoCover').innerHTML = cover;		
+                            document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;
 						}else{
-                            document.getElementById('infoCover').innerHTML = cover;
+                            //document.getElementById('infoCover').innerHTML = cover;
+                            document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;	
                         }
                         console.log(cover);
                         
