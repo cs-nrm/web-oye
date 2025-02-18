@@ -230,11 +230,14 @@ const secchome = document.getElementById('home');
                 }
                 return res.json();
             })
-            .then((data) => {                
+            .then((data) => {  
+                console.log(data.categoria);
+                              
                 switch( data.categoria ){
-                    case 'PCRADIOS' :
-                        artist = 'CORTE';
+                    case 'COMERCIALES' :
+                        artist = 'CORTE'; 
                         cancion = '';
+                        cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
                     case 'OYE-DEBRAYE':
                         artist = '---';
@@ -247,6 +250,7 @@ const secchome = document.getElementById('home');
                     case 'OYE-CAP':
                         artist = 'CORTE';
                         cancion = '';
+                        cover= 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
                     case 'OYE-PRO':
                         artist = data.artista;
@@ -262,12 +266,21 @@ const secchome = document.getElementById('home');
                         artist = data.artista;
                         cancion = data.title;
                         hora = data.hora_real;
+                        cover= 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
-                    
+                } 
 
-                }                 
+
+                let text = artist;
+                artist = text.replace("&", "+");
+                let textc = cancion;
+                cancion = textc.replace("&", "+");
+
+                document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;
+                
                 if (cancion == ''){
                     document.getElementById('infoMusic').innerHTML = artist;
+
                 }else{
                     document.getElementById('infoCancion').innerHTML = cancion;
                     document.getElementById('infoArtista').innerHTML = artist;
@@ -292,29 +305,35 @@ const secchome = document.getElementById('home');
                             }
                             return res.json();
                         })
-                    
                     .then((dataalbum)  => {
 						console.log(dataalbum);
-						//console.log(dataalbum.track.album.image[2]['#text']);
-						if ( dataalbum.track.album.image[2]['#text']){
-                            cover = dataalbum.track.album.image[2]['#text'];
-                        }else{
-            				cover = 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
+                        var lig = dataalbum.track.album;
+                        console.log('lig'+lig);
+                        
+						if ( lig == '' || lig == 'undefined' || lig == null){
+                            cover = 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                             document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;	
+
+                        }else{
+                            cover = dataalbum.track.album.image[2]['#text'];
+                            console.log('cover' + cover);
+                            document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;
                         }
                         
                         
-                       // console.log(cover);
-                        
-						if(cover == '' || cover == 'undefined' || cover == null){
-							cover = 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
+                       /*
+
+                        if(cover == '' || cover == 'undefined' || cover == null){
+                            cover = 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                             //document.getElementById('infoCover').innerHTML = cover;		
                             document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;
-						}else{
+						}
+						else{
                             //document.getElementById('infoCover').innerHTML = cover;
                             document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;	
-                        }
-                        console.log(cover);
+                        }*/
+
+                        //console.log(cover);
                         
 					});
 
