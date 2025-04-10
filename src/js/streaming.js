@@ -286,7 +286,7 @@ const secchome = document.getElementById('home');
                 document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;
                 
                 if (cancion == ''){
-                    document.getElementById('infoMusic').innerHTML = artist;
+                    document.getElementById('infoArtista').innerHTML = artist;
 
                 }else{
                     document.getElementById('infoCancion').innerHTML = cancion;
