@@ -253,9 +253,9 @@ const secchome = document.getElementById('home');
                         cover= 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
                     case 'OYE-PRO':
-                        artist = data.artista;
-                        cancion = data.title;
-                        hora = data.hora_real;
+                        artist = 'CORTE';
+                        cancion = '';
+                        cover= 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
                     case 'OYE-MUS':
                         artist = data.artista;
