@@ -239,13 +239,20 @@ const secchome = document.getElementById('home');
                         cancion = '';
                         cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
-                    case 'OYE-DEBRAYE':
-                        artist = '---';
+                    case 'OYE-ESPECIALES' :
+                        artist = 'CORTE'; 
                         cancion = '';
+                        cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
+                    break;
+                    case 'OYE-DEBRAYE':
+                        artist = 'CORTE'; 
+                        cancion = '';
+                        cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
                     case 'OYE-TURNOS':
-                        artist = '---';
+                        artist = 'CORTE'; 
                         cancion = '';
+                        cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;                    
                     case 'OYE-CAP':
                         artist = 'CORTE';
