@@ -235,32 +235,32 @@ const secchome = document.getElementById('home');
                               
                 switch( data.categoria ){
                     case 'COMERCIALES' :
-                        artist = 'CORTE'; 
+                        artist = 'PAUSA COMERCIAL'; 
                         cancion = '';
                         cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
                     case 'OYE-ESPECIALES' :
-                        artist = 'CORTE'; 
+                        artist = 'PAUSA COMERCIAL'; 
                         cancion = '';
                         cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
                     case 'OYE-DEBRAYE':
-                        artist = 'CORTE'; 
+                        artist = 'PAUSA COMERCIAL'; 
                         cancion = '';
                         cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
                     case 'OYE-TURNOS':
-                        artist = 'CORTE'; 
+                        artist = 'PAUSA COMERCIAL'; 
                         cancion = '';
                         cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;                    
                     case 'OYE-CAP':
-                        artist = 'CORTE';
+                        artist = 'PAUSA COMERCIAL';
                         cancion = '';
                         cover= 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
                     case 'OYE-PRO':
-                        artist = 'CORTE';
+                        artist = 'PAUSA COMERCIAL';
                         cancion = '';
                         cover= 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
@@ -269,10 +269,19 @@ const secchome = document.getElementById('home');
                         cancion = data.title;
                         hora = data.hora_real;
                     break;
-                    default:
+                    case 'OYE-INGLES':
                         artist = data.artista;
                         cancion = data.title;
                         hora = data.hora_real;
+                    break;
+                    case 'OYE-PARTY-NIGHTS':
+                        artist = data.artista;
+                        cancion = data.title;
+                        hora = data.hora_real;
+                    break;
+                    default:
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
                         cover= 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
                 } 
