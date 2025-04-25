@@ -1,10 +1,12 @@
 var streaming;
 var local_status;
-const buttonPause = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-pause" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /></svg>';
-const buttonPlay = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" stroke-width="0" fill="currentColor" /></svg>';
-const bigButtonPause = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-pause" width="45" height="45" viewBox="0 0 24 24" stroke-width="2" stroke="#eb2639" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /></svg>';
-const bigButtonPlay = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play" width="45" height="45" viewBox="0 0 24 24" stroke-width="2" stroke="#eb2639" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8z" /></svg>';
-const buttongLoading = '<img width="49" height="49" src="https://storage.googleapis.com/nrm-web/oye/recursos/loading-normal.gif" style="padding:20px;"/>';
+const buttonPause = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-pause" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /></svg>';
+const buttonPlay = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" stroke-width="0" fill="currentColor" /></svg>';
+const bigButtonPause = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-pause" width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000" fill="#000" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /></svg>';
+const bigButtonPlay = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play" width="35" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000" fill="#000" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8z" /></svg>';
+const buttongLoading = '<img width="40" height="40" src="https://storage.googleapis.com/nrm-web/oye/recursos/loading-normal.gif" style="padding:5px;"/>';
+const buttonPodcastPlay = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play" width="60" height="60" viewBox="0 0 24 24" stroke-width="2" stroke="#fff" fill="#fff" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8z" /></svg>';
+const buttonPodcastPause = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-pause" width="60" height="60" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="#fff" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /></svg>';
 var volume;
 var artist;
 var cancion;
@@ -17,57 +19,60 @@ const secchome = document.getElementById('home');
 
 //function initPlayer(){
     function initPlayerSDK(){
-        console.log( 'TD Player SDK is ready' );
-        //Player SDK is ready to be used, this is where you can instantiate a new TDSdk instance.
-        //Player configuration: list of modules        
         var tdPlayerConfig = {
-        coreModules: [{
-                id: 'MediaPlayer',
-                playerId: 'td_container',
-                audioAdaptive: true,
-                plugins: [ {id:"vastAd"}],
-                SyncBanners: true
-            }],
-            playerReady: onPlayerReady,
-            configurationError: onConfigurationError,
-            moduleError: onModuleError,
-            adBlockerDetected: onAdBlockerDetected            
-        };
-        //Player instance
-        streaming = new TDSdk( tdPlayerConfig );        
+             coreModules: [{
+               id: 'MediaPlayer',
+               playerId: 'td_container' ,
+               audioAdaptive: false,
+               plugins: [ {id:"vastAd"}]
+             }],
+             // The callbacks are defined in your source code.
+             playerReady: onPlayerReady,
+             moduleError: onModuleError,
+             audioAdaptive: true,
+             analytics: {
+                active: true,
+                debug: false,
+                appInstallerId: 'beatpag',            
+                trackingId: 'UA-63005013-1',
+                trackingEvents: [ 'play', 'stop', 'pause', 'resume', 'all' ],
+                sampleRate: 100,     
+                category: 'Reproduccion Radio Pag' 
+             }
+            };
+        // The call to loadModules() as been removed.
+        streaming = new TDSdk( tdPlayerConfig );
         streaming.addEventListener( 'stream-status', getStatus );
         streaming.addEventListener( 'ad-playback-complete', completeAd );
         streaming.addEventListener( 'ad-playback-start', startAd );
         streaming.addEventListener( 'ad-playback-error', errorAd );
-        console.log(streaming);
-    }
-    
+      }
     
      function getStatus(s){
         local_status = s.data.code;
         const secchome = document.getElementById('home');        
-         console.log(local_status);
+         //console.log(local_status);
          if( local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING' ){
             document.getElementById('loading').classList.add('show');
             document.getElementById('loading').classList.remove('hide');
             document.getElementById('play-pause').classList.remove('show');
             document.getElementById('play-pause').classList.add('hide'); 
-            document.getElementById('clic-circle').innerHTML = 'CARGANDO...';
-
-            if(secchome){  document.getElementById('big-play').innerHTML = buttongLoading;    }
+            document.getElementById('big-play').innerHTML = buttongLoading;    
             
          }
          if (local_status == 'LIVE_PLAYING'){                        
-            //document.getElementById('play-pause').innerHTML = buttonPause;
+            document.getElementById('play-pause').innerHTML = buttonPause;
             document.getElementById('loading').classList.remove('show');
             document.getElementById('loading').classList.add('hide');
             document.getElementById('play-pause').classList.add('show');
-            document.getElementById('play-pause').classList.remove('hide');
-            document.getElementById('playing-status').classList.add('pause-bars');
-            document.getElementById('playing-status').classList.remove('play-icon');
-            document.getElementById('clic-circle').innerHTML = 'CLIC PARA DETENER';
-            
-            if(secchome){   document.getElementById('big-play').innerHTML = bigButtonPause; }
+            document.getElementById('play-pause').classList.remove('hide'); 
+            document.getElementById('big-play').innerHTML = bigButtonPause; 
+           // $('.text-player').html('');
+            //$('.text-player').attr('id','infoMusic');
+            $('.text-player').html('<div style="font-weight:bold;">Estas escuchando...</div><div id="infoMusic" style="line-height:11px; font-size:12px;"></div>');
+            $('.text-player').addClass('playing');
+            $('#radiobutton').addClass('playerplaying');
+            getInfoMusic();
             
          }
          if(local_status == 'LIVE_STOP' || local_status == 'LIVE_PAUSE') {
@@ -75,71 +80,77 @@ const secchome = document.getElementById('home');
             document.getElementById('loading').classList.add('hide');
             document.getElementById('play-pause').classList.add('show');
             document.getElementById('play-pause').classList.remove('hide'); 
-            
-            document.getElementById('playing-status').classList.remove('pause-bars');
-            document.getElementById('playing-status').classList.add('play-icon');
-            document.getElementById('clic-circle').innerHTML = 'CLIC PARA INICIAR';
-            
-            if(secchome){ document.getElementById('big-play').innerHTML = bigButtonPlay;  }
+            document.getElementById('play-pause').innerHTML = buttonPlay;            
+            document.getElementById('big-play').innerHTML = bigButtonPlay; 
+            $('.text-player').removeClass('playing');
+            $('#radiobutton').removeClass('playerplaying');
+            $('.text-player').html('');
+            setTimeout( function(){
+                $('.text-player').html('ESCUCHA LA RADIO EN VIVO <span style="color: #df104a;    font-weight: bold;    font-size: 12px;">GRATIS</span> AHORA');             
+            },1000);
+                
+            //$('.text-player').attr('id','');            
          }
 
      }
      
 
-    function completeAd(e){        
+    function completeAd(e){                
         streaming.play({
-            station:'XEOYEFM',
+            station:'XEOYAM',
             trackingParameters:{
-            Dist: 'WebOye'
+            Dist: 'WebStereocien'
             }
-        });        
-        $('#td_container').css('width','1px');
-        $('#td_container').css('height','2px');
+        }); 
+        //$('#td_container').width('1px');
+        //$('#td_container').height('1px');       
+        $('#td_container').removeClass('pub_active');
       }
 
       function startAd(e){
-        //console.log('aqui poner clases de video'); 
-        $('#playernuevo #td_container').width('600px');
-        $('#playernuevo #td_container').height('360px');
-        document.getElementById('loading').classList.add('show');
-        document.getElementById('loading').classList.remove('hide');
-        document.getElementById('play-pause').classList.remove('show');
-        document.getElementById('play-pause').classList.add('hide'); 
-        document.getElementById('clic-circle').innerHTML = 'CARGANDO...';    
+        //$('#td_container').width('600px');
+        //$('#td_container').height('360px');
+        $('#td_container').addClass('pub_active');
+        document.getElementById('big-play').innerHTML = buttongLoading;    
+        $('.text-player').html('<div style="font-style: italic; line-height:11px; font-weight:bold; font-size:11px;">Iniciamos después del anuncio...</div>'); 
       }
       
+      var start = function(){
+        //console.log('trata la pub primero');    
+        streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Beat/VideoVast&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );	        
+      };
+
+
       function pause(){
         streaming.stop();
       }
 
+      
       function play(){
         streaming.play({
-            station:'XEOYEFM',
+            station:'XEOYAM',
             trackingParameters:{
-            Dist: 'WebOye'
+            Dist: 'WebStereocien'
             }
         });        
-      }
+      }      
+   
 
       function stop(){
         console.log('stopped');
         streaming.stop();
       }
 
-      var start = function(){
-        console.log('start primero la pub');
-        streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
-      }
-
-   
       function errorAd(e){        
-        console.log('errorad');
         streaming.play({
-            station:'XEOYEFM',
+            station:'XEOYAM',
             trackingParameters:{
-            Dist: 'WebOye'
+            Dist: 'WebStereocien'
             }
         });
+        console.log(e);
+        console.log('error ad');
+        
       }
     /* Callback function called to notify that the SDK is ready to be used */
     function onPlayerReady(){                
@@ -150,8 +161,10 @@ const secchome = document.getElementById('home');
         document.getElementById('play-pause').classList.remove('hide'); 
         vol = streaming.getVolume();
         console.log(vol);
+
     }
 
+  
     /* Callback function called to notify that the player configuration has an error. */
     function onConfigurationError( e ) {
         console.log(e);
@@ -172,57 +185,16 @@ const secchome = document.getElementById('home');
         console.log( 'AdBlockerDetected' );
     }
 
-    initPlayerSDK();
-
-    const playstopRadio = function(){
-        console.log(local_status);
-        const getplayingstatus = playerstatus();
-        console.log(getplayingstatus);
-        if (getplayingstatus == 'init'){
-            openbarra();
-        }
-        
-        if(getplayingstatus == 'podcast-playing'){
-            transitionBarra();
-            const containerpodcast  = document.getElementById('iframepodcast');
-            containerpodcast.innerHTML ='';                
-        }                
-                                           
-        if(getplayingstatus == 'video-playing'){
-            transitionBarra();
-            const containervideo  = document.getElementById('iframevideo');
-            containervideo.innerHTML = '';
-        }
-
-        if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){                
-            //streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
-            start();
-            /*streaming.play({
-                station:'XEOYEFM',
-                trackingParameters:{
-                Dist: 'WebOye'
-                }
-            });*/
-            
-
-         $('#playernuevo').attr('data-status','radio-playing');
-         transitionBarra(); 
-         radioActive();   
-        }else if( local_status == 'LIVE_PLAYING' || local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING'){                
-            radioStop();
-        }
-    };
-            
+    initPlayerSDK();        
         volume = document.getElementById('vol');
         volume.addEventListener('input', function(){
             //console.log(volume.value);
             streaming.setVolume(volume.value);
 
         });
-        
 
         function getInfoMusic(){
-            fetch("https://cdn.nrm.com.mx/cdn/oye/playlist/cancion.json")
+            fetch("https://cdn.nrm.com.mx/cdn/stereociendigital/playlist/cancion.json")
             .then((res) => {
                 if (!res.ok) {
                     throw new Error
@@ -230,120 +202,111 @@ const secchome = document.getElementById('home');
                 }
                 return res.json();
             })
-            .then((data) => {  
-                console.log(data.categoria);
-                              
+            .then((data) => {                
                 switch( data.categoria ){
                     case 'COMERCIALES' :
-                        artist = 'CORTE'; 
+                        artist = 'PAUSA COMERCIAL';
                         cancion = '';
-                        cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
-                    case 'OYE-ESPECIALES' :
-                        artist = 'CORTE'; 
+                    case 'QATAR' :
+                        artist = 'PAUSA COMERCIAL';
                         cancion = '';
-                        cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
-                    case 'OYE-DEBRAYE':
-                        artist = 'CORTE'; 
+                    case 'TITULOS' :
+                        artist = 'PAUSA COMERCIAL';
                         cancion = '';
-                        cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
-                    case 'OYE-TURNOS':
-                        artist = 'CORTE'; 
+                    case 'STTEMPERATURA' :
+                        artist = 'PAUSA COMERCIAL';
                         cancion = '';
-                        cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
-                    break;                    
-                    case 'OYE-CAP':
-                        artist = 'CORTE';
+                    break;
+                    case 'STSALUDOS' :
+                        artist = 'PAUSA COMERCIAL';
                         cancion = '';
-                        cover= 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
-                    case 'OYE-PRO':
-                        artist = 'CORTE';
+                    case 'STPROMOS' :
+                        artist = 'PAUSA COMERCIAL';
                         cancion = '';
-                        cover= 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
-                    case 'OYE-MUS':
-                        artist = data.artista;
-                        cancion = data.title;
-                        hora = data.hora_real;
+                    case 'STPROGRAMAS' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
                     break;
+                    case 'STDESPEDIDAS' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'ST-ELEMENTOS PROD' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'ST TITULOS NAVIDAD' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'ST TATUAJES LILI' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'ST PROD NAVIDAD' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'ST INTERVENCIONES MADRUGADA' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'ST DIGITAL' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'ST DANI' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'ST BUENA NOTICIA' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'ST BACK TO THE 80S' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'ST ANIMALES CON ESTRELLA' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'MENCIONES-STEREO CIEN' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'CARTS' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'CARTS' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    case 'CARTS' :
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                    break;
+                    
+                    
                     default:
                         artist = data.artista;
                         cancion = data.title;
                         hora = data.hora_real;
-                        cover= 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
-                } 
+                    
 
-
-                let text = artist;
-                artist = text.replace("&", "+");
-                let textc = cancion;
-                cancion = textc.replace("&", "+");
-
-                document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;
-                
+                }                 
                 if (cancion == ''){
-                    document.getElementById('infoArtista').innerHTML = artist;
-
+                    document.getElementById('infoMusic').innerHTML = artist;
                 }else{
-                    document.getElementById('infoCancion').innerHTML = cancion;
-                    document.getElementById('infoArtista').innerHTML = artist;
+                    document.getElementById('infoMusic').innerHTML = artist + ' / ' + cancion;
                 }
-
-                var current_title = $('.song-title').html();
-                var cover;
-                console.log('aqui' + current_title);
-                var coverbase = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=0aa2713d85e04243944924876ba71f05&format=json";
-                console.log('coverbase' + coverbase);
-                
-
-					console.log('contultar api portadas');
-					 var linkcover = coverbase + '&track=' + cancion + '&artist=' + artist;
-					console.log(linkcover);
-
-                    fetch(linkcover)
-                        .then((res) => {
-                            if (!res.ok) {
-                                throw new Error
-                                    ('HTTP error! Status: ${res.status}');
-                            }
-                            return res.json();
-                        })
-                    .then((dataalbum)  => {
-						console.log(dataalbum);
-                        var lig = dataalbum.track.album;
-                        console.log('lig'+lig);
-                        
-						if ( lig == '' || lig == 'undefined' || lig == null){
-                            cover = 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
-                            document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;	
-
-                        }else{
-                            cover = dataalbum.track.album.image[2]['#text'];
-                            console.log('cover' + cover);
-                            document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;
-                        }
-                        
-                        
-                       /*
-
-                        if(cover == '' || cover == 'undefined' || cover == null){
-                            cover = 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
-                            //document.getElementById('infoCover').innerHTML = cover;		
-                            document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;
-						}
-						else{
-                            //document.getElementById('infoCover').innerHTML = cover;
-                            document.getElementById('infoCover').innerHTML = '<img src="'+ cover + '" />' ;	
-                        }*/
-
-                        //console.log(cover);
-                        
-					});
-
             })
            // console.log('repetido');   
         }
@@ -353,7 +316,8 @@ const secchome = document.getElementById('home');
 
         
         function getInfoProg(){
-            fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312&_fields[]=acf")
+            
+            fetch("https://contenido.stereociendigital.mx/wp-json/wp/v2/posts?_embed&per_page=40&categories=302&_fields[]=acf&_fields[]=jetpack_featured_media_url")
             .then((res) => {
                 if (!res.ok) {
                     throw new Error
@@ -368,79 +332,81 @@ const secchome = document.getElementById('home');
                 const dias = ['domingo','lunes','martes','miercoles','jueves','viernes','sabado'];
                 const dia = dias[fecha.getDay()];                
                 const hora = dayjs(fecha).format('HH:mm:ss');
-                //console.log(hora);
-                data.map(function(prog){                    
+                let siguientePrograma = null;
+                data.map(function(prog,i,el){                    
                     if(prog.acf[dia] === true){
+                        var h_i;
                         if( prog.acf.hora_fin >= hora &&  prog.acf.hora_inicio <= hora){
                            // console.log(prog.acf.hora_inicio);
-                            console.log(prog.acf.hora_inicio);
+                            /*console.log(prog.acf.hora_inicio);
                             console.log(prog.acf.hora_fin);
-                            console.log(prog.acf.programa);
-                            console.log(prog.acf);
-                            if( document.getElementById('nombreprog') ){                                
-                                document.getElementById('nombreprog').innerHTML = prog.acf.programa;                            
-                            }
-                             
-                            fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/media/"+prog.acf.imagen_ahora_escuchas+"?_fields[]=link")
-                            .then((rs) => {
-                                if (!rs.ok) {
-                                    throw new Error
-                                        ('HTTP error! Status: ${res.status}');
-                                }
-                                return rs.json();
-                            })
-                            .then(function(d){
-                                //console.log(d.link);
-                                if(document.getElementById('imgprog')){                                    
-                                    setTimeout(function(){
-                                        document.getElementById('imgprog').getElementsByClassName('imgprog')[0].src = d.link;
-                                        document.getElementsByClassName('logo-home')[0].innerHTML = '<img class="block h-auto w-auto m-auto" src="https://storage.googleapis.com/nrm-web/oye/recursos/logo-oye-fusion500-min.png" alt="Ahora en vivo" width="500" height="500" />';                                        
-                                    },2000);
-                                }                                                                
-                            });                                                        
+                            console.log(prog.acf.programa);*/
+                            
+                            $('.banner-prog img').attr('src', prog.jetpack_featured_media_url);
+                            $('.envivo-prog').html(prog.acf.programa);
+                            $('.envivo-now').html( prog.acf.hora_inicio + ' - ' + prog.acf.hora_fin);
+                            $('.envivo-prog-tab').html(prog.acf.programa);                            
+
                         }
+
+                        if (prog.acf.hora_inicio > hora) {
+                            if (!siguientePrograma || prog.acf.hora_inicio < siguientePrograma.acf.hora_inicio) {
+                                siguientePrograma = prog;
+                            }
+                        }
+                        
+
                     }
 
-                });                                                
+                });   
+                if (siguientePrograma) {
+                    console.log("Siguiente programa:", siguientePrograma.acf.programa);
+                    $('.envivo-next').html(siguientePrograma.acf.hora_inicio + ' - ' + siguientePrograma.acf.hora_fin);
+                    $('.envivo-prog-next-tab').html(siguientePrograma.acf.programa);
+                }                                                
             });
            // console.log('repetido');   
         }
         
-        //setTimeout(getInfoProg, 20000);
+        setTimeout(getInfoProg, 20000);
         setInterval( getInfoProg, 300000);       
         
 /* abrir barra*/
-const openbarra = function(){ 
-    playernuevo.classList.remove('h-0');
-    playernuevo.classList.add('h-16');
-    //playernuevo.classList.add('border-4');   
-}
+/*const openbarra = function(){
+    player.classList.remove('h-0');
+    player.classList.add('h-16');
+    player.classList.add('border-4');    
+}*/
 /* cerrar barra*/
-const hidebarra = function(){
-    $('#player-inner').addClass('hide');
-    $('#player-inner').removeClass('active');
-    playernuevo.classList.remove('h-16');
-    playernuevo.classList.add('h-0');
-    //playernuevo.classList.remove('border-4');              
-}
+/*const hidebarra = function(){
+    player.classList.remove('h-16');
+    player.classList.add('h-0');
+    player.classList.remove('border-4');                
+}*/
 /* cerrar y abrir barra*/
-const transitionBarra = function(){    
+/*const transitionBarra = function(){    
     hidebarra();
     setTimeout( function(){        
         openbarra();
     }, 500);
-}
+}*/
+
 
 const radioActive = function(){
     $('#player-inner').addClass('active');
     $('#player-v-podcast').removeClass('active');
     $('#player-v-video').removeClass('active');
+    $('.player-float').removeClass('hide');
 }
 
 const podcastActive = function(){
+    //transitionPlayer();
     $('#player-inner').removeClass('active');
     $('#player-v-podcast').addClass('active');
     $('#player-v-video').removeClass('active');
+    $('.player-float').addClass('hide');
+    $('.player-float').removeClass('active');
+    //$('#radiobutton').addClass('playerplaying'); 
 }
 
 const videoActive = function(){
@@ -450,68 +416,86 @@ const videoActive = function(){
 }
 
 const radioStop = function(){
+        transitionPlayer();
         streaming.stop();
-        $('#playernuevo').attr('data-status','init');                
-        hidebarra();
-        $('#playernuevo-inner').removeClass('active');
+        $('#player').attr('data-status','init');                
+        //hidebarra();
+        $('#player-inner').removeClass('active');
+}
+
+const initPlayer = function(){
+    transitionPlayer();
+    $('#player-v-podcast').removeClass('active');
+    $('#player-v-video').removeClass('active');
+    $('.player-float').removeClass('hide');
+    $('#radiobutton').removeClass('playerplaying'); 
+    $('.player-float').removeClass('hide');
+    $('.player-float').addClass('active');    
+}
+
+const transitionPlayer = function(){
+    $('#radiobutton').width('0px');
+    setTimeout( function(){
+        $('#radiobutton').width('250px');
+    }, 500);
 }
 
 
 const playerstatus = function(){
-    var state  = $('#playernuevo').attr('data-status');
+    var state  = $('#player').attr('data-status');
     return state;
 };
 
-/*const playstopRadio = function(){
-            console.log(local_status);
+const playstopRadio = function(){
+            transitionPlayer();
+            //console.log(local_status);
             const getplayingstatus = playerstatus();
-            console.log(getplayingstatus);
-            if (getplayingstatus == 'init'){
+            //console.log(getplayingstatus);
+           /* if (getplayingstatus == 'init'){
                 openbarra();
-            }
+            }*/
             
             if(getplayingstatus == 'podcast-playing'){
-                transitionBarra();
+                //transitionBarra();
                 const containerpodcast  = document.getElementById('iframepodcast');
                 containerpodcast.innerHTML ='';                
             }                
                                                
             if(getplayingstatus == 'video-playing'){
-                transitionBarra();
-                const containervideo  = document.getElementById('iframevideo');
-                containervideo.innerHTML = '';
+                
             }
 
-            if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){                
-                //streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
-                streaming.play({
-                    station:'XEOYEFM',
-                    trackingParameters:{
-                    Dist: 'WebOye'
-                    }
-                });     
-
-             $('#playernuevo').attr('data-status','radio-playing');
-             transitionBarra(); 
-             radioActive();   
+            if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){                                
+                //console.log('aqui debe iniciar');
+                start();     
+                $('#player').attr('data-status','radio-playing');
+                //transitionBarra(); 
+                radioActive();   
             }else if( local_status == 'LIVE_PLAYING' || local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING'){                
                 radioStop();
             }
 };
-*/
 
-$('#radiobutton').on('click',function(){     
+
+$('#big-play').on('click',function(){    
+        console.log('click en radiobutton');
         playstopRadio();      
 });
+
 
 $('#return-live').on('click',function(){    
        playstopRadio();    
 });
 
-
-$('#play-pause').on('click', function(){
-    playstopRadio();
+$('.radio-link').on('click',function(){    
+       playstopRadio();    
 });
+
+
+
+/*$('#play-pause').on('click', function(){
+    playstopRadio();
+});*/
 
 
 
@@ -527,46 +511,168 @@ document.addEventListener('astro:before-preparation', ev => {
 
 document.addEventListener('astro:page-load', ev => {
    // console.log('pageload');
-   /*=============== SHOW MENU ===============*/
-const showMenu = (toggleId, navId) =>{
-    const toggle = document.getElementById(toggleId),
-          nav = document.getElementById(navId);
-    toggle.addEventListener('click', () =>{
-        // Add show-menu class to nav menu
-        nav.classList.toggle('show-menu');
-        // Add show-icon to show and hide the menu icon
-        toggle.classList.toggle('show-icon');
-    });
- }
- 
- showMenu('nav-toggle','nav-menu');
 
-const getplayingstatus = playerstatus();
-document.querySelector('main').classList.remove('loading');    
-document.querySelector('.preloader').classList.remove('showpreloader');
-const secchome = document.getElementById('home');
+   /* ==========CURSOR HOVER ===========*/
+    const CONTAINER = document.querySelector('.container')
+    const CARDS = document.querySelectorAll('article')
+    const CONFIG = {
+      proximity: 40,
+      spread: 80,
+      blur: 20,
+      gap: 32,
+      vertical: false,
+      opacity: 0.15, // Default value for inactive opacity
+    }
+    const PROXIMITY = 10
+    const UPDATE = (event) => {
+      // get the angle based on the center point of the card and pointer position
+      for (const CARD of CARDS) {
+        // Check the card against the proximity and then start updating
+        const CARD_BOUNDS = CARD.getBoundingClientRect()
+        // Get distance between pointer and outerbounds of card
+        if (
+          event?.x > CARD_BOUNDS.left - CONFIG.proximity &&
+          event?.x < CARD_BOUNDS.left + CARD_BOUNDS.width + CONFIG.proximity &&
+          event?.y > CARD_BOUNDS.top - CONFIG.proximity &&
+          event?.y < CARD_BOUNDS.top + CARD_BOUNDS.height + CONFIG.proximity) {
+          // If within proximity set the active opacity
+          CARD.style.setProperty('--active', 1)
+        } else {
+          CARD.style.setProperty('--active', CONFIG.opacity)
+        }
+        const CARD_CENTER = [
+          CARD_BOUNDS.left + CARD_BOUNDS.width * 0.5,
+          CARD_BOUNDS.top + CARD_BOUNDS.height * 0.5
+        ]
+        let ANGLE = Math.atan2(event?.y - CARD_CENTER[1], event?.x - CARD_CENTER[0]) * 180 / Math.PI
+        ANGLE = ANGLE < 0 ? ANGLE + 360 : ANGLE;
+        CARD.style.setProperty('--start', ANGLE + 90)
+      }
+    }
+    document.body.addEventListener('pointermove', UPDATE)
+    const RESTYLE = () => {
+      CONTAINER.style.setProperty('--gap', CONFIG.gap)
+      CONTAINER.style.setProperty('--blur', CONFIG.blur)
+      CONTAINER.style.setProperty('--spread', CONFIG.spread)
+      CONTAINER.style.setProperty('--direction', CONFIG.vertical ? 'column' : 'row')
+    }
+    RESTYLE();
+    UPDATE();
 
+
+    /* efectos */ 
+    var distance = '';
+    (function($){
+        $(document).ready(function(){
+        
+            const fullheight = document.body.scrollHeight - window.innerHeight;
+            const range = fullheight/5;
+            const range2 = range * 2;
+            const range3 = range * 3;
+            const range4 = range * 4;
+            const range5 = range * 5;
+
+            const header = $('header');
+            
+            window.addEventListener('scroll', function(e){
+               // console.log(window.scrollY );
+                if( window.scrollY > 0 && window.scrollY <= range ){                    
+                    document.styleSheets[1].addRule('body::before','filter: hue-rotate(0deg) blur(5px)');
+                    document.styleSheets[1].addRule('body::before','transition: filter 0.5s ease-in-out;');
+                }
+                
+                if( window.scrollY > range && window.scrollY <= range2 ){                    
+                    document.styleSheets[1].addRule('body::before','filter: hue-rotate(90deg) blur(5px)');
+                    document.styleSheets[1].addRule('body::before','transition: filter 0.5s ease-in-out;');
+                }
+
+                if( window.scrollY > range2 && window.scrollY <= range3 ){                    
+                    document.styleSheets[1].addRule('body::before','filter: hue-rotate(180deg) blur(5px)');
+                    document.styleSheets[1].addRule('body::before','transition: filter 0.5s ease-in-out;');
+                }
+
+                if( window.scrollY > range3 && window.scrollY <= range4 ){
+                    document.styleSheets[1].addRule('body::before','filter: hue-rotate(270deg) blur(5px)');
+                    document.styleSheets[1].addRule('body::before','transition: filter 0.5s ease-in-out;');
+                }
+
+                if( window.scrollY > range4 ){                    
+                    document.styleSheets[1].addRule('body::before','filter: hue-rotate(0deg) blur(5px)');
+                    document.styleSheets[1].addRule('body::before','transition: filter 0.5s ease-in-out;');
+                }
+
+
+              /*  if ($('.bar-stereo').hasClass('is-pinned') ){
+                    $('.bar-stereo').addClass('compress');
+                    $('.bar-stereo .logo').addClass('compress-logo');
+                }
+                if($(document).scrollTop() <= 1){
+                    $('.bar-stereo').css('position','sticky');
+                    $('.bar-stereo').removeClass('compress');
+                    $('.bar-stereo .logo').removeClass('compress-logo');
+                }*/
+                //distance = $('.nav-menu').offset().top - $('.bar-stereo').offset().top;
+                //distance = $('.nav-menu').offset().top;
+              /*  console.log(distance);
+                if( distance < 50 ){
+                    $('.bar-stereo').addClass('header-white');
+                    $('.to-dark').addClass('dark-mode');
+                    $('.compress-logo img').addClass('logo-dark-mode');
+                }else {
+                    $('.bar-stereo').removeClass('header-white');
+                    $('.to-dark').removeClass('dark-mode');
+                    $('.compress-logo img').removeClass('logo-dark-mode');
+                }
+                */
+            });
+        });
+    })(jQuery);
+
+
+   const getplayingstatus = playerstatus();
+    document.querySelector('main').classList.remove('loading');    
+    document.querySelector('.preloader').classList.remove('showpreloader');
+    
+    const secchome = document.getElementById('home');
+    const secenvivo = document.getElementById('envivo');
+
+    if ( secenvivo ){   
+        //console.log('envivo');
+        getInfoProg();
+        $('#radiobutton').addClass('en-vivo');
+        //console.log(local_status);
+
+        if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){  
+            playstopRadio();
+        }
+        
+    }else{
+        $('#radiobutton').removeClass('en-vivo');
+    }
+    
+    
     if ( secchome ){
         getInfoProg();
-        if( getplayingstatus == 'radio-playing'){
+        console.log(getplayingstatus);
+        /*if( getplayingstatus == 'radio-playing'){
              document.getElementById('big-play').innerHTML = bigButtonPause; 
-        }
+        }*/
 
-        var elem = document.querySelector('.carousel-main');
+               /* var elem = document.querySelector('.carousel-main');
         var flkty = new Flickity( elem, {
             // options
-            cellAlign: 'left',
-            contain: true,
-            sync: '.carousel-nav',
+            cellAlign: 'center',
             prevNextButtons: true,
-            autoPlay: 2000,
+        //    autoPlay: 5000,
             pageDots: false,
             pauseAutoPlayOnHover: true,
+            freeScroll: true,
             wrapAround: true
         });
-        flkty.reloadCells();   
+        flkty.select(2);
+        flkty.reloadCells();   */
 
-        var elemnav = document.querySelector('.carousel-nav');
+       /* var elemnav = document.querySelector('.carousel-nav');
         var flktynav = new Flickity( elemnav, {
             // options
             cellAlign: 'center',
@@ -576,116 +682,23 @@ const secchome = document.getElementById('home');
             pageDots: false, 
             pauseAutoPlayOnHover: true
         }); 
+        */
+
+    
+
+
+    }
         var elempod = document.querySelector('.main-carousel');
         var flktypod = new Flickity( elempod, {
             contain: true,
             lazyLoad: 1, 
             wrapAround: true, 
             cellAlign: 'center',
-            pageDots: false, 
-            autoPlay: true
+            pageDots: false
+            //autoPlay: true
         });
 
-        var elemtrends = document.querySelector('.main-carousel-trends');
-        var flktytrends = new Flickity( elemtrends, {
-            contain: true,
-            lazyLoad: 1, 
-            wrapAround: false, 
-            cellAlign: 'center',
-            pageDots: false, 
-            autoPlay: true
-        });
 
-        var yavoto = 0;
-        var allowvote = 60;
-
-        $('.voto-pop').each(function(){    
-        $(this).on('click', function(){
-            console.log(yavoto);
-            if (yavoto === 0){
-                yavoto = 1;        
-
-                var interval = setInterval(function(){
-                    console.log(allowvote)
-                    allowvote--;
-                    
-                    if(allowvote < 0){
-                    console.log('permitir votar de nuevo');
-                    yavoto = 0;
-                    allowvote = 60;
-                    console.log(yavoto);
-                    clearInterval(interval);
-                    }
-                    
-                }, 1000);
-
-                console.log($(this).attr('data-voto-id'));
-                const id = $(this).attr('data-voto-id');                                                
-                const params = {
-                    "item_id":id,
-                    "user_id":15,
-                    "type":"post",
-                    "user_ip":"0.0.0.0",
-                    "status":"like"
-                };                
-                const Rparamas = {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': 'Bearer ngXupo2jqRcdogAaVAwfiVZhEDULq9kRRKrWZzpsnE6ETAbBu5abURCmA98SvA2SOXKjtC3uqW15DV2dEhWP1QrGkkSZb8c8vhI8Snbszb94oXYGmewSgTW3',
-                        'Content-Type': 'application/json'
-                    },                    
-                    body: JSON.stringify( params )
-                };
-                    
-                fetch('https://contenido.oyedigital.mx/wp-json/wp-ulike-pro/v1/vote/', Rparamas)
-                .then((res) => {
-                    if (!res.ok) {
-                        throw new Error
-                            ('HTTP error! Status: ${res.status}');
-                    }
-                    return res.json();
-                })
-                .then((data) => { 
-                        console.log(data);
-                        $(this).addClass('voted');
-                        $(this).find('svg').attr('fill','white');
-                        Toastify({
-                            text: "Gracias por tu voto",
-                            className: "info",
-                            style: {
-                              background: "#000",
-                              'border-radius': '6px',
-                              'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
-                            },
-                            offset:{
-                                x:'10rem',
-                                y:'20rem'
-                            }
-                        }).showToast();
-                });
-            
-                
-            }else if(yavoto === 1){
-                Toastify({
-                    text: "Espera un minuto para poder volver a votar",
-                    className: "info",
-                    style: {
-                      background: "#000",
-                      'border-radius': '6px',
-                      'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
-                    },
-                    offset:{
-                        x:'10rem',
-                        y:'20rem'
-                    }
-                }).showToast();
-
-            }   
-            
-        });            
-    });
-    }
-    
     const imagenNota = document.getElementById("imagen-nota");
     if( imagenNota ){
         const imgNotaOriginal = imagenNota.getElementsByTagName('img');
@@ -693,113 +706,18 @@ const secchome = document.getElementById('home');
         imagenNota.style.backgroundImage = "url("+imgNotaOriginal2+")";
     }
     
-    const galeria = $('article .wp-block-gallery').length;
     
-    if (galeria > 0){
-        $('.wp-block-gallery').flickity({
-            cellAlign: 'left',
-            contain: true,
-            autoPlay: 3000,
-            pauseAutoPlayOnHover: true,
-            pageDots: false,
-            adaptiveHeight: true
-        });
-    }
-   
-    /* =======COMSCORE*/
-        var ts = Math.round((new Date()).getTime() / 1000 * Math.random() * 10);
-       // cowensole.log(ts);
-        self.COMSCORE && COMSCORE.beacon({
-				c1: "2", c2: "6906652",
-				options: {
-					enableFirstPartyCookie: true,
-					bypassUserConsentRequirementFor1PCookie: true
-				}
-	    });
-
-        fetch('/pageview_candidate.txt?'+ts)
-        .then(function(resp){
-            console.log(resp);            
-        });  
-
-    /* =======COMSCORE*/
-
-
-    /* ==========   GOOGLE ANALYTICS */
-   googletag.pubads().refresh();
-    /* ==GOOGLE ANALYTICS      */ 
-
     if( getplayingstatus == 'podcast-playing'){
         const containerpodcast  = document.getElementById('iframepodcast');
-        containerpodcast.innerHTML ='';
-        hidebarra();
+        //containerpodcast.innerHTML ='';
+        initPlayer();
+        //hidebarra();
     }
 
-    if( getplayingstatus == 'video-playing'){
-        const containervideo  = document.getElementById('iframevideo');
-        containervideo.innerHTML ='';
-        hidebarra();
-    }
-
-    $('.close-video-barra').on('click', function(){
-        const containervideo  = document.getElementById('iframevideo');
-        containervideo.innerHTML ='';
-        hidebarra();
-    });
-
-    $('#big-play').on('click', function(){
+   /* $('#big-play').on('click', function(){
         playstopRadio();
-    });
+    });*/
     
-    $('.el-video').each(function(){  
-        $(this).on('click',function(){
-            const getstatus = playerstatus();
-            const videostatus = $(this).attr('data-video-status');
-            const vid = $(this).attr('data-video');
-            const containervideo  = document.getElementById('iframevideo');
-
-            videoActive();
-            const info = $(this).find('.getinfovideo p').html();
-            console.log(info);
-            $('.info-video').html(info);
-            $('#playernuevo').attr('data-status','video-playing');
-            if (getstatus == 'radio-playing'){
-                radioStop();                
-            }
-
-            if(videostatus == 'ready'){
-                transitionBarra();
-                //console.log(vid);
-                containervideo.innerHTML = vid;
-                
-                                
-                const plyr = new Plyr($('#iframevideo iframe').parent(),{
-                    debug:false,
-                    controls:[
-                        'play-large', // The large play button in the center
-                        'fullscreen',
-                        'rewind', // Rewind by the seek time (default 10 seconds)
-                        'play', // Play/pause playback
-                        'fast-forward', // Fast forward by the seek time (default 10 seconds)
-                        'progress', // The progress bar and scrubber for playback and buffering
-                        'current-time', // The current time of playback
-                        'duration', // The full duration of the media                                             
-                    ],
-                    playsinline: true
-    
-                });
-                plyr.on('ready', (event) => {
-                    plyr.play();    
-                });
-                
-            }
-
-
-
-        });
-
-    });
-
     $('.audiopod').each(function(){   
         $(this).on('click',function(){
             const getstatus = playerstatus();
@@ -807,8 +725,12 @@ const secchome = document.getElementById('home');
             const podcaststatus = podactive.attr('data-podcast-status');
             const containerpodcast  = document.getElementById('iframepodcast');
             
-            
+            transitionPlayer();
             podcastActive();
+            setTimeout( function(){
+                $('#radiobutton').addClass('playerplaying'); 
+            },600);
+            
             
             if (getstatus == 'radio-playing'){
                 radioStop();                
@@ -816,50 +738,67 @@ const secchome = document.getElementById('home');
                                                 
             podactive.html('<img class="loading-gif" src="https://storage.googleapis.com/nrm-web/oye/recursos/loading-normal.gif" />');
             
-            if (getstatus == 'podcast-playing'){
-                
-                const playerpodcast = document.getElementById('iframepodcast').getElementsByTagName('iframe')[0];
-                //console.log(playerpodcast);
+            $('.close-podcast').on('click',function(){
+                initPlayer();
+                const playerpodcast = document.getElementById('iframepodcast').getElementsByTagName('iframe')[0];                
                 const ply =  new playerjs.Player(playerpodcast);
                 ply.on('ready', ()=> {
                     ply.pause();
                     podactive.attr('data-podcast-status','ready');
                 });
                 $('.audiopod').each(function(){
-                    $('.audiopod').find('.play-pause-podcast').html(buttonPlay);
+                    $('.audiopod').find('.play-pause-podcast').html(buttonPodcastPlay);
+                    $('.audiopod').find('.play-pause-podcast').attr('data-podcast-status','ready');
+                });
+                
+            });
+            
+            if (getstatus == 'podcast-playing'){
+                
+                const playerpodcast = document.getElementById('iframepodcast').getElementsByTagName('iframe')[0];                
+                const ply =  new playerjs.Player(playerpodcast);
+                ply.on('ready', ()=> {
+                    ply.pause();
+                    podactive.attr('data-podcast-status','ready');
+                });
+                $('.audiopod').each(function(){
+                    $('.audiopod').find('.play-pause-podcast').html(buttonPodcastPlay);
                     $('.audiopod').find('.play-pause-podcast').attr('data-podcast-status','ready');
                 });
             }
-            console.log(podcaststatus);            
+            //console.log(podcaststatus);            
             if(podcaststatus == 'ready'){
-                transitionBarra();
+                //transitionBarra();
                 const ifr = $(this).find('.data-iframe').attr('data-iframe');
                 const ifrsrc = ifr.split('src="');
                 const src = ifrsrc[1].split('"');
                 //const playerpodcast = document.getElementById('playerpodcast');
-                            
+                //<iframe src="https://omny.fm/shows/beat-trends/amor-de-lejos-amor-de-ya-no-aplica/embed?size=square&style=cover&image=0&description=1&download=1&playlistImages=1&playlistShare=1&share=1&subscribe=0&background=efefef&foreground=2b2b2c&highlight=fff" allow="autoplay; clipboard-write" width="300" height="300" frameborder="0" title="Amor de lejos, amor de… Ya no aplica"></iframe>           
                 containerpodcast.innerHTML ='';
                 const playerpodcast = document.createElement('iframe');
-                playerpodcast.setAttribute('src',src[0]+"?image=0&share=0&download=1&description=0&follow=0&background=000000&foreground=ffffff&highlight=fe0c01");
-                playerpodcast.setAttribute('width','250');
-                playerpodcast.setAttribute('height','300');
+                playerpodcast.setAttribute('src',src[0]+"?image=0&share=0&download=1&description=0&background=efefef&foreground=2b2b2c&highlight=fff");
+                playerpodcast.setAttribute('width','300');
+                playerpodcast.setAttribute('height','190');
                 playerpodcast.setAttribute('frameborder','0');
-                playerpodcast.setAttribute('allow','autoplay');                
+                playerpodcast.setAttribute('allow','autoplay');
+                playerpodcast.setAttribute('transition:persist','');
                 //console.log(playerpodcast);
                 containerpodcast.appendChild(playerpodcast);            
                 const ply =  new playerjs.Player(playerpodcast);
+                 
                 ply.on('ready', ()=> {
                     podactive.attr('data-podcast-status','active');
-                    $('#playernuevo').attr('data-status','podcast-playing');
+                    $('#player').attr('data-status','podcast-playing');
                     playerpodcast.classList.add('iframestyle');
                     ply.play(); 
                     
                     ply.on('play', ()=>{
-                        podactive.html(buttonPause); 
+                        podactive.html(buttonPodcastPause); 
                     });
     
                     ply.on('pause', ()=>{
-                        podactive.html(buttonPlay); 
+                        podactive.html(buttonPodcastPlay); 
+                        $('.play-pause-podcast-home').html(buttonPodcastPlay+'<span>REPRODUCIR AHORA</span>');
                     });
                     
                 });   
@@ -907,8 +846,8 @@ const secchome = document.getElementById('home');
                 const getstatus = playerstatus();
                 if( getstatus == 'radio-playing'){
                     radioStop();   
-                    hidebarra();
-                    $('#playernuevo').attr('data-status','video-playing');
+                    //hidebarra();
+                    $('#player').attr('data-status','video-playing');
                 }
             });            
             
@@ -916,9 +855,9 @@ const secchome = document.getElementById('home');
 
         }else{                      
         $('.wp-block-embed-youtube .wp-block-embed__wrapper').each(function(){
-            //console.log(e);            
-            const plyr = new Plyr($(this),{
-                debug:false,
+            console.log($(this).find('iframe'));            
+            const plyr = new Plyr($(this).find('iframe').parent(),{
+                debug:true,
                 controls:[
                     'play-large', // The large play button in the center
                     'restart', // Restart playback
@@ -940,110 +879,76 @@ const secchome = document.getElementById('home');
                 playsinline: true
 
             });
-            console.log(plyr);
+            //console.log(plyr);
             plyr.on('playing',function(){
                 const getstatus = playerstatus();
                 if( getstatus == 'radio-playing'){
                     radioStop();   
-                    hidebarra();
-                    $('#playernuevo').attr('data-status','video-playing');
+                    //hidebarra();
+                    $('#player').attr('data-status','video-playing');
                 }
             });
             
             $('#radiobutton').on('click', function(){
                 plyr.pause();
-            });             
+            });     
         }); 
         }
         
         
         /*voto*/
-        var yavoto = 0;
-        var allowvote = 60;
-
-        $('.voto-pop').each(function(){    
+        $('.voto-pop').each(function(){
             $(this).on('click', function(){
-                console.log(yavoto);
-                if (yavoto === 0){
-                    yavoto = 1;        
-    
-                    var interval = setInterval(function(){
-                        console.log(allowvote)
-                        allowvote--;
-                        
-                        if(allowvote < 0){
-                        console.log('permitir votar de nuevo');
-                        yavoto = 0;
-                        allowvote = 60;
-                        console.log(yavoto);
-                        clearInterval(interval);
-                        }
-                        
-                    }, 1000);
-    
-                    console.log($(this).attr('data-voto-id'));
-                    const id = $(this).attr('data-voto-id');                                                
-                    const params = {
-                        "item_id":id,
-                        "user_id":15,
-                        "type":"post",
-                        "user_ip":"0.0.0.0",
-                        "status":"like"
-                    };                
-                    const Rparamas = {
-                        method: 'POST',
-                        headers: {
-                            'Authorization': 'Bearer ngXupo2jqRcdogAaVAwfiVZhEDULq9kRRKrWZzpsnE6ETAbBu5abURCmA98SvA2SOXKjtC3uqW15DV2dEhWP1QrGkkSZb8c8vhI8Snbszb94oXYGmewSgTW3',
-                            'Content-Type': 'application/json'
-                        },                    
-                        body: JSON.stringify( params )
-                    };
-                        
-                    fetch('https://contenido.oyedigital.mx/wp-json/wp-ulike-pro/v1/vote/', Rparamas)
-                    .then((res) => {
-                        if (!res.ok) {
-                            throw new Error
-                                ('HTTP error! Status: ${res.status}');
-                        }
-                        return res.json();
-                    })
-                    .then((data) => { 
-                            console.log(data);
-                            $(this).addClass('voted');
-                            $(this).find('svg').attr('fill','white');
-                            Toastify({
-                                text: "Gracias por tu voto",
-                                className: "info",
-                                style: {
-                                  background: "#000",
-                                  'border-radius': '6px',
-                                  'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
-                                },
-                                offset:{
-                                    x:'10rem',
-                                    y:'20rem'
-                                }
-                            }).showToast();
-                    });
+                console.log($(this).attr('data-voto-id'));
+                const id = $(this).attr('data-voto-id');                                
+                /*const params = {
+                    "search": id, 
+                    "per_page": 1000                    
+                };*/
+                const params = {
+                    "item_id":id,
+                    "user_id":15,
+                    "type":"post",
+                    "user_ip":"0.0.0.0",
+                    "status":"like"
+                };
                 
+                const Rparamas = {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer GoW1bJVNjV3SCoUfVblUJs6ddelYSrGmmadoZglqcWrFELxbvrksHfsIOKeYZcgFN0jKNFtpiJEB7YN8rwUsLONosH06pWU1UZ2zIL10n0kUM26ufABMlqyh',
+                        'Content-Type': 'application/json'
+                    },                    
+                    body: JSON.stringify( params )
+                };
                     
-                }else if(yavoto === 1){
-                    Toastify({
-                        text: "Espera un minuto para poder volver a votar",
-                        className: "info",
-                        style: {
-                          background: "#000",
-                          'border-radius': '6px',
-                          'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
-                        },
-                        offset:{
-                            x:'10rem',
-                            y:'20rem'
-                        }
-                    }).showToast();
-    
-                }   
-                
+                fetch('https://contenido.beatdigital.mx/wp-json/wp-ulike-pro/v1/vote/', Rparamas)
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error
+                            ('HTTP error! Status: ${res.status}');
+                    }
+                    return res.json();
+                })
+                .then((data) => { 
+                        console.log(data);
+                        $(this).addClass('voted');
+                        $(this).find('svg').attr('fill','white');
+                        Toastify({
+                            text: "Gracias por tu voto",
+                            className: "info",
+                            style: {
+                              background: "linear-gradient(to right, #ec4899, #a855f7)",
+                              'border-radius': '6px',
+                              'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
+                            },
+                            offset:{
+                                x:'10rem',
+                                y:'20rem'
+                            }
+                        }).showToast();
+                });
+
             });            
         });
         
@@ -1051,14 +956,6 @@ const secchome = document.getElementById('home');
         
     } 
 
-(function($){
-	$('.open-modal-tesla').click(function(){
-		$('.modal-window-tesla').addClass('mostrar-tesla');
-	});
-	$('.modal-close-tesla').click(function(){
-		$('.modal-window-tesla').removeClass('mostrar-tesla');
-	});
-})(jQuery);
         
        
 });

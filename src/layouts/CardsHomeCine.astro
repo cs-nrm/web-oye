@@ -6,27 +6,94 @@ import SuperLeader from '../components/SuperLeader.astro';
 import { Image } from 'astro:assets';
 
 
-const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_fields=title,slug,yoast_head_json,_links,_embedded&_embed&per_page=8&categories=6616");
-
+const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,content,excerpt,_links,_embedded&_embed&per_page=6&categories=6616&order_by=date&order=desc");
 const posts = await res.json();
-
 ---
-<div class="flex flex-wrap">
-{
-posts.map((post:any)=> (
-    <a class="text-white hover:text-[#fe0c01] w-1/2 lg:w-1/4 px-4 mb-8" href={`/cine/${post.slug}/`}>
-        <!--Image class="block h-auto w-full aspect-video shadow-[0_2px_12px_7px_rgba(0,0,0,0.4)] rounded object-fill" src={post.yoast_head_json.og_image[0].url} width="300" height="150" alt={post.title.rendered}  /-->
-        <Image class="block h-auto w-full border border-[#890000] shadow-[0_2px_12px_7px_rgba(0,0,0,0.4)] rounded object-fill aspect-video" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} width="300" height="150" alt="Imagen Ilustrativa Entrevistas"  />
-        <p class="font-bold leading-none my-4 text-base text-center" set:html={post.title.rendered}></p>
-    </a>  
-))    
-}
-</div>
 
+      <div class="container">
+        <h1 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl ">OYE DE CINE</h1>
+        <div class="news-grid grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-16 xl:gap-16">
+          <!-- Article 1 -->
+          <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
+            <a href={`/cine/${posts[0].slug}/`}>
+              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Cine"/></div>
+              <div class="news-content">
+                <p set:html={posts[0].title.rendered}></p>
+                <!--div class="text-sm resumen" set:html={posts[0].excerpt.rendered}></div>
+                <span class="roboto font-bold text-xs mt-4">por {posts[0].yoast_head_json.author}</span-->
+              </div>
+            </a>  
+          </article>
 
+          <!-- Article 2 -->
+          <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
+            <a href={`/cine/${posts[1].slug}/`}>
+              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[1]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Breaking News"/></div>
+              <div class="news-content">
+                <p set:html={posts[1].title.rendered}></p>
+                <!--div class="text-sm resumen" set:html={posts[1].excerpt.rendered}></div>
+                <span class="roboto font-bold text-xs mt-4">por {posts[1].yoast_head_json.author}</span-->
+              </div>
+            </a>  
+          </article>
 
-<div class="m-auto mb-8 text-center">
-    <a href="/cine">
-        <button class="button-49" role="button">Ver más</button>
+          <!-- Article 3 -->
+          <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
+            <a href={`/cine/${posts[2].slug}/`}>
+              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[2]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Las de Hoy"/></div>
+              <div class="news-content">
+                <p set:html={posts[2].title.rendered}></p>
+                <!--div class="text-sm resumen" set:html={posts[2].excerpt.rendered}></div>
+                <span class="roboto font-bold text-xs mt-4">por {posts[2].yoast_head_json.author}</span-->
+              </div>
+            </a>  
+          </article>
+
+          <!-- Article 4 -->
+          <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
+            <a href={`/cine/${posts[3].slug}/`}>
+              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[3]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Las de Hoy"/></div>
+              <div class="news-content">
+                <p set:html={posts[3].title.rendered}></p>
+                <!--div class="text-sm resumen" set:html={posts[3].excerpt.rendered}></div>
+                <span class="roboto font-bold text-xs mt-4">por {posts[3].yoast_head_json.author}</span-->
+              </div>
+            </a>  
+          </article>
+        </div>
+      </div>
+
+<div class="m-auto text-center">
+    <a href="/cine" class="text-white hover:text-black">
+        <button class="ver-mas group relative rounded-sm h-8 m-2 overflow-hidden bg-[#f61842] uppercase text-xs font-bold tracking-[1px]">
+            <span class="p-4">MUCHO MÁS CINE AQUÍ</span>
+        </button>
     </a>
 </div>
+
+<style>
+.news-content p{
+  font-size: 1rem;
+  padding: 15px 0;
+  line-height: 1;
+  font-weight: bold;
+}
+/*
+.texto-nota{
+  box-shadow: none;
+  mask-image: linear-gradient(to bottom, hsla(var(--color-black), 1) 0, hsla(var(--color-black), 1) 10%, hsla(var(--color-black), 0) 100%);
+}
+
+.text-uno{
+	display: -webkit-box;
+	-webkit-margin-before: 0;
+  margin-block-start: 0;
+  -webkit-margin-after: 12px;
+  margin-block-end: 12px;
+  line-height: 1.2;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}*/
+</style>
+

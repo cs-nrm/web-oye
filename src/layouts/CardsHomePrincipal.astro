@@ -1,0 +1,125 @@
+---
+import DoubleBox from '../components/DoubleBox.astro';
+import BoxBanner from '../components/BoxBanner.astro';
+import LeaderBoard from'../components/LeaderBoard.astro';
+import SuperLeader from '../components/SuperLeader.astro';
+import { Image } from 'astro:assets';
+
+
+const ressti = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,excerpt,_links,_embedded&_embed&per_page=1&categories=149");
+
+const poststi = await ressti.json();
+
+---
+<div class="hero">
+  <Image class="logo-box" width="300" height="100" alt="Logo Oye" src="https://storage.googleapis.com/nrm-web/oye/recursos/2025/Oye-Box-Logo.svg"/>
+  <a href={`/noticias/${poststi[0].slug}/`}>
+    <img class="img-prin" src={poststi[0]._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url} alt="Imagen La Nota">
+    <div class="gradient-overlay"></div>
+    <div class="hero-content">
+      <h1 set:html={poststi[0].title.rendered}></h1>
+      <div class="text" set:html={poststi[0].excerpt.rendered}></div>
+      <div class="author">por {poststi[0].yoast_head_json.author}</div>
+    </div>
+  </a>
+</div>
+
+
+<style>
+/*.cards img{
+  mask-image: linear-gradient(225deg, hsla(var(--color-black), 1) 0, hsla(var(--color-black), 0.9) 40%, hsla(var(--color-black), 0) 80%);
+}*/
+
+.hero {
+  position: relative;
+  /*height: 600px;*/
+  color: white;
+}
+.logo-box{
+  width: 17%;
+  position: absolute;
+  top: 0;
+}
+
+.hero .img-prin {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 7%;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.5rem;
+  max-width: 45%;
+  text-align: left;
+  background: black;
+}
+.hero-content .author {color: white;}
+
+.hero .category {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-family: 'Lovelo'
+}
+
+.hero h1 {
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+ 	display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hero-content .text {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+	display: -webkit-box;
+	-webkit-margin-before: 0;
+  margin-block-start: 0;
+  -webkit-margin-after: 12px;
+  margin-block-end: 12px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.hero-content .text p a:last-child {
+    display: none;
+}
+
+.hero .author {
+  font-size: 0.875rem;
+  font-family: 'Roboto';
+  font-weight: bold;
+}
+
+@media (max-width: 1023px) {
+  /*.hero-content{max-width: 100%;}*/
+  .hero h1 {font-size: 1.2rem;}
+  .hero-content .text{font-size: 0.8rem;}
+  .hero .author {display: none;}
+}
+
+@media (max-width: 640px) {
+  .hero .img-prin {height: 400px;}
+  .logo-box{width: 25%;}
+  .hero-content{position: relative; max-width: 100%;}
+  .hero-content .text{display: -webkit-box; font-size: 0.8rem;}
+  .hero .author {display: block;}
+}
+</style>
+

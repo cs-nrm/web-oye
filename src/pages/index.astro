@@ -3,126 +3,98 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CardNews from '../layouts/CardsHomeNews.astro';
-import CardKpop from '../layouts/CardsHomeKpop.astro';
 import CardCine from '../layouts/CardsHomeCine.astro';
-import CardEntrevistas from '../layouts/CardsHomeEntrevistas.astro';
-import CardPopTrends from '../layouts/CardsHomePoptrends.astro';
+import CardPromociones from '../layouts/CardsHomePromociones.astro';
 import SliderPodcast from '../layouts/SliderPodcast.astro';
-import SliderPoptrends from '../layouts/SliderPoptrends.astro';
+import SliderTopten from '../layouts/SliderTopten.astro';
+import CardMascotas from '../layouts/CardsHomeMascotas.astro';
+import CardTecnologia from '../layouts/CardsHomeTecnologia.astro';
+import CardAutos from '../layouts/CardsHomeAutos.astro';
 import Separator from '../components/Separator.astro';
-import HomeHeader from '../layouts/HomeHeader2.astro';
+import HomeHeader from '../layouts/HomeHeader.astro';
 import DoubleBox from '../components/DoubleBox.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import SliderPromociones from '../layouts/SliderPromociones.astro';
-import { Image } from 'astro:assets';
-import LeaderBoard from '../components/LeaderBoard.astro';
+import BoxBanner from '../components/BoxBanner.astro';
+import LeaderBoard from'../components/LeaderBoard.astro';
+import LeaderBoard2 from'../components/LeaderBoard2.astro';
 import SuperLeader from '../components/SuperLeader.astro';
-/*import BloqueNavidad from '../components/BloqueNavidad.astro';
-import Nieve from '../components/Nieve.astro';*/
-import Modal  from '../components/Modal.astro';
+import BillBoard from '../components/BillBoard.astro';
+import BillBoard2 from '../components/BillBoard2.astro';
+
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BarNrm from '../components/BarNrm.astro';
+import NotaPrincipal from '../layouts/CardsHomePrincipal.astro';
+import Vinos from '../layouts/CardsHomeVinos.astro';
+/*import Libros from '../layouts/CardsHomeLibros.astro'; */
+import CardsHomeKpop from '../layouts/CardsHomeKpop.astro';
+import Podcast from '../layouts/CardsHomePodcast.astro';
+import NewsLetter from '../layouts/NewsLetter.astro';
 
 ---
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<BaseHead title={SITE_TITLE} seccion="Home" description={SITE_DESCRIPTION} />		
-	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		
-		<main id="home">
-				<!--Nieve transition:persist /-->
-				<section class="bg-[#124FE8]" >
-					<a class="text-center" target="_blank" href="https://rebrand.ly/nqnrp8i"><img class="m-auto" src="https://contenido.oyedigital.mx/wp-content/uploads/2025/01/TESLA4-2.jpg" alt="Gana un Tesla"/></a>
-				</section>
-				<section>
-					<HomeHeader />
-				</section>
-				<section class="block xl:hidden">
-					<!--BloqueNavidad /-->
-				</section>
-				<section class="bg-[#1f1f1f]">					
-					<div class="p-1 text-center container-home mx-auto">
-						<LeaderBoard />
-						<!--div class="md:table my-7 mx-auto text-center">
-							<a href="https://enfoquenoticias.com.mx/los-juegos-de-la-luz/" target="_blank"><img src="https://storage.googleapis.com/nrm-web/nrm/images/320x90.jpg" width="320" height="90" alt="Juegos Olímpicos"></a>
-						</div-->
-					</div>
-				</section>
-				<!--section>
-					<div class="container-home px-4 my-12 mx-auto">
-						<div class="flex flex-wrap">
-							<div class="w-full lg:w-2/3">
-								<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop News</h1>
-								<CardNews />
-							</div>
-							<div class="w-full lg:w-1/3 bg-purple-300 rounded">
-								<h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl text-center [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop Trends</h1>
-								<CardPopTrends />
-							</div>
-						</div>
-					</div>
-				</section-->
-				<section>
-					<div class="container-home mx-auto">
-						<div class="w-full">
-							<!--h1 class="py-4 font-bold text-4xl md:text-5xl lg:text-4xl xl:text-5xl [text-shadow:2px_4px_2px_rgb(88_29_135_/_64%)]">Pop News</h1-->
-							<h1 class="p-4 font-bold text-4xl md:text-5xl text-oye tracking-tight">Breaking News</h1>
-							<CardNews />
-						</div>
-					</div>
-				</section>
-				<section class="bg-[#1f1f1f] py-0.5">
-					<div class="container-home px-4 my-12 mx-auto">
-						<div class="w-full bg-oye pb-12 rounded">
-							<h1 class="py-4 font-bold text-4xl md:text-5xl text-white text-center">Top Ten</h1>
-							<SliderPoptrends />
-						</div>
-					</div>
-				</section>
-				<section>
-					<div class="container-home mx-auto">
-						<div class="w-full">
-							<h1 class="p-4 font-bold text-4xl md:text-5xl text-oye tracking-tight">K-Pop</h1>
-							<CardKpop />
-						</div>
-					</div>
-				</section>
-				<section class="bg-[#1f1f1f]">
-					<div class="container-home mx-auto py-2">
-						<div class="w-full">
-							<h1 class="p-4 font-bold text-4xl md:text-5xl text-oye tracking-tight">Oye de Cine</h1>
-							<CardCine />
-						</div>
-					</div>
-				</section>
-				<section>
-					<div class="container-home mx-auto">
-						<h1 class="p-4 font-bold text-4xl md:text-5xl text-oye tracking-tight">Promociones</h1>
-						<div class="flex flex-wrap">
-							<div class="w-full lg:w-2/3">
-								<SliderPromociones />
-							</div>
-							<div class="w-full mt-8 lg:w-1/3 lg:m-0 content-center">
-							<DoubleBox />
-							</div>
-						</div>
+    <head>
+        <BaseHead title={SITE_TITLE} seccion="Oye 89.7 - Radio en Vivo" description={SITE_DESCRIPTION} />       
+    </head>
+    <body>
+        <BarNrm />
+        <NotaPrincipal />
+        <Header title={SITE_TITLE} />
+        
+        <main id="home">
+                <!--header-->
+                    <!--HomeHeader /-->
+                <!--/header-->
+                        
+                <section>                   
+                    <div class="container-home p-4 mx-auto">                        
+                        <CardNews />
+                    </div>
+                </section>
+                <section>                   
+                    <div class="container-home p-4 mx-auto">                        
+                        <CardPromociones />
+                    </div>
+                </section>
+                <BillBoard />
+                <section>
+                    <div class="container-home p-4 mx-auto">                        
+                        <SliderTopten />
+                    </div>
+                </section>
+                <section>
+                    <div class="container-home p-4 mx-auto">
+                        <h1 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl">K-POP</h1>
+                        <div class="flex flex-wrap">
+                            <div class="w-full lg:w-2/3 platforms">
+                                <CardsHomeKpop />
+                            </div>
+                            <div class="w-full mt-8 lg:w-1/3 lg:m-0 content-center">
+                                <BoxBanner />
+                            </div>
+                        </div>                   
+                    </div>
+                </section>
 
-					</div>
-				</section>
 
-				<section class="bg-[#1f1f1f]">
-					<div class="container-home w-full mx-auto">
-						<h1 class="p-4 font-bold text-4xl md:text-5xl text-oye tracking-tight">Podcast</h1>
-						<SliderPodcast />
-					</div>
-				</section>
-				<SuperLeader />
-		</main>
-		<Modal />
-		<Footer />
-	</body>
-		
-
+                <section>
+                    <div class="container-home p-4 mx-auto">                        
+                        <SliderPodcast />
+                    </div>
+                </section>
+                <LeaderBoard />
+                <section>                   
+                    <div class="container-home p-4 mx-auto">                        
+                        <CardCine />
+                    </div>
+                </section>
+                <!--section>
+                    <div class="container-home p-4 mx-auto">                        
+                        <CardTecnologia/>
+                    </div>
+                </section-->
+                <BillBoard2 />
+        </main> 
+        <Footer />
+    </body>
 </html>
