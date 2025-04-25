@@ -6,7 +6,7 @@ import SuperLeader from '../components/SuperLeader.astro';
 import { Image } from 'astro:assets';
 
 
-const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=10&categories=280&_fields=id,title,yoast_head_json,content,slug,categories,_links,_embedded");
+const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=10&categories=280&_fields=id,title,yoast_head_json,content,slug,categories,_links,_embedded,acf");
 const posts = await res.json();
 
 ---
@@ -22,6 +22,7 @@ posts.map((post:any, index)=> (
         </div>
         <div class="w-6/12">
             <p class="font-bold leading-none p-4 text-lg" set:html={post.title.rendered}></p>
+            <p class="font-bold leading-none p-4 text-lg" set:html={post.acf.artista}></p>
         </div>
     </a>
 ))    

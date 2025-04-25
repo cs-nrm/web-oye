@@ -11,6 +11,7 @@ export interface Props {
       }
       slug: string;
       categories : {};
+      acf: {artista: string;}         
       yoast_head_json: {
          og_image: [
             {
@@ -34,7 +35,10 @@ var url_seccion;
     <div class="overflow-hidden bg-white rounded-lg shadow-[0_2px_12px_6px_rgba(0,0,0,0.25)] hover:shadow-[0_2px_12px_6px_rgba(254,12,1,0.5)]">
         <div set:html={post.content.rendered} class="block h-auto w-full aspect-video"></div>        
         <div class="flex items-center justify-between leading-tight p-2 md:p-4 min-h-40">
+            <div>
             <h2 class="text-base font-bold hover:text-gray-800" set:html={post.title.rendered}></h2>
+            <p set:html={post.acf.artista}> </p>
+            </div>
             <div class="voto-pop" data-voto-id={post.id}>
                 <button class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-white rounded-full group bg-oye hover:text-white focus:ring-4 focus:outline-none focus:ring-black">
                     <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-gray-900 rounded-full group-hover:bg-opacity-0">
