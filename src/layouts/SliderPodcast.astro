@@ -7,8 +7,8 @@ const posts = await res.json();
 
 
     <h1 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl ">OYE EL PODCAST</h1>
-    <div class="flex items-center">
-        <div class="news-content audiopod w-[50%] py-2 pr-4">
+    <div class="flex flex-nowrap items-center flex-col sm:flex-row">
+        <div class="news-content order-2 sm:order-1 audiopod sm:w-[50%] py-2 pr-4">
 			<h3 class="uppercase font-bold" set:html={posts[0].yoast_head_json.schema['@graph'][0].articleSection[0]}></h3>	
             <p class="text-xl m-0" set:html={posts[0].title.rendered}></p>
 			<p class="text-zinc-500">{posts[0].yoast_head_json.article_published_time.substring(0, 10)}</p>
@@ -18,7 +18,7 @@ const posts = await res.json();
 			</div> 
 			<div class="data-iframe" data-iframe={posts[0].acf.ds}></div>
         </div>
-        <div class="w-[50%]"><img class="rounded-xl" src={posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Breaking News"/></div>
+        <div class="w-[80%] sm:w-[50%] order-1 sm:order-2"><img class="rounded-xl" src={posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Breaking News"/></div>
     </div>
 
 <!--div class="main-carousel" data-flickity='{ "lazyLoad": 1, "wrapAround": true, "cellAlign": "center", "pageDots": false, "autoPlay": true}'-->

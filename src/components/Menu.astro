@@ -16,7 +16,7 @@
               <!-- First Tier Drop Down -->
               <ul>
                 <li><a href="/podcast/oye-de-cine">Oye de Cine</a></li>
-                <li><a href="/podcast/el-camino-de-las-estrellas">El Cmaino de las Estrellas</a></li>
+                <li><a href="/podcast/el-camino-de-las-estrellas">El Camino de las Estrellas</a></li>
                 <li><a href="/podcast/aqui-y-ahora">Aquí y Ahora</a></li>
                 <li><a href="/podcast/noticias-que-parecen-broma-pero-no-son">Noticias que parecen broma pero no son</a></li>
                 <li><a href="/podcast/lo-mas-viral">Lo más viral</a></li>
@@ -108,7 +108,7 @@ nav a, .dd-menu, .dd-menu-2 {
   font-size:17px;
   text-decoration:none;
   position: relative;
-  line-height: 2.2;
+  line-height: 1.2;
   overflow: visible;
 }
 .dd-menu-2{
@@ -118,17 +118,19 @@ nav a, .dd-menu, .dd-menu-2 {
 }
 
 nav a:hover, dd-menu:hover { 
-  background-color: #000000; 
+  background-color: var(--red-color); 
 }
 
 /* Hide Dropdowns by Default */
 nav ul ul {
   display: none;
   position: absolute; 
-  backdrop-filter: brightness(60%) blur(16px);
-  top: 25px;
+  /*backdrop-filter: brightness(60%) blur(16px);*/
+  top: 22px;
   left: 0;
   overflow: visible;
+  padding-top: 10px;
+  background: black;
 }
 nav ul .dd-menu-2 ul {
   top: 30px;
@@ -150,10 +152,11 @@ nav ul li.dd-menu-2:hover > ul {
   
 /* Fisrt Tier Dropdown */
 nav ul ul li {
-  width:150px;
+  width:160px;
   float:none;
   display:list-item;
   position: relative;
+  margin-bottom: 15px;
 }
 nav ul .dd-menu-2 ul li {
   text-align: center;

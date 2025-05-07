@@ -9,7 +9,6 @@ import SliderPodcast from '../layouts/SliderPodcast.astro';
 import SliderTopten from '../layouts/SliderTopten.astro';
 import CardMascotas from '../layouts/CardsHomeMascotas.astro';
 import CardTecnologia from '../layouts/CardsHomeTecnologia.astro';
-import CardAutos from '../layouts/CardsHomeAutos.astro';
 import Separator from '../components/Separator.astro';
 import HomeHeader from '../layouts/HomeHeader.astro';
 import DoubleBox from '../components/DoubleBox.astro';
@@ -65,12 +64,12 @@ import NewsLetter from '../layouts/NewsLetter.astro';
                 <section>
                     <div class="container-home p-4 mx-auto">
                         <h1 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl">K-POP</h1>
-                        <div class="flex flex-wrap">
+                        <div class="flex flex-wrap items-center">
                             <div class="w-full lg:w-2/3 platforms">
                                 <CardsHomeKpop />
                             </div>
-                            <div class="w-full mt-8 lg:w-1/3 lg:m-0 content-center">
-                                <BoxBanner />
+                            <div class="w-full lg:w-1/3 content-center">
+                                <DoubleBox />
                             </div>
                         </div>                   
                     </div>

@@ -2,7 +2,7 @@
 import Card from '../layouts/CardMoreNews.astro';
 
 
-const res = await fetch("https://contenido.stereociendigital.mx/wp-json/wp/v2/posts?_embed&per_page=4&_fields=title,slug,yoast_head_json,categories&categories=525");
+const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=4&_fields=title,slug,yoast_head_json,categories&categories=6616");
 const posts = await res.json();
 
 ---
@@ -18,8 +18,8 @@ const posts = await res.json();
                     }
         </section>
 <div class="m-auto text-center">
-    <a href="/librosycultura" class="text-black hover:text-white">
-        <button class="ver-mas lovelo group relative h-8 w-36 m-4 overflow-hidden bg-white hover:bg-black uppercase text-xs font-bold tracking-[3px]">
+    <a href="/cine" class="text-white">
+        <button class="ver-mas group relative rounded-sm h-8 m-2 px-4 overflow-hidden bg-[#f61842] uppercase text-xs font-bold tracking-[1px]">
             <span>Más</span>
         </button>
     </a>

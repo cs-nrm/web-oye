@@ -193,6 +193,8 @@ const secchome = document.getElementById('home');
 
         });
 
+
+
         function getInfoMusic(){
             fetch("https://cdn.nrm.com.mx/cdn/stereociendigital/playlist/cancion.json")
             .then((res) => {
@@ -560,6 +562,29 @@ document.addEventListener('astro:page-load', ev => {
     UPDATE();
 
 
+if($('.getcancion')){
+    //console.log('aqui va a imprimir la canción');
+    const artist = $('.getcancion').attr('data-artista');
+    const cancion = $('.getcancion').attr('data-cancion');
+    //console.log(cancion);
+    //console.log(artist);
+    function getInfoLyrics(){
+            fetch("https://api.lyrics.ovh/v1/"+artist+"/"+cancion)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error
+                        ('HTTP error! Status: ${res.status}');
+                }
+                return res.json();
+            })
+            .then((data) => { 
+                //console.log(data.lyrics);
+                $('.getcancion').html(data.lyrics);
+            });
+    }
+    getInfoLyrics();
+}
+
     /* efectos */ 
     var distance = '';
     (function($){
@@ -694,8 +719,18 @@ document.addEventListener('astro:page-load', ev => {
             lazyLoad: 1, 
             wrapAround: true, 
             cellAlign: 'center',
-            pageDots: false
-            //autoPlay: true
+            pageDots: false,
+            autoPlay: true
+        });
+
+        var elemtopten = document.querySelector('.main-topten');
+        var flktytopten = new Flickity( elemtopten, {
+            contain: true,
+            lazyLoad: 1, 
+            wrapAround: true, 
+            cellAlign: 'center',
+            pageDots: false,
+            autoPlay: true
         });
 
 
@@ -895,62 +930,97 @@ document.addEventListener('astro:page-load', ev => {
         }); 
         }
         
-        
-        /*voto*/
-        $('.voto-pop').each(function(){
-            $(this).on('click', function(){
-                console.log($(this).attr('data-voto-id'));
-                const id = $(this).attr('data-voto-id');                                
-                /*const params = {
-                    "search": id, 
-                    "per_page": 1000                    
-                };*/
-                const params = {
-                    "item_id":id,
-                    "user_id":15,
-                    "type":"post",
-                    "user_ip":"0.0.0.0",
-                    "status":"like"
-                };
-                
-                const Rparamas = {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': 'Bearer GoW1bJVNjV3SCoUfVblUJs6ddelYSrGmmadoZglqcWrFELxbvrksHfsIOKeYZcgFN0jKNFtpiJEB7YN8rwUsLONosH06pWU1UZ2zIL10n0kUM26ufABMlqyh',
-                        'Content-Type': 'application/json'
-                    },                    
-                    body: JSON.stringify( params )
-                };
-                    
-                fetch('https://contenido.beatdigital.mx/wp-json/wp-ulike-pro/v1/vote/', Rparamas)
-                .then((res) => {
-                    if (!res.ok) {
-                        throw new Error
-                            ('HTTP error! Status: ${res.status}');
-                    }
-                    return res.json();
-                })
-                .then((data) => { 
-                        console.log(data);
-                        $(this).addClass('voted');
-                        $(this).find('svg').attr('fill','white');
-                        Toastify({
-                            text: "Gracias por tu voto",
-                            className: "info",
-                            style: {
-                              background: "linear-gradient(to right, #ec4899, #a855f7)",
-                              'border-radius': '6px',
-                              'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
-                            },
-                            offset:{
-                                x:'10rem',
-                                y:'20rem'
-                            }
-                        }).showToast();
-                });
+             /*voto*/
+        var yavoto = 0;
+        var allowvote = 60;
 
+        $('.voto-pop').each(function(){    
+            $(this).on('click', function(){
+                console.log(yavoto);
+                if (yavoto === 0){
+                    yavoto = 1;        
+    
+                    var interval = setInterval(function(){
+                        console.log(allowvote)
+                        allowvote--;
+                        
+                        if(allowvote < 0){
+                        console.log('permitir votar de nuevo');
+                        yavoto = 0;
+                        allowvote = 60;
+                        console.log(yavoto);
+                        clearInterval(interval);
+                        }
+                        
+                    }, 1000);
+    
+                    console.log($(this).attr('data-voto-id'));
+                    const id = $(this).attr('data-voto-id');                                                
+                    const params = {
+                        "item_id":id,
+                        "user_id":15,
+                        "type":"post",
+                        "user_ip":"0.0.0.0",
+                        "status":"like"
+                    };                
+                    const Rparamas = {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Bearer ngXupo2jqRcdogAaVAwfiVZhEDULq9kRRKrWZzpsnE6ETAbBu5abURCmA98SvA2SOXKjtC3uqW15DV2dEhWP1QrGkkSZb8c8vhI8Snbszb94oXYGmewSgTW3',
+                            'Content-Type': 'application/json'
+                        },                    
+                        body: JSON.stringify( params )
+                    };
+                        
+                    fetch('https://contenido.oyedigital.mx/wp-json/wp-ulike-pro/v1/vote/', Rparamas)
+                    .then((res) => {
+                        if (!res.ok) {
+                            throw new Error
+                                ('HTTP error! Status: ${res.status}');
+                        }
+                        return res.json();
+                    })
+                    .then((data) => { 
+                            console.log(data);
+                            $(this).addClass('voted');
+                            $(this).find('svg').attr('fill','white');
+                            Toastify({
+                                text: "Gracias por tu voto",
+                                className: "info",
+                                style: {
+                                  background: "#000",
+                                  'border-radius': '6px',
+                                  'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
+                                },
+                                offset:{
+                                    x:'10rem',
+                                    y:'20rem'
+                                }
+                            }).showToast();
+                    });
+                
+                    
+                }else if(yavoto === 1){
+                    Toastify({
+                        text: "Espera un minuto para poder volver a votar",
+                        className: "info",
+                        style: {
+                          background: "#000",
+                          'border-radius': '6px',
+                          'box-shadow':'var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)' 
+                        },
+                        offset:{
+                            x:'10rem',
+                            y:'20rem'
+                        }
+                    }).showToast();
+    
+                }   
+                
             });            
-        });
+        });   
+
+
         
         /*------------------- */
         

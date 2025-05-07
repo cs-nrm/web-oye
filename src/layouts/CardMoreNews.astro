@@ -26,32 +26,23 @@ const { post } = Astro.props;
 var url_seccion;
 //console.log(post.categories[0]);
 switch (post.categories[0]){
-    case 143:        
-        url_seccion = 'noticias';
+    case 149:        
+        url_seccion = 'breakingnews';
     break;
-    case 525:        
-        url_seccion = 'librosycultura';
+    case 172:        
+        url_seccion = 'kpop';
     break;
-    case 524:
-        url_seccion = 'seriesypeliculas';
+    case 6616:
+        url_seccion = 'cine';
     break;
-    case 527:
-        url_seccion = 'guiasycomida';
+    case 8791:
+        url_seccion = 'lifestyle';
     break;
-    case 169:
-        url_seccion = 'autos';
-    break;
-    case 526:
-        url_seccion = 'vinos';
-    break;
-    case 167:
-        url_seccion = 'mascotas';
-    break;
-    case 528:
-        url_seccion = 'tecnologia';
+    case 156:
+        url_seccion = 'entrevistas';
     break;
     default:
-        url_seccion = 'noticias';    
+        url_seccion = 'breakingnews';    
     break;      
 }
 
@@ -63,9 +54,9 @@ switch (post.categories[0]){
         <a href={`/${url_seccion}/${post.slug}/`}>
             <img class="block h-auto w-full aspect-video object-cover group-hover:text-[var(--amarillo-beat)]" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered} />
         </a>
-        <div class="flex items-center justify-between leading-tight px-2">
+        <div class="flex items-center justify-between leading-tight px-2 mt-2">
             <a class="no-underline" href={`/${url_seccion}/${post.slug}/`}>
-                <h2 class="text-base text-gray-200 group-hover:text-[#f61842] leading-normal" set:html={post.title.rendered}></h2>
+                <h2 class="text-base text-gray-200 group-hover:text-[#f61842] leading-none font-bold" set:html={post.title.rendered}></h2>
             </a>
         </div>
         <div class="roboto flex items-center justify-between text-xs font-bold uppercase text-gray-500 px-2">            

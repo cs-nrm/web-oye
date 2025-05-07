@@ -1,0 +1,103 @@
+---
+import BaseHead from '../../../components/BaseHead.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../../consts.js';
+/*import {getArticles} from '../../../lib/api.js';*/
+import Card from '../../../layouts/CardsPodcast.astro';
+import BarNrm from '../../../components/BarNrm.astro';
+
+
+export async function getStaticPaths( { paginate } ) {
+    
+    const arrpodcast = [
+        {nodo: 9138,title: 'Oye de cine', link: 'oye-de-cine', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/OYE-CINE.jpg', descripcion: ''},
+        {nodo: 9046,title: 'El camino de las estrellas con Jaidy Robles', link: 'el-camino-de-las-estrellas', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_elcamino-min.jpg', descripcion: '¿Te gustaría saber, cómo iniciaron tus artistas favoritos? Jaidy Robles te dirá detalle a detalle de tu artista y mucho más.'},
+        {nodo: 9047,title: 'Aquí y ahora con Sergio Mejía', link: 'aqui-y-ahora', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_aqui-min.jpg', descripcion: 'Todo eso que siempre quisiste saber de tus mascotas y jamás te atreviste a preguntar.'},
+        {nodo: 9048,title: 'Noticias que parecen broma pero no son con Aura Ramírez', link: 'noticias-que-parecen-broma-pero-no-son', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_noticias-min.jpg', descripcion: 'Ya llegóoooo el que será tu próximo podcast favorito. Soy Aura Ramírez y cada semana te traeré un combo de noticias que parecen falsas pero en realidad NO lo son. Prepara tu café, sírvete un pan y entérate de lo que pasa en el mundo con un toque de jiribilla, claro que sí.'},
+        {nodo: 9049,title: 'Lo más viral con Emilia Catalán', link: 'lo-mas-viral', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_viral2-min-min.jpg', descripcion: 'Los trends de la semana y temas virales en redes sociales.'},
+        {nodo: 9051,title: 'Receta fit con la pelirroja de la radio', link: 'receta-fit', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_recetafit-min.jpg', descripcion: 'Las mejores recetas fitness para tu día a día de forma fácil y rápida.'},    
+        {nodo: 3813,title: 'Top tech', link: 'top-tech', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/TOP-TECH-46-min.jpg', descripcion: 'Un podcast en el que conoceremos todo sobre la tecnología que nos está rodeando.'},
+        {nodo: 3801,title: 'Top gaming', link: 'top-gaming', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/TOP-GAMING-2024-min.jpg', descripcion: 'Un clavado al mundo de los gamers en el cual conocerás todo sobre los lanzamientos, mejores juegos del momento y los que vienen.'},
+        {nodo: 6581,title: 'Top ten', link: 'top-ten', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_TOP10-min.jpg', descripcion: 'La música más top, nueva y relevante que escuchas, tu votas por tener tu canción en los 10 primeros lugares.'},
+        {nodo: 7404,title: 'Oye la alternativa', link: 'oye-la-alternativa', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_alternativa.png', descripcion: 'El espacio donde toda la música se escucha, sin distinción, entrevistas de todos los géneros en un solo lugar.'},
+        {nodo: 6806,title: 'Al otro lado de la radio', link: 'al-otro-lado-de-la-radio', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_otro-lado.jpg', descripcion: 'Un podcast donde podrás escuchar a tus artistas favoritos y conocer más sobre ellos.'},
+    ]; 
+
+  
+  const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=250&_fields=title,slug,yoast_head_json,categories,acf&categories=9138,9046,9047,9048,9049,9051,3813,3801,6581,7404,6806" ); 
+  const posts = await res.json();
+  //console.log(posts);
+  
+  return arrpodcast.flatMap( function(pod) {      
+      const podcast = pod.link; 
+      //console.log(pod.nodo);           
+      const filteredPosts = posts.filter((post:any) => post.categories[0]  == pod.nodo || post.categories[1]  == pod.nodo );                      
+      //console.log(filteredPosts);
+      return paginate(filteredPosts,{
+        params:{ podcast },
+        props: { pod},
+        pageSize: 10
+      });
+  });  
+}
+
+interface Props{
+  page: any; 
+  podcast: any;
+  pod:any; 
+}
+
+const { page = [] } = Astro.props;
+const { podcast, pod } = Astro.props;
+/*const { pod } = Astro.props;*/
+
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead title={SITE_TITLE} seccion="Podcast" description={SITE_DESCRIPTION} />
+    
+  </head>
+  <body>
+    <BarNrm />
+    <Header title={SITE_TITLE} />
+    
+    <main>
+            
+      <div class="container my-12 mx-auto px-4 md:px-12">
+        <div class="flex flex-wrap justify-center ">
+          <div class="w-full md:w-1/3 lg:w-1/4"><img class="content-center shadow-xl" src={pod.imagen}/></div>
+          <div class="w-full md:w-2/3 lg:w:3/4 p-4 flex items-center">
+            <div>
+              <h1 class="audiowide neon-morado text-center md:text-left font-bold text-3xl md:text-4xl lg:text-3xl xl:text-4xl align-middle">{pod.title} </h1>
+              <p class="align-middle">{pod.descripcion}</p>
+            </div> 
+          </div>
+        </div>
+        <section class="flex flex-wrap -mx-4">
+          { 
+            page.data.map((post:any) => ( 
+            <>
+              <Card post={post} />
+            </>
+            ))
+          }
+        </section>
+            <div class="m-auto text-center">
+                {page.url.prev && <a href={page.url.prev} class="text-black hover:text-white">
+                    <button class="ver-mas lovelo group relative h-8 w-36 m-4 overflow-hidden bg-white hover:bg-black uppercase text-xs font-bold tracking-[3px]">
+                        <span>Anterior</span>
+                    </button>
+                </a>}
+                {page.url.next && <a href={page.url.next} class="text-black hover:text-white">
+                    <button class="ver-mas lovelo group relative h-8 w-36 m-4 overflow-hidden bg-white hover:bg-black uppercase text-xs font-bold tracking-[3px]">
+                        <span>Siguiente</span>
+                    </button>
+                </a>}
+            </div>
+      </div>  
+    </main>
+    <Footer />
+  </body>
+</html>
