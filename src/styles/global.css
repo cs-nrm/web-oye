@@ -478,56 +478,32 @@ article .wp-block-embed-youtube .wp-block-embed__wrapper iframe {
     }
 
 /* PESTAÑA NOTIFICACIÓN */
-.ns-attached{max-width: 350px !important; left: auto !important; }
-.ns-effect-bouncyflip {
-  background: #030000 !important;
-  text-align: center;
-  left: auto !important;
-  right: 30px;
-}
-.ns-effect-bouncyflip p {  font-size: 16px;    }    
-.ns-effect-bouncyflip .icon {
-  position: relative !important;
-  display: block !important;
-  top: -45px !important;
-  left: 240px !important;
-}
-.ns-box {
-  padding: 5px !important;
-  z-index: 100000 !important;
-}        
-.ns-box a{opacity:1 !important;}    
-.ns-box-inner a, .ns-box-inner .fondo-live div:first-child{
-  position: relative;
-  top: 196px;
-  left: -30px;
-  text-decoration: none;
-  line-height: 0px;
-  color: #dc0d0d;
-  font-size: 17px;
-}
-.ns-box-inner .fondo-live div:first-child, .ns-box-inner a{color: white;}
-.ns-box-inner h3{margin: 0; font-size: 1.5rem; color: #fff;}
-.ns-box-inner i {font-size: 2.3rem; position: relative; top: 7px;}
 
-/*.ns-effect-bouncyflip #getting-started{
-  color: #634e7b;
-  position: absolute;
-  top: -6px;
-  width: 300px;            
-}
-.ns-effect-bouncyflip #getting-started p{font-size: 16px; padding: 0px;}
-.ns-effect-bouncyflip #getting-started span{font-size: 20px; position: relative; top: 200px;}
-.ns-effect-bouncyflip #getting-started h1 { margin-bottom: 10px;}*/
-.ns-effect-bouncyflip .fondo-live{
-  width: 300px;
-  height: 256px;
-  background: #fff url('https://storage.googleapis.com/nrm-web/oye/recursos/notificacion-8M.jpg') no-repeat;
-  background-position: top center;
-}
-.ns-effect-bouncyflip .fondo-live .info{position: absolute; bottom: 0; font-size: 24px; bottom:35px; width: 300px;}
-.ns-effect-bouncyflip .ns-close::after, .ns-effect-bouncyflip .ns-close::before{background: #fff !important;}
-.ns-effect-bouncyflip .ns-close {right: -3px; top: -3px;}
+.ns-attached{max-width: 350px !important; left: auto !important;}
+.ns-effect-bouncyflip { background: #EA2648!important;  text-align: center; left: auto; right: 30px;  }
+.ns-effect-bouncyflip p { /*padding: .5em 0.2em .8em .2em!important;*/  font-size: 16px;  }
+.ns-box { padding: 5px !important;  z-index: 100000 !important; }
+.ns-box a{opacity:1 !important;}
+.ns-box-inner a, .ns-box-inner .fondo-live div:first-child{ position: relative; top: 196px; left: 78px;  text-decoration: none;  /*text-align: right;*/line-height: 0px;color: #dc0d0d!important;font-size: 17px;  }
+a.evento_uno {    top: 72px;}
+a.evento_uno svg.icon.icon-tabler.icon-tabler-hand-click {  position: relative;  display: inline;  top: 3px;  left: -3px; stroke:#000; }
+a.evento_uno h3{    color: black !important;}
+a.evento_dos{  top: 140px;}
+a.evento_dos svg.icon.icon-tabler.icon-tabler-hand-click {  position: relative;  display: inline;  top: 10px;  left: 4px;  color: white; stroke:white;  }
+a.evento_dos h3{    color: white !important;}
+.ns-box-inner .fondo-live div:first-child, .ns-box-inner a{color: white !important;}
+.ns-box-inner h3{margin: 0; font-size: 1rem; color: #000!important;}
+.ns-box-inner i {    font-size: 2.3rem;position: relative;  top: 7px; }
+#getting-started{ color: #634e7b; position: absolute; top: -6px;  width: 300px;}
+#getting-started h1 { margin-bottom: 10px;}
+#getting-started span{font-size: 20px; position: relative; top: 200px;}
+#getting-started p{font-size: 16px; padding: 0px !important;}
+.fondo-live{  width: 300px; height: 256px;  background: #fff url('https://storage.googleapis.com/nrm-web/oye/recursos/NOTIFICACION-emblema-sabores%202.jpg') no-repeat; background-position: top center;  }
+.fondo-live .info{position: absolute; bottom: 0; font-size: 24px; bottom:35px; width: 300px;}
+.ns-effect-bouncyflip .ns-close::after, .ns-effect-bouncyflip .ns-close::before{  background: #fff!important; }
+.ns-close { right: -3px !important; top: -3px !important; }
+
+/* ========== notidicación*/
 
 
 
