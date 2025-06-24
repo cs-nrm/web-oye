@@ -207,8 +207,8 @@ const secchome = document.getElementById('home');
             .then((data) => {                
                 switch( data.categoria ){
                     case 'COMERCIALES' :
-                        artist = 'PAUSA COMERCIAL';
                         cancion = '';
+                        cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
                     break;
                     case 'QATAR' :
                         artist = 'PAUSA COMERCIAL';
@@ -221,6 +221,7 @@ const secchome = document.getElementById('home');
                         artist = 'PAUSA COMERCIAL';
                         cancion = '';
                     break;
+
                     case 'STSALUDOS' :
                         artist = 'PAUSA COMERCIAL';
                         cancion = '';
@@ -305,6 +306,8 @@ const secchome = document.getElementById('home');
                 }                 
                 if (cancion == ''){
                     document.getElementById('infoMusic').innerHTML = artist;
+                    document.getElementById('infoArtista').innerHTML = artist;
+
                 }else{
                     document.getElementById('infoMusic').innerHTML = artist + ' / ' + cancion;
                 }
