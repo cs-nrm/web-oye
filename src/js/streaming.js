@@ -216,8 +216,7 @@ const secchome = document.getElementById('home');
                     break;
                     case 'TITULOS' :
                         artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
+
                     case 'STTEMPERATURA' :
                         artist = 'PAUSA COMERCIAL';
                         cancion = '';
