@@ -6,60 +6,30 @@ import SuperLeader from '../components/SuperLeader.astro';
 import { Image } from 'astro:assets';
 
 
-const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,content,excerpt,_links,_embedded&_embed&per_page=6&categories=149&order_by=date&order=desc");
+const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,acf,yoast_head_json,content,excerpt,_links,_embedded&_embed&per_page=20&categories=149");
 const posts = await res.json();
+const filteredPosts = posts.filter((post:any) => !post.acf?.fijo);
 ---
 
       <div class="container">
         <h1 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl ">Breaking News</h1>
         <div class="news-grid grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-16 xl:gap-16">
-          <!-- Article 1 -->
-          <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
-            <a href={`/breakingnews/${posts[0].slug}/`}>
-              <div><img class="rounded-xl" src={posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Breaking News"/></div>
-              <div class="news-content">
-                <p set:html={posts[0].title.rendered}></p>
-                <!--div class="text-sm resumen" set:html={posts[0].excerpt.rendered}></div>
-                <span class="roboto font-bold text-xs mt-4">por {posts[0].yoast_head_json.author}</span-->
-              </div>
-            </a>  
-          </article>
-
-          <!-- Article 2 -->
-          <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
-            <a href={`/breakingnews/${posts[1].slug}/`}>
-              <div><img class="rounded-xl" src={posts[1]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Breaking News"/></div>
-              <div class="news-content">
-                <p set:html={posts[1].title.rendered}></p>
-                <!--div class="text-sm resumen" set:html={posts[1].excerpt.rendered}></div>
-                <span class="roboto font-bold text-xs mt-4">por {posts[1].yoast_head_json.author}</span-->
-              </div>
-            </a>  
-          </article>
-
-          <!-- Article 3 -->
-          <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
-            <a href={`/breakingnews/${posts[2].slug}/`}>
-              <div><img class="rounded-xl" src={posts[2]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Las de Hoy"/></div>
-              <div class="news-content">
-                <p set:html={posts[2].title.rendered}></p>
-                <!--div class="text-sm resumen" set:html={posts[2].excerpt.rendered}></div>
-                <span class="roboto font-bold text-xs mt-4">por {posts[2].yoast_head_json.author}</span-->
-              </div>
-            </a>  
-          </article>
-
-          <!-- Article 4 -->
-          <article class="news-card hidden md:block lg:hidden transition duration-[0.2s] hover:translate-y-[-4px]">
-            <a href={`/breakingnews/${posts[3].slug}/`}>
-              <div><img class="rounded-xl" src={posts[3]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Las de Hoy"/></div>
-              <div class="news-content">
-                <p set:html={posts[3].title.rendered}></p>
-                <!--div class="text-sm resumen" set:html={posts[3].excerpt.rendered}></div>
-                <span class="roboto font-bold text-xs mt-4">por {posts[3].yoast_head_json.author}</span-->
-              </div>
-            </a>  
-          </article>
+           {
+          filteredPosts.slice(0, 4).map((post:any, idx:number) => (
+            <div class={`cards-filtro-${idx}`}>
+              <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
+                <a href={`/breakingnews/${post.slug}/`}>
+                  <div><img class="rounded-xl" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Breaking News"/></div>
+                  <div class="news-content">
+                    <p set:html={post.title.rendered}></p>
+                    <!--div class="text-sm resumen" set:html={post.excerpt.rendered}></div>
+                    <span class="roboto font-bold text-xs mt-4">por {post.yoast_head_json.author}</span-->
+                  </div>
+                </a>  
+              </article>
+            </div>
+          ))
+          }
         </div>
       </div>
 
@@ -72,6 +42,12 @@ const posts = await res.json();
 </div>
 
 <style>
+.cards-filtro-3{display: none;}
+
+@media (min-width: 769px) and (max-width: 1024px){
+  .cards-filtro-3{display: block;}
+}
+
 .news-content p{
   font-size: 1rem;
   padding: 15px 0;
