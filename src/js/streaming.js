@@ -33,8 +33,8 @@ const secchome = document.getElementById('home');
              analytics: {
                 active: true,
                 debug: false,
-                appInstallerId: 'beatpag',            
-                trackingId: 'UA-63005013-1',
+                appInstallerId: 'oyePag',            
+                trackingId: 'G-M9RYDQ6Z9L',
                 trackingEvents: [ 'play', 'stop', 'pause', 'resume', 'all' ],
                 sampleRate: 100,     
                 category: 'Reproduccion Radio Pag' 
@@ -47,14 +47,14 @@ const secchome = document.getElementById('home');
         streaming.addEventListener( 'ad-playback-start', startAd );
         streaming.addEventListener( 'ad-playback-error', errorAd );
       }
-    
+    var musicInterval = null; // Agrega esto al inicio del archivo o cerca de lastArtist/lastSong
+
      function getStatus(s){
         local_status = s.data.code;
-        const secchome = document.getElementById('home');        
-         //console.log(local_status);
-         if( local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING' ){
-            document.getElementById('loading').classList.add('show');
-            document.getElementById('loading').classList.remove('hide');
+        const secchome = document.getElementById('home');                 
+        if( local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING' ){
+            /*document.getElementById('loading').classList.add('show');
+            document.getElementById('loading').classList.remove('hide');*/
             document.getElementById('play-pause').classList.remove('show');
             document.getElementById('play-pause').classList.add('hide'); 
             document.getElementById('big-play').innerHTML = buttongLoading;    
@@ -62,22 +62,25 @@ const secchome = document.getElementById('home');
          }
          if (local_status == 'LIVE_PLAYING'){                        
             document.getElementById('play-pause').innerHTML = buttonPause;
-            document.getElementById('loading').classList.remove('show');
-            document.getElementById('loading').classList.add('hide');
+            /*document.getElementById('loading').classList.remove('show');
+            document.getElementById('loading').classList.add('hide');*/
             document.getElementById('play-pause').classList.add('show');
             document.getElementById('play-pause').classList.remove('hide'); 
-            document.getElementById('big-play').innerHTML = bigButtonPause; 
-           // $('.text-player').html('');
-            //$('.text-player').attr('id','infoMusic');
-            $('.text-player').html('<div style="font-weight:bold;">Estas escuchando...</div><div id="infoMusic" style="line-height:11px; font-size:12px;"></div>');
+            document.getElementById('big-play').innerHTML = bigButtonPause;            
+            $('.text-player').html('<div style="font-weight:bold;">Ahora suena...</div><div id="infoMusic" style="line-height:11px; font-size:12px;"></div>');
             $('.text-player').addClass('playing');
             $('#radiobutton').addClass('playerplaying');
-            getInfoMusic();
+            // Limpia cualquier intervalo anterior
+            if (musicInterval) clearInterval(musicInterval);
+            setTimeout(function(){
+                getInfoMusic(); // Primera consulta inmediata
+            }, 1000); // Espera 1 segundo antes de la primera consulta
+            musicInterval = setInterval(getInfoMusic, 30000); // Intervalo solo cuando está LIVE_PLAYING
             
          }
          if(local_status == 'LIVE_STOP' || local_status == 'LIVE_PAUSE') {
-            document.getElementById('loading').classList.remove('show');
-            document.getElementById('loading').classList.add('hide');
+            /*document.getElementById('loading').classList.remove('show');
+            document.getElementById('loading').classList.add('hide');*/
             document.getElementById('play-pause').classList.add('show');
             document.getElementById('play-pause').classList.remove('hide'); 
             document.getElementById('play-pause').innerHTML = buttonPlay;            
@@ -88,7 +91,7 @@ const secchome = document.getElementById('home');
             setTimeout( function(){
                 $('.text-player').html('ESCUCHA LA RADIO EN VIVO <span style="color: #df104a;    font-weight: bold;    font-size: 12px;">GRATIS</span> AHORA');             
             },1000);
-                
+            if (musicInterval) clearInterval(musicInterval);    
             //$('.text-player').attr('id','');            
          }
 
@@ -97,27 +100,33 @@ const secchome = document.getElementById('home');
 
     function completeAd(e){                
         streaming.play({
-            station:'XEOYAM',
+            station:'XEOYEFM',
             trackingParameters:{
-            Dist: 'WebStereocien'
+            Dist: 'WebOye'
             }
         }); 
-        //$('#td_container').width('1px');
-        //$('#td_container').height('1px');       
         $('#td_container').removeClass('pub_active');
+        $('#full-cover').css('display','none');
+        
+       
       }
+     
+
+     function adBreakCuePoint( e ){
+       //console.log('PAUSA COMERCIAL');
+       //document.getElementById('infoMusic').innerHTML = 'PAUSA COMERCIAL';
+    }
 
       function startAd(e){
-        //$('#td_container').width('600px');
-        //$('#td_container').height('360px');
         $('#td_container').addClass('pub_active');
+        $('#full-cover').css('display','block');
         document.getElementById('big-play').innerHTML = buttongLoading;    
         $('.text-player').html('<div style="font-style: italic; line-height:11px; font-weight:bold; font-size:11px;">Iniciamos después del anuncio...</div>'); 
       }
       
       var start = function(){
         //console.log('trata la pub primero');    
-        streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Beat/VideoVast&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );	        
+        streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/21799830913/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
       };
 
 
@@ -128,24 +137,24 @@ const secchome = document.getElementById('home');
       
       function play(){
         streaming.play({
-            station:'XEOYAM',
+            station:'XEOYEFM',
             trackingParameters:{
-            Dist: 'WebStereocien'
+            Dist: 'WebOye'
             }
         });        
       }      
    
 
       function stop(){
-        console.log('stopped');
+      //  console.log('stopped');
         streaming.stop();
       }
 
       function errorAd(e){        
         streaming.play({
-            station:'XEOYAM',
+            station:'XEOYEFM',
             trackingParameters:{
-            Dist: 'WebStereocien'
+            Dist: 'WebOye'
             }
         });
         console.log(e);
@@ -155,12 +164,12 @@ const secchome = document.getElementById('home');
     /* Callback function called to notify that the SDK is ready to be used */
     function onPlayerReady(){                
         console.log('streaming ready');        
-        document.getElementById('loading').classList.remove('show');
-        document.getElementById('loading').classList.add('hide');
+        /*document.getElementById('loading').classList.remove('show');
+        document.getElementById('loading').classList.add('hide');*/
         document.getElementById('play-pause').classList.add('show');
         document.getElementById('play-pause').classList.remove('hide'); 
         vol = streaming.getVolume();
-        console.log(vol);
+     //   console.log(vol);
 
     }
 
@@ -185,6 +194,16 @@ const secchome = document.getElementById('home');
         console.log( 'AdBlockerDetected' );
     }
 
+    const autoplay = function(){        
+        streaming.play({
+            station:'XEOYEFM',
+            trackingParameters:{
+                Dist: 'WebOye',
+                autoplay: 1
+            }
+        });
+    }
+
     initPlayerSDK();        
         volume = document.getElementById('vol');
         volume.addEventListener('input', function(){
@@ -193,135 +212,181 @@ const secchome = document.getElementById('home');
 
         });
 
+function detectarNavegador() {
+  const ua = navigator.userAgent;
 
+  let navegador = "desconocido";
+  if (ua.includes("Chrome")) navegador = "Chrome";
+  else if (ua.includes("Firefox")) navegador = "Firefox";
+  else if (ua.includes("Safari") && !ua.includes("Chrome")) navegador = "Safari";
+  else if (ua.includes("Edge")) navegador = "Edge";
+  else if (ua.includes("MSIE") || ua.includes("Trident")) navegador = "IE";
 
-        function getInfoMusic(){
-            fetch("https://cdn.nrm.com.mx/cdn/stereociendigital/playlist/cancion.json")
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error
-                        ('HTTP error! Status: ${res.status}');
-                }
-                return res.json();
-            })
-            .then((data) => {                
-                switch( data.categoria ){
-                    case 'COMERCIALES' :
-                        cancion = '';
-                        cover='https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
-                    break;
-                    case 'QATAR' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'TITULOS' :
-                        artist = 'PAUSA COMERCIAL';
+  let so = "desconocido";
+  if (ua.includes("Windows")) so = "Windows";
+  else if (ua.includes("Mac")) so = "MacOS";
+  else if (ua.includes("Linux")) so = "Linux";
+  else if (ua.includes("Android")) so = "Android";
+  else if (ua.includes("iPhone") || ua.includes("iPad")) so = "iOS";
 
-                    case 'STTEMPERATURA' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
+  return { navegador, sistema: so };
+}        
+        
+var lastArtist = null;
+var lastSong = null;
 
-                    case 'STSALUDOS' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'STPROMOS' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'STPROGRAMAS' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'STDESPEDIDAS' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'ST-ELEMENTOS PROD' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'ST TITULOS NAVIDAD' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'ST TATUAJES LILI' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'ST PROD NAVIDAD' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'ST INTERVENCIONES MADRUGADA' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'ST DIGITAL' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'ST DANI' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'ST BUENA NOTICIA' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'ST BACK TO THE 80S' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'ST ANIMALES CON ESTRELLA' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'MENCIONES-STEREO CIEN' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'CARTS' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'CARTS' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    case 'CARTS' :
-                        artist = 'PAUSA COMERCIAL';
-                        cancion = '';
-                    break;
-                    
-                    
-                    default:
-                        artist = data.artista;
-                        cancion = data.title;
-                        hora = data.hora_real;
-                    break;
-                    
-
-                }                 
-                if (cancion == ''){
-                    document.getElementById('infoMusic').innerHTML = artist;
-                    document.getElementById('infoArtista').innerHTML = artist;
-
-                }else{
-                    document.getElementById('infoMusic').innerHTML = artist + ' / ' + cancion;
-                }
-            })
-           // console.log('repetido');   
+function getInfoMusic() {
+    fetch("https://cdn.nrm.com.mx/cdn/oye/playlist/cancion.json")
+    .then((res) => {
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
         }
-        getInfoMusic();
-        setInterval( getInfoMusic, 30000);
-        
+        return res.json();
+    })
+    .then((data) => {
+        let newArtist = '';
+        let newSong = '';
+        let newHora = '';
 
-        
-        function getInfoProg(){
-            
-            fetch("https://contenido.stereociendigital.mx/wp-json/wp/v2/posts?_embed&per_page=40&categories=302&_fields[]=acf&_fields[]=jetpack_featured_media_url")
+        switch( data.categoria ){
+                    case 'COMERCIALES' :
+                    case 'OYE-ESPECIALES' :
+                    case 'OYE-DEBRAYE':
+                    case 'OYE-TURNOS':
+                    case 'OYE-CAP':
+                    case 'OYE-PRO':                                            
+                        artist = 'PAUSA COMERCIAL';
+                        cancion = '';
+                        cover= 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
+                    break;
+                    case 'OYE-MUS':
+                    case 'OYE-INGLES':
+                    case 'OYE-PARTY-NIGHTS':
+                        newArtist = data.artista;
+                        newSong = data.title;
+                        newHora = data.hora_real;
+                    break;                                            
+                    default:
+                        newArtist = 'PAUSA COMERCIAL';
+                        newSong = '';
+                        cover= 'https://storage.googleapis.com/nrm-web/nrm/images/footer/logo-oye-80.png';
+                    break;
+                } 
+
+        // Actualiza siempre en la primera llamada o si hay cambio
+        if (lastArtist === null || lastSong === null || newArtist !== lastArtist || newSong !== lastSong) {
+            lastArtist = newArtist;
+            lastSong = newSong;
+            artist = newArtist;
+            cancion = newSong;
+            hora = newHora;
+
+            if (cancion === '') {
+                document.getElementById('infoMusic').innerHTML = artist;
+            } else {
+                const secenvivo = document.getElementById('envivo');
+                var cover;
+                var coverbase = "https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=0aa2713d85e04243944924876ba71f05&format=json";
+                const codtit = cancion.replace('&', '%26');
+                const codart = artist.replace('&', '%26');
+                console.log('Artista: ' + artist);
+                console.log('Canción: ' + cancion);
+                console.log('escribe');
+                $('#infoMusic').html('<div class="current-song">' + cancion + ' / ' + artist + '</div><div class="share-current"><div class="like"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" stroke-width="1"> <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path> </svg> </div> <div class="share-wp"><a href="https://api.whatsapp.com/send/?text=Estoy%20escuchando%20' + codtit +'%20de%20'+ codart +'%20en%20https://stereociendigital.mx/" target="_blank"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" stroke-width="1"> <path d="M13 4v4c-6.575 1.028 -9.02 6.788 -10 12c-.037 .206 5.384 -5.962 10 -6v4l8 -7l-8 -7z"></path> </svg> </div></div>'); 
+                //document.getElementById('infoMusic').innerHTML = 
+
+               const url = 'https://contenido.stereociendigital.mx/9xjkftr7/8s4v3f1l3s.php';
+                const colorVotado = '#ef4444';
+
+                $('.like').on('click', function (e) {
+                    e.preventDefault();
+
+                    const $btn = $(this);
+                    const $svg = $btn.find('svg');
+                    const fillColor = $svg.css('fill')?.toLowerCase();
+
+                    // Si ya fue votado (el color ya es #ef4444), salir
+                    if (fillColor === colorVotado) {
+                    console.log('Ya votaste por esta canción.');
+                    return;
+                    }
+
+               
+
+                    if (!codart || !codtit || $btn.prop('disabled')) return;
+
+                    $btn.prop('disabled', true);
+
+                    function detectarDispositivo() {
+                     return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)
+                        ? 'mobile'
+                        : 'desktop';
+                    }
+                    const { navegador, sistema } = detectarNavegador();
+                    
+                    $.post(
+                    url,
+                    { 'artista':codart, 
+                        'cancion':codtit,
+                        dispositivo: detectarDispositivo(),
+                        navegador,
+                        sistema_operativo: sistema 
+                    },
+                    function (resp) {
+                        if (resp.status === 'success') {
+                        $svg.css('fill', colorVotado);
+                        console.log('Voto registrado con éxito.');
+                        } else {
+                        console.log(resp.message || 'Error al votar.');
+                        $btn.prop('disabled', false);
+                        }
+                    },
+                    'json'
+                    ).fail(function () {
+                    console.log('No se pudo registrar el voto. Intenta de nuevo.');
+                    $btn.prop('disabled', false);
+                    });
+                });
+
+                // Consulta el cover solo si hay cambio
+                var linkcover = coverbase + '&track=' + codtit + '&artist=' + codart;
+                fetch(linkcover)
+                    .then((res) => {
+                        if (!res.ok) {
+                            throw new Error(`HTTP error! Status: ${res.status}`);
+                        }
+                        return res.json();
+                    })
+                    .then((dataalbum) => {
+                        var lig = dataalbum.track.album;
+                        if (secenvivo) {
+                            $('.cover-background').html('');
+                            if (!lig || artist == 'PAUSA COMERCIAL') {
+                                cover = 'https://storage.googleapis.com/nrm-web/oye/recursos/LOGO-OYE-BLANCO-2025.svg';
+                                $('.logo-player img').attr('src', cover);
+                            } else {
+                                cover = dataalbum.track.album.image[2]['#text'];
+                                $('.logo-player img').attr('src', cover);
+                            }
+                        } else {
+                            if (!lig || artist == 'PAUSA COMERCIAL') {
+                                $('#radiobutton .cover-background').html('');
+                            } else {
+                                cover = dataalbum.track.album.image[2]['#text'];
+                                $('#radiobutton .cover-background').html('');
+                                $('#radiobutton').append('<div class="cover-background"><img src="' + cover + '" /></div>');
+                            }
+                        }
+                    });
+            }
+            }
+            // Si no hay cambio, no hace nada
+        });
+    }
+
+       
+        function getInfoProg(){            
+            fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312&_fields[]=acf")
             .then((res) => {
                 if (!res.ok) {
                     throw new Error
@@ -341,60 +406,30 @@ const secchome = document.getElementById('home');
                     if(prog.acf[dia] === true){
                         var h_i;
                         if( prog.acf.hora_fin >= hora &&  prog.acf.hora_inicio <= hora){
-                           // console.log(prog.acf.hora_inicio);
-                            /*console.log(prog.acf.hora_inicio);
-                            console.log(prog.acf.hora_fin);
-                            console.log(prog.acf.programa);*/
-                            
                             $('.banner-prog img').attr('src', prog.jetpack_featured_media_url);
                             $('.envivo-prog').html(prog.acf.programa);
                             $('.envivo-now').html( prog.acf.hora_inicio + ' - ' + prog.acf.hora_fin);
                             $('.envivo-prog-tab').html(prog.acf.programa);                            
-
+                            $('.envivo-desc').html(prog.content.rendered);                            
                         }
 
                         if (prog.acf.hora_inicio > hora) {
                             if (!siguientePrograma || prog.acf.hora_inicio < siguientePrograma.acf.hora_inicio) {
                                 siguientePrograma = prog;
                             }
-                        }
-                        
-
+                        }                        
                     }
-
                 });   
                 if (siguientePrograma) {
                     console.log("Siguiente programa:", siguientePrograma.acf.programa);
                     $('.envivo-next').html(siguientePrograma.acf.hora_inicio + ' - ' + siguientePrograma.acf.hora_fin);
                     $('.envivo-prog-next-tab').html(siguientePrograma.acf.programa);
                 }                                                
-            });
-           // console.log('repetido');   
+            });           
         }
         
-        setTimeout(getInfoProg, 20000);
-        setInterval( getInfoProg, 300000);       
-        
-/* abrir barra*/
-/*const openbarra = function(){
-    player.classList.remove('h-0');
-    player.classList.add('h-16');
-    player.classList.add('border-4');    
-}*/
-/* cerrar barra*/
-/*const hidebarra = function(){
-    player.classList.remove('h-16');
-    player.classList.add('h-0');
-    player.classList.remove('border-4');                
-}*/
-/* cerrar y abrir barra*/
-/*const transitionBarra = function(){    
-    hidebarra();
-    setTimeout( function(){        
-        openbarra();
-    }, 500);
-}*/
-
+        //setTimeout(getInfoProg, 20000);
+        //setInterval( getInfoProg, 300000);       
 
 const radioActive = function(){
     $('#player-inner').addClass('active');
@@ -452,13 +487,7 @@ const playerstatus = function(){
 
 const playstopRadio = function(){
             transitionPlayer();
-            //console.log(local_status);
-            const getplayingstatus = playerstatus();
-            //console.log(getplayingstatus);
-           /* if (getplayingstatus == 'init'){
-                openbarra();
-            }*/
-            
+            const getplayingstatus = playerstatus();                        
             if(getplayingstatus == 'podcast-playing'){
                 //transitionBarra();
                 const containerpodcast  = document.getElementById('iframepodcast');
@@ -469,12 +498,16 @@ const playstopRadio = function(){
                 
             }
 
-            if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){                                
+            if( local_status == null || local_status == 'undefined' || local_status == '' ){                                
                 //console.log('aqui debe iniciar');
                 start();     
                 $('#player').attr('data-status','radio-playing');
-                //transitionBarra(); 
+                //transitionBarra();                 
                 radioActive();   
+            }else if(local_status == 'LIVE_STOP'){
+                //console.log('else play');
+                play();
+                $('#player').attr('data-status','radio-playing');
             }else if( local_status == 'LIVE_PLAYING' || local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING'){                
                 radioStop();
             }
@@ -482,7 +515,7 @@ const playstopRadio = function(){
 
 
 $('#big-play').on('click',function(){    
-        console.log('click en radiobutton');
+       // console.log('click en radiobutton');
         playstopRadio();      
 });
 
@@ -512,56 +545,25 @@ document.addEventListener('astro:before-preparation', ev => {
     document.querySelector('.preloader').classList.add('showpreloader');
 });
 
+document.addEventListener("astro:after-swap", () => {
+    //console.log('astro:after-swap');
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    setTimeout(() => { (window.adsbygoogle = window.adsbygoogle || []).push({}); }, 1000);
+    setTimeout(() => { (window.adsbygoogle = window.adsbygoogle || []).push({}); }, 1500);
+    setTimeout(() => { (window.adsbygoogle = window.adsbygoogle || []).push({}); }, 2000);
+    setTimeout(() => { (window.adsbygoogle = window.adsbygoogle || []).push({}); }, 2500);
+    setTimeout(() => { (window.adsbygoogle = window.adsbygoogle || []).push({}); }, 3000);
+
+    googletag.pubads().refresh();
+    window.instgrm.Embeds.process();
+});
+
+
+
 
 document.addEventListener('astro:page-load', ev => {
    // console.log('pageload');
 
-   /* ==========CURSOR HOVER ===========*/
-    const CONTAINER = document.querySelector('.container')
-    const CARDS = document.querySelectorAll('article')
-    const CONFIG = {
-      proximity: 40,
-      spread: 80,
-      blur: 20,
-      gap: 32,
-      vertical: false,
-      opacity: 0.15, // Default value for inactive opacity
-    }
-    const PROXIMITY = 10
-    const UPDATE = (event) => {
-      // get the angle based on the center point of the card and pointer position
-      for (const CARD of CARDS) {
-        // Check the card against the proximity and then start updating
-        const CARD_BOUNDS = CARD.getBoundingClientRect()
-        // Get distance between pointer and outerbounds of card
-        if (
-          event?.x > CARD_BOUNDS.left - CONFIG.proximity &&
-          event?.x < CARD_BOUNDS.left + CARD_BOUNDS.width + CONFIG.proximity &&
-          event?.y > CARD_BOUNDS.top - CONFIG.proximity &&
-          event?.y < CARD_BOUNDS.top + CARD_BOUNDS.height + CONFIG.proximity) {
-          // If within proximity set the active opacity
-          CARD.style.setProperty('--active', 1)
-        } else {
-          CARD.style.setProperty('--active', CONFIG.opacity)
-        }
-        const CARD_CENTER = [
-          CARD_BOUNDS.left + CARD_BOUNDS.width * 0.5,
-          CARD_BOUNDS.top + CARD_BOUNDS.height * 0.5
-        ]
-        let ANGLE = Math.atan2(event?.y - CARD_CENTER[1], event?.x - CARD_CENTER[0]) * 180 / Math.PI
-        ANGLE = ANGLE < 0 ? ANGLE + 360 : ANGLE;
-        CARD.style.setProperty('--start', ANGLE + 90)
-      }
-    }
-    document.body.addEventListener('pointermove', UPDATE)
-    const RESTYLE = () => {
-      CONTAINER.style.setProperty('--gap', CONFIG.gap)
-      CONTAINER.style.setProperty('--blur', CONFIG.blur)
-      CONTAINER.style.setProperty('--spread', CONFIG.spread)
-      CONTAINER.style.setProperty('--direction', CONFIG.vertical ? 'column' : 'row')
-    }
-    RESTYLE();
-    UPDATE();
 
 
 if($('.getcancion')){
@@ -587,75 +589,6 @@ if($('.getcancion')){
     getInfoLyrics();
 }
 
-    /* efectos */ 
-    var distance = '';
-    (function($){
-        $(document).ready(function(){
-        
-            const fullheight = document.body.scrollHeight - window.innerHeight;
-            const range = fullheight/5;
-            const range2 = range * 2;
-            const range3 = range * 3;
-            const range4 = range * 4;
-            const range5 = range * 5;
-
-            const header = $('header');
-            
-            window.addEventListener('scroll', function(e){
-               // console.log(window.scrollY );
-                if( window.scrollY > 0 && window.scrollY <= range ){                    
-                    document.styleSheets[1].addRule('body::before','filter: hue-rotate(0deg) blur(5px)');
-                    document.styleSheets[1].addRule('body::before','transition: filter 0.5s ease-in-out;');
-                }
-                
-                if( window.scrollY > range && window.scrollY <= range2 ){                    
-                    document.styleSheets[1].addRule('body::before','filter: hue-rotate(90deg) blur(5px)');
-                    document.styleSheets[1].addRule('body::before','transition: filter 0.5s ease-in-out;');
-                }
-
-                if( window.scrollY > range2 && window.scrollY <= range3 ){                    
-                    document.styleSheets[1].addRule('body::before','filter: hue-rotate(180deg) blur(5px)');
-                    document.styleSheets[1].addRule('body::before','transition: filter 0.5s ease-in-out;');
-                }
-
-                if( window.scrollY > range3 && window.scrollY <= range4 ){
-                    document.styleSheets[1].addRule('body::before','filter: hue-rotate(270deg) blur(5px)');
-                    document.styleSheets[1].addRule('body::before','transition: filter 0.5s ease-in-out;');
-                }
-
-                if( window.scrollY > range4 ){                    
-                    document.styleSheets[1].addRule('body::before','filter: hue-rotate(0deg) blur(5px)');
-                    document.styleSheets[1].addRule('body::before','transition: filter 0.5s ease-in-out;');
-                }
-
-
-              /*  if ($('.bar-stereo').hasClass('is-pinned') ){
-                    $('.bar-stereo').addClass('compress');
-                    $('.bar-stereo .logo').addClass('compress-logo');
-                }
-                if($(document).scrollTop() <= 1){
-                    $('.bar-stereo').css('position','sticky');
-                    $('.bar-stereo').removeClass('compress');
-                    $('.bar-stereo .logo').removeClass('compress-logo');
-                }*/
-                //distance = $('.nav-menu').offset().top - $('.bar-stereo').offset().top;
-                //distance = $('.nav-menu').offset().top;
-              /*  console.log(distance);
-                if( distance < 50 ){
-                    $('.bar-stereo').addClass('header-white');
-                    $('.to-dark').addClass('dark-mode');
-                    $('.compress-logo img').addClass('logo-dark-mode');
-                }else {
-                    $('.bar-stereo').removeClass('header-white');
-                    $('.to-dark').removeClass('dark-mode');
-                    $('.compress-logo img').removeClass('logo-dark-mode');
-                }
-                */
-            });
-        });
-    })(jQuery);
-
-
    const getplayingstatus = playerstatus();
     document.querySelector('main').classList.remove('loading');    
     document.querySelector('.preloader').classList.remove('showpreloader');
@@ -666,26 +599,35 @@ if($('.getcancion')){
     if ( secenvivo ){   
         //console.log('envivo');
         getInfoProg();
+        getInfoMusic();
+        setInterval( getInfoProg, 60000);
         $('#radiobutton').addClass('en-vivo');
         //console.log(local_status);
-
         if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){  
             playstopRadio();
         }
+        if( local_status == 'LIVE_PLAYING' || local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING' ){
+            $('.cover-background').html('');
+        }
+        $('.logo-player img').attr('src','/img/logo-STEREO-pag.png');
+        $('#big-play').removeClass('border-4');
         
     }else{
+       // getInfoMusic();
+        $('.logo-player img').attr('src','https://storage.googleapis.com/nrm-web/oye/recursos/LOGO-OYE-BLANCO-2025.svg');        
         $('#radiobutton').removeClass('en-vivo');
+        $('#big-play').addClass('border-4');
     }
     
     
     if ( secchome ){
-        getInfoProg();
+        //getInfoProg();
         console.log(getplayingstatus);
         /*if( getplayingstatus == 'radio-playing'){
              document.getElementById('big-play').innerHTML = bigButtonPause; 
         }*/
 
-               /* var elem = document.querySelector('.carousel-main');
+        /*var elem = document.querySelector('.carousel-main');
         var flkty = new Flickity( elem, {
             // options
             cellAlign: 'center',
@@ -697,9 +639,10 @@ if($('.getcancion')){
             wrapAround: true
         });
         flkty.select(2);
-        flkty.reloadCells();   */
+        flkty.reloadCells();   
+        */
 
-       /* var elemnav = document.querySelector('.carousel-nav');
+        /*var elemnav = document.querySelector('.carousel-nav');
         var flktynav = new Flickity( elemnav, {
             // options
             cellAlign: 'center',
@@ -708,24 +651,9 @@ if($('.getcancion')){
             prevNextButtons: false,
             pageDots: false, 
             pauseAutoPlayOnHover: true
-        }); 
-        */
-
-    
-
-
-    }
-        var elempod = document.querySelector('.main-carousel');
-        var flktypod = new Flickity( elempod, {
-            contain: true,
-            lazyLoad: 1, 
-            wrapAround: true, 
-            cellAlign: 'center',
-            pageDots: false,
-            autoPlay: true
         });
-
-        var elemtopten = document.querySelector('.main-topten');
+        */ 
+         var elemtopten = document.querySelector('.main-topten');
         var flktytopten = new Flickity( elemtopten, {
             contain: true,
             lazyLoad: 1, 
@@ -734,6 +662,32 @@ if($('.getcancion')){
             pageDots: false,
             autoPlay: true
         });
+ 
+    }
+    const secprogram = document.getElementById('programacion');
+    if ( secprogram || secchome ){  
+
+        var elempod = document.querySelector('.main-carousel');
+        var flktypod = new Flickity( elempod, {
+            contain: true,
+            lazyLoad: 1, 
+            wrapAround: true, 
+            cellAlign: 'center',
+            pageDots: false,
+            autoPlay: 5000,
+        });
+    }
+        /*var elempod = document.querySelector('.main-carousel');
+        var flktypod = new Flickity( elempod, {
+            contain: true,
+            lazyLoad: 1, 
+            wrapAround: true, 
+            cellAlign: 'center',
+            pageDots: false,
+            autoPlay: true
+        });*/
+
+       
 
 
     const imagenNota = document.getElementById("imagen-nota");
