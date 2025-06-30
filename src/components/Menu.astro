@@ -1,9 +1,9 @@
 ---
 const currentPath = Astro.url.pathname;
 ---
-<div class="menutres flex flex-nowrap bg-black w-full text-lg h16 b-transparent items-center justify-between p-2 relative roboto">
+<div class="menutres flex flex-nowrap bg-[#f61842] w-full text-lg h16 b-transparent items-center justify-between p-2 relative roboto">
     <div class="logo main-logo h16 pl-[25px]"> <a href="/"><img src="https://storage.googleapis.com/nrm-web/oye/recursos/oye-main-logo.svg" /></a></div>
-    <div id="container" class="links-menu hidden lg:flex items-center m-auto gap-4 text-white order-3 lg:order-2 justify-center">
+    <div id="container" class="links-menu flex items-center m-auto gap-4 text-white order-3 lg:order-2 justify-center">
       <nav>
         <ul>
             <li class={`menu-section${currentPath.startsWith('/breakingnews') ? ' active' : ''}`}><a href="/breakingnews">Breaking News</a></li>
@@ -52,21 +52,24 @@ const currentPath = Astro.url.pathname;
         </ul>
       </nav>
     </div>
-    <div class="menu-mobile flex flex-nowrap lg:hidden items-center gap-4 text-white order-3 lg:order-2"> 
+    <div class="menu-mobile flex flex-nowrap items-center gap-4 text-white order-3 lg:order-2"> 
        <ul class="flex flex-row justify-end items-center gap-4">
           <li class={`menu-section${currentPath.startsWith('/breakingnews') ? ' active' : ''}`}><a href="/breakingnews">Breaking News</a></li>
           <li class={`menu-section${currentPath.startsWith('/topten') ? ' active' : ''}`}><div class="link-menu"> <a href="/topten">Top Ten</a></div></li>
           <li class={`menu-section${currentPath.startsWith('/kpop') ? ' active' : ''}`}><div class="link-menu"> <a href="/kpop">K-Pop</a></div></li>
           <li class={`menu-section${currentPath.startsWith('/cine') ? ' active' : ''}`}><div class="link-menu"> <a href="/cine">Oye de Cine</a></div></li>
-          <li class={`menu-section${currentPath.startsWith('/podcast/oye-de-cine') ? ' active' : ''}`}><div class="link-menu"> <a href="/podcast/oye-de-cine">Podcast</a></div></li>
           <li class={`menu-section${currentPath.startsWith('/lifestyle') ? ' active' : ''}`}><div class="link-menu"> <a href="/lifestyle">Lifestyle</a></div></li>
           <li class={`menu-section${currentPath.startsWith('/entrevistas') ? ' active' : ''}`}><div class="link-menu"> <a href="/entrevistas">Entrevistas</a></div></li>
           <li class={`menu-section${currentPath.startsWith('/peticiones') ? ' active' : ''}`}><div class="link-menu"> <a href="/peticiones">Peticiones</a></div></li>
+          <li class={`menu-section${currentPath.startsWith('/podcast/oye-de-cine') ? ' active' : ''}`}><a href="/podcast/oye-de-cine">Oye de Cine</a></li>
+          <li class={`menu-section${currentPath.startsWith('/podcast/top-tech') ? ' active' : ''}`}><a href="/podcast/top-tech">Top Tech</a></li>
+          <li class={`menu-section${currentPath.startsWith('/podcast/top-gaming') ? ' active' : ''}`}><a href="/podcast/top-gaming">Top Gaming</a></li>
+          <li class={`menu-section${currentPath.startsWith('/podcast/top-ten') ? ' active' : ''}`}><a href="/podcast/top-ten">Top Ten</a></li>          
        </ul>
     </div>
 </div>
 
-<div class="block lg:hidden menu-mobile-radio text-base roboto bg-[#1d1d1d] w-full h16 b-transparent items-center justify-end p-2 relative">
+<div class="block menu-mobile-radio text-base roboto bg-[#1d1d1d] w-full h16 b-transparent items-center justify-end p-2 relative">
   <ul class="flex flex-row justify-end items-center">
     <li><a ><button class="radio-button font-bold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.4 2.3 6.2 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"/></svg> RADIO </button></a></li>
     <li class={`menu-section${currentPath.startsWith('/en-vivo') ? ' active' : ''}`}><a href="/en-vivo" class="text-sm !flex flex-nowrap flex-row items-center text-white gap-1 hover:text-#f61842"><span class="live-icon"></span> <span class="min-w-[60px] sm:min-w-[85px]">En Vivo</span></a></li>
@@ -87,7 +90,12 @@ const currentPath = Astro.url.pathname;
 </div>
 
 <style>
-@media (max-width: 1023px) {
+@media(min-width:1201px){
+  .menu-mobile{display: none;}
+  .menu-mobile-radio{display: none;}
+}
+@media (max-width: 1200px) {
+header .logo img {height: auto !important;}
 .menutres {
   display: flex;
   flex-direction: row;
@@ -106,6 +114,9 @@ const currentPath = Astro.url.pathname;
     justify-content: right;
   }
   .menutres:after { content:  'ᐅ'; font-size: 18px; position: absolute; top: 30%; right: 4px; color: white;}
+  .links-menu{
+    display: none;
+  }
 }
 
 .active a{
@@ -135,7 +146,7 @@ button.radio-button {    display: flex;
     align-items: center;
     gap: 7px;
     font-size: 17px;
-    color: #ffaa1f;
+    color: var(--red-color);
     font-weight: 700;
     text-transform: uppercase;
     padding-left: 25px;
@@ -166,7 +177,7 @@ nav a, .dd-menu, .dd-menu-2 {
   overflow: visible;
 }
 .dd-menu-2{
-  color: var(--red-color);
+  color: #000;
   display: flex !important;
   gap: 7px;
   align-items: center;

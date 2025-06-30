@@ -13,7 +13,44 @@ const filteredPosts = posts.filter((post:any) => !post.acf?.fijo);
 
       <div class="container">
         <h1 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl ">Breaking News</h1>
-        <div class="news-grid grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-16 xl:gap-16">
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <!-- Noticia principal (66%) -->
+        <div class="lg:col-span-2">
+          <a href={`/breakingnews/${posts[0].slug}/`}>
+          <div class="relative h-full">
+            <img class="rounded-xl w-full h-full object-cover" src={posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Breaking News"/>
+            <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white p-4 w-full rounded-b-xl">
+              <h2 class="text-xl lg:text-2xl font-bold" set:html={posts[0].title.rendered}></h2>
+            </div>
+          </div>
+          </a>
+        </div>
+
+        <!-- Columna lateral con dos noticias secundarias -->
+        <div class="flex flex-col gap-4">
+          <!-- Secundaria 1 -->
+
+          <div class="relative h-1/2">
+            <a href={`/breakingnews/${posts[1].slug}/`}>
+              <img class="rounded-xl w-full h-full object-cover" src={posts[1]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Breaking News"/>
+              <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white p-3 w-full rounded-b-xl">
+                <p class="text-md font-semibold rounded-b-xl mb-0" set:html={posts[1].title.rendered}></p>
+              </div>
+            </a>
+          </div>
+          <!-- Secundaria 2 -->
+          <div class="relative h-1/2">
+            <a href={`/breakingnews/${posts[2].slug}/`}>
+              <img class="rounded-xl w-full h-full object-cover" src={posts[2]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Breaking News"/>
+              <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white p-3 w-full rounded-b-xl">
+                <p class="text-md font-semibold rounded-b-xl mb-0" set:html={posts[2].title.rendered}></p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+        <!--div class="news-grid grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-16 xl:gap-16">
            {
           filteredPosts.slice(0, 4).map((post:any, idx:number) => (
             <div class={`cards-filtro-${idx}`}>
@@ -22,15 +59,15 @@ const filteredPosts = posts.filter((post:any) => !post.acf?.fijo);
                   <div><img class="rounded-xl" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Breaking News"/></div>
                   <div class="news-content">
                     <p set:html={post.title.rendered}></p>
-                    <!--div class="text-sm resumen" set:html={post.excerpt.rendered}></div>
-                    <span class="roboto font-bold text-xs mt-4">por {post.yoast_head_json.author}</span-->
+                    <div class="text-sm resumen" set:html={post.excerpt.rendered}></div>
+                    <span class="roboto font-bold text-xs mt-4">por {post.yoast_head_json.author}</span>
                   </div>
                 </a>  
               </article>
             </div>
           ))
           }
-        </div>
+        </div-->
       </div>
 
 <div class="m-auto text-center">
