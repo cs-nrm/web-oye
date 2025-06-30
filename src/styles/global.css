@@ -278,6 +278,9 @@ hr {
 }
 
 /* TOP TEN */
+.topten.main-topten {
+    min-height: 293px;
+}
 .top-video .wp-block-embed__wrapper {
   position: relative;
   overflow: hidden;
