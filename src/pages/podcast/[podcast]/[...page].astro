@@ -17,12 +17,12 @@ export async function getStaticPaths( { paginate } ) {
         {nodo: 9050,title: 'Tips y recomendaciones con Sharon Azoulay', link: 'tips-y-recomendaciones', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_tips-min.jpg', descripcion: 'Los mejores libros para leer y la belleza en un solo podcast. '},
         {nodo: 9051,title: 'Receta fit con la pelirroja de la radio', link: 'receta-fit', imagen:'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_recetafit-min.jpg', descripcion:'Las mejores recetas fitness para tu día a día de forma fácil y rápida.'},
         {nodo: 9052,title: 'Alguien lo tiene que hacer con Poncho Yezka', link: 'alguien-lo-tiene-que-hacer', imagen:'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_alguien-min.jpg', descripcion:''},
-        {nodo: 3813,title: 'Top Tech con Diego Gil y Geekzilla', link: 'top-tech', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_top-tech-min.jpg', descripcion: 'Top Tech con Diego Gil y Geekzilla. un podcast en el que conoceremos todo sobre la tecnología que nos está rodeando.'},
-        {nodo: 3801,title: 'Top Gaming', link: 'top-gaming', imagen:'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_top-gaming.jpg', descripcion:'Un clavado al mundo de los gamers en el cual conocerás todo sobre los lanzamientos, mejores juegos del momento y los que vienen.'},
-        {nodo: 6581,title: 'Top Ten', link: 'top-ten', imagen:'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_TOP10-min.jpg', descripcion:'La música más top, nueva y relevante que escuchas, tu votas por tener tu canción en los 10 primeros lugares.'},
+        {nodo: 3813,title: 'Top Tech con Geekzilla', link: 'top-tech', imagen: 'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/TOP-TECH-PODCAST.jpg', descripcion: 'Top Tech con Geekzilla. un podcast en el que conoceremos todo sobre la tecnología que nos está rodeando.'},
+        {nodo: 3801,title: 'Top Gaming con Geekzilla', link: 'top-gaming', imagen:'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/TOP-GAMING-450.jpg', descripcion:'Un clavado al mundo de los gamers en el cual conocerás todo sobre los lanzamientos, mejores juegos del momento y los que vienen.'},
+        {nodo: 6581,title: 'Top Ten', link: 'top-ten', imagen:'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/TOP-TEN-450.jpg', descripcion:'La música más top, nueva y relevante que escuchas, tu votas por tener tu canción en los 10 primeros lugares.'},
         {nodo: 7404,title: 'Oye la alternativa', link: 'oye-la-alternativa', imagen:'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_alternativa.png', descripcion:'El espacio donde toda la música se escucha, sin distinción, entrevistas de todos los géneros en un solo lugar.'},
         {nodo: 6806,title: 'Al otro lado de la radio', link: 'al-otro-lado-de-la-radio', imagen:'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_otro-lado.jpg', descripcion:'Un podcast donde podrás escuchar a tus artistas favoritos y conocer más sobre ellos.'},
-        {nodo: 9138,title: 'Oye de Cine', link: 'oye-de-cine', imagen:'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/OYE-CINE.jpg', descripcion:''},
+        {nodo: 9138,title: 'Oye de Cine', link: 'oye-de-cine', imagen:'https://storage.googleapis.com/nrm-web/oye/recursos/podcast/OYE-CINE-450.jpg', descripcion:''},
     ]; 
 
   
@@ -83,14 +83,18 @@ const { podcast, pod } = Astro.props;
             ))
           }
         </section>
-        <div class="text-center mt-20">
-          {page.url.prev && <a href={page.url.prev}>
-            <button class="button-49 ant" role="button">Anterior</button>
-          </a>}
-          {page.url.next && <a href={page.url.next}>
-            <button class="button-49 sig" role="button">Siguiente</button>
-          </a>}
-        </div>
+            <div class="m-auto text-center">
+                {page.url.prev && <a href={page.url.prev} class="text-white">
+                    <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[#f61842] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
+                        <span>Anterior</span>
+                    </button>
+                </a>}
+                {page.url.next && <a href={page.url.next} class="text-white">
+                    <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[#f61842] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
+                        <span>Siguiente</span>
+                    </button>
+                </a>}
+            </div>
       </div>  
     </main>
     <Footer />

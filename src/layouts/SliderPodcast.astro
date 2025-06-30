@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 
-const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,content,excerpt,_links,_embedded,acf&_embed&per_page=1&categories=9138,9046,9047,9048,9049,9051,3813,3801,6581,7404,6806&order_by=date&order=desc");
+const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,content,excerpt,_links,_embedded,acf&_embed&per_page=1&categories=9138,3813,3801,6581&order_by=date&order=desc");
 const posts = await res.json();
 ---
 
@@ -18,25 +18,34 @@ const posts = await res.json();
 			</div> 
 			<div class="data-iframe" data-iframe={posts[0].acf.ds}></div>
         </div>
-        <div class="w-[80%] sm:w-[50%] order-1 sm:order-2"><img class="rounded-xl" src={posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Breaking News"/></div>
+        <div class="w-[80%] sm:w-[50%] order-1 sm:order-2">
+			<img class="rounded-xl m-auto max-w-[450px]" src={posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url} alt="Imagen Breaking News"/>
+		</div>
     </div>
 
 <!--div class="main-carousel" data-flickity='{ "lazyLoad": 1, "wrapAround": true, "cellAlign": "center", "pageDots": false, "autoPlay": true}'-->
-<div class="main-carousel px-4">
+<!--div class="main-carousel px-4">
 	<div class="carousel-cell"><a href="/podcast/el-camino-de-las-estrellas"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_elcamino-min.jpg" width="200" height="200" alt="El camino de las estrellas"/></a></div>
 	<div class="carousel-cell"><a href="/podcast/aqui-y-ahora"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_aqui-min.jpg" width="200" height="200" alt="Aquí y Ahora"/></a></div>
 	<div class="carousel-cell"><a href="/podcast/noticias-que-parecen-broma-pero-no-son"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_noticias-min.jpg" width="200" height="200" alt="Noticias que parecen broma"/></a></div>
 	<div class="carousel-cell"><a href="/podcast/lo-mas-viral"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_viral2-min-min.jpg" width="200" height="200" alt="Lo más viral"/></a></div>
-	<!--div class="carousel-cell"><a href="/podcast/tips-y-recomendaciones"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_tips-min.jpg" width="200" height="200" alt="Tips y recomendaciones"/></a></div-->
+	<div class="carousel-cell"><a href="/podcast/tips-y-recomendaciones"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_tips-min.jpg" width="200" height="200" alt="Tips y recomendaciones"/></a></div>
 	<div class="carousel-cell"><a href="/podcast/receta-fit"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_recetafit-min.jpg" width="200" height="200" alt="Receta fit"/></a></div>
-	<!--div class="carousel-cell"><a href="/podcast/alguien-lo-tiene-que-hacer"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_alguien-min.jpg" width="200" height="200" alt="Alguien lo tiene que hacer"/></a></div-->
-	<!--div class="carousel-cell"><a href="/podcast/memorias"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_memorias-min.jpg" width="200" height="200" alt="Memorias"/></a></div-->	
-	<!--div class="carousel-cell"><a href="/podcast/top-tech"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_top-tech-min.jpg" width="200" height="200" alt="Top tech"/></a></div>
-	<div class="carousel-cell"><a href="/podcast/top-gaming"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_top-gaming.jpg" width="200" height="200" alt="Top gaming"/></a></div-->
+	<div class="carousel-cell"><a href="/podcast/alguien-lo-tiene-que-hacer"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_alguien-min.jpg" width="200" height="200" alt="Alguien lo tiene que hacer"/></a></div>
+	<div class="carousel-cell"><a href="/podcast/memorias"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_memorias-min.jpg" width="200" height="200" alt="Memorias"/></a></div>	
+	<div class="carousel-cell"><a href="/podcast/top-tech"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_top-tech-min.jpg" width="200" height="200" alt="Top tech"/></a></div>
+	<div class="carousel-cell"><a href="/podcast/top-gaming"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_top-gaming.jpg" width="200" height="200" alt="Top gaming"/></a></div>
 	<div class="carousel-cell"><a href="/podcast/top-ten"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_TOP10-min.jpg" width="200" height="200" alt="Top ten"/></a></div>
 	<div class="carousel-cell"><a href="/podcast/oye-la-alternativa"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_alternativa.png" width="200" height="200" alt="Oye la alternativa"/></a></div>
 	<div class="carousel-cell"><a href="/podcast/al-otro-lado-de-la-radio"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_otro-lado.jpg" width="200" height="200" alt="Al otro lado de la radio"/></a></div>
-	<div class="carousel-cell"><a href="/podcast/oye-de-cine"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/OYE-CINE.jpg" width="200" height="200" alt="Oye de Cine"/></a></div>
+	<div class="carousel-cell"><a href="/podcast/oye-de-cine"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://contenido.oyedigital.mx/wp-content/uploads/2025/04/OYE-CINE-450.jpg" width="200" height="200" alt="Oye de Cine"/></a></div>
+</div-->
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-x-20 circle-podcast px-4">
+	<div class=""><a href="/podcast/top-tech"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/TOP-TECH-PODCAST.jpg" width="200" height="200" alt="Top tech"/></a></div>
+	<div class=""><a href="/podcast/top-gaming"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/TOP-GAMING-450.jpg" width="200" height="200" alt="Top gaming"/></a></div>
+	<div class=""><a href="/podcast/top-ten"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/TOP-TEN-450.jpg" width="200" height="200" alt="Top ten"/></a></div>
+	<div class=""><a href="/podcast/oye-de-cine"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/OYE-CINE-450.jpg" width="200" height="200" alt="Oye de Cine"/></a></div>
 </div>
 
 
@@ -50,7 +59,7 @@ const posts = await res.json();
   border-radius: 20px;
 }
 
-.carousel-cell img{
+.carousel-cell img, .circle-podcast img{
 	border-radius: 50%;
 	box-shadow: 0 2px 12px 7px rgba(0,0,0,0.4);
 	margin-top: 20px;
