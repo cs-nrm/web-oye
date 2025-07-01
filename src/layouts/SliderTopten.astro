@@ -44,7 +44,7 @@ const posts = await res.json();
 				<div class="w-4/12">
 					<span class="text-4xl rojo font-bold" set:html={index+1}></span>
 				</div>
-				<div class="w-8/12">
+				<div class="w-8/12 flex flex-col flex-nowrap">
 					<p class="font-bold leading-none m-0 text-xs" set:html={post.acf.artista}></p>
 					<p class="font-bold leading-none m-0 text-xs text-zinc-500 font-normal" set:html={post.title.rendered}></p>
 				</div>
