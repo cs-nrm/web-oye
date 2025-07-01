@@ -15,7 +15,7 @@ let res = await fetch(`https://contenido.oyedigital.mx/wp-json/wp/v2/posts?slug=
 let [post] = await res.json();
 
 export async function getStaticPaths() {
-  let data = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=100&_fields=title,slug,content,yoast_head_json&categories=280");
+  let data = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=100&_fields=title,acf,slug,content,yoast_head_json&categories=280");
   let posts = await data.json();
 
   return posts.map((post:any) => ({
@@ -86,7 +86,8 @@ export async function getStaticPaths() {
             <Fragment set:html={post.content.rendered} />
             <Board />
             <h2 class="goodtime">Letra de la Canción</h2>
-            <p class="getcancion" data-cancion={post.title.rendered} data-artista={post.acf.artista}></p>
+            <!--p class="getcancion" data-cancion={post.title.rendered} data-artista={post.acf.artista}></p-->
+            <p set:html={post.acf.letra_de_cancion}></p>
           </div>
           
         </article>
