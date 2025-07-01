@@ -339,24 +339,23 @@ hr {
 
 
 /* PROGRAMACIÓN */
-.tabs.programacion nav{
+.tabs.programacion nav {
     display: flex;
     flex-wrap: nowrap;
-    font-size: calc(1em + 1vw);
-    font-weight: bold;
+    font-size: calc(0.5em + 0.7vw);
+    font-weight: 700;
     text-transform: uppercase;
-    /*background: radial-gradient(circle at top left, #8114b8, rgb(217,64,172,0.75), #f4a3cc);
-    background: linear-gradient(90deg, rgba(223,25,245,1) 0%, rgba(247,11,208,1) 31%, rgba(9,230,241,1) 71%, rgba(8,246,44,1) 98%);*/
     width: 100%;
     justify-content: space-between;
-    /*color: rgb(0, 0, 0);*/
-    letter-spacing: 3px;
-    /*text-shadow: 1px 2px rgb(255 255 255 / 61%);*/
-	  border-radius: 4px;
-    /*box-shadow: 0 0 0px #fff, 0 0 10px #06dbe5, 0 0 20px #eb2fc7, 0 0 50px #d52ab3;*/
-    background-color: rgb(0, 0, 0);
+    letter-spacing: 4px;
+    border-radius: 4px;
+    background-color: #000;
     color: rgb(var(--gray-beat));
     border: 1px solid var(--gray-beat);
+}
+
+.tabs.programacion .tab-wrapper:hover {
+    color: red;
 }
 
 .tabs.programacion .tab-wrapper{
