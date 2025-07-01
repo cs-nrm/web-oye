@@ -110,7 +110,7 @@ header .compress-logo img{
   transition: all 0.5s;
 }
 @media (max-width: 1200px) {
-  header .logo img {height: auto !important;}
+  header .logo img {min-width: 80px;}
   header .logo{padding: 0;}
 }
 
