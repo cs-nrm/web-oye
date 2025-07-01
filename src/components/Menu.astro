@@ -7,6 +7,7 @@ const currentPath = Astro.url.pathname;
       <nav>
         <ul>
             <li class={`menu-section${currentPath.startsWith('/breakingnews') ? ' active' : ''}`}><a href="/breakingnews">Breaking News</a></li>
+            <li class={`menu-section${currentPath.startsWith('/promociones') ? ' active' : ''}`}><a href="/promociones">Promociones</a></li>
             <li class={`menu-section${currentPath.startsWith('/topten') ? ' active' : ''}`}><a href="/topten">Top Ten</a></li>
             <li class={`menu-section${currentPath.startsWith('/kpop') ? ' active' : ''}`}><a href="/kpop">K-Pop</a></li>
             <li class={`menu-section${currentPath.startsWith('/cine') ? ' active' : ''}`}><a href="/cine">Oye de Cine</a></li>
@@ -55,6 +56,7 @@ const currentPath = Astro.url.pathname;
     <div class="menu-mobile flex flex-nowrap items-center gap-4 text-white order-3 lg:order-2"> 
        <ul class="flex flex-row justify-end items-center gap-4">
           <li class={`menu-section${currentPath.startsWith('/breakingnews') ? ' active' : ''}`}><a href="/breakingnews">Breaking News</a></li>
+          <li class={`menu-section${currentPath.startsWith('/promociones') ? ' active' : ''}`}><a href="/promociones">Promociones</a></li>
           <li class={`menu-section${currentPath.startsWith('/topten') ? ' active' : ''}`}><div class="link-menu"> <a href="/topten">Top Ten</a></div></li>
           <li class={`menu-section${currentPath.startsWith('/kpop') ? ' active' : ''}`}><div class="link-menu"> <a href="/kpop">K-Pop</a></div></li>
           <li class={`menu-section${currentPath.startsWith('/cine') ? ' active' : ''}`}><div class="link-menu"> <a href="/cine">Oye de Cine</a></div></li>
@@ -90,11 +92,11 @@ const currentPath = Astro.url.pathname;
 </div>
 
 <style>
-@media(min-width:1201px){
+@media(min-width:1241px){
   .menu-mobile{display: none;}
   .menu-mobile-radio{display: none;}
 }
-@media (max-width: 1200px) {
+@media (max-width: 1240px) {
 .menutres {
   display: flex;
   flex-direction: row;

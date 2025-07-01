@@ -16,7 +16,7 @@ const posts = await res.json();
           <!-- Article 1 -->
           <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
             <a href={`/cine/${posts[0].slug}/`}>
-              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Cine"/></div>
+              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url} alt="Imagen Cine"/></div>
               <div class="news-content">
                 <p set:html={posts[0].title.rendered}></p>
                 <!--div class="text-sm resumen" set:html={posts[0].excerpt.rendered}></div>
@@ -28,7 +28,7 @@ const posts = await res.json();
           <!-- Article 2 -->
           <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
             <a href={`/cine/${posts[1].slug}/`}>
-              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[1]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Breaking News"/></div>
+              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[1]._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url} alt="Imagen Breaking News"/></div>
               <div class="news-content">
                 <p set:html={posts[1].title.rendered}></p>
                 <!--div class="text-sm resumen" set:html={posts[1].excerpt.rendered}></div>
@@ -40,7 +40,7 @@ const posts = await res.json();
           <!-- Article 3 -->
           <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
             <a href={`/cine/${posts[2].slug}/`}>
-              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[2]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Las de Hoy"/></div>
+              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[2]._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url} alt="Imagen Las de Hoy"/></div>
               <div class="news-content">
                 <p set:html={posts[2].title.rendered}></p>
                 <!--div class="text-sm resumen" set:html={posts[2].excerpt.rendered}></div>
@@ -52,7 +52,7 @@ const posts = await res.json();
           <!-- Article 4 -->
           <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
             <a href={`/cine/${posts[3].slug}/`}>
-              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[3]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Las de Hoy"/></div>
+              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[3]._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url} alt="Imagen Las de Hoy"/></div>
               <div class="news-content">
                 <p set:html={posts[3].title.rendered}></p>
                 <!--div class="text-sm resumen" set:html={posts[3].excerpt.rendered}></div>
