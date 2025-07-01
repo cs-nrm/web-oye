@@ -98,6 +98,7 @@ body::before{
 */
 .compress{ transition: height 0.5s; position: fixed; width: 100%;}
 header {position: sticky; top: 0px;  z-index: 9999; }
+
 header .logo img{
   height: 60px;
   transition: all 0.5s;
@@ -107,6 +108,10 @@ header .logo img{
 header .compress-logo img{
   height: 35px;
   transition: all 0.5s;
+}
+@media (max-width: 1200px) {
+  header .logo img {height: auto !important;}
+  header .logo{padding: 0;}
 }
 
 main {
