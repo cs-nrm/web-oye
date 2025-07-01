@@ -278,8 +278,8 @@ hr {
 }
 
 /* TOP TEN */
-.topten.main-topten {
-    min-height: 293px;
+.topten.main-topten .flickity-viewport {
+    min-height: 260px;
 }
 .top-video .wp-block-embed__wrapper {
   position: relative;
