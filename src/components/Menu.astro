@@ -14,6 +14,7 @@ const currentPath = Astro.url.pathname;
             <li class="dd-menu">Podcast
               <!-- First Tier Drop Down -->
               <ul>
+                <li  class={`menu-section${currentPath.startsWith('/podcast/la-regadera') ? ' active' : ''}`}><a href="/podcast/la-regadera">La Regadera</a></li>
                 <li  class={`menu-section${currentPath.startsWith('/podcast/oye-de-cine') ? ' active' : ''}`}><a href="/podcast/oye-de-cine">Oye de Cine</a></li>
                 <!--li><a href="/podcast/el-camino-de-las-estrellas">El Camino de las Estrellas</a></li>
                 <li><a href="/podcast/aqui-y-ahora">Aquí y Ahora</a></li>
@@ -187,7 +188,7 @@ nav a, .dd-menu, .dd-menu-2 {
 }
 
 .dd-menu ul, dd-menu-2 ul{
-  width: 154px;
+  width: 158px;
 }
 .dd-menu ul li, dd-menu-2 ul li{
   margin-bottom: 8px;
