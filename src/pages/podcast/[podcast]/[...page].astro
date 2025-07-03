@@ -65,7 +65,7 @@ const { podcast, pod } = Astro.props;
     
     <main>
             
-      <div class="container my-12 mx-auto px-4 md:px-12">
+      <div class="container mb-12 px-[5px] py-4 mx-auto md:px-12">
         <div class="flex flex-wrap items-center justify-center ">
           <div class="w-full md:w-1/3 lg:w-1/4"><img class="content-center aspect-square shadow-xl rounded" src={pod.imagen}/></div>
           <div class="w-full md:w-2/3 lg:w:3/4 p-4 flex items-center">
@@ -75,7 +75,7 @@ const { podcast, pod } = Astro.props;
             </div> 
           </div>
         </div>
-        <section class="flex flex-wrap -mx-4">
+        <section class="flex flex-wrap">
           { 
             page.data.map((post:any) => ( 
             <>
@@ -86,12 +86,12 @@ const { podcast, pod } = Astro.props;
         </section>
             <div class="m-auto text-center">
                 {page.url.prev && <a href={page.url.prev} class="text-white">
-                    <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[#f61842] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
+                    <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[#e2241a] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
                         <span>Anterior</span>
                     </button>
                 </a>}
                 {page.url.next && <a href={page.url.next} class="text-white">
-                    <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[#f61842] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
+                    <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[#e2241a] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
                         <span>Siguiente</span>
                     </button>
                 </a>}

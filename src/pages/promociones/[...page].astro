@@ -34,7 +34,7 @@ const {page=[]} = Astro.props;
 		<Header title={SITE_TITLE} />
 		
 		<main>
-      <div class="container my-12 mx-auto px-4 md:px-12">
+      <div class="container mb-12 px-[5px] mx-auto md:px-12">
 				<h1 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl ">Breaking News</h1>	
         <div class="flex flex-col lg:flex-row">
           <div class="sm:min-w-[calc(100%-400px)] lg:mr-10">
@@ -50,12 +50,12 @@ const {page=[]} = Astro.props;
             </section>
             <div class="m-auto text-center">
                 {page.url.prev && <a href={page.url.prev} class="text-white">
-                    <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[#f61842] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
+                    <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[#e2241a] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
                         <span>Anterior</span>
                     </button>
                 </a>}
                 {page.url.next && <a href={page.url.next} class="text-white">
-                    <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[#f61842] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
+                    <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[#e2241a] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
                         <span>Siguiente</span>
                     </button>
                 </a>}

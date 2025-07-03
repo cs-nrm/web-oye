@@ -12,7 +12,7 @@ const posts = await res.json();
 			<span class="text-8xl font-bold absolute bottom-2 left-4 lg:bottom-8 lg:left-8 rojo">1</span>
 			<a class="absolute text-center text-white bottom-2 right-4 lg:bottom-8 lg:right-8" href={`/topten/${posts[0].slug}/`}>
 				<div class="mb-8 sm:mb-2 lg:mb-8 rojo cursor-pointer" data-podcast-status="ready"> 
-					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler bg-[#f61842] hover:bg-black rounded-[50%] p-[15px] m-auto icon-tabler-player-play" width="100" height="100" viewBox="0 0 24 24" stroke-width="2" stroke="#fff" fill="#fff" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8z" /></svg>
+					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler bg-[#e2241a] hover:bg-black rounded-[50%] p-[15px] m-auto icon-tabler-player-play" width="100" height="100" viewBox="0 0 24 24" stroke-width="2" stroke="#fff" fill="#fff" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8z" /></svg>
 				</div> 
 	            <p class="text-xl font-bold text-right m-0" set:html={posts[0].title.rendered}></p>
 				<p class="text-xl text-right m-0" set:html={posts[0].acf.artista}></p>
@@ -22,7 +22,7 @@ const posts = await res.json();
 			<!--p class="getcancion" data-cancion={posts[0].title.rendered} data-artista={posts[0].acf.artista}></p-->
 			<p class="letra-de-cancion" set:html={posts[0].acf.letra_de_cancion}></p>
 			<a href={`/topten/${posts[0].slug}/`}>
-			<div class="letra flex nowrap z-10 items-center text-white text-xs bg-[#f61842] w-[35%] h-[20%] rounded-xl absolute top-0 bottom-0 right-0 left-0 m-auto">
+			<div class="letra flex nowrap z-10 items-center text-white text-xs bg-[#e2241a] w-[35%] h-[20%] rounded-xl absolute top-0 bottom-0 right-0 left-0 m-auto">
 				<svg class="w-[40%]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="48" height="48" stroke-width="2">
   					<path d="M4 20l3 0"></path><path d="M14 20l7 0"></path><path d="M6.9 15l6.9 0"></path><path d="M10.2 6.3l5.8 13.7"></path><path d="M5 20l6 -16l2 0l7 16"></path>
 				</svg>
