@@ -554,8 +554,9 @@ document.addEventListener("astro:after-swap", () => {
     setTimeout(() => { (window.adsbygoogle = window.adsbygoogle || []).push({}); }, 2500);
     setTimeout(() => { (window.adsbygoogle = window.adsbygoogle || []).push({}); }, 3000);
 
-    googletag.pubads().refresh();
-    window.instgrm.Embeds.process();
+    setTimeout(() => { googletag.pubads().refresh(); }, 1500);
+    setTimeout(() => { window.instgrm.Embeds.process(); }, 1500);    
+    
 });
 
 
