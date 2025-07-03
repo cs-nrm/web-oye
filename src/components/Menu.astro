@@ -195,7 +195,7 @@ nav a, .dd-menu, .dd-menu-2 {
 }
 
 nav a:hover, dd-menu:hover { 
-  background-color: var(--red-color); 
+  background-color: #000; 
 }
 
 /* Hide Dropdowns by Default */
@@ -221,12 +221,8 @@ nav ul .dd-menu-2 ul {
 nav ul li:hover > ul {
   display: inherit;
 }
-nav ul li.dd-menu-2:hover > ul {
-  display:flex;
-  justify-content: space-around;
-  justify-items: center;
-  align-items: center;
-  z-index: 1;
+nav ul li.dd-menu ul li a:hover, nav ul li.dd-menu-2 ul li a:hover {
+  background: var(--red-color);
 }
   
 /* Fisrt Tier Dropdown */
