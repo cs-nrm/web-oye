@@ -18,7 +18,7 @@ const posts = await res.json();
 				<p class="text-xl text-right m-0" set:html={posts[0].acf.artista}></p>
 			</a>
 		</div>
-		<div class="news-content audiopod w-[100%] md:w-[50%] py-2 pr-4">
+		<div class="news-content w-[100%] md:w-[50%] py-2 pr-4">
 			<!--p class="getcancion" data-cancion={posts[0].title.rendered} data-artista={posts[0].acf.artista}></p-->
 			<p class="letra-de-cancion" set:html={posts[0].acf.letra_de_cancion}></p>
 			<a href={`/topten/${posts[0].slug}/`}>
