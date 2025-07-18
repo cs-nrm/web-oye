@@ -89,7 +89,7 @@ const secchome = document.getElementById('home');
             $('#radiobutton').removeClass('playerplaying');
             $('.text-player').html('');
             setTimeout( function(){
-                $('.text-player').html('ESCUCHA LA RADIO EN VIVO <span style="color: #df104a;    font-weight: bold;    font-size: 12px;">GRATIS</span> AHORA');             
+                $('.text-player').html('ESCUCHA LA RADIO  <span style="color: #df104a;    font-weight: bold;    font-size: 12px;">EN VIVO</span> AHORA');             
             },1000);
             if (musicInterval) clearInterval(musicInterval);    
             //$('.text-player').attr('id','');            
