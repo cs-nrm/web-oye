@@ -30,6 +30,7 @@ function initGPT() {
   var gptAdSlots6 = [];       //superleader 970x90
   var gptAdSlots61 = [];      //superleader móvil
   var gptAdSlots14 = [];      //takeover
+  var gptAdSlots141 = [];     //takeover móvil
   
   googletag.cmd.push(function() {
     var mapping2 = googletag.sizeMapping().addSize([300, 250]).build();
@@ -45,6 +46,7 @@ function initGPT() {
     var mapping6 = googletag.sizeMapping().addSize([728, 90]).build();
     var mapping61 = googletag.sizeMapping().addSize([320, 50]).build();
     var mapping14 = googletag.sizeMapping().addSize([600, 800]).build();
+    var mapping141 = googletag.sizeMapping().addSize([320, 480]).build();
          
     window.slot2 = googletag.defineSlot("/21799830913/Oye", [300, 250],'ad-slot2').defineSizeMapping(mapping2).addService(googletag.pubads());
     window.slot3 = googletag.defineSlot("/21799830913/Oye", [728, 90],'ad-slot3').defineSizeMapping(mapping3).addService(googletag.pubads());
@@ -59,6 +61,7 @@ function initGPT() {
     window.slot6 = googletag.defineSlot("/21799830913/Oye", [728, 90],'ad-slot6').defineSizeMapping(mapping6).addService(googletag.pubads());
     window.slot61 = googletag.defineSlot("/21799830913/Oye", [320, 50],'ad-slot61').defineSizeMapping(mapping61).addService(googletag.pubads());
     window.slot14 = googletag.defineSlot("/21799830913/Oye", [600, 800],'ad-slot14').defineSizeMapping(mapping14).addService(googletag.pubads());
+    window.slot141 = googletag.defineSlot("/21799830913/Oye", [320, 480],'ad-slot141').defineSizeMapping(mapping141).addService(googletag.pubads());
 
     googletag.pubads().setTargeting("test","responsive");
     googletag.enableServices();
@@ -75,6 +78,7 @@ function initGPT() {
     googletag.display('ad-slot6');
     googletag.display('ad-slot61');
     googletag.display('ad-slot14');
+    googletag.display('ad-slot141');
     
     //googletag.pubads().refresh([slot3]);
     setInterval(function(){googletag.pubads().refresh([slot2]);}, 120000);
