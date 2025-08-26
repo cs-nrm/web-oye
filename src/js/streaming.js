@@ -17,20 +17,6 @@ const secchome = document.getElementById('home');
 
 function initGPT() {
     googletag.destroySlots();
-  var gptAdSlots2 = [];       //boxbanner
-  var gptAdSlots3 = [];       //billboard 970x250
-  var gptAdSlots31 = [];      //billboard móvil
-  var gptAdSlots32 = [];      //billboard2 970x250
-  var gptAdSlots321 = [];     //billboard2 móvil
-  var gptAdSlots4 = [];       //leaderboard 728x90
-  var gptAdSlots41 = [];      //leaderboard móvil
-  var gptAdSlots42 = [];      //leaderboard2
-  var gptAdSlots421 = [];     //leaderboard2 móvil
-  var gptAdSlots5 = [];       //doublebox
-  var gptAdSlots6 = [];       //superleader 970x90
-  var gptAdSlots61 = [];      //superleader móvil
-  var gptAdSlots14 = [];      //takeover
-  var gptAdSlots141 = [];     //takeover móvil
   
   googletag.cmd.push(function() {
     var mapping2 = googletag.sizeMapping().addSize([300, 250]).build();
