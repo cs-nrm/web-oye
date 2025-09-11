@@ -556,6 +556,7 @@ article .plyr--video{
       background: var(--card);
       gap: 0.25rem;
       position: relative;
+      border-radius: 0.75rem
       
   }
   .card article:is(:hover, :focus-visible) {
