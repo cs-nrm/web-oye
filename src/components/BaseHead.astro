@@ -10,7 +10,7 @@ interface Props {
 	seccion: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
 
 const { title, description, image = '/oye-share.jpg', seccion } = Astro.props;
 
@@ -26,32 +26,14 @@ const { title, description, image = '/oye-share.jpg', seccion } = Astro.props;
 <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
+<meta property="fb:app_id" content="746588188144228" />
 
+<!-- sitemap -->
+<link rel="sitemap" href="/sitemap.xml" />
+<meta name="robots" content="index, follow" />
 <!-- Font preloads -->
 <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
 <link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
-
-<!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
-
-<!-- Primary Meta Tags -->
-<title>{title} - {seccion}</title>
-<meta name="title" content={title} />
-<meta name="description" content={description} />
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
-<!--meta property="og:title" content={title} /-->
-<meta property="og:description" content={description} />
-<!--meta property="og:image" content={new URL(image, Astro.url)} /-->
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<!--meta property="twitter:image" content={new URL(image, Astro.url)} /-->
 
 <!-- Caché -->
 <meta http-equiv="cache-control" content="max-age=3600, stale-while-revalidate=300" />
@@ -82,7 +64,7 @@ const { title, description, image = '/oye-share.jpg', seccion } = Astro.props;
 </script>
 
 <!-- Begin comScore Tag -->
-<!--script is:inline>
+<script is:inline>
   var _comscore = _comscore || [];
   _comscore.push({
   c1: "2", c2: "6906652",
@@ -97,7 +79,7 @@ const { title, description, image = '/oye-share.jpg', seccion } = Astro.props;
       el.parentNode.insertBefore(s, el);
   })();
   </script>
-  <noscript><img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=YOURCLIENTID&amp;cv=cv=4.4.0&amp;cj=1"></noscript-->
+  
   <!-- End comScore Tag -->
 
   <!-- Google Tag Manager -->
@@ -108,7 +90,3 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-N3MTSSX');</script>
 <!-- End Google Tag Manager -->
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3MTSSX"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->

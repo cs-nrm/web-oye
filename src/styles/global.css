@@ -81,7 +81,7 @@ body {
 	line-height: 1.7;
 	background-color: var(--gray-color);
 }
-.like{ display: none!important;}
+/*.like{ display: none!important;}*/
 /*
 body::before{
   content:'';
@@ -683,9 +683,9 @@ article .plyr--video{
 .slider-promociones .flickity-prev-next-button.next {
     right: 8% !important;
 }
-.topten .flickity-slider a:first-child {
+/*.topten .flickity-slider a:first-child {
 	display: none;
-}
+}*/
 
 @media (max-width: 768px) {
   .flickity-prev-next-button {
