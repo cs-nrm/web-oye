@@ -703,6 +703,19 @@ if($('.getcancion')){
     
     const secchome = document.getElementById('home');
     const secenvivo = document.getElementById('envivo');
+    const secgaleria = document.getElementsByClassName('galeria');
+
+    if( secgaleria ){
+        var elemgaleria = document.querySelector('.wp-block-gallery');
+        var flktygaleria = new Flickity( elemgaleria, {
+            contain: true,
+            lazyLoad: 1, 
+            wrapAround: true, 
+            cellAlign: 'center',
+            pageDots: false,
+            autoPlay: true
+        });
+    }
 
     if ( secenvivo ){   
         //console.log('envivo');

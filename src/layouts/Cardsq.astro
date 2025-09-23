@@ -20,6 +20,20 @@ export interface Props {
          article_published_time: string;
          author:string;         
       }
+        _embedded: {
+             'wp:featuredmedia': [
+                {
+                 media_details: {
+                    sizes: {
+                         full: {
+                            source_url: string;
+                         }
+                    }
+                 }
+                 alt_text: string;
+                }
+             ]
+        }
 
 
 
@@ -54,11 +68,14 @@ switch (post.categories[0]){
     case 1606:
         url_seccion = 'promociones';
     break;
+    case 1207:
+        url_seccion = 'eventos';
+    break;
     default:
         url_seccion = 'breakingnews';    
     break;      
 }
-
+const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img_oye-min.jpg';
 
 /*const section = post.yoast_head_json.schema['@graph'][0].articleSection; 
 console.log(section);*/
@@ -66,7 +83,7 @@ console.log(section);*/
 ---
           <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
             <a href={`/${url_seccion}/${post.slug}/`}>
-              <div><img class="rounded-xl" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url} alt="Imagen Nota"/></div>
+              <div><img class="aspect-not w-full h-auto rounded-xl" src={post?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['full']?.source_url|| PLACEHOLDER_IMG} alt={post?._embedded?.['wp:featuredmedia']?.[0]?.alt_text||"Imagen Nota"}/></div>
               <div class="news-content">
                 <p set:html={post.title.rendered}></p>
               </div>

@@ -67,6 +67,9 @@
 .rojo{
   color: #e2231a;
 }
+.aspect-not{
+  aspect-ratio: 3 / 2;
+}
 
 body {	
   font-family: 'Montserrat';
@@ -760,4 +763,13 @@ article .plyr--video{
   .share-bar .share-button {
     width: 38px;
   }
+}
+
+/* ESTILOS GALERIA*/
+.galeria .flickity-slider .wp-block-image{
+  width: 100%;
+  height: auto;
+  margin-right: 10px;
+  border-radius: 10px;
+  overflow: hidden;
 }

@@ -31,6 +31,7 @@ const currentPath = Astro.url.pathname;
             <li class={`menu-section${currentPath.startsWith('/lifestyle') ? ' active' : ''}`}><a href="/lifestyle">Lifestyle</a></li>
             <li class={`menu-section${currentPath.startsWith('/entrevistas') ? ' active' : ''}`}><a href="/entrevistas">Entrevistas</a></li>
             <li class={`menu-section${currentPath.startsWith('/peticiones') ? ' active' : ''}`}><a href="/peticiones">Peticiones</a></li>
+            <li class={`menu-section${currentPath.startsWith('/eventos') ? ' active' : ''}`}><a href="/eventos">Eventos</a></li>
             <li class="dd-menu-2"> 
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.4 2.3 6.2 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"/></svg> Radio 
               <ul>
@@ -58,12 +59,13 @@ const currentPath = Astro.url.pathname;
        <ul class="flex flex-row justify-end items-center gap-4">
           <li class={`menu-section${currentPath.startsWith('/breakingnews') ? ' active' : ''}`}><a href="/breakingnews">Breaking News</a></li>
           <li class={`menu-section${currentPath.startsWith('/promociones') ? ' active' : ''}`}><a href="/promociones">Promociones</a></li>
-          <li class={`menu-section${currentPath.startsWith('/topten') ? ' active' : ''}`}><div class="link-menu"> <a href="/topten">Top Ten</a></div></li>
-          <li class={`menu-section${currentPath.startsWith('/kpop') ? ' active' : ''}`}><div class="link-menu"> <a href="/kpop">K-Pop</a></div></li>
-          <li class={`menu-section${currentPath.startsWith('/cine') ? ' active' : ''}`}><div class="link-menu"> <a href="/cine">Oye de Cine</a></div></li>
-          <li class={`menu-section${currentPath.startsWith('/lifestyle') ? ' active' : ''}`}><div class="link-menu"> <a href="/lifestyle">Lifestyle</a></div></li>
-          <li class={`menu-section${currentPath.startsWith('/entrevistas') ? ' active' : ''}`}><div class="link-menu"> <a href="/entrevistas">Entrevistas</a></div></li>
-          <li class={`menu-section${currentPath.startsWith('/peticiones') ? ' active' : ''}`}><div class="link-menu"> <a href="/peticiones">Peticiones</a></div></li>
+          <li class={`menu-section${currentPath.startsWith('/topten') ? ' active' : ''}`}><a href="/topten">Top Ten</a></li>
+          <li class={`menu-section${currentPath.startsWith('/kpop') ? ' active' : ''}`}><a href="/kpop">K-Pop</a></li>
+          <li class={`menu-section${currentPath.startsWith('/cine') ? ' active' : ''}`}><a href="/cine">Oye de Cine</a></li>
+          <li class={`menu-section${currentPath.startsWith('/lifestyle') ? ' active' : ''}`}><a href="/lifestyle">Lifestyle</a></li>
+          <li class={`menu-section${currentPath.startsWith('/entrevistas') ? ' active' : ''}`}><a href="/entrevistas">Entrevistas</a></li>
+          <li class={`menu-section${currentPath.startsWith('/peticiones') ? ' active' : ''}`}><a href="/peticiones">Peticiones</a></li>
+          <li class={`menu-section${currentPath.startsWith('/eventos') ? ' active' : ''}`}><a href="/eventos">Eventos</a></li>
           <li class={`menu-section${currentPath.startsWith('/podcast/oye-de-cine') ? ' active' : ''}`}><a href="/podcast/oye-de-cine">Oye de Cine</a></li>
           <li class={`menu-section${currentPath.startsWith('/podcast/top-tech') ? ' active' : ''}`}><a href="/podcast/top-tech">Top Tech</a></li>
           <li class={`menu-section${currentPath.startsWith('/podcast/top-gaming') ? ' active' : ''}`}><a href="/podcast/top-gaming">Top Gaming</a></li>
@@ -94,11 +96,11 @@ const currentPath = Astro.url.pathname;
 </div>
 
 <style>
-@media(min-width:1241px){
+@media(min-width:1321px){
   .menu-mobile{display: none;}
   .menu-mobile-radio{display: none;}
 }
-@media (max-width: 1240px) {
+@media (max-width: 1320px) {
 .menutres {
   display: flex;
   flex-direction: row;
@@ -148,7 +150,7 @@ const currentPath = Astro.url.pathname;
 button.radio-button {    display: flex;
     align-items: center;
     gap: 7px;
-    font-size: 17px;
+    font-size: 16px;
     color: var(--red-color);
     font-weight: 700;
     text-transform: uppercase;

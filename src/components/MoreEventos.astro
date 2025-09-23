@@ -1,0 +1,27 @@
+---
+import Card from '../layouts/CardMoreNews.astro';
+
+
+const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=4&_fields=title,slug,yoast_head_json,categories&categories=1207");
+const posts = await res.json();
+
+---
+<div class="my-12 mx-auto">
+	<h5 class="font-bold">Te podría interesar...</h4>
+        <section class="flex flex-wrap -mx-1 lg:-mx-4">
+                    {
+                        posts.map((post:any) => ( 
+                        <>
+                        <Card {post} />
+                        </>
+                        ))
+                    }
+        </section>
+<div class="m-auto text-center">
+    <a href="/eventos" class="text-white">
+        <button class="ver-mas group relative rounded-sm h-8 m-2 px-4 overflow-hidden bg-[#e2241a] uppercase text-xs font-bold tracking-[1px]">
+            <span>Más</span>
+        </button>
+    </a>
+</div>
+</div>
