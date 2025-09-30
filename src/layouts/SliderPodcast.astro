@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 
-const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,content,excerpt,_links,_embedded,acf&_embed&per_page=1&categories=9138,3813,3801,6581,10689&order_by=date&order=desc");
+const res = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,content,excerpt,_links,_embedded,acf&_embed&per_page=1&categories=9138,3813,3801,6581,10689&order_by=date&order=desc");
 const posts = await res.json();
 ---
 
@@ -38,7 +38,7 @@ const posts = await res.json();
 	<div class="carousel-cell"><a href="/podcast/top-ten"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_TOP10-min.jpg" width="200" height="200" alt="Top ten"/></a></div>
 	<div class="carousel-cell"><a href="/podcast/oye-la-alternativa"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_alternativa.png" width="200" height="200" alt="Oye la alternativa"/></a></div>
 	<div class="carousel-cell"><a href="/podcast/al-otro-lado-de-la-radio"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://storage.googleapis.com/nrm-web/oye/recursos/podcast/PODCAST_otro-lado.jpg" width="200" height="200" alt="Al otro lado de la radio"/></a></div>
-	<div class="carousel-cell"><a href="/podcast/oye-de-cine"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://contenido.oyedigital.mx/wp-content/uploads/2025/04/OYE-CINE-450.jpg" width="200" height="200" alt="Oye de Cine"/></a></div>
+	<div class="carousel-cell"><a href="/podcast/oye-de-cine"><Image class="block h-auto w-full object-fill border border-[#890000]" src="https://playnrm.com/wp-content/uploads/2025/04/OYE-CINE-450.jpg" width="200" height="200" alt="Oye de Cine"/></a></div>
 </div-->
 
 <div class="grid grid-cols-2 md:grid-cols-5 gap-x-20 circle-podcast px-4">

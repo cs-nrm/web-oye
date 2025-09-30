@@ -325,7 +325,7 @@ function detectarDispositivo() {
  */
 function registerVote(seccion, artista, cancion, $btn = null) {
   return new Promise((resolve, reject) => {
-    const url = 'https://contenido.oyedigital.mx/6456heu2/8s4v3f1l3s.php';
+    const url = 'https://playnrm.com/6456heu2/8s4v3f1l3s.php';
 
     // Protección de doble click o voto ya marcado
     if ($btn) {
@@ -488,7 +488,7 @@ function getInfoMusic() {
 
        
         function getInfoProg(){            
-            fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312&_fields[]=acf&_fields[]=jetpack_featured_media_url&_fields[]=acf&_fields[]=content")            
+            fetch("https://playnrm.com/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312&_fields[]=acf&_fields[]=jetpack_featured_media_url&_fields[]=acf&_fields[]=content")            
             .then((res) => {
                 if (!res.ok) {
                     throw new Error
@@ -1049,7 +1049,7 @@ if($('.getcancion')){
                         body: JSON.stringify( params )
                     };
                         
-                    fetch('https://contenido.oyedigital.mx/wp-json/wp-ulike-pro/v1/vote/', Rparamas)
+                    fetch('https://playnrm.com/wp-json/wp-ulike-pro/v1/vote/', Rparamas)
                     .then((res) => {
                         if (!res.ok) {
                             throw new Error

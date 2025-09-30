@@ -6,7 +6,7 @@ import SuperLeader from '../components/SuperLeader.astro';
 import { Image } from 'astro:assets';
 
 
-const ressti = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,content,excerpt,acf,_links,_embedded&_embed&per_page=3&categories=172");
+const ressti = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,content,excerpt,acf,_links,_embedded&_embed&per_page=3&categories=172");
 
 const posts = await ressti.json();
 

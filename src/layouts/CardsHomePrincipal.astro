@@ -5,7 +5,7 @@ import LeaderBoard from'../components/LeaderBoard.astro';
 import SuperLeader from '../components/SuperLeader.astro';
 import { Image } from 'astro:assets';
 
-const ressti = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,acf,yoast_head_json,content,excerpt,_links,_embedded&_embed&per_page=20&categories=149,6616,172,156,8791");
+const ressti = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,acf,yoast_head_json,content,excerpt,_links,_embedded&_embed&per_page=20&categories=149,6616,172,156,8791");
 const poststi = await ressti.json();
 
 ---
@@ -21,7 +21,7 @@ const poststi = await ressti.json();
       </a>
       <!--a href="/programacion"-->
 
-        <img class="img-prin" src="https://contenido.oyedigital.mx/wp-content/uploads/2025/06/portada-la-regadera-canva.png" alt="Imagen La Nota">
+        <img class="img-prin" src="https://playnrm.com/wp-content/uploads/2025/06/portada-la-regadera-canva.png" alt="Imagen La Nota">
         <!--img class="img-prin" src="https://storage.googleapis.com/nrm-web/oye/recursos/GIRA_ESCOLAR_2025-min.jpg" alt="Imagen La Nota"-->
         <!--img class="img-prin" src="https://storage.googleapis.com/nrm-web/oye/recursos/gira-escolar-11.jpg" alt="Imagen Gira Escolar Oye"-->
         

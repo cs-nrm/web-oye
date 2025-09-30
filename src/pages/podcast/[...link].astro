@@ -41,7 +41,7 @@ const { link } = Astro.params;
 const { podcast } = Astro.props;
 const { cat } = Astro.props ;
 
-const res = await fetch("https://contenido.oyedigital.mx/wp-json/wp/v2/posts?_embed&fields=title,acf&per_page=10&categories=" + cat); 
+const res = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_embed&fields=title,acf&per_page=10&categories=" + cat); 
 const posts = await res.json();
 ---
 
