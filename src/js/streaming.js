@@ -67,7 +67,7 @@ function initGPT() {
     googletag.display('ad-slot141');
     
     //googletag.pubads().refresh([slot3]);
-    setInterval(function(){googletag.pubads().refresh([slot2]);}, 120000);
+    setInterval(function(){googletag.pubads().refresh([slot2]);}, 40000);
   });
 }
 
