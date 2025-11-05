@@ -305,6 +305,10 @@ hr {
   width: 100%;
   height: 100%;
 }
+/* BUEN FIN */
+.carousel-buenfin .flickity-viewport{
+    min-height: 310px;
+}
 
 /*preloader*/
 .loading{    opacity: 0.3;    transition: opacity 2s; }
