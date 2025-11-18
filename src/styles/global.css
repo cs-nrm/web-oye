@@ -474,6 +474,15 @@ article .plyr--video{
 	top: 0;
 	width: 100%;
 }
+
+a.wp-block-file__button.wp-element-button {
+    background: black;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0 21px;
+    box-shadow: 3px 3px #313133;
+}
 /*iframe{
   width: 100% !important;
   height: auto !important;
