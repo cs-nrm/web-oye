@@ -1,59 +1,62 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import CardNews from '../layouts/CardsHomeNews.astro';
-import CardCine from '../layouts/CardsHomeCine.astro';
-import CardPromociones from '../layouts/CardsHomePromociones.astro';
-import SliderPodcast from '../layouts/SliderPodcast.astro';
-import SliderTopten from '../layouts/SliderTopten.astro';
-import CardMascotas from '../layouts/CardsHomeMascotas.astro';
-import CardTecnologia from '../layouts/CardsHomeTecnologia.astro';
-import Separator from '../components/Separator.astro';
-import HomeHeader from '../layouts/HomeHeader.astro';
-import DoubleBox from '../components/DoubleBox.astro';
-import BoxBanner from '../components/BoxBanner.astro';
-import LeaderBoard from'../components/LeaderBoard.astro';
-import LeaderBoard2 from'../components/LeaderBoard2.astro';
-import SuperLeader from '../components/SuperLeader.astro';
-import BillBoard from '../components/BillBoard.astro';
-import BillBoard2 from '../components/BillBoard2.astro';
-import Modal  from '../components/Modal.astro';
-import Navidad from '../components/Navidad.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import BarNrm from '../components/BarNrm.astro';
-import NotaPrincipal from '../layouts/CardsHomePrincipal.astro';
-import Vinos from '../layouts/CardsHomeVinos.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CardNews from "../layouts/CardsHomeNews.astro";
+import CardCine from "../layouts/CardsHomeCine.astro";
+import CardPromociones from "../layouts/CardsHomePromociones.astro";
+import SliderPodcast from "../layouts/SliderPodcast.astro";
+import SliderTopten from "../layouts/SliderTopten.astro";
+import CardMascotas from "../layouts/CardsHomeMascotas.astro";
+import CardTecnologia from "../layouts/CardsHomeTecnologia.astro";
+import Separator from "../components/Separator.astro";
+import HomeHeader from "../layouts/HomeHeader.astro";
+import DoubleBox from "../components/DoubleBox.astro";
+import BoxBanner from "../components/BoxBanner.astro";
+import LeaderBoard from "../components/LeaderBoard.astro";
+import LeaderBoard2 from "../components/LeaderBoard2.astro";
+import SuperLeader from "../components/SuperLeader.astro";
+import BillBoard from "../components/BillBoard.astro";
+import BillBoard2 from "../components/BillBoard2.astro";
+import Modal from "../components/Modal.astro";
+/*import Navidad from '../components/Navidad.astro';*/
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import BarNrm from "../components/BarNrm.astro";
+import NotaPrincipal from "../layouts/CardsHomePrincipal.astro";
+import Vinos from "../layouts/CardsHomeVinos.astro";
 /*import Libros from '../layouts/CardsHomeLibros.astro'; */
-import CardsHomeKpop from '../layouts/CardsHomeKpop.astro';
-import Podcast from '../layouts/CardsHomePodcast.astro';
-import NewsLetter from '../layouts/NewsLetter.astro';
+import CardsHomeKpop from "../layouts/CardsHomeKpop.astro";
+import Podcast from "../layouts/CardsHomePodcast.astro";
+import NewsLetter from "../layouts/NewsLetter.astro";
 /*import SliderBuenfin from '../layouts/SliderBuenfin.astro';*/
-import Notificacion from '../components/Notificacion.astro';
-
+import Notificacion from "../components/Notificacion.astro";
 ---
 
 <!doctype html>
 <html lang="es">
     <head>
-        <BaseHead title={SITE_TITLE} seccion="Oye 89.7 - Radio en Vivo" description={SITE_DESCRIPTION} />       
+        <BaseHead
+            title={SITE_TITLE}
+            seccion="Oye 89.7 - Radio en Vivo"
+            description={SITE_DESCRIPTION}
+        />
     </head>
     <body>
         <BarNrm />
         <NotaPrincipal />
         <Header title={SITE_TITLE} />
-        
+
         <main id="home">
-                <!--header-->
-                    <!--HomeHeader /-->
-                <!--/header-->
-                        
-                <section>                   
-                    <div class="container-home px-[5px] py-4 md:p-4 mx-auto">                        
-                        <CardNews />
-                    </div>
-                </section>
-                <!--section>
+            <!--header-->
+            <!--HomeHeader /-->
+            <!--/header-->
+
+            <section>
+                <div class="container-home px-[5px] py-4 md:p-4 mx-auto">
+                    <CardNews />
+                </div>
+            </section>
+            <!--section>
                     <div>
                         <img class="w-full h-auto hidden md:block" src="https://storage.googleapis.com/nrm-web/nrm/adManager/buen-fin%202.png"/>
                         <img class="w-full h-auto block md:hidden" src="https://storage.googleapis.com/nrm-web/nrm/adManager/buen-fin-movil2.png"/>
@@ -63,51 +66,54 @@ import Notificacion from '../components/Notificacion.astro';
                         <div class="flex justify-end"><img class="w-full max-w-[100px]" src="https://storage.googleapis.com/nrm-web/nrm/adManager/buen-fin-qr.png"/></div>
                     </div>
                 </section-->
-                <section>                   
-                    <div class="container-home px-[5px] py-4 md:p-4 mx-auto">                        
-                        <CardPromociones />
+            <section>
+                <div class="container-home px-[5px] py-4 md:p-4 mx-auto">
+                    <CardPromociones />
+                </div>
+            </section>
+            <SuperLeader />
+            <section>
+                <div class="container-home px-[5px] py-4 md:p-4 mx-auto">
+                    <SliderTopten />
+                </div>
+            </section>
+            <section>
+                <div class="container-home px-[5px] py-4 md:p-4 mx-auto">
+                    <h1
+                        class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl"
+                    >
+                        K-POP
+                    </h1>
+                    <div class="flex flex-wrap items-center">
+                        <div class="w-full lg:w-2/3 platforms">
+                            <CardsHomeKpop />
+                        </div>
+                        <div class="w-full lg:w-1/3 content-center">
+                            <DoubleBox />
+                        </div>
                     </div>
-                </section>
-                <SuperLeader />
-                <section>
-                    <div class="container-home px-[5px] py-4 md:p-4 mx-auto">                        
-                        <SliderTopten />
-                    </div>
-                </section>
-                <section>
-                    <div class="container-home px-[5px] py-4 md:p-4 mx-auto">
-                        <h1 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl">K-POP</h1>
-                        <div class="flex flex-wrap items-center">
-                            <div class="w-full lg:w-2/3 platforms">
-                                <CardsHomeKpop />
-                            </div>
-                            <div class="w-full lg:w-1/3 content-center">
-                                <DoubleBox />
-                            </div>
-                        </div>                   
-                    </div>
-                </section>
+                </div>
+            </section>
 
-
-                <section>
-                    <div class="container-home px-[5px] py-4 md:p-4 mx-auto">                        
-                        <SliderPodcast />
-                    </div>
-                </section>
-                <LeaderBoard />
-                <section>                   
-                    <div class="container-home px-[5px] py-4 md:p-4 mx-auto">                        
-                        <CardCine />
-                    </div>
-                </section>
-                <!--section>
+            <section>
+                <div class="container-home px-[5px] py-4 md:p-4 mx-auto">
+                    <SliderPodcast />
+                </div>
+            </section>
+            <LeaderBoard />
+            <section>
+                <div class="container-home px-[5px] py-4 md:p-4 mx-auto">
+                    <CardCine />
+                </div>
+            </section>
+            <!--section>
                     <div class="container-home px-[5px] py-4 md:p-4 mx-auto">                        
                         <CardTecnologia/>
                     </div>
                 </section-->
-                <BillBoard2 />
-        </main> 
-        <Navidad />
+            <BillBoard2 />
+        </main>
+        <!--Navidad /-->
         <Footer />
         <!--Modal /-->
         <Notificacion />
