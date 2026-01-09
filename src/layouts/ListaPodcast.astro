@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+
+const res = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,content,excerpt,_links,_embedded,acf&_embed&per_page=1&categories=9138,3813,3801,6581,10689&order_by=date&order=desc");
+const posts = await res.json();
+---
+
+
+    <h1 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl ">OYE EL PODCAST</h1>
+    <div class="flex flex-nowrap items-center flex-col mb-8">
+        <div class="w-[70%]">
+			<img class="rounded-xl m-auto max-w-[365px]" src={posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url} alt="Imagen Breaking News"/>
+		</div>
+		<div class="news-content audiopod py-2 pr-4">
+			<h3 class="uppercase font-bold" set:html={posts[0].yoast_head_json.schema['@graph'][0].articleSection[0]}></h3>	
+            <p class="text-xl m-0" set:html={posts[0].title.rendered}></p>
+			<p class="text-zinc-500">{posts[0].yoast_head_json.article_published_time.substring(0, 10)}</p>
+			<div class="flex items-center gap-5 play-pause-podcast cursor-pointer play-pause-podcast-home" data-podcast-status="ready"> 
+          		<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-play" width="60" height="60" viewBox="0 0 24 24" stroke-width="2" stroke="#fff" fill="#fff" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8z" /></svg>
+				<span>REPRODUCIR AHORA</span>
+			</div> 
+			<div class="data-iframe" data-iframe={posts[0].acf.ds}></div>
+        </div>
+
+    </div>
+
+
+
+
+<style>
+.carousel-cell {
+  width: 150px;
+  height: 200px;
+  margin-right: 80px;
+  border-radius: 20px;
+}
+
+.carousel-cell img, .circle-podcast img{
+	border-radius: 50%;
+	box-shadow: 0 2px 12px 7px rgba(0,0,0,0.4);
+	margin-top: 20px;
+}
+
+.carousel-cell.is-selected {
+  /*background: #ED2;*/
+}
+</style>

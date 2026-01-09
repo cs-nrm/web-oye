@@ -1,0 +1,121 @@
+---
+import { Image } from 'astro:assets';
+
+const res = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_embed&per_page=10&categories=280&order=asc&_fields=id,title,acf,content,slug,categories,_links,_embedded&orderby=acf_posicion&order=asc");
+const posts = await res.json();
+
+---
+    <h1 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl ">OYE EL TOP TEN</h1>
+    <!--div class="block md:flex flex-col items-center bg-[#ededed] rounded-xl">
+        <div class="w-[100%] relative">
+			<img class="rounded-xl" src={posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes['oye-size'].source_url} alt="Imagen Breaking News"/>
+			<span class="text-8xl font-bold absolute bottom-2 left-4 lg:bottom-8 lg:left-8 rojo">1</span>
+			<a class="absolute text-center text-white bottom-2 right-4 lg:bottom-8 lg:right-8" href={`/topten/${posts[0].slug}/`}>
+				<div class="mb-8 sm:mb-2 lg:mb-8 rojo cursor-pointer" data-podcast-status="ready"> 
+					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler bg-[#e2241a] hover:bg-black rounded-[50%] p-[15px] m-auto icon-tabler-player-play" width="100" height="100" viewBox="0 0 24 24" stroke-width="2" stroke="#fff" fill="#fff" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8z" /></svg>
+				</div> 
+	            <p class="text-xl font-bold text-right m-0" set:html={posts[0].title.rendered}></p>
+				<p class="text-xl text-right m-0" set:html={posts[0].acf.artista}></p>
+			</a>
+		</div>
+    </div-->
+
+<!--div class="main-topten" data-flickity='{ "lazyLoad": 1, "wrapAround": true, "cellAlign": "center", "pageDots": false, "autoPlay": true}'-->
+<div class="topten mt-8 grid gap-4 grid-cols-1 md:grid-cols-2">
+	{
+	posts.slice(0).map((post:any, index)=> (
+		<div class="flex gap-4 items-center text-black hover:text-[#7b439b] m-2">
+		  <div class="w-[20%] text-center">
+			<span class="text-4xl rojo font-bold" set:html={index+1}></span>
+		  </div>	
+		  <div class="w-[20%] text-center">
+			<a href={`/topten/${post.slug}/`}>
+				<Image class="aspect-square shadow-[0_2px_12px_4px_rgba(0,0,0,0.4)] rounded-xl object-fill" src={post._embedded['wp:featuredmedia'][0].media_details.sizes['thumbnail'].source_url} width="300" height="150" alt="Imagen Ilustrativa Top Ten"  />
+			</a>
+		  </div>
+		  <div class="w-[50%] flex items-center mt-2 gap-1">
+		    <div class="w-9/12 flex flex-col overflow-hidden">
+			  
+		      <a href={`/topten/${post.slug}/`}><p class="font-bold leading-none m-0 text-xs truncate" set:html={post.acf.artista}></p></a>
+		      <a href={`/topten/${post.slug}/`}><p class="leading-none m-0 text-xs text-zinc-500" set:html={post.title.rendered}></p>
+			  </a>
+		    </div>
+		    <div class="w-2/12 flex justify-end">
+		      <div class="like-topten" aria-label="Votar por esta canción" data-song={post?.title?.rendered || ''} data-artist={post?.acf?.artista || ''}>
+		        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" stroke-width="1">
+		          <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path>
+		        </svg>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+	))    
+	}
+</div>
+
+
+
+
+<style>
+.carousel-cell {
+  width: 150px;
+  height: 200px;
+  margin-right: 80px;
+  border-radius: 20px;
+}
+
+.carousel-cell img{
+	border-radius: 50%;
+	box-shadow: 0 2px 12px 7px rgba(0,0,0,0.4);
+	margin-top: 20px;
+}
+
+.carousel-cell.is-selected {
+  /*background: #ED2;*/
+}
+
+.news-content{
+	padding: 20px;
+	position: relative ;
+	padding-left: 40px;
+	padding-right: 40px;
+	height: 350px;
+    overflow: hidden;
+}
+.news-content::after{
+	content: '';
+	width: calc(100% - 40px);
+	height: 100%;
+	background: #ededed;
+	background: linear-gradient(0deg,rgba(237, 237, 237, 1) 0%, rgba(237, 237, 237, 0) 100%);
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	border-radius: 0.75rem;
+}
+.getcancion, .letra-de-cancion {
+  line-height: 1.6;
+ 	display: -webkit-box;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 1280px){
+	.getcancion, .letra-de-cancion {
+		-webkit-line-clamp: 7;
+	}
+}
+@media (max-width: 950px){
+	.news-content .letra p{
+		font-size: 12px;
+		line-height: 1;
+	}
+	.getcancion, .letra-de-cancion {
+		-webkit-line-clamp: 6;
+	}
+}
+
+
+</style>

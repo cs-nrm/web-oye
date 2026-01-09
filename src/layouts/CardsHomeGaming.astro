@@ -1,0 +1,111 @@
+---
+import DoubleBox from '../components/DoubleBox.astro';
+import BoxBanner from '../components/BoxBanner.astro';
+import LeaderBoard from'../components/LeaderBoard.astro';
+import SuperLeader from '../components/SuperLeader.astro';
+import { Image } from 'astro:assets';
+
+const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img_oye-min.jpg';
+
+const res = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,content,excerpt,_links,_embedded&_embed&per_page=6&categories=12572&order_by=date&order=desc");
+const posts = await res.json();
+---
+
+      <div class="container cards">
+        <h1 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl ">Gaming</h1>
+        <div class="news-grid grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-16 xl:gap-16">
+          <!-- Article 1 -->
+          <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
+            <a href={`/gaming/${posts[0].slug}/`}>
+              <div class="bg-black rounded-xl"><img class="rounded-xl aspect-not w-full h-auto" src={posts[0]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['medium_large']?.source_url || PLACEHOLDER_IMG} alt={posts[0]?._embedded?.['wp:featuredmedia']?.[0]?.alt_text||"Imagen Gaming"}/></div>
+              <div class="news-content p-6">
+                <h5 set:html={posts[0].title.rendered}></h5>
+                <div class="text-sm resumen" set:html={posts[0].excerpt.rendered}></div>
+                <!--span class="roboto font-bold text-xs mt-4">por {posts[0].yoast_head_json.author}</span-->
+              </div>
+            </a>  
+          </article>
+
+          <!-- Article 2 -->
+          <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
+            <a href={`/gaming/${posts[1].slug}/`}>
+              <div class="bg-black rounded-xl"><img class="rounded-xl aspect-not w-full h-auto" src={posts[1]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['medium_large']?.source_url || PLACEHOLDER_IMG} alt={posts[1]?._embedded?.['wp:featuredmedia']?.[0]?.alt_text||"Imagen Gaming"}/></div>
+              <div class="news-content p-6">
+                <h5 set:html={posts[1].title.rendered}></h5>
+                <div class="text-sm resumen" set:html={posts[1].excerpt.rendered}></div>
+                <!--span class="roboto font-bold text-xs">por {posts[1].yoast_head_json.author}</span-->
+              </div>
+            </a>  
+          </article>
+
+          <!-- Article 3 -->
+          <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
+            {posts[2]?.slug && (
+            <a href={`/gaming/${posts[2].slug}/`}>
+              <div class="bg-black rounded-xl"><img class="rounded-xl aspect-not w-full h-auto" src={posts[2]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['medium_large']?.source_url || PLACEHOLDER_IMG} alt={posts[2]?._embedded?.['wp:featuredmedia']?.[0]?.alt_text||"Imagen Gaming"}/></div>
+              <div class="news-content p-6">
+                <h5 set:html={posts[2].title.rendered}></h5>
+                <div class="text-sm resumen" set:html={posts[2].excerpt.rendered}></div>
+                <!--span class="roboto font-bold text-xs">por {posts[2].yoast_head_json.author}</span-->
+              </div>
+            </a>  
+            )}
+          </article>
+
+          <!-- Article 4 -->
+          <article class="news-card hidden md:block lg:hidden transition duration-[0.2s] hover:translate-y-[-4px]">
+            {posts[332]?.slug && (
+            <a href={`/gaming/${posts[3].slug}/`}>
+              <div class="bg-black rounded-xl"><img class="rounded-xl aspect-not w-full h-auto" src={posts[3]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['medium_large']?.source_url || PLACEHOLDER_IMG} alt={posts[3]?._embedded?.['wp:featuredmedia']?.[0]?.alt_text||"Imagen Gaming"}/></div>
+              <div class="news-content p-6">
+                <h5 set:html={posts[3].title.rendered}></h5>
+                <div class="text-sm resumen" set:html={posts[3].excerpt.rendered}></div>
+                <!--span class="roboto font-bold text-xs">por {posts[3].yoast_head_json.author}</span-->
+              </div>
+            </a>  
+            )}
+          </article>
+        </div>
+      </div>
+
+<div class="m-auto text-center">
+    <a href="/gaming" class="text-white hover:text-black">
+        <button class="ver-mas group relative rounded-sm h-8 m-2 overflow-hidden bg-[#e2241a] uppercase text-xs font-bold tracking-[1px]">
+            <span class="p-4">MÁS GAMING AQUÍ</span>
+        </button>
+    </a>
+</div>
+
+<style>
+.cards img{
+  mask-image: linear-gradient(225deg, hsla(var(--color-black), 1) 0, hsla(var(--color-black), 0.9) 40%, hsla(var(--color-black), 0) 80%);
+}
+
+
+.resumen{
+  letter-spacing: 2px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  margin-bottom: 1rem;
+}
+/*
+.texto-nota{
+  box-shadow: none;
+  mask-image: linear-gradient(to bottom, hsla(var(--color-black), 1) 0, hsla(var(--color-black), 1) 10%, hsla(var(--color-black), 0) 100%);
+}
+
+.text-uno{
+	display: -webkit-box;
+	-webkit-margin-before: 0;
+  margin-block-start: 0;
+  -webkit-margin-after: 12px;
+  margin-block-end: 12px;
+  line-height: 1.2;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}*/
+</style>
+
