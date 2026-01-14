@@ -8,6 +8,7 @@ import { Image } from 'astro:assets';
 
 const res = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,content,excerpt,_links,_embedded&_embed&per_page=6&categories=6616&order_by=date&order=desc");
 const posts = await res.json();
+const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img_oye-min.jpg';
 ---
 
       <div class="container">
@@ -16,7 +17,7 @@ const posts = await res.json();
           <!-- Article 1 -->
           <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
             <a href={`/cine/${posts[0].slug}/`}>
-              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[0]._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url} alt="Imagen Cine"/></div>
+              <div><img loading="lazy" class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[0]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['small-feature']?.source_url || PLACEHOLDER_IMG} alt={posts[0]?.yoast_head_json?.['schema']?.['@graph']?.[2]?.caption || "Imagen Cine"}/></div>
               <div class="news-content">
                 <p set:html={posts[0].title.rendered}></p>
                 <!--div class="text-sm resumen" set:html={posts[0].excerpt.rendered}></div>
@@ -28,7 +29,7 @@ const posts = await res.json();
           <!-- Article 2 -->
           <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
             <a href={`/cine/${posts[1].slug}/`}>
-              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[1]._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url} alt="Imagen Breaking News"/></div>
+              <div><img loading="lazy" class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[1]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['small-feature']?.source_url || PLACEHOLDER_IMG} alt={posts[1]?.yoast_head_json?.['schema']?.['@graph']?.[2]?.caption || "Imagen Cine"}/></div>
               <div class="news-content">
                 <p set:html={posts[1].title.rendered}></p>
                 <!--div class="text-sm resumen" set:html={posts[1].excerpt.rendered}></div>
@@ -40,7 +41,7 @@ const posts = await res.json();
           <!-- Article 3 -->
           <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
             <a href={`/cine/${posts[2].slug}/`}>
-              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[2]._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url} alt="Imagen Las de Hoy"/></div>
+              <div><img loading="lazy" class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[2]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['small-feature']?.source_url || PLACEHOLDER_IMG} alt={posts[2]?.yoast_head_json?.['schema']?.['@graph']?.[2]?.caption || "Imagen Cine"}/></div>
               <div class="news-content">
                 <p set:html={posts[2].title.rendered}></p>
                 <!--div class="text-sm resumen" set:html={posts[2].excerpt.rendered}></div>
@@ -52,7 +53,7 @@ const posts = await res.json();
           <!-- Article 4 -->
           <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
             <a href={`/cine/${posts[3].slug}/`}>
-              <div><img class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[3]._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url} alt="Imagen Las de Hoy"/></div>
+              <div><img loading="lazy" class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[3]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['small-feature']?.source_url || PLACEHOLDER_IMG} alt={posts[3]?.yoast_head_json?.['schema']?.['@graph']?.[2]?.caption || "Imagen Cine"}/></div>
               <div class="news-content">
                 <p set:html={posts[3].title.rendered}></p>
                 <!--div class="text-sm resumen" set:html={posts[3].excerpt.rendered}></div>
