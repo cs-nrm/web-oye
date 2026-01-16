@@ -13,7 +13,7 @@ const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img
 		<article class="p-2">
 			<a href={`/locutores/${post.slug}/`} class="text-white">
 				<div class="img-podcast">
-					<Image class="block h-auto w-full object-fill" src={post?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['oye-size']?.source_url} width="200" height="200" alt={posts[0]?.yoast_head_json?.['schema']?.['@graph']?.[2]?.caption || "Locutores"}/>
+					<Image class="block h-auto w-full object-fill" src={post?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['oye-size']?.source_url} width="200" height="200" alt={posts[0]?._embedded?.['wp:featuredmedia']?.[0]?.alt_text || "Locutores"}/>
 
 				</div>
 				<p class="m-0" set:html={post.title.rendered}></p>

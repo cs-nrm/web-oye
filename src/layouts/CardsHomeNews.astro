@@ -20,7 +20,7 @@ const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img
         <div class="lg:col-span-2">
           <a href={`/breakingnews/${posts[0].slug}/`}>
           <div class="relative h-full">
-            <img loading="lazy" class="rounded-xl w-full h-full object-cover" src={posts[0]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['medium_large']?.source_url || PLACEHOLDER_IMG} alt={posts[0]?.yoast_head_json?.['schema']?.['@graph']?.[2]?.caption || "Imagen Breaking News"}/>
+            <img loading="lazy" class="rounded-xl w-full h-full object-cover" src={posts[0]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['medium_large']?.source_url || PLACEHOLDER_IMG} alt={posts[0]?._embedded?.['wp:featuredmedia']?.[0]?.alt_text || "Imagen Breaking News"}/>
             <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white p-4 w-full rounded-b-xl">
               <h2 class="text-xl lg:text-2xl font-bold" set:html={posts[0].title.rendered}></h2>
             </div>
@@ -34,7 +34,7 @@ const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img
 
           <div class="relative h-1/2">
             <a href={`/breakingnews/${posts[1].slug}/`}>
-              <img loading="lazy" class="rounded-xl w-full h-full object-cover" src={posts[1]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['medium_large']?.source_url || PLACEHOLDER_IMG} alt={posts[1]?.yoast_head_json?.['schema']?.['@graph']?.[2]?.caption || "Imagen Breaking News"}/>
+              <img loading="lazy" class="rounded-xl w-full h-full object-cover" src={posts[1]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['medium_large']?.source_url || PLACEHOLDER_IMG} alt={posts[1]?._embedded?.['wp:featuredmedia']?.[0]?.alt_text || "Imagen Breaking News"}/>
               <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white p-3 w-full rounded-b-xl">
                 <p class="text-md font-semibold rounded-b-xl mb-0" set:html={posts[1].title.rendered}></p>
               </div>
@@ -43,7 +43,7 @@ const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img
           <!-- Secundaria 2 -->
           <div class="relative h-1/2">
             <a href={`/breakingnews/${posts[2].slug}/`}>
-              <img loading="lazy" class="rounded-xl w-full h-full object-cover" src={posts[2]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['medium_large']?.source_url || PLACEHOLDER_IMG} alt={posts[2]?.yoast_head_json?.['schema']?.['@graph']?.[2]?.caption || "Imagen Breaking News"}/>
+              <img loading="lazy" class="rounded-xl w-full h-full object-cover" src={posts[2]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['medium_large']?.source_url || PLACEHOLDER_IMG} alt={posts[2]?._embedded?.['wp:featuredmedia']?.[0]?.alt_text || "Imagen Breaking News"}/>
               <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white p-3 w-full rounded-b-xl">
                 <p class="text-md font-semibold rounded-b-xl mb-0" set:html={posts[2].title.rendered}></p>
               </div>

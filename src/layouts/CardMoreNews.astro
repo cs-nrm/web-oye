@@ -60,9 +60,9 @@ const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img
 ---
 
 <div class="card w-full p-4">
-    <div class="overflow-hidden bg-zinc-800 hover:shadow-[0_2px_12px_6px_rgba(29,29,29,0.5)] group">
+    <div class="overflow-hidden rounded-xl bg-zinc-800 hover:shadow-[0_2px_12px_6px_rgba(29,29,29,0.5)] group">
         <a href={`/${url_seccion}/${post.slug}/`}>
-            <img class="block h-auto w-full aspect-not object-cover group-hover:text-[var(--amarillo-beat)]" src={post?.yoast_head_json?.og_image?.[0]?.url || PLACEHOLDER_IMG} alt={post.yoast_head_json['schema']['@graph'][2].caption||"Imagen Más Noticias"} />
+            <img class="block h-auto w-full aspect-not object-cover group-hover:text-[var(--amarillo-beat)]" src={post?.yoast_head_json?.og_image?.[0]?.url || PLACEHOLDER_IMG} alt={post?._embedded?.['wp:featuredmedia']?.[0]?.alt_text||"Imagen Más Noticias"} />
         </a>
         <div class="flex items-center justify-between leading-tight px-2 mt-2">
             <a class="no-underline" href={`/${url_seccion}/${post.slug}/`}>
