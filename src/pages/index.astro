@@ -26,6 +26,7 @@ import NotaPrincipal from "../layouts/CardsHomePrincipal.astro";
 import CardsHomeKpop from "../layouts/CardsHomeKpop.astro";
 /*import SliderBuenfin from '../layouts/SliderBuenfin.astro';*/
 import Notificacion from "../components/Notificacion.astro";
+import DiaRadio from "../components/DiaRadio.astro";
 ---
 
 <!doctype html>
@@ -46,7 +47,9 @@ import Notificacion from "../components/Notificacion.astro";
             <!--header-->
             <!--HomeHeader /-->
             <!--/header-->
-
+            <section>
+                <DiaRadio />    
+            </section>
             <section>
                 <div class="container-home px-[5px] py-4 md:p-4 mx-auto">
                     <CardNews />
@@ -111,7 +114,7 @@ import Notificacion from "../components/Notificacion.astro";
         <!--Navidad /-->
 
         <Footer />
-        <!--Modal /-->
+        <Modal />
         <!--Notificacion /-->
     </body>
 </html>
