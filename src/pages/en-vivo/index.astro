@@ -11,7 +11,7 @@ import BarNrm from '../../components/BarNrm.astro';
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title={SITE_TITLE} seccion="En Vivo" description={SITE_DESCRIPTION} />
+		<BaseHead title={SITE_TITLE} seccion="En Vivo" description={SITE_DESCRIPTION} /> 
 		<meta charset="utf-8"/>
 	</head>
 	<body>
@@ -63,8 +63,8 @@ import BarNrm from '../../components/BarNrm.astro';
     .prog-all{width: 34%;  padding: 20px; ; display: flex; gap: 25px; color:#201e1e;}
     .prog-all div { display: flex; gap:10px;}
     .prog-all a {color:#e94543 }
-    .banner-prog {width: 80%; padding:20px;}
-    .banner-prog img {    object-fit: cover;    border-radius: 163%;}
+    .banner-prog {width: 80%; padding:20px; margin: 0 auto; max-width: 550px;}
+    .banner-prog img {    object-fit: cover;    border-radius: 163%; width: 100%; height: auto;}
     .envivo-prog {   font-size: 2.5rem; color:#201e1e; font-family: 'Roboto';}
     .envivo-prog-tab{ color:#d6d8d7; }
     .envivo-prog-next-tab { color:#201e1e; }
