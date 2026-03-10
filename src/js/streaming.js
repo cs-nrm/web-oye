@@ -814,6 +814,17 @@ if($('.getcancion')){
             freeScroll: true,
             wrapAround: true
         }); 
+        var elemportada = document.querySelector('.carousel-portada');
+        var flktyportada = new Flickity(elemportada, {
+        // options
+        cellAlign: 'center',
+        prevNextButtons: false,
+        pageDots: false,
+        pauseAutoPlayOnHover: true,
+        freeScroll: false,
+        wrapAround: true,
+        autoPlay: 5000,
+        });
  
     }
     const secprogram = document.getElementById('programacion');

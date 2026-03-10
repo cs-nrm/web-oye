@@ -4,12 +4,14 @@ import BoxBanner from '../components/BoxBanner.astro';
 import LeaderBoard from'../components/LeaderBoard.astro';
 import SuperLeader from '../components/SuperLeader.astro';
 import { Image } from 'astro:assets';
+import SliderPortada from './SliderPortada.astro';
 
-const ressti = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,acf,yoast_head_json,content,excerpt,_links,_embedded&_embed&per_page=20&categories=149,6616,172,156,8791");
-const poststi = await ressti.json();
+/*const ressti = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,acf,yoast_head_json,content,excerpt,_links,_embedded&_embed&per_page=20&categories=149,6616,172,156,8791");
+const poststi = await ressti.json();*/
 
 ---
-{
+<SliderPortada />
+{/* 
   poststi
   .slice(0,1)
   .map((poststi:any) => (
@@ -22,7 +24,7 @@ const poststi = await ressti.json();
        <a target="_blank" href="https://bit.ly/MultivitaminicosOye"><img class="img-prin" src="https://storage.googleapis.com/nrm-web/nrm/adManager/portada-SIMI-min.jpg" alt="" /> </a>   
     </div>
   ))
-}
+*/}
 {/* 
   poststi
   .filter((poststi:any) => poststi.acf.fijo)
