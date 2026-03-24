@@ -20,7 +20,7 @@ function initGPT() {
   
   googletag.cmd.push(function() {
     var mapping2 = googletag.sizeMapping().addSize([300, 250]).build();
-    var mapping3 = googletag.sizeMapping().addSize([600, 300]).build(); 
+    var mapping3 = googletag.sizeMapping().addSize([970, 250]).build(); 
     var mapping31 = googletag.sizeMapping().addSize([320, 50]).build();
     var mapping32 = googletag.sizeMapping().addSize([728, 90]).build();
     var mapping321 = googletag.sizeMapping().addSize([320, 50]).build();
@@ -38,9 +38,69 @@ function initGPT() {
     var mapping203 = googletag.sizeMapping().addSize([300, 250]).build();
     var mapping204 = googletag.sizeMapping().addSize([300, 250]).build();
     var mapping205 = googletag.sizeMapping().addSize([300, 250]).build();
+
+
+// helper to manage fallbacks between GPT slots and an AdSense element
+function adFallback(slots, fallbackId) {
+    const loaded = {};
+    let rendered = 0;
+
+    slots.forEach(id => { loaded[id] = false; });
+
+    googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+        const id = event.slot.getSlotElementId();
+        if (slots.includes(id)) {
+            if (!event.isEmpty) {
+                loaded[id] = true;
+            }
+            rendered++;
+        }
+
+        if (rendered === slots.length) {
+            const showGPT = slots.every(s => loaded[s]);
+            console.log('adFallback', { slots, loaded, showGPT, fallbackId });
+            slots.forEach(s => {
+                const el = document.getElementById(s);
+                if (el) {
+                    el.style.display = showGPT ? '' : 'none';
+                } else {
+                    console.warn('adFallback: slot element not found', s);
+                }
+            });
+            const fb = document.getElementById(fallbackId);
+            if (fb) {
+                fb.style.display = showGPT ? 'none' : 'block';
+                if (!showGPT) {
+                    // when showing the fallback, wait until it gets a real width
+                    const schedulePush = () => {
+                        if (fb.offsetWidth > 0) {
+                            try {
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            } catch (e) {
+                                console.error('adFallback: adsbygoogle push failed', e);
+                            }
+                        } else {
+                            // try again a little later
+                            setTimeout(schedulePush, 50);
+                        }
+                    };
+                    requestAnimationFrame(schedulePush);
+                }
+            } else {
+                console.warn('adFallback: fallback element not found', fallbackId);
+            }
+        }
+    });
+}
+
+
+
+
+
+
          
     window.slot2 = googletag.defineSlot("/21799830913/Oye", [300, 250],'ad-slot2').defineSizeMapping(mapping2).addService(googletag.pubads());
-    window.slot3 = googletag.defineSlot("/21799830913/Oye", [600, 300],'ad-slot3').defineSizeMapping(mapping3).addService(googletag.pubads());
+    window.slot3 = googletag.defineSlot("/21799830913/Oye", [970, 250],'ad-slot3').defineSizeMapping(mapping3).addService(googletag.pubads());
     window.slot31 = googletag.defineSlot("/21799830913/Oye", [320, 50],'ad-slot31').defineSizeMapping(mapping31).addService(googletag.pubads());
     window.slot32 = googletag.defineSlot("/21799830913/Oye", [728, 90],'ad-slot32').defineSizeMapping(mapping32).addService(googletag.pubads());
     window.slot321 = googletag.defineSlot("/21799830913/Oye", [320, 50],'ad-slot321').defineSizeMapping(mapping321).addService(googletag.pubads());
@@ -714,8 +774,13 @@ if($('.getcancion')){
     getInfoLyrics();
 }
 
-    initGPT();
-    //safeRefreshSlots();
+    /* publicidad: reinicializa slots tras el DOM swap de Astro View Transitions */
+    if (window.googletag && googletag.apiReady) {
+        initGPT();
+    } else {
+        window.googletag = window.googletag || { cmd: [] };
+        googletag.cmd.push(function() { initGPT(); });
+    }
     
    const getplayingstatus = playerstatus();
     document.querySelector('main').classList.remove('loading');    
