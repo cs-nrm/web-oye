@@ -59,16 +59,18 @@ import Layout from "../../layouts/Layout.astro";
         </div>
     </div>
 
-    <script slot="head">
-        $(".logo-player img").attr(
-            "src",
-            "https://storage.googleapis.com/nrm-web/oye/recursos/LOGO-OYE-BLANCO-2025.svg",
-        );
-        $("#big-play").removeClass("border-4");
+    <script is:inline>
+        document.addEventListener('astro:page-load', function () {
+            $(".logo-player img").attr(
+                "src",
+                "https://storage.googleapis.com/nrm-web/oye/recursos/LOGO-OYE-BLANCO-2025.svg",
+            );
+            $("#big-play").removeClass("border-4");
 
-        $(".like").on("click", function () {
-            console.log("click");
-            $(this).find("svg").css("fill", "#d6d8d7");
+            $(".like").off("click.envivo").on("click.envivo", function () {
+                console.log("click");
+                $(this).find("svg").css("fill", "#d6d8d7");
+            });
         });
     </script>
 </Layout>

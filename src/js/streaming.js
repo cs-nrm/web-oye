@@ -696,7 +696,7 @@ document.addEventListener('astro:page-load', ev => {
 
 
 
-if($('.getcancion')){
+if($('.getcancion').length){
     //console.log('aqui va a imprimir la canción');
     const artist = $('.getcancion').attr('data-artista');
     const cancion = $('.getcancion').attr('data-cancion');
@@ -735,12 +735,12 @@ if($('.getcancion')){
     const secenvivo = document.getElementById('envivo');
     const secgaleria = document.getElementsByClassName('galeria');
 
-    if( secgaleria ){
-        var elemgaleria = document.querySelector('.wp-block-gallery');
+    var elemgaleria = document.querySelector('.wp-block-gallery');
+    if( elemgaleria ){
         var flktygaleria = new Flickity( elemgaleria, {
             contain: true,
-            lazyLoad: 1, 
-            wrapAround: true, 
+            lazyLoad: 1,
+            wrapAround: true,
             cellAlign: 'center',
             pageDots: false,
             autoPlay: true
