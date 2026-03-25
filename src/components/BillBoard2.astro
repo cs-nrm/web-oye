@@ -4,11 +4,8 @@
 
 <div class="leader my-9 table mx-auto text-center">
 	<span class="roboto text-xs text-zinc-500">PUBLICIDAD</span>
-	<!--img src="https://contenido.beatdigital.mx/wp-content/uploads/2024/07/leader.png" alt="leader" width="728" height="90"/-->
-	<div id="ad-slot42" class="hidden md:block" style="display:none;"></div>
-	<div id="ad-slot421" class="md:hidden block" style="display:none;"></div>
-	<div id="ad-slot42-adsense" style="display:none;">
-	
+	<div id="ad-slot-leader2"></div>
+	<div id="ad-slot-leader2-adsense" style="display:none;">
 		<ins
 			class="adsbygoogle"
 			style="display:block; height:90px; width:100%;"
@@ -17,54 +14,4 @@
 			data-ad-format="horizontal"
 			data-full-width-responsive="true"></ins>
 	</div>
-
-	<script is:inline>
-     (function() {
-         if (!window.billBoard2ListenerAdded) {
-             window.billBoard2ListenerAdded = true;
-             window.googletag = window.googletag || {cmd: []};
-             window.googletag.cmd.push(function() {
-                 window.googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-                     const slotId = event.slot.getSlotElementId();
-                     if (slotId === 'ad-slot42' || slotId === 'ad-slot421') {
-                         const adEl = document.getElementById(slotId);
-                         const fallEl = document.getElementById('ad-slot42-adsense');
-                         
-                         if (event.isEmpty) {
-                             if (adEl) adEl.style.display = 'none';
-                             if (fallEl && fallEl.style.display === 'none') {
-                                 fallEl.style.display = 'block';
-                                 try { window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.push({}); } catch(e){}
-                             }
-                         } else {
-                             window.billBoard2GptLoaded = true;
-                             if (adEl) adEl.style.display = '';
-                             if (fallEl) fallEl.style.display = 'none';
-                         }
-                     }
-                 });
-             });
-         }
-
-         document.addEventListener("astro:page-load", () => {
-             window.billBoard2GptLoaded = false;
-             setTimeout(() => {
-                 const fallEl = document.getElementById('ad-slot42-adsense');
-                 if (!window.billBoard2GptLoaded && fallEl && fallEl.style.display === 'none') {
-                     fallEl.style.display = 'block';
-                     try { window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.push({}); } catch(e){}
-                 }
-             }, 3000);
-         });
-     })();
-   </script>
 </div>
-<!--ins class="adsbygoogle" 
-		style="display: block; text-align:center; margin:0 auto;" 
-		data-ad-client="ca-pub-7423640555477330" 
-		data-ad-slot="4971524958" 
-		data-ad-format="horizontal" 
-		data-full-width-responsive="true"></ins>
-        <script defer is:inline>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script-->

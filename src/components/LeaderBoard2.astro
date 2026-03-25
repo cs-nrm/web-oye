@@ -4,12 +4,8 @@
 
 <div class="leader my-9 table mx-auto text-center">
 	<span class="roboto text-xs text-zinc-500">PUBLICIDAD</span>
-
-	<!--img src="https://contenido.stereociendigital.mx/wp-content/uploads/2025/04/cyber-monday-flat-web-banner-260nw-733395259-copia.jpg" alt="leader" width="728" height="90"/-->
-	<div id="ad-slot32" class="hidden md:block" style="display:none;"></div>
-	<div id="ad-slot321" class="md:hidden block" style="display:none;">
-	</div>
-	<div id="ad-slot32-adsense" style="display:none;">
+	<div id="ad-slot-leader3"></div>
+	<div id="ad-slot-leader3-adsense" style="display:none;">
 		<ins
 			class="adsbygoogle"
 			style="display:block; height:90px; width:100%;"
@@ -18,55 +14,4 @@
 			data-ad-format="horizontal"
 			data-full-width-responsive="true"></ins>
 	</div>
-
-	<script is:inline>
-     (function() {
-         if (!window.leaderBoard2ListenerAdded) {
-             window.leaderBoard2ListenerAdded = true;
-             window.googletag = window.googletag || {cmd: []};
-             window.googletag.cmd.push(function() {
-                 window.googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-                     const slotId = event.slot.getSlotElementId();
-                     if (slotId === 'ad-slot32' || slotId === 'ad-slot321') {
-                         const adEl = document.getElementById(slotId);
-                         const fallEl = document.getElementById('ad-slot32-adsense');
-                         
-                         if (event.isEmpty) {
-                             if (adEl) adEl.style.display = 'none';
-                             if (fallEl && fallEl.style.display === 'none') {
-                                 fallEl.style.display = 'block';
-                                 try { window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.push({}); } catch(e){}
-                             }
-                         } else {
-                             window.leaderBoard2GptLoaded = true;
-                             if (adEl) adEl.style.display = '';
-                             if (fallEl) fallEl.style.display = 'none';
-                         }
-                     }
-                 });
-             });
-         }
-
-         document.addEventListener("astro:page-load", () => {
-             window.leaderBoard2GptLoaded = false;
-             setTimeout(() => {
-                 const fallEl = document.getElementById('ad-slot32-adsense');
-                 if (!window.leaderBoard2GptLoaded && fallEl && fallEl.style.display === 'none') {
-                     fallEl.style.display = 'block';
-                     try { window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.push({}); } catch(e){}
-                 }
-             }, 3000);
-         });
-     })();
-   </script>
-
-	<!--ins class="adsbygoogle" 
-		style=" display:block;  text-align:center; margin:0 auto;" 
-		data-ad-client="ca-pub-7423640555477330" 
-		data-ad-slot="9366065535" 
-		data-ad-format="horizontal" 
-		data-full-width-responsive="true"></ins>
-        <script defer is:inline>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script-->
 </div>

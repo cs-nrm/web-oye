@@ -4,9 +4,8 @@
 
 <div class="double-box table mx-auto text-center">
 	<span class="roboto text-xs text-zinc-500">PUBLICIDAD</span>
-	<!--img src="https://tpc.googlesyndication.com/simgad/2771897712811175811"/ alt="Double Box" width="300" height="600" /-->
-	<div id="ad-slot5" class="hidden md:block" style="display:none;"></div>
-	<div id="ad-slot5-adsense" style="display:none;">
+	<div id="ad-slot-doublebox"></div>
+	<div id="ad-slot-doublebox-adsense" style="display:none;">
 		<ins
 			class="adsbygoogle"
 			style="display:block; height:600px; width:100%;"
@@ -15,53 +14,5 @@
 			data-ad-format="vertical"
 			data-full-width-responsive="true"></ins>
 	</div>
-
-	<script is:inline>
-     (function() {
-         if (!window.doubleBoxListenerAdded) {
-             window.doubleBoxListenerAdded = true;
-             window.googletag = window.googletag || {cmd: []};
-             window.googletag.cmd.push(function() {
-                 window.googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-                     const slotId = event.slot.getSlotElementId();
-                     if (slotId === 'ad-slot5') {
-                         const adEl = document.getElementById(slotId);
-                         const fallEl = document.getElementById('ad-slot5-adsense');
-                         
-                         if (event.isEmpty) {
-                             if (adEl) adEl.style.display = 'none';
-                             if (fallEl && fallEl.style.display === 'none') {
-                                 fallEl.style.display = 'block';
-                                 try { window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.push({}); } catch(e){}
-                             }
-                         } else {
-                             window.doubleBoxGptLoaded = true;
-                             if (adEl) adEl.style.display = '';
-                             if (fallEl) fallEl.style.display = 'none';
-                         }
-                     }
-                 });
-             });
-         }
-
-         document.addEventListener("astro:page-load", () => {
-             window.doubleBoxGptLoaded = false;
-             setTimeout(() => {
-                 const fallEl = document.getElementById('ad-slot5-adsense');
-                 if (!window.doubleBoxGptLoaded && fallEl && fallEl.style.display === 'none') {
-                     fallEl.style.display = 'block';
-                     try { window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.push({}); } catch(e){}
-                 }
-             }, 3000);
-         });
-     })();
-   </script>
 </div>
-<!--ins class="adsbygoogle"
-	style="display:block; width:300px; height:600px;" 
-	data-ad-client="ca-pub-7423640555477330" 
-	data-ad-slot="9774490570" 
-	data-ad-format="vertical" 
-	data-full-width-responsive="true"></ins>
-    <script defer is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script-->
 <br />

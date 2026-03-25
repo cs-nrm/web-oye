@@ -38,18 +38,12 @@ const { title, description, image = '/oye-share.jpg', seccion } = Astro.props;
 <!-- Caché -->
 <meta http-equiv="cache-control" content="max-age=3600, stale-while-revalidate=300" />
 
-<script defer>
-    // Cargue GPT de forma síncrona (Expandibles y Creatividad Adaptable)
-    (function() {
-        var useSSL = 'https:' == document.location.protocol;
-        var src = (useSSL ? 'https:' : 'http:') +
-        '//www.googletagservices.com/tag/js/gpt.js';
-        document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-    })();
-</script>
 <!-- AD SENSE -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7423640555477330"
+<script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7423640555477330"
      crossorigin="anonymous"></script>
+<!-- Ad Manager (GPT) -->
+<script is:inline async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script is:inline>window.googletag = window.googletag || { cmd: [] };</script>
 
 <!-- Hotjar Tracking Code for Oye astro -->
 <script is:inline>
