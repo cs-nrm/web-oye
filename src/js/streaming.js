@@ -1,3 +1,4 @@
+// ===== [GLOBALS + SVG CONSTANTS] =====
 var streaming;
 var local_status;
 const buttonPause = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-player-pause" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="rgb(246,24,66)" fill="rgb(246,24,66)" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /><path d="M14 5m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" /></svg>';
@@ -15,7 +16,7 @@ const radioButton = document.getElementById('radiobutton');
 const player = document.getElementById('player');
 const secchome = document.getElementById('home');
 
-// ===== Ad Fallback: GPT → AdSense =====
+// ===== [ADS] adFallback, initAdFallbackListener, initGPT =====
 window._adFallbackStates = window._adFallbackStates || {};
 
 function adFallback(slots, fallbackId) {
@@ -118,6 +119,7 @@ function initGPT() {
 // El listener se registra UNA SOLA VEZ (no dentro de initGPT)
 googletag.cmd.push(initAdFallbackListener);
 
+// ===== [PLAYER - TRITON SDK] initPlayerSDK, getStatus, callbacks VAST =====
 //function initPlayer(){
     function initPlayerSDK(){
         var tdPlayerConfig = {
@@ -333,7 +335,7 @@ function detectarNavegador() {
   return { navegador, sistema: so };
 }       
 
-// === [VOTOS] Helpers y función reutilizable ===
+// ===== [PLAYER - SONG POLLING + VOTES] getInfoMusic, registerVote =====
 const VOTE_COLOR = '#ef4444';
 
 function detectarDispositivo() {
@@ -512,6 +514,7 @@ function getInfoMusic() {
     }
 
        
+// ===== [PLAYER - PROGRAMACION] getInfoProg =====
         function getInfoProg(){            
             fetch("https://playnrm.com/wp-json/wp/v2/posts?_embed&per_page=30&categories=3312&_fields[]=_links&_fields[]=_embedded&_fields[]=acf&_fields[]=content")            
             .then((res) => {
@@ -558,6 +561,7 @@ function getInfoMusic() {
         //setTimeout(getInfoProg, 20000);
         //setInterval( getInfoProg, 300000);       
 
+// ===== [PLAYER - CONTROLS] radioActive, playstopRadio, transitionPlayer =====
 const radioActive = function(){
     $('#player-inner').addClass('active');
     $('#player-v-podcast').removeClass('active');
@@ -665,7 +669,7 @@ $('.radio-link').on('click',function(){
 
   
 
-/* NAVIGATION */ 
+// ===== [NAVIGATION + PAGE LOAD] =====
 document.addEventListener('astro:before-preparation', ev => {
   //  console.log('insert spin');    
     document.querySelector('main').classList.add('loading');    
