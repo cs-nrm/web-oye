@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Card from "../../layouts/CardsPoptrends.astro";
 import DoubleBox from "../../components/DoubleBox.astro";
 import BoxBanner from "../../components/BoxBanner.astro";
+import LeaderBoard from "../../components/LeaderBoard.astro";
 
 const res = await fetch(
     "https://playnrm.com/wp-json/wp/v2/posts?_embed&per_page=20&categories=280&_fields=id,title,yoast_head_json,content,slug,categories,acf",
@@ -20,6 +21,7 @@ posts.sort(function (a, b) {
 
 <Layout title="Top Ten">
     <div class="container mb-12 px-[5px] mx-auto md:px-12" id="content-w-video">
+        <LeaderBoard />
         <h1
             class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl"
             set:html={posts[0].acf.titulo_lista}

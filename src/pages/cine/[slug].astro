@@ -5,7 +5,6 @@ import BoxBanner from "../../components/BoxBanner.astro";
 import LeaderBoard from "../../components/LeaderBoard.astro";
 import SuperLeader from "../../components/SuperLeader.astro";
 import MoreCine from "../../components/MoreCine.astro";
-import Board from "../../components/Board.astro";
 import { any } from "astro/zod";
 import { SITE_TITLE } from "../../consts";
 
@@ -37,7 +36,8 @@ const PLACEHOLDER_IMG =
     href="https://storage.googleapis.com/nrm-web/nrm/lib/plyr.css"
   />
   <section class="w-full py-4 poppins" id="content-w-video">
-    <div class="container my-12 mx-auto md:px-12">
+    <div class="container mb-12 mx-auto md:px-12">
+      <LeaderBoard />
       <div class="my-4 px-4">
         <h1 class="goodtime font-bold" set:html={post.title.rendered} />
         <div
@@ -53,7 +53,6 @@ const PLACEHOLDER_IMG =
         </figure-->
         <img class="w-full max-w-[500px] h-auto rounded-xl text-center m-auto shadow-[0_5px_12px_10px_rgba(0,0,0,0.4)]" src={post?.yoast_head_json?.og_image?.[0]?.url || PLACEHOLDER_IMG} alt={post?._embedded?.['wp:featuredmedia']?.[0]?.alt_text||"Imagen Oye de Cine"}/>
       </div>
-      <LeaderBoard />
 
       <div class="flex flex-col lg:flex-row">
         <article
@@ -131,7 +130,6 @@ const PLACEHOLDER_IMG =
           </div>
           <div class="w-full pr-4">
             <Fragment set:html={post.content.rendered} />
-            <Board />
           </div>
         </article>
         <div
@@ -139,15 +137,16 @@ const PLACEHOLDER_IMG =
         >
           <div class="sticky top-0 left-0 right-0">
             <BoxBanner />
+            <MoreCine />
+            <DoubleBox />
           </div>
-          <MoreCine />
         </div>
-        <DoubleBox />
       </div>
     </div>
   </section>
-</Layout>
 <SuperLeader />
+</Layout>
+
 
 <script is:inline src="https://storage.googleapis.com/nrm-web/nrm/lib/plyr.js"
 ></script>

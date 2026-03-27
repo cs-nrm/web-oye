@@ -5,7 +5,6 @@ import BoxBanner from '../../components/BoxBanner.astro';
 import LeaderBoard from '../../components/LeaderBoard.astro';
 import SuperLeader from '../../components/SuperLeader.astro';
 import MoreNews from '../../components/MoreNews.astro';
-import Board from '../../components/Board.astro';
 import { any } from 'astro/zod';
 import { SITE_TITLE } from '../../consts';
 
@@ -31,7 +30,8 @@ const contenidoFormateado = post.acf.letra_cancion.replace(/\n/g, '<br>');
 
 <Layout title={post.title.rendered} img={post.yoast_head_json.og_image[0].url}>
   <section class="w-full py-4 poppins" id="content-w-video">
-    <div class="container my-12 mx-auto md:px-12">
+    <div class="container mb-12 mx-auto md:px-12">
+      <LeaderBoard />
       <div class="my-4 px-4">
         <h1 class="font-bold goodtime m-0" set:html={post.title.rendered}></h1>
         <h4 class="goodtime text-zinc-500" set:html={post.acf.artista}></h4>
@@ -47,10 +47,9 @@ const contenidoFormateado = post.acf.letra_cancion.replace(/\n/g, '<br>');
         <!--img class="text-center m-auto shadow-[0_5px_12px_10px_rgba(0,0,0,0.4)]" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered}/-->
         <Fragment set:html={post.content.rendered} />
       </div>
-    <LeaderBoard />
 
 
-      <div class="flex flex-col lg:flex-row">
+      <div class="flex flex-col lg:flex-row mt-4">
         <article class="nota-interna sm:min-w-[calc(100%-400px)] text-elipsis lg:mr-10 flex flex-row">
           <div class="share-bar">
             <div class="sticky-bar sticky top-[90px] left-0 right-0">
@@ -85,8 +84,6 @@ const contenidoFormateado = post.acf.letra_cancion.replace(/\n/g, '<br>');
             </div>
           </div>
           <div class="w-full">
-            
-            <Board />
             <h2 class="goodtime">Letra de la Canción</h2>
             <!--p class="getcancion" data-cancion={post.title.rendered} data-artista={post.acf.artista}></p-->
             <div class="letra text-sm" set:html={contenidoFormateado}></div>
