@@ -16,109 +16,6 @@ const radioButton = document.getElementById('radiobutton');
 const player = document.getElementById('player');
 const secchome = document.getElementById('home');
 
-// ===== [ADS] adFallback, initAdFallbackListener, initGPT =====
-window._adFallbackStates = window._adFallbackStates || {};
-
-function adFallback(slots, fallbackId) {
-  const state = { slots, fallbackId, loaded: {}, rendered: 0 };
-  slots.forEach(id => { state.loaded[id] = false; });
-  window._adFallbackStates[fallbackId] = state;
-}
-
-function initAdFallbackListener() {
-  googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-    const id = event.slot.getSlotElementId();
-    for (const state of Object.values(window._adFallbackStates)) {
-      if (!state.slots.includes(id)) continue;
-      if (!event.isEmpty) state.loaded[id] = true;
-      state.rendered++;
-      if (state.rendered < state.slots.length) break;
-      const showGPT = state.slots.every(s => state.loaded[s]);
-      state.slots.forEach(s => {
-        const el = document.getElementById(s);
-        if (el) el.style.display = showGPT ? '' : 'none';
-      });
-      const fb = document.getElementById(state.fallbackId);
-      if (fb) {
-        fb.style.display = showGPT ? 'none' : 'block';
-        if (!showGPT) {
-          const schedulePush = () => {
-            if (fb.offsetWidth > 0) {
-              try { (adsbygoogle = window.adsbygoogle || []).push({}); }
-              catch (e) { console.error('adFallback: adsbygoogle push failed', e); }
-            } else {
-              setTimeout(schedulePush, 50);
-            }
-          };
-          requestAnimationFrame(schedulePush);
-        }
-      }
-      break;
-    }
-  });
-}
-
-function initGPT() {
-  googletag.cmd.push(function () {
-    googletag.destroySlots();
-    window._adFallbackStates = {};
-
-    var mappingBillboard   = googletag.sizeMapping().addSize([768, 0], [970, 250]).addSize([0, 0], [320,  50]).build();
-    var mappingLeader      = googletag.sizeMapping().addSize([768, 0], [728,  90]).addSize([0, 0], [320,  50]).build();
-    var mappingSuperLeader = googletag.sizeMapping().addSize([768, 0], [970,  90]).addSize([0, 0], [320,  50]).build();
-    var mappingBox         = googletag.sizeMapping().addSize([768, 0], [300, 250]).addSize([0, 0], []).build();
-    var mappingDoubleBox   = googletag.sizeMapping().addSize([768, 0], [300, 600]).addSize([0, 0], []).build();
-    var mappingSlide       = googletag.sizeMapping().addSize([0, 0],   [300, 250]).build();
-
-    window.slotBillboard   = googletag.defineSlot("/21799830913/Oye", [[970, 250], [320,  50]], 'ad-slot-billboard').defineSizeMapping(mappingBillboard).addService(googletag.pubads());
-    window.slotLeader      = googletag.defineSlot("/21799830913/Oye", [[728,  90], [320,  50]], 'ad-slot-leader').defineSizeMapping(mappingLeader).addService(googletag.pubads());
-    window.slotLeader2     = googletag.defineSlot("/21799830913/Oye", [[728,  90], [320,  50]], 'ad-slot-leader2').defineSizeMapping(mappingLeader).addService(googletag.pubads());
-    window.slotLeader3     = googletag.defineSlot("/21799830913/Oye", [[728,  90], [320,  50]], 'ad-slot-leader3').defineSizeMapping(mappingLeader).addService(googletag.pubads());
-    window.slotSuperLeader = googletag.defineSlot("/21799830913/Oye", [[970,  90], [320,  50]], 'ad-slot-superleader').defineSizeMapping(mappingSuperLeader).addService(googletag.pubads());
-    window.slotBox         = googletag.defineSlot("/21799830913/Oye", [300, 250],               'ad-slot-box').defineSizeMapping(mappingBox).addService(googletag.pubads());
-    window.slotDoubleBox   = googletag.defineSlot("/21799830913/Oye", [300, 600],               'ad-slot-doublebox').defineSizeMapping(mappingDoubleBox).addService(googletag.pubads());
-    window.slot14          = googletag.defineSlot("/21799830913/Oye", [600, 800],               'ad-slot14').addService(googletag.pubads());
-    window.slot141         = googletag.defineSlot("/21799830913/Oye", [320, 480],               'ad-slot141').addService(googletag.pubads());
-    window.slot201 = googletag.defineSlot("/21799830913/Beat/Box",  [300, 250], 'ad-slot201').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-    window.slot202 = googletag.defineSlot("/21799830913/Beat/Box2", [300, 250], 'ad-slot202').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-    window.slot203 = googletag.defineSlot("/21799830913/Beat/Box3", [300, 250], 'ad-slot203').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-    window.slot204 = googletag.defineSlot("/21799830913/Beat/Box4", [300, 250], 'ad-slot204').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-    window.slot205 = googletag.defineSlot("/21799830913/Beat/Box5", [300, 250], 'ad-slot205').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-
-    googletag.pubads().setTargeting("test", "responsive");
-    googletag.enableServices();
-
-    if (document.getElementById('ad-slot-billboard'))   googletag.display('ad-slot-billboard');
-    if (document.getElementById('ad-slot-leader'))      googletag.display('ad-slot-leader');
-    if (document.getElementById('ad-slot-leader2'))     googletag.display('ad-slot-leader2');
-    if (document.getElementById('ad-slot-leader3'))     googletag.display('ad-slot-leader3');
-    if (document.getElementById('ad-slot-superleader')) googletag.display('ad-slot-superleader');
-    if (document.getElementById('ad-slot-box'))         googletag.display('ad-slot-box');
-    if (document.getElementById('ad-slot-doublebox'))   googletag.display('ad-slot-doublebox');
-    if (document.getElementById('ad-slot14'))           googletag.display('ad-slot14');
-    if (document.getElementById('ad-slot141'))          googletag.display('ad-slot141');
-    if (document.getElementById('ad-slot201')) googletag.display('ad-slot201');
-    if (document.getElementById('ad-slot202')) googletag.display('ad-slot202');
-    if (document.getElementById('ad-slot203')) googletag.display('ad-slot203');
-    if (document.getElementById('ad-slot204')) googletag.display('ad-slot204');
-    if (document.getElementById('ad-slot205')) googletag.display('ad-slot205');
-
-    if (document.getElementById('ad-slot-billboard'))   adFallback(['ad-slot-billboard'],   'ad-slot-billboard-adsense');
-    if (document.getElementById('ad-slot-leader'))      adFallback(['ad-slot-leader'],      'ad-slot-leader-adsense');
-    if (document.getElementById('ad-slot-leader2'))     adFallback(['ad-slot-leader2'],     'ad-slot-leader2-adsense');
-    if (document.getElementById('ad-slot-leader3'))     adFallback(['ad-slot-leader3'],     'ad-slot-leader3-adsense');
-    if (document.getElementById('ad-slot-superleader')) adFallback(['ad-slot-superleader'], 'ad-slot-superleader-adsense');
-    if (document.getElementById('ad-slot-box'))         adFallback(['ad-slot-box'],         'ad-slot-box-adsense');
-    if (document.getElementById('ad-slot-doublebox'))   adFallback(['ad-slot-doublebox'],   'ad-slot-doublebox-adsense');
-
-    if (window._boxRefreshInterval) clearInterval(window._boxRefreshInterval);
-    window._boxRefreshInterval = setInterval(function() { googletag.pubads().refresh([window.slotBox]); }, 40000);
-  });
-}
-
-// El listener se registra UNA SOLA VEZ (no dentro de initGPT)
-googletag.cmd.push(initAdFallbackListener);
-
 // ===== [PLAYER - TRITON SDK] initPlayerSDK, getStatus, callbacks VAST =====
 //function initPlayer(){
     function initPlayerSDK(){
@@ -163,7 +60,8 @@ googletag.cmd.push(initAdFallbackListener);
             document.getElementById('big-play').innerHTML = buttongLoading;    
             
          }
-         if (local_status == 'LIVE_PLAYING'){                        
+         if (local_status == 'LIVE_PLAYING'){
+            window.trackTritonPlaybackEvent('play');
             document.getElementById('play-pause').innerHTML = buttonPause;
             /*document.getElementById('loading').classList.remove('show');
             document.getElementById('loading').classList.add('hide');*/
@@ -182,6 +80,7 @@ googletag.cmd.push(initAdFallbackListener);
             
          }
          if(local_status == 'LIVE_STOP' || local_status == 'LIVE_PAUSE') {
+            window.trackTritonPlaybackEvent('stop', { status: local_status });
             /*document.getElementById('loading').classList.remove('show');
             document.getElementById('loading').classList.add('hide');*/
             document.getElementById('play-pause').classList.add('show');
@@ -201,7 +100,8 @@ googletag.cmd.push(initAdFallbackListener);
      }
      
 
-    function completeAd(e){                
+    function completeAd(e){
+        window.trackTritonPlaybackEvent('ad_complete');
         streaming.play({
             station:'XEOYEFM',
             trackingParameters:{
@@ -221,6 +121,7 @@ googletag.cmd.push(initAdFallbackListener);
     }
 
       function startAd(e){
+        window.trackTritonPlaybackEvent('ad_start');
         $('#td_container').addClass('pub_active');
         $('#full-cover').css('display','block');
         document.getElementById('big-play').innerHTML = buttongLoading;    
@@ -315,92 +216,7 @@ googletag.cmd.push(initAdFallbackListener);
 
         });
 
-function detectarNavegador() {
-  const ua = navigator.userAgent;
-
-  let navegador = "desconocido";
-  if (ua.includes("Chrome")) navegador = "Chrome";
-  else if (ua.includes("Firefox")) navegador = "Firefox";
-  else if (ua.includes("Safari") && !ua.includes("Chrome")) navegador = "Safari";
-  else if (ua.includes("Edge")) navegador = "Edge";
-  else if (ua.includes("MSIE") || ua.includes("Trident")) navegador = "IE";
-
-  let so = "desconocido";
-  if (ua.includes("Windows")) so = "Windows";
-  else if (ua.includes("Mac")) so = "MacOS";
-  else if (ua.includes("Linux")) so = "Linux";
-  else if (ua.includes("Android")) so = "Android";
-  else if (ua.includes("iPhone") || ua.includes("iPad")) so = "iOS";
-
-  return { navegador, sistema: so };
-}       
-
-// ===== [PLAYER - SONG POLLING + VOTES] getInfoMusic, registerVote =====
-const VOTE_COLOR = '#ef4444';
-
-function detectarDispositivo() {
-  return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
-}
-
-/**
- * Registra un voto en el backend.
- * @param {string} seccion 
- * @param {string} artista 
- * @param {string} cancion 
- * @param {jQuery|null} $btn 
- * @returns {Promise}
- */
-function registerVote(seccion, artista, cancion, $btn = null) {
-  return new Promise((resolve, reject) => {
-    const url = 'https://playnrm.com/6456heu2/8s4v3f1l3s.php';
-
-    // Protección de doble click o voto ya marcado
-    if ($btn) {
-      const $svg = $btn.find('svg');
-      const fillColor = ($svg.css('fill') || '').toLowerCase();
-      if (fillColor === VOTE_COLOR) {
-        console.log('Ya votaste por esta canción.');
-        return resolve({ status: 'already' });
-      }
-      if ($btn.prop('disabled')) {
-        return resolve({ status: 'disabled' });
-      }
-      $btn.prop('disabled', true);
-    }
-
-    const safe = (s) => (s || '').toString().replace('&', '%26');
-    const { navegador, sistema } = detectarNavegador();
-
-    $.post(
-      url,
-      {
-        artista: safe(artista),
-        cancion: safe(cancion),
-        seccion: seccion, // El backend actual puede ignorarlo; ya preparado para futuro
-        dispositivo: detectarDispositivo(),
-        navegador,
-        sistema_operativo: sistema,
-      },
-      function (resp) {
-        if ($btn) $btn.prop('disabled', false);
-        if (resp && resp.status === 'success') {
-          if ($btn) $btn.find('svg').css('fill', VOTE_COLOR);
-          console.log('Voto registrado con éxito.');
-          resolve(resp);
-        } else {
-          console.log((resp && resp.message) || 'Error al votar.');
-          reject(resp || new Error('vote-error'));
-        }
-      },
-      'json'
-    ).fail(function () {
-      if ($btn) $btn.prop('disabled', false);
-      console.log('No se pudo registrar el voto. Intenta de nuevo.');
-      reject(new Error('network-fail'));
-    });
-  });
-}
-        
+// ===== [PLAYER - SONG POLLING] getInfoMusic =====
 var lastArtist = null;
 var lastSong = null;
 
@@ -468,7 +284,7 @@ function getInfoMusic() {
                 $('.like').off('click.vote').on('click.vote', function (e) {
                   e.preventDefault();
                   const $btn = $(this);
-                  registerVote('Radio', artist, cancion, $btn)
+                  window.registerVote('Radio', artist, cancion, $btn)
                     .then(() => {
                       // Hook opcional: aquí podrías disparar un toast/analytics
                     })
@@ -697,6 +513,10 @@ document.addEventListener("astro:after-swap", () => {
 
 document.addEventListener('astro:page-load', ev => {
    // console.log('pageload');
+   window.ga4Track('page_view', { page_location: window.location.href, page_title: document.title });
+   if (typeof window.COMSCORE !== 'undefined') {
+     window.COMSCORE.beacon({ c1: '2', c2: '6906652' });
+   }
 
 
 
@@ -725,10 +545,10 @@ if($('.getcancion').length){
 
     /* publicidad: reinicializa slots tras el DOM swap de Astro View Transitions */
     if (window.googletag && googletag.apiReady) {
-        initGPT();
+        window.initGPT();
     } else {
         window.googletag = window.googletag || { cmd: [] };
-        googletag.cmd.push(function() { initGPT(); });
+        googletag.cmd.push(function() { window.initGPT(); });
     }
     
    const getplayingstatus = playerstatus();
@@ -1165,7 +985,7 @@ if($('.getcancion').length){
                     const artist = $(this).data('artist') || '';
                     const cancion = $(this).data('song') || '';
                     const $btn = $(this);
-                    registerVote('TopTen', artist, cancion, $btn)
+                    window.registerVote('TopTen', artist, cancion, $btn)
                         .then(() => {
                         // Hook opcional: aquí podrías disparar un toast/analytics
                         })

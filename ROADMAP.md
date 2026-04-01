@@ -96,14 +96,14 @@ Agregar comentarios de sección dentro de `streaming.js` sin mover nada.
 
 ---
 
-### Fase 2 — Extraer `src/js/ads.js` (riesgo: bajo)
+### Fase 2 — Extraer `src/js/ads.js` (riesgo: bajo) ✅ COMPLETADA
 
-- [ ] Crear `src/js/ads.js` con `adFallback()`, `initAdFallbackListener()`, `initGPT()` y el `googletag.cmd.push(initAdFallbackListener)`
-- [ ] Actualizar `src/components/Player.astro`: cargar `ads.js` **antes** que `streaming.js`
-- [ ] Eliminar esas funciones de `streaming.js`
-- [ ] Verificar que los slots renderizan en home, artículos y Top Ten
-- [ ] Verificar que el fallback GPT→AdSense funciona
-- [ ] Verificar que View Transitions re-inicializan los slots correctamente
+- [x] Crear `src/js/ads.js` con `adFallback()`, `initAdFallbackListener()`, `initGPT()` y el `googletag.cmd.push(initAdFallbackListener)`
+- [x] Actualizar `src/components/Player.astro`: cargar `ads.js` **antes** que `streaming.js`
+- [x] Eliminar esas funciones de `streaming.js`
+- [x] Verificar que los slots renderizan en home, artículos y Top Ten
+- [x] Verificar que el fallback GPT→AdSense funciona
+- [x] Verificar que View Transitions re-inicializan los slots correctamente
 
 **Dependencias:** `ads.js` necesita que `googletag` esté disponible (viene de GPT en `BaseHead.astro` — no cambia).
 
@@ -111,11 +111,11 @@ Agregar comentarios de sección dentro de `streaming.js` sin mover nada.
 
 ---
 
-### Fase 3 — Extraer `src/js/votes.js` (riesgo: bajo)
+### Fase 3 — Extraer `src/js/votes.js` (riesgo: bajo) ✅ COMPLETADA
 
-- [ ] Crear `src/js/votes.js` con `VOTE_COLOR`, `detectarNavegador()`, `detectarDispositivo()`, `registerVote()`
-- [ ] Cargar `votes.js` **antes** que `streaming.js` en `Player.astro` (player llama a `registerVote`)
-- [ ] Eliminar esas funciones de `streaming.js`
+- [x] Crear `src/js/votes.js` con `VOTE_COLOR`, `detectarNavegador()`, `detectarDispositivo()`, `registerVote()`
+- [x] Cargar `votes.js` **antes** que `streaming.js` en `Player.astro` (player llama a `registerVote`)
+- [x] Eliminar esas funciones de `streaming.js`
 - [ ] Verificar flujo completo: like en el player, voto en Top Ten (`.like-topten`), voto en artículo (`.voto-pop`)
 
 > **Nota:** `.voto-pop` usa un endpoint diferente (`wp-ulike-pro` con Bearer token) y no usa `registerVote()`. Puede quedarse en `player.js` o moverse también a `votes.js` — decidir al llegar aquí.
@@ -124,38 +124,33 @@ Agregar comentarios de sección dentro de `streaming.js` sin mover nada.
 
 ---
 
-### Fase 4 — Crear `src/js/analytics.js` (riesgo: bajo)
-Este archivo no existe aún — se crea nuevo.
+### Fase 4 — Crear `src/js/analytics.js` (riesgo: bajo) ✅ COMPLETADA
 
-- [ ] Crear `src/js/analytics.js` con `ga4Track()` y `trackTritonPlaybackEvent()`
-- [ ] Cargar `analytics.js` **antes** que `player.js` en `Player.astro`
-- [ ] En `player.js`: reemplazar el `analytics: { ... }` interno del TDSdk config por llamadas a `trackTritonPlaybackEvent()` en los callbacks (`getStatus`, `startAd`, `completeAd`, `errorAd`)
-- [ ] En `votes.js`: llamar a `ga4Track('vote', { section, artist, song })` en el `.then()` de `registerVote`
-- [ ] Verificar en GA4 DebugView que llegan `play`, `stop`, `ad_start`, `ad_complete`, `vote`
+- [x] Crear `src/js/analytics.js` con `ga4Track()` y `trackTritonPlaybackEvent()`
+- [x] Cargar `analytics.js` **antes** que `player.js` en `Player.astro`
+- [x] En `player.js`: añadir llamadas a `trackTritonPlaybackEvent()` en `getStatus` (play/stop), `startAd` y `completeAd` (coexiste con `analytics: {}` del TDSdk — validar con adops cuál desactivar)
+- [x] En `votes.js`: llamar a `ga4Track('vote', { section, artist, song })` en el `.then()` de `registerVote`
+- [ ] Verificar en GA4 DebugView que llegan `triton_play`, `triton_stop`, `triton_ad_start`, `triton_ad_complete`, `vote`
 
 **Criterio de éxito:** Eventos visibles en GA4 DebugView. Los eventos de TDSdk analytics integrado pueden coexistir o desactivarse — validar con NRM adops cuál es el canal canónico.
 
 ---
 
-### Fase 5 — Renombrar `streaming.js` → `player.js` (riesgo: bajo)
-Una vez extraídas las tres secciones, lo que queda es exclusivamente el player.
+### Fase 5 — Renombrar `streaming.js` → `player.js` (riesgo: bajo) ✅ COMPLETADA
 
-- [ ] Renombrar `src/js/streaming.js` a `src/js/player.js`
-- [ ] Actualizar `src/components/Player.astro`: cambiar el `<script src="...streaming.js">` por `player.js`
-- [ ] Verificar que no haya otras referencias al nombre `streaming.js` en el proyecto
+- [x] Renombrar `src/js/streaming.js` a `src/js/player.js`
+- [x] Actualizar `src/components/Player.astro`: cambiar el `<script src="...streaming.js">` por `player.js`
+- [x] Verificar que no haya otras referencias al nombre `streaming.js` en el proyecto
 
 **Criterio de éxito:** Build limpio, player funciona, sin errores 404 en Network tab.
 
 ---
 
-### Fase 6 — Separar `BaseHead.astro` (riesgo: bajo)
+### Fase 6 — Separar `BaseHead.astro` (riesgo: bajo) ✅ COMPLETADA
 
-- [ ] Crear `src/components/head/AdScripts.astro`
-  - Mover: bloque AdSense `<script async>` + bloque GPT `<script async>` + `window.googletag` init inline
-  - Mantener el orden actual (AdSense primero, luego GPT — el `async` sin `defer` es intencional)
-- [ ] Crear `src/components/head/AnalyticsScripts.astro`
-  - Mover: Hotjar snippet + comScore snippet + GTM snippet
-- [ ] En `BaseHead.astro`: reemplazar los bloques movidos con `<AdScripts />` y `<AnalyticsScripts />`
+- [x] Crear `src/components/head/AdScripts.astro`
+- [x] Crear `src/components/head/AnalyticsScripts.astro`
+- [x] En `BaseHead.astro`: reemplazar los bloques movidos con `<AdScripts />` y `<AnalyticsScripts />`
 - [ ] Verificar orden de scripts en el HTML generado (debe ser idéntico al actual)
 
 **Criterio de éxito:** HTML generado en build es equivalente en orden de scripts. Ads y analytics funcionan igual.
