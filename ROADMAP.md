@@ -13,7 +13,8 @@ Hay dos archivos que hoy son propiedad compartida de varios agentes:
 | Archivo | Dominios mezclados | Líneas |
 |---|---|---|
 | `src/js/streaming.js` | ads + player + votes + música | 1,175 |
-| `src/components/BaseHead.astro` | meta/SEO + favicons + ads + analytics | 87 |
+| `src/components/BaseHead.astro
+` | meta/SEO + favicons + ads + analytics | 87 |
 
 Todos los cambios de este roadmap apuntan a resolver exactamente esto.
 
