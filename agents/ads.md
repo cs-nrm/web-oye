@@ -11,12 +11,12 @@ Gestión de inventario publicitario programático: Google Ad Manager (GAM), AdSe
 | Archivo | Formato | GPT div ID | AdSense slot ID |
 |---|---|---|---|
 | `src/components/BillBoard.astro` | Billboard | `ad-slot-billboard` | `9108276163` |
-| `src/components/BillBoard2.astro` | Billboard variante | `ad-slot-billboard` (mismo slot) | `4971524958` |
-| `src/components/LeaderBoard.astro` | Leaderboard | `ad-slot-leader` | `5115879668` |
-| `src/components/LeaderBoard2.astro` | Leaderboard variante | `ad-slot-leader2` | `9366065535` |
-| `src/components/SuperLeader.astro` | Super Leaderboard | `ad-slot-superleader` | `2069668179` |
-| `src/components/BoxBanner.astro` | Medium Rectangle | `ad-slot-box` | `9904563106` |
-| `src/components/DoubleBox.astro` | Half Page | `ad-slot-doublebox` | `9774490570` |
+| `src/components/BillBoard2.astro` | Billboard variante | `ad-slot-billboard` (mismo slot) | `2775319027` |
+| `src/components/LeaderBoard.astro` | Leaderboard | `ad-slot-leader` | `1891845710` |
+| `src/components/LeaderBoard2.astro` | Leaderboard variante | `ad-slot-leader2` | `9774490570` |
+| `src/components/SuperLeader.astro` | Super Leaderboard | `ad-slot-superleader` | `2193461833` |
+| `src/components/BoxBanner.astro` | Medium Rectangle | `ad-slot-box` | `4124893865` |
+| `src/components/DoubleBox.astro` | Half Page | `ad-slot-doublebox` | `7024752896` |
 
 ### Lógica central de ads
 | Archivo | Sección relevante |
