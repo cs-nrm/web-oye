@@ -493,19 +493,14 @@ document.addEventListener('astro:before-preparation', ev => {
 });
 
 document.addEventListener("astro:after-swap", () => {
-    //console.log('astro:after-swap');
-/* (window.adsbygoogle = window.adsbygoogle || []).push({});
-    setTimeout(() => { (window.adsbygoogle = window.adsbygoogle || []).push({}); }, 1000);
-    setTimeout(() => { (window.adsbygoogle = window.adsbygoogle || []).push({}); }, 1500);
-    setTimeout(() => { (window.adsbygoogle = window.adsbygoogle || []).push({}); }, 2000);
-    setTimeout(() => { (window.adsbygoogle = window.adsbygoogle || []).push({}); }, 2500);
-    setTimeout(() => { (window.adsbygoogle = window.adsbygoogle || []).push({}); }, 3000);
-
-    setTimeout(() => { googletag.pubads().refresh(); }, 1500);*/
-    setTimeout(() => { window.instgrm.Embeds.process(); }, 1500);    
-    
-    //initGPT();
-    //safeRefreshSlots();
+    // Reinitialize ads after Astro client-side navigation
+    if (window.googletag && googletag.apiReady) {
+        window.initGPT();
+    } else {
+        window.googletag = window.googletag || { cmd: [] };
+        googletag.cmd.push(function() { window.initGPT(); });
+    }
+    setTimeout(() => { window.instgrm.Embeds.process(); }, 1500);
 });
 
 

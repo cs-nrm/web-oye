@@ -16,6 +16,7 @@ function adFallback(slots, fallbackId, timeoutMs = 5000) {
     timeoutId: null,
     adsenseAttempts: 0,
     maxAdsenseAttempts: 3,
+    adsensePushed: false,
     completed: false
   };
   slots.forEach(id => { state.loaded[id] = false; });
@@ -36,6 +37,7 @@ function adFallback(slots, fallbackId, timeoutMs = 5000) {
 function activateFallback(state) {
   // Determinar si mostrar GPT o AdSense
   const showGPT = state.slots.every(s => state.loaded[s]);
+  console.log(`[adFallback] activateFallback ${state.fallbackId} showGPT=${showGPT}`, state);
 
   // Mostrar/ocultar divs GPT
   state.slots.forEach(s => {
@@ -69,6 +71,7 @@ function scheduleAdsensePush(fb, state) {
         try {
           (adsbygoogle = window.adsbygoogle || []).push({});
           state.adsenseAttempts++;
+          state.adsensePushed = true;
           console.log(`[adFallback] AdSense push #${state.adsenseAttempts} para ${state.fallbackId}`);
         } catch (e) {
           console.error(`[adFallback] AdSense push falló:`, e);
@@ -120,6 +123,7 @@ function initAdFallbackListener() {
  */
 function initGPT() {
   googletag.cmd.push(function () {
+    console.log('[ads.js] initGPT()');
     // Limpiar slots y listeners previos
     googletag.destroySlots();
 
