@@ -62,12 +62,11 @@ function activateFallback(state) {
 }
 
 /**
- * Push a AdSense. Espera a que el <ins> tenga ancho real antes de llamar push.
- * El TagError "No slot size for availableWidth=0" ocurre cuando AdSense
- * mide el <ins> y lo encuentra en cero — hay que verificar el <ins>, no solo el div padre.
+ * Push a AdSense. Clona el <ins> si AdSense ya lo procesó en estado oculto
+ * (availableWidth=0), para obtener un elemento limpio sin estado previo.
  */
 function scheduleAdsensePush(fb, state) {
-  const ins = fb.querySelector('ins.adsbygoogle');
+  let ins = fb.querySelector('ins.adsbygoogle');
   if (!ins) {
     console.warn(`[adFallback] No se encontró ins.adsbygoogle en ${state.fallbackId}`);
     return;
@@ -75,13 +74,22 @@ function scheduleAdsensePush(fb, state) {
 
   let attempts = 0;
   const maxAttempts = 10;
-  const delay = 80; // ms entre intentos
+  const delay = 80;
 
   const checkAndPush = () => {
     const insWidth = ins.offsetWidth;
     console.log(`[adFallback] checkAndPush ${state.fallbackId} ins.offsetWidth=${insWidth} intento=${attempts + 1}`);
 
     if (insWidth > 0) {
+      // Si AdSense ya procesó este <ins> (aunque sea con error),
+      // reemplazarlo con un clon limpio sin data-adsbygoogle-status
+      if (ins.dataset.adsbygoogleStatus) {
+        console.log(`[adFallback] Clonando ins para ${state.fallbackId} (status previo: ${ins.dataset.adsbygoogleStatus})`);
+        const fresh = ins.cloneNode(false);
+        ins.parentNode.replaceChild(fresh, ins);
+        ins = fresh;
+      }
+
       (window.adsbygoogle = window.adsbygoogle || []).push({});
       state.adsensePushed = true;
       console.log(`[adFallback] AdSense push OK para ${state.fallbackId} (ins width=${insWidth}px)`);
@@ -90,12 +98,11 @@ function scheduleAdsensePush(fb, state) {
       if (attempts < maxAttempts) {
         setTimeout(checkAndPush, delay);
       } else {
-        console.warn(`[adFallback] ${state.fallbackId} ins.offsetWidth=0 tras ${maxAttempts} intentos — abortando push`);
+        console.warn(`[adFallback] ${state.fallbackId} ins.offsetWidth=0 tras ${maxAttempts} intentos — abortando`);
       }
     }
   };
 
-  // Pequeño delay inicial para que el navegador compute el layout tras display:block
   setTimeout(checkAndPush, 50);
 }
 
