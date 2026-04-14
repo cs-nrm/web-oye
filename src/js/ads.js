@@ -62,32 +62,41 @@ function activateFallback(state) {
 }
 
 /**
- * Push a AdSense con reintentos y espera a que el div sea visible
+ * Push a AdSense. Espera a que el <ins> tenga ancho real antes de llamar push.
+ * El TagError "No slot size for availableWidth=0" ocurre cuando AdSense
+ * mide el <ins> y lo encuentra en cero — hay que verificar el <ins>, no solo el div padre.
  */
 function scheduleAdsensePush(fb, state) {
+  const ins = fb.querySelector('ins.adsbygoogle');
+  if (!ins) {
+    console.warn(`[adFallback] No se encontró ins.adsbygoogle en ${state.fallbackId}`);
+    return;
+  }
+
+  let attempts = 0;
+  const maxAttempts = 10;
+  const delay = 80; // ms entre intentos
+
   const checkAndPush = () => {
-    if (fb.offsetWidth > 0) {
-      if (state.adsenseAttempts < state.maxAdsenseAttempts) {
-        try {
-          (adsbygoogle = window.adsbygoogle || []).push({});
-          state.adsenseAttempts++;
-          state.adsensePushed = true;
-          console.log(`[adFallback] AdSense push #${state.adsenseAttempts} para ${state.fallbackId}`);
-        } catch (e) {
-          console.error(`[adFallback] AdSense push falló:`, e);
-          if (state.adsenseAttempts < state.maxAdsenseAttempts) {
-            setTimeout(checkAndPush, 500);
-          }
-        }
-      }
+    const insWidth = ins.offsetWidth;
+    console.log(`[adFallback] checkAndPush ${state.fallbackId} ins.offsetWidth=${insWidth} intento=${attempts + 1}`);
+
+    if (insWidth > 0) {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      state.adsensePushed = true;
+      console.log(`[adFallback] AdSense push OK para ${state.fallbackId} (ins width=${insWidth}px)`);
     } else {
-      // Div no es visible aún, reintentar
-      if (state.adsenseAttempts < state.maxAdsenseAttempts) {
-        requestAnimationFrame(checkAndPush);
+      attempts++;
+      if (attempts < maxAttempts) {
+        setTimeout(checkAndPush, delay);
+      } else {
+        console.warn(`[adFallback] ${state.fallbackId} ins.offsetWidth=0 tras ${maxAttempts} intentos — abortando push`);
       }
     }
   };
-  requestAnimationFrame(checkAndPush);
+
+  // Pequeño delay inicial para que el navegador compute el layout tras display:block
+  setTimeout(checkAndPush, 50);
 }
 
 /**
