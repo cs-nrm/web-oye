@@ -62,15 +62,27 @@ function activateFallback(state) {
 }
 
 /**
- * Push a AdSense. Clona el <ins> si AdSense ya lo procesó en estado oculto
- * (availableWidth=0), para obtener un elemento limpio sin estado previo.
+ * Crea un <ins> dinámicamente a partir de los data-attributes del contenedor
+ * y hace push a AdSense. Al crear el elemento en el momento justo (no en el DOM
+ * inicial), AdSense nunca lo auto-inicializa con availableWidth=0 ni lo marca
+ * como "ya en uso" antes de que lo necesitemos.
  */
 function scheduleAdsensePush(fb, state) {
-  let ins = fb.querySelector('ins.adsbygoogle');
-  if (!ins) {
-    console.warn(`[adFallback] No se encontró ins.adsbygoogle en ${state.fallbackId}`);
-    return;
-  }
+  // Eliminar cualquier <ins> previo que pudiera existir (por navegación SPA)
+  const old = fb.querySelector('ins.adsbygoogle');
+  if (old) old.remove();
+
+  // Crear <ins> fresco con las dimensiones del contenedor
+  const ins = document.createElement('ins');
+  ins.className = 'adsbygoogle';
+  ins.style.display = 'block';
+  ins.style.width = (fb.dataset.adWidth || '300') + 'px';
+  ins.style.maxWidth = '100%';
+  ins.style.height = (fb.dataset.adHeight || '250') + 'px';
+  ins.dataset.adClient = fb.dataset.adClient;
+  ins.dataset.adSlot = fb.dataset.adSlot;
+  ins.dataset.adFormat = fb.dataset.adFormat || 'auto';
+  fb.appendChild(ins);
 
   let attempts = 0;
   const maxAttempts = 10;
@@ -81,15 +93,6 @@ function scheduleAdsensePush(fb, state) {
     console.log(`[adFallback] checkAndPush ${state.fallbackId} ins.offsetWidth=${insWidth} intento=${attempts + 1}`);
 
     if (insWidth > 0) {
-      // Si AdSense ya procesó este <ins> (aunque sea con error),
-      // reemplazarlo con un clon limpio sin data-adsbygoogle-status
-      if (ins.dataset.adsbygoogleStatus) {
-        console.log(`[adFallback] Clonando ins para ${state.fallbackId} (status previo: ${ins.dataset.adsbygoogleStatus})`);
-        const fresh = ins.cloneNode(false);
-        ins.parentNode.replaceChild(fresh, ins);
-        ins = fresh;
-      }
-
       (window.adsbygoogle = window.adsbygoogle || []).push({});
       state.adsensePushed = true;
       console.log(`[adFallback] AdSense push OK para ${state.fallbackId} (ins width=${insWidth}px)`);
