@@ -8,10 +8,7 @@ import MoreGaming from "../../components/MoreGaming.astro";
 import { any } from "astro/zod";
 import { SITE_TITLE } from "../../consts";
 
-const { slug } = Astro.params;
-
-let res = await fetch(`https://playnrm.com/wp-json/wp/v2/posts?slug=${slug}`);
-let [post] = await res.json();
+const { post } = Astro.props as { post: any };
 
 export async function getStaticPaths() {
   let data = await fetch(

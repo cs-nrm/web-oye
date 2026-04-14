@@ -8,10 +8,7 @@ import MoreNews from '../../components/MoreNews.astro';
 import { any } from 'astro/zod';
 import { SITE_TITLE } from '../../consts';
 
-const { slug } = Astro.params;
-
-let res = await fetch(`https://playnrm.com/wp-json/wp/v2/posts?slug=${slug}`);
-let [post] = await res.json();
+const { post } = Astro.props as { post: any };
 
 export async function getStaticPaths() {
   let data = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_embed&per_page=100&_fields=title,acf,slug,content,yoast_head_json&categories=280");
