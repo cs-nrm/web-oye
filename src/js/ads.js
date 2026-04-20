@@ -186,20 +186,20 @@ function initGPT() {
       .addSize([0, 0],   [300, 250])
       .build();
 
-    window.slotBillboard   = googletag.defineSlot("/21799830913/Oye", [[970, 250], [320,  50]], 'ad-slot-billboard').defineSizeMapping(mappingBillboard).addService(googletag.pubads());
-    window.slotLeader      = googletag.defineSlot("/21799830913/Oye", [[728,  90], [320,  50]], 'ad-slot-leader').defineSizeMapping(mappingLeader).addService(googletag.pubads());
-    window.slotLeader2     = googletag.defineSlot("/21799830913/Oye", [[728,  90], [320,  50]], 'ad-slot-leader2').defineSizeMapping(mappingLeader).addService(googletag.pubads());
-    window.slotLeader3     = googletag.defineSlot("/21799830913/Oye", [[728,  90], [320,  50]], 'ad-slot-leader3').defineSizeMapping(mappingLeader).addService(googletag.pubads());
-    window.slotSuperLeader = googletag.defineSlot("/21799830913/Oye", [[970,  90], [320,  50]], 'ad-slot-superleader').defineSizeMapping(mappingSuperLeader).addService(googletag.pubads());
-    window.slotBox         = googletag.defineSlot("/21799830913/Oye", [300, 250],               'ad-slot-box').defineSizeMapping(mappingBox).addService(googletag.pubads());
-    window.slotDoubleBox   = googletag.defineSlot("/21799830913/Oye", [300, 600],               'ad-slot-doublebox').defineSizeMapping(mappingDoubleBox).addService(googletag.pubads());
-    window.slot14          = googletag.defineSlot("/21799830913/Oye", [600, 800],               'ad-slot14').addService(googletag.pubads());
-    window.slot141         = googletag.defineSlot("/21799830913/Oye", [320, 480],               'ad-slot141').addService(googletag.pubads());
-    window.slot201 = googletag.defineSlot("/21799830913/Beat/Box",  [300, 250], 'ad-slot201').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-    window.slot202 = googletag.defineSlot("/21799830913/Beat/Box2", [300, 250], 'ad-slot202').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-    window.slot203 = googletag.defineSlot("/21799830913/Beat/Box3", [300, 250], 'ad-slot203').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-    window.slot204 = googletag.defineSlot("/21799830913/Beat/Box4", [300, 250], 'ad-slot204').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-    window.slot205 = googletag.defineSlot("/21799830913/Beat/Box5", [300, 250], 'ad-slot205').defineSizeMapping(mappingSlide).addService(googletag.pubads());
+    window.slotBillboard   = googletag.defineSlot("/23349147378/Oye", [[970, 250], [320,  50]], 'ad-slot-billboard').defineSizeMapping(mappingBillboard).addService(googletag.pubads());
+    window.slotLeader      = googletag.defineSlot("/23349147378/Oye", [[728,  90], [320,  50]], 'ad-slot-leader').defineSizeMapping(mappingLeader).addService(googletag.pubads());
+    window.slotLeader2     = googletag.defineSlot("/23349147378/Oye", [[728,  90], [320,  50]], 'ad-slot-leader2').defineSizeMapping(mappingLeader).addService(googletag.pubads());
+    window.slotLeader3     = googletag.defineSlot("/23349147378/Oye", [[728,  90], [320,  50]], 'ad-slot-leader3').defineSizeMapping(mappingLeader).addService(googletag.pubads());
+    window.slotSuperLeader = googletag.defineSlot("/23349147378/Oye", [[970,  90], [320,  50]], 'ad-slot-superleader').defineSizeMapping(mappingSuperLeader).addService(googletag.pubads());
+    window.slotBox         = googletag.defineSlot("/23349147378/Oye", [300, 250],               'ad-slot-box').defineSizeMapping(mappingBox).addService(googletag.pubads());
+    window.slotDoubleBox   = googletag.defineSlot("/23349147378/Oye", [300, 600],               'ad-slot-doublebox').defineSizeMapping(mappingDoubleBox).addService(googletag.pubads());
+    window.slot14          = googletag.defineSlot("/23349147378/Oye", [600, 800],               'ad-slot14').addService(googletag.pubads());
+    window.slot141         = googletag.defineSlot("/23349147378/Oye", [320, 480],               'ad-slot141').addService(googletag.pubads());
+    window.slot201 = googletag.defineSlot("/23349147378/Beat/Box",  [300, 250], 'ad-slot201').defineSizeMapping(mappingSlide).addService(googletag.pubads());
+    window.slot202 = googletag.defineSlot("/23349147378/Beat/Box2", [300, 250], 'ad-slot202').defineSizeMapping(mappingSlide).addService(googletag.pubads());
+    window.slot203 = googletag.defineSlot("/23349147378/Beat/Box3", [300, 250], 'ad-slot203').defineSizeMapping(mappingSlide).addService(googletag.pubads());
+    window.slot204 = googletag.defineSlot("/23349147378/Beat/Box4", [300, 250], 'ad-slot204').defineSizeMapping(mappingSlide).addService(googletag.pubads());
+    window.slot205 = googletag.defineSlot("/23349147378/Beat/Box5", [300, 250], 'ad-slot205').defineSizeMapping(mappingSlide).addService(googletag.pubads());
 
     googletag.pubads().setTargeting("test", "responsive");
     googletag.enableServices();
