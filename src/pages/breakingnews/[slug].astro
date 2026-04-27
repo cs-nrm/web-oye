@@ -8,6 +8,7 @@ import MoreNews from "../../components/MoreNews.astro";
 import { any } from "astro/zod";
 import { SITE_TITLE } from "../../consts";
 
+
 const { post } = Astro.props as { post: any };
 
 export async function getStaticPaths() {
@@ -151,3 +152,4 @@ const PLACEHOLDER_IMG =
 
 <script is:inline src="https://storage.googleapis.com/nrm-web/nrm/lib/plyr.js"
 ></script>
+<script is:inline src="/src/js/SunMedia.js"></script>
