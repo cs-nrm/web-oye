@@ -186,6 +186,8 @@ function initGPT() {
       .addSize([0, 0],   [300, 250])
       .build();
 
+    var mappingVideoNota = googletag.sizeMapping().addSize([0, 0], [400, 311]).build();
+
     window.slotBillboard   = googletag.defineSlot("/23349147378/Oye", [[970, 250], [320,  50]], 'ad-slot-billboard').defineSizeMapping(mappingBillboard).addService(googletag.pubads());
     window.slotLeader      = googletag.defineSlot("/23349147378/Oye", [[728,  90], [320,  50]], 'ad-slot-leader').defineSizeMapping(mappingLeader).addService(googletag.pubads());
     window.slotLeader2     = googletag.defineSlot("/23349147378/Oye", [[728,  90], [320,  50]], 'ad-slot-leader2').defineSizeMapping(mappingLeader).addService(googletag.pubads());
@@ -200,6 +202,7 @@ function initGPT() {
     window.slot203 = googletag.defineSlot("/23349147378/Beat/Box3", [300, 250], 'ad-slot203').defineSizeMapping(mappingSlide).addService(googletag.pubads());
     window.slot204 = googletag.defineSlot("/23349147378/Beat/Box4", [300, 250], 'ad-slot204').defineSizeMapping(mappingSlide).addService(googletag.pubads());
     window.slot205 = googletag.defineSlot("/23349147378/Beat/Box5", [300, 250], 'ad-slot205').defineSizeMapping(mappingSlide).addService(googletag.pubads());
+    window.slotVideoNota = googletag.defineSlot("/23349147378/StereoCien", [400, 311], 'ad-slot-videonota').defineSizeMapping(mappingVideoNota).addService(googletag.pubads());
 
     googletag.pubads().setTargeting("test", "responsive");
     googletag.enableServices();
@@ -218,6 +221,7 @@ function initGPT() {
     if (document.getElementById('ad-slot203')) googletag.display('ad-slot203');
     if (document.getElementById('ad-slot204')) googletag.display('ad-slot204');
     if (document.getElementById('ad-slot205')) googletag.display('ad-slot205');
+    if (document.getElementById('ad-slot-videonota')) googletag.display('ad-slot-videonota');
 
     if (document.getElementById('ad-slot-billboard'))   adFallback(['ad-slot-billboard'],   'ad-slot-billboard-adsense');
     if (document.getElementById('ad-slot-leader'))      adFallback(['ad-slot-leader'],      'ad-slot-leader-adsense');
