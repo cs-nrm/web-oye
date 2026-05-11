@@ -197,12 +197,7 @@ function initGPT() {
     window.slotDoubleBox   = googletag.defineSlot("/23349147378/Oye", [300, 600],               'ad-slot-doublebox').defineSizeMapping(mappingDoubleBox).addService(googletag.pubads());
     window.slot14          = googletag.defineSlot("/23349147378/Oye", [600, 800],               'ad-slot14').addService(googletag.pubads());
     window.slot141         = googletag.defineSlot("/23349147378/Oye", [320, 480],               'ad-slot141').addService(googletag.pubads());
-    window.slot201 = googletag.defineSlot("/23349147378/Beat/Box",  [300, 250], 'ad-slot201').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-    window.slot202 = googletag.defineSlot("/23349147378/Beat/Box2", [300, 250], 'ad-slot202').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-    window.slot203 = googletag.defineSlot("/23349147378/Beat/Box3", [300, 250], 'ad-slot203').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-    window.slot204 = googletag.defineSlot("/23349147378/Beat/Box4", [300, 250], 'ad-slot204').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-    window.slot205 = googletag.defineSlot("/23349147378/Beat/Box5", [300, 250], 'ad-slot205').defineSizeMapping(mappingSlide).addService(googletag.pubads());
-    window.slotVideoNota = googletag.defineSlot("/23349147378/StereoCien", [400, 311], 'ad-slot-videonota').defineSizeMapping(mappingVideoNota).addService(googletag.pubads());
+    window.slotVideoNota = googletag.defineSlot("/23349147378/Oye", [400, 311], 'ad-slot-videonota').defineSizeMapping(mappingVideoNota).addService(googletag.pubads());
 
     googletag.pubads().setTargeting("test", "responsive");
     googletag.enableServices();
@@ -216,11 +211,6 @@ function initGPT() {
     if (document.getElementById('ad-slot-doublebox'))   googletag.display('ad-slot-doublebox');
     if (document.getElementById('ad-slot14'))           googletag.display('ad-slot14');
     if (document.getElementById('ad-slot141'))          googletag.display('ad-slot141');
-    if (document.getElementById('ad-slot201')) googletag.display('ad-slot201');
-    if (document.getElementById('ad-slot202')) googletag.display('ad-slot202');
-    if (document.getElementById('ad-slot203')) googletag.display('ad-slot203');
-    if (document.getElementById('ad-slot204')) googletag.display('ad-slot204');
-    if (document.getElementById('ad-slot205')) googletag.display('ad-slot205');
     if (document.getElementById('ad-slot-videonota')) googletag.display('ad-slot-videonota');
 
     if (document.getElementById('ad-slot-billboard'))   adFallback(['ad-slot-billboard'],   'ad-slot-billboard-adsense');
