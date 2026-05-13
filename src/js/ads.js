@@ -182,10 +182,6 @@ function initGPT() {
       .addSize([0, 0], [300, 250])  // ← FIX: 300x250 en lugar de empty
       .build();
 
-    var mappingSlide       = googletag.sizeMapping()
-      .addSize([0, 0],   [300, 250])
-      .build();
-
     var mappingVideoNota = googletag.sizeMapping().addSize([0, 0], [400, 311]).build();
 
     window.slotBillboard   = googletag.defineSlot("/23349147378/Oye", [[970, 250], [320,  50]], 'ad-slot-billboard').defineSizeMapping(mappingBillboard).addService(googletag.pubads());
@@ -211,7 +207,7 @@ function initGPT() {
     if (document.getElementById('ad-slot-doublebox'))   googletag.display('ad-slot-doublebox');
     if (document.getElementById('ad-slot14'))           googletag.display('ad-slot14');
     if (document.getElementById('ad-slot141'))          googletag.display('ad-slot141');
-    if (document.getElementById('ad-slot-videonota')) googletag.display('ad-slot-videonota');
+if (document.getElementById('ad-slot-videonota')) googletag.display('ad-slot-videonota');
 
     if (document.getElementById('ad-slot-billboard'))   adFallback(['ad-slot-billboard'],   'ad-slot-billboard-adsense');
     if (document.getElementById('ad-slot-leader'))      adFallback(['ad-slot-leader'],      'ad-slot-leader-adsense');
