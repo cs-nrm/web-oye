@@ -63,15 +63,23 @@ import LeaderBoard from "../../components/LeaderBoard.astro";
 
     <script is:inline>
         document.addEventListener('astro:page-load', function () {
-            $(".logo-player img").attr(
-                "src",
-                "https://storage.googleapis.com/nrm-web/oye/recursos/LOGO-OYE-BLANCO-2025.svg",
-            );
-            $("#big-play").removeClass("border-4");
+            document.querySelectorAll(".logo-player img").forEach((img) => {
+                img.setAttribute(
+                    "src",
+                    "https://storage.googleapis.com/nrm-web/oye/recursos/LOGO-OYE-BLANCO-2025.svg",
+                );
+            });
+            document.querySelector("#big-play")?.classList.remove("border-4");
 
-            $(".like").off("click.envivo").on("click.envivo", function () {
+            document.querySelectorAll(".like").forEach((likeButton) => {
+                if (likeButton.__envivoClick) {
+                    likeButton.removeEventListener("click", likeButton.__envivoClick);
+                }
+                likeButton.__envivoClick = function () {
                 console.log("click");
-                $(this).find("svg").css("fill", "#d6d8d7");
+                    this.querySelector("svg")?.style.setProperty("fill", "#d6d8d7");
+                };
+                likeButton.addEventListener("click", likeButton.__envivoClick);
             });
         });
     </script>

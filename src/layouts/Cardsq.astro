@@ -1,4 +1,6 @@
 ---
+import { normalizeSlug } from "../lib/slug.js";
+
 export interface Props {
     post: {
       imagePath: string;
@@ -79,10 +81,11 @@ switch (post.categories[0]){
     break;      
 }
 const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img_oye-min.jpg';
+const slug = normalizeSlug(post.slug);
 
 ---
           <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
-            <a href={`/${url_seccion}/${post.slug}/`}>
+            <a href={`/${url_seccion}/${slug}/`}>
               <div><img loading="lazy" class="aspect-not object-cover w-full h-auto rounded-xl" src={post?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['small-feature']?.source_url || PLACEHOLDER_IMG} alt={post?._embedded?.['wp:featuredmedia']?.[0]?.alt_text||"Imagen Nota"}/></div>
               <div class="news-content">
                 <p set:html={post.title.rendered}></p>

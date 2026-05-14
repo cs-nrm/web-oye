@@ -7,6 +7,7 @@ import SuperLeader from "../../components/SuperLeader.astro";
 import MoreKpop from "../../components/MoreKpop.astro";
 import { any } from "astro/zod";
 import { SITE_TITLE } from "../../consts";
+import { normalizeSlug } from "../../lib/slug.js";
 
 const { post } = Astro.props as { post: any };
 
@@ -17,7 +18,7 @@ export async function getStaticPaths() {
   let posts = await data.json();
 
   return posts.map((post: any) => ({
-    params: { slug: post.slug },
+    params: { slug: normalizeSlug(post.slug) },
     props: { post: post },
   }));
 }
@@ -65,7 +66,7 @@ const PLACEHOLDER_IMG =
             <div class="sticky-bar sticky top-[90px] left-0 right-0">
               <div class="share-buttons">
                 <a
-                  href={`https://www.facebook.com/sharer/sharer.php?u=https://oyedigital.mx/kpop/${post.slug}`}
+                  href={`https://www.facebook.com/sharer/sharer.php?u=https://oyedigital.mx/kpop/${normalizeSlug(post.slug)}`}
                   target="_blank"
                   class="share-button facebook"
                   title="Compartir en Facebook"
@@ -86,7 +87,7 @@ const PLACEHOLDER_IMG =
                   </svg>
                 </a>
                 <a
-                  href={`https://twitter.com/intent/tweet?url=https://oyedigital.mx/kpop/${post.slug}&text=${post.title.rendered}`}
+                  href={`https://twitter.com/intent/tweet?url=https://oyedigital.mx/kpop/${normalizeSlug(post.slug)}&text=${post.title.rendered}`}
                   target="_blank"
                   class="share-button twitter"
                   title="Compartir en X"
@@ -106,7 +107,7 @@ const PLACEHOLDER_IMG =
                   </svg>
                 </a>
                 <a
-                  href={`https://wa.me/?text=${post.title.rendered} https://oyedigital.mx/kpop/${post.slug}`}
+                  href={`https://wa.me/?text=${post.title.rendered} https://oyedigital.mx/kpop/${normalizeSlug(post.slug)}`}
                   target="_blank"
                   class="share-button whatsapp"
                   title="Compartir en WhatsApp"

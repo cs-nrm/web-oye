@@ -15,6 +15,22 @@ var hora;
 const radioButton = document.getElementById('radiobutton');
 const player = document.getElementById('player');
 const secchome = document.getElementById('home');
+const qs = (selector, root = document) => root.querySelector(selector);
+const qsa = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+const setHtml = (selector, value, root = document) => qsa(selector, root).forEach((el) => { el.innerHTML = value; });
+const setAttr = (selector, attr, value, root = document) => qsa(selector, root).forEach((el) => el.setAttribute(attr, value));
+const addClass = (selector, className, root = document) => qsa(selector, root).forEach((el) => el.classList.add(className));
+const removeClass = (selector, className, root = document) => qsa(selector, root).forEach((el) => el.classList.remove(className));
+const setDisplay = (selector, value, root = document) => qsa(selector, root).forEach((el) => { el.style.display = value; });
+const setWidth = (selector, value, root = document) => qsa(selector, root).forEach((el) => { el.style.width = value; });
+const onAll = (selector, eventName, key, handler, root = document) => {
+    qsa(selector, root).forEach((el) => {
+        const eventKey = `__${eventName}_${key}`;
+        if (el[eventKey]) el.removeEventListener(eventName, el[eventKey]);
+        el[eventKey] = handler;
+        el.addEventListener(eventName, handler);
+    });
+};
 
 // ===== [PLAYER - TRITON SDK] initPlayerSDK, getStatus, callbacks VAST =====
 //function initPlayer(){
@@ -68,9 +84,9 @@ const secchome = document.getElementById('home');
             document.getElementById('play-pause').classList.add('show');
             document.getElementById('play-pause').classList.remove('hide'); 
             document.getElementById('big-play').innerHTML = bigButtonPause;            
-            $('.text-player').html('<div style="font-weight:bold;">Ahora suena...</div><div id="infoMusic" style="line-height:11px; font-size:12px;"></div>');
-            $('.text-player').addClass('playing');
-            $('#radiobutton').addClass('playerplaying');
+            setHtml('.text-player', '<div style="font-weight:bold;">Ahora suena...</div><div id="infoMusic" style="line-height:11px; font-size:12px;"></div>');
+            addClass('.text-player', 'playing');
+            addClass('#radiobutton', 'playerplaying');
             // Limpia cualquier intervalo anterior
             if (musicInterval) clearInterval(musicInterval);
             setTimeout(function(){
@@ -87,14 +103,13 @@ const secchome = document.getElementById('home');
             document.getElementById('play-pause').classList.remove('hide'); 
             document.getElementById('play-pause').innerHTML = buttonPlay;            
             document.getElementById('big-play').innerHTML = bigButtonPlay; 
-            $('.text-player').removeClass('playing');
-            $('#radiobutton').removeClass('playerplaying');
-            $('.text-player').html('');
+            removeClass('.text-player', 'playing');
+            removeClass('#radiobutton', 'playerplaying');
+            setHtml('.text-player', '');
             setTimeout( function(){
-                $('.text-player').html('ESCUCHA LA RADIO  <span style="color: #df104a;    font-weight: bold;    font-size: 12px;">EN VIVO</span> AHORA');             
+                setHtml('.text-player', 'ESCUCHA LA RADIO  <span style="color: #df104a;    font-weight: bold;    font-size: 12px;">EN VIVO</span> AHORA');             
             },1000);
             if (musicInterval) clearInterval(musicInterval);    
-            //$('.text-player').attr('id','');            
          }
 
      }
@@ -108,8 +123,8 @@ const secchome = document.getElementById('home');
             Dist: 'WebOye'
             }
         }); 
-        $('#td_container').removeClass('pub_active');
-        $('#full-cover').css('display','none');
+        removeClass('#td_container', 'pub_active');
+        setDisplay('#full-cover', 'none');
         
        
       }
@@ -122,10 +137,10 @@ const secchome = document.getElementById('home');
 
       function startAd(e){
         window.trackTritonPlaybackEvent('ad_start');
-        $('#td_container').addClass('pub_active');
-        $('#full-cover').css('display','block');
+        addClass('#td_container', 'pub_active');
+        setDisplay('#full-cover', 'block');
         document.getElementById('big-play').innerHTML = buttongLoading;    
-        $('.text-player').html('<div style="font-style: italic; line-height:11px; font-weight:bold; font-size:11px;">Iniciamos después del anuncio...</div>'); 
+        setHtml('.text-player', '<div style="font-style: italic; line-height:11px; font-weight:bold; font-size:11px;">Iniciamos después del anuncio...</div>'); 
       }
       
       var start = function(){
@@ -277,14 +292,13 @@ function getInfoMusic() {
                 console.log('Artista: ' + artist);
                 console.log('Canción: ' + cancion);
                 console.log('escribe');
-                $('#infoMusic').html('<div class="current-song">' + cancion + ' / ' + artist + '</div><div class="share-current"><div class="like"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" stroke-width="1"> <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path> </svg> </div> <div class="share-wp"><a href="https://api.whatsapp.com/send/?text=Estoy%20escuchando%20' + codtit +'%20de%20'+ codart +'%20en%20https://oyedigital.mx/" target="_blank"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" stroke-width="1"> <path d="M13 4v4c-6.575 1.028 -9.02 6.788 -10 12c-.037 .206 5.384 -5.962 10 -6v4l8 -7l-8 -7z"></path> </svg> </div></div>'); 
+                setHtml('#infoMusic', '<div class="current-song">' + cancion + ' / ' + artist + '</div><div class="share-current"><div class="like"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" stroke-width="1"> <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path> </svg> </div> <div class="share-wp"><a href="https://api.whatsapp.com/send/?text=Estoy%20escuchando%20' + codtit +'%20de%20'+ codart +'%20en%20https://oyedigital.mx/" target="_blank"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="28" height="28" stroke-width="1"> <path d="M13 4v4c-6.575 1.028 -9.02 6.788 -10 12c-.037 .206 5.384 -5.962 10 -6v4l8 -7l-8 -7z"></path> </svg> </div></div>'); 
                 //document.getElementById('infoMusic').innerHTML = 
 
                // Binder de voto para la sección RADIO (evita handlers duplicados)
-                $('.like').off('click.vote').on('click.vote', function (e) {
+                onAll('.like', 'click', 'vote', function (e) {
                   e.preventDefault();
-                  const $btn = $(this);
-                  window.registerVote('Radio', artist, cancion, $btn)
+                  window.registerVote('Radio', artist, cancion, this)
                     .then(() => {
                       // Hook opcional: aquí podrías disparar un toast/analytics
                     })
@@ -305,21 +319,21 @@ function getInfoMusic() {
                     .then((dataalbum) => {
                         var lig = dataalbum.track.album;
                         if (secenvivo) {
-                            $('.cover-background').html('');
+                            setHtml('.cover-background', '');
                             if (!lig || artist == 'PAUSA COMERCIAL') {
                                 cover = 'https://storage.googleapis.com/nrm-web/oye/recursos/LOGO-OYE-BLANCO-2025.svg';
-                                $('.logo-player img').attr('src', cover);
+                                setAttr('.logo-player img', 'src', cover);
                             } else {
                                 cover = dataalbum.track.album.image[2]['#text'];
-                                $('.logo-player img').attr('src', cover);
+                                setAttr('.logo-player img', 'src', cover);
                             }
                         } else {
                             if (!lig || artist == 'PAUSA COMERCIAL') {
-                                $('#radiobutton .cover-background').html('');
+                                setHtml('#radiobutton .cover-background', '');
                             } else {
                                 cover = dataalbum.track.album.image[2]['#text'];
-                                $('#radiobutton .cover-background').html('');
-                                $('#radiobutton').append('<div class="cover-background"><img src="' + cover + '" /></div>');
+                                setHtml('#radiobutton .cover-background', '');
+                                qs('#radiobutton')?.insertAdjacentHTML('beforeend', '<div class="cover-background"><img src="' + cover + '" /></div>');
                             }
                         }
                     });
@@ -352,11 +366,11 @@ function getInfoMusic() {
                     if(prog.acf[dia] === true){
                         var h_i;
                         if( prog.acf.hora_fin >= hora &&  prog.acf.hora_inicio <= hora){
-                            $('.banner-prog img').attr('src', prog._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url);
-                            $('.envivo-prog').html(prog.acf.programa);
-                            $('.envivo-now').html( prog.acf.hora_inicio + ' - ' + prog.acf.hora_fin);
-                            $('.envivo-prog-tab').html(prog.acf.programa);                            
-                            $('.envivo-desc').html(prog.content.rendered);                            
+                            setAttr('.banner-prog img', 'src', prog._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url);
+                            setHtml('.envivo-prog', prog.acf.programa);
+                            setHtml('.envivo-now', prog.acf.hora_inicio + ' - ' + prog.acf.hora_fin);
+                            setHtml('.envivo-prog-tab', prog.acf.programa);                            
+                            setHtml('.envivo-desc', prog.content.rendered);                            
                         }
 
                         if (prog.acf.hora_inicio > hora) {
@@ -368,8 +382,8 @@ function getInfoMusic() {
                 });   
                 if (siguientePrograma) {
                     console.log("Siguiente programa:", siguientePrograma.acf.programa);
-                    $('.envivo-next').html(siguientePrograma.acf.hora_inicio + ' - ' + siguientePrograma.acf.hora_fin);
-                    $('.envivo-prog-next-tab').html(siguientePrograma.acf.programa);
+                    setHtml('.envivo-next', siguientePrograma.acf.hora_inicio + ' - ' + siguientePrograma.acf.hora_fin);
+                    setHtml('.envivo-prog-next-tab', siguientePrograma.acf.programa);
                 }                                                
             });           
         }
@@ -379,56 +393,55 @@ function getInfoMusic() {
 
 // ===== [PLAYER - CONTROLS] radioActive, playstopRadio, transitionPlayer =====
 const radioActive = function(){
-    $('#player-inner').addClass('active');
-    $('#player-v-podcast').removeClass('active');
-    $('#player-v-video').removeClass('active');
-    $('.player-float').removeClass('hide');
+    addClass('#player-inner', 'active');
+    removeClass('#player-v-podcast', 'active');
+    removeClass('#player-v-video', 'active');
+    removeClass('.player-float', 'hide');
 }
 
 const podcastActive = function(){
     //transitionPlayer();
-    $('#player-inner').removeClass('active');
-    $('#player-v-podcast').addClass('active');
-    $('#player-v-video').removeClass('active');
-    $('.player-float').addClass('hide');
-    $('.player-float').removeClass('active');
-    //$('#radiobutton').addClass('playerplaying'); 
+    removeClass('#player-inner', 'active');
+    addClass('#player-v-podcast', 'active');
+    removeClass('#player-v-video', 'active');
+    addClass('.player-float', 'hide');
+    removeClass('.player-float', 'active');
 }
 
 const videoActive = function(){
-    $('#player-inner').removeClass('active');
-    $('#player-v-podcast').removeClass('active');
-    $('#player-v-video').addClass('active');
+    removeClass('#player-inner', 'active');
+    removeClass('#player-v-podcast', 'active');
+    addClass('#player-v-video', 'active');
 }
 
 const radioStop = function(){
         transitionPlayer();
         streaming.stop();
-        $('#player').attr('data-status','init');                
+        qs('#player')?.setAttribute('data-status','init');                
         //hidebarra();
-        $('#player-inner').removeClass('active');
+        removeClass('#player-inner', 'active');
 }
 
 const initPlayer = function(){
     transitionPlayer();
-    $('#player-v-podcast').removeClass('active');
-    $('#player-v-video').removeClass('active');
-    $('.player-float').removeClass('hide');
-    $('#radiobutton').removeClass('playerplaying'); 
-    $('.player-float').removeClass('hide');
-    $('.player-float').addClass('active');    
+    removeClass('#player-v-podcast', 'active');
+    removeClass('#player-v-video', 'active');
+    removeClass('.player-float', 'hide');
+    removeClass('#radiobutton', 'playerplaying'); 
+    removeClass('.player-float', 'hide');
+    addClass('.player-float', 'active');    
 }
 
 const transitionPlayer = function(){
-    $('#radiobutton').width('0px');
+    setWidth('#radiobutton', '0px');
     setTimeout( function(){
-        $('#radiobutton').width('250px');
+        setWidth('#radiobutton', '250px');
     }, 500);
 }
 
 
 const playerstatus = function(){
-    var state  = $('#player').attr('data-status');
+    var state  = qs('#player')?.getAttribute('data-status');
     return state;
 };
 
@@ -448,42 +461,34 @@ const playstopRadio = function(){
             if( local_status == null || local_status == 'undefined' || local_status == '' ){                                
                 //console.log('aqui debe iniciar');
                 start();     
-                $('#player').attr('data-status','radio-playing');
+                qs('#player')?.setAttribute('data-status','radio-playing');
                 //transitionBarra();                 
                 radioActive();   
             }else if(local_status == 'LIVE_STOP'){
                 //console.log('else play');
                 play();
-                $('#player').attr('data-status','radio-playing');
+                qs('#player')?.setAttribute('data-status','radio-playing');
             }else if( local_status == 'LIVE_PLAYING' || local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING'){                
                 radioStop();
             }
 };
 
 
-$('#big-play').on('click',function(){    
+onAll('#big-play', 'click', 'radio', function(){    
        // console.log('click en radiobutton');
         playstopRadio();      
 });
 
 
-$('#return-live').on('click',function(){    
+onAll('#return-live', 'click', 'radio', function(){    
        playstopRadio();    
 });
 
-$('.radio-link').on('click',function(){    
+onAll('.radio-link', 'click', 'radio', function(){    
        playstopRadio();    
 });
 
 
-
-/*$('#play-pause').on('click', function(){
-    playstopRadio();
-});*/
-
-
-
-  
 
 // ===== [NAVIGATION + PAGE LOAD] =====
 document.addEventListener('astro:before-preparation', ev => {
@@ -515,10 +520,11 @@ document.addEventListener('astro:page-load', ev => {
 
 
 
-if($('.getcancion').length){
+const getCancionEl = qs('.getcancion');
+if(getCancionEl){
     //console.log('aqui va a imprimir la canción');
-    const artist = $('.getcancion').attr('data-artista');
-    const cancion = $('.getcancion').attr('data-cancion');
+    const artist = getCancionEl.getAttribute('data-artista');
+    const cancion = getCancionEl.getAttribute('data-cancion');
     //console.log(cancion);
     //console.log(artist);
     function getInfoLyrics(){
@@ -532,7 +538,7 @@ if($('.getcancion').length){
             })
             .then((data) => { 
                 //console.log(data.lyrics);
-                $('.getcancion').html(data.lyrics);
+                getCancionEl.innerHTML = data.lyrics;
             });
     }
     getInfoLyrics();
@@ -571,22 +577,22 @@ if($('.getcancion').length){
         getInfoProg();
         getInfoMusic();
         setInterval( getInfoProg, 60000);
-        $('#radiobutton').addClass('en-vivo');
+        addClass('#radiobutton', 'en-vivo');
         //console.log(local_status);
         if( local_status == null || local_status == 'undefined' || local_status == '' || local_status == 'LIVE_STOP' ){  
             playstopRadio();
         }
         if( local_status == 'LIVE_PLAYING' || local_status == 'GETTING_STATION_INFORMATION' || local_status == 'LIVE_CONNECTING' || local_status == 'LIVE_BUFFERING' ){
-            $('.cover-background').html('');
+            setHtml('.cover-background', '');
         }
-        $('.logo-player img').attr('src','https://storage.googleapis.com/nrm-web/oye/recursos/LOGO-OYE-BLANCO-2025.svg');
-        $('#big-play').removeClass('border-4');
+        setAttr('.logo-player img', 'src','https://storage.googleapis.com/nrm-web/oye/recursos/LOGO-OYE-BLANCO-2025.svg');
+        removeClass('#big-play', 'border-4');
         
     }else{
        // getInfoMusic();
-        $('.logo-player img').attr('src','https://storage.googleapis.com/nrm-web/oye/recursos/LOGO-OYE-BLANCO-2025.svg');        
-        $('#radiobutton').removeClass('en-vivo');
-        $('#big-play').addClass('border-4');
+        setAttr('.logo-player img', 'src','https://storage.googleapis.com/nrm-web/oye/recursos/LOGO-OYE-BLANCO-2025.svg');        
+        removeClass('#radiobutton', 'en-vivo');
+        addClass('#big-play', 'border-4');
     }
     
     
@@ -697,21 +703,16 @@ if($('.getcancion').length){
         //hidebarra();
     }
 
-   /* $('#big-play').on('click', function(){
-        playstopRadio();
-    });*/
-    
-    $('.audiopod').each(function(){   
-        $(this).on('click',function(){
+    onAll('.audiopod', 'click', 'podcast', function(){
             const getstatus = playerstatus();
-            const podactive = $(this).find('.play-pause-podcast');
-            const podcaststatus = podactive.attr('data-podcast-status');
+            const podactive = this.querySelector('.play-pause-podcast');
+            const podcaststatus = podactive?.getAttribute('data-podcast-status');
             const containerpodcast  = document.getElementById('iframepodcast');
             
             transitionPlayer();
             podcastActive();
             setTimeout( function(){
-                $('#radiobutton').addClass('playerplaying'); 
+                addClass('#radiobutton', 'playerplaying'); 
             },600);
             
             
@@ -719,19 +720,21 @@ if($('.getcancion').length){
                 radioStop();                
             }            
                                                 
-            podactive.html('<img class="loading-gif" src="https://storage.googleapis.com/nrm-web/oye/recursos/loading-normal.gif" />');
+            if (podactive) podactive.innerHTML = '<img class="loading-gif" src="https://storage.googleapis.com/nrm-web/oye/recursos/loading-normal.gif" />';
             
-            $('.close-podcast').on('click',function(){
+            onAll('.close-podcast', 'click', 'podcast-close', function(){
                 initPlayer();
                 const playerpodcast = document.getElementById('iframepodcast').getElementsByTagName('iframe')[0];                
                 const ply =  new playerjs.Player(playerpodcast);
                 ply.on('ready', ()=> {
                     ply.pause();
-                    podactive.attr('data-podcast-status','ready');
+                    podactive?.setAttribute('data-podcast-status','ready');
                 });
-                $('.audiopod').each(function(){
-                    $('.audiopod').find('.play-pause-podcast').html(buttonPodcastPlay);
-                    $('.audiopod').find('.play-pause-podcast').attr('data-podcast-status','ready');
+                qsa('.audiopod').forEach((audioPod) => {
+                    qsa('.play-pause-podcast', audioPod).forEach((playButton) => {
+                        playButton.innerHTML = buttonPodcastPlay;
+                        playButton.setAttribute('data-podcast-status','ready');
+                    });
                 });
                 
             });
@@ -742,18 +745,21 @@ if($('.getcancion').length){
                 const ply =  new playerjs.Player(playerpodcast);
                 ply.on('ready', ()=> {
                     ply.pause();
-                    podactive.attr('data-podcast-status','ready');
+                    podactive?.setAttribute('data-podcast-status','ready');
                 });
-                $('.audiopod').each(function(){
-                    $('.audiopod').find('.play-pause-podcast').html(buttonPodcastPlay);
-                    $('.audiopod').find('.play-pause-podcast').attr('data-podcast-status','ready');
+                qsa('.audiopod').forEach((audioPod) => {
+                    qsa('.play-pause-podcast', audioPod).forEach((playButton) => {
+                        playButton.innerHTML = buttonPodcastPlay;
+                        playButton.setAttribute('data-podcast-status','ready');
+                    });
                 });
             }
             //console.log(podcaststatus);            
             if(podcaststatus == 'ready'){
                 //transitionBarra();
-                const ifr = $(this).find('.data-iframe').attr('data-iframe');
+                const ifr = this.querySelector('.data-iframe')?.getAttribute('data-iframe') || '';
                 const ifrsrc = ifr.split('src="');
+                if (!ifrsrc[1]) return;
                 const src = ifrsrc[1].split('"');
                 //const playerpodcast = document.getElementById('playerpodcast');
                 //<iframe src="https://omny.fm/shows/beat-trends/amor-de-lejos-amor-de-ya-no-aplica/embed?size=square&style=cover&image=0&description=1&download=1&playlistImages=1&playlistShare=1&share=1&subscribe=0&background=efefef&foreground=2b2b2c&highlight=fff" allow="autoplay; clipboard-write" width="300" height="300" frameborder="0" title="Amor de lejos, amor de… Ya no aplica"></iframe>           
@@ -770,18 +776,18 @@ if($('.getcancion').length){
                 const ply =  new playerjs.Player(playerpodcast);
                  
                 ply.on('ready', ()=> {
-                    podactive.attr('data-podcast-status','active');
-                    $('#player').attr('data-status','podcast-playing');
+                    podactive?.setAttribute('data-podcast-status','active');
+                    qs('#player')?.setAttribute('data-status','podcast-playing');
                     playerpodcast.classList.add('iframestyle');
                     ply.play(); 
                     
                     ply.on('play', ()=>{
-                        podactive.html(buttonPodcastPause); 
+                        if (podactive) podactive.innerHTML = buttonPodcastPause; 
                     });
     
                     ply.on('pause', ()=>{
-                        podactive.html(buttonPodcastPlay); 
-                        $('.play-pause-podcast-home').html(buttonPodcastPlay+'<span>REPRODUCIR AHORA</span>');
+                        if (podactive) podactive.innerHTML = buttonPodcastPlay; 
+                        setHtml('.play-pause-podcast-home', buttonPodcastPlay+'<span>REPRODUCIR AHORA</span>');
                     });
                     
                 });   
@@ -799,17 +805,17 @@ if($('.getcancion').length){
                 const ply =  new playerjs.Player(playerpodcast);
                 ply.on('ready', ()=> {
                     ply.pause();
-                    podactive.attr('data-podcast-status','ready');
+                    podactive?.setAttribute('data-podcast-status','ready');
                 });                
                 
             }
 
-        });
     });
     
-    $('.wp-block-image').each(function(){        
-        const datasrc = $(this).find('img').attr('data-src');        
-        $(this).find('img').attr('src',datasrc);
+    qsa('.wp-block-image').forEach((figure) => {        
+        const img = figure.querySelector('img');
+        const datasrc = img?.getAttribute('data-src');        
+        if (img && datasrc) img.setAttribute('src', datasrc);
     });
 
     
@@ -822,24 +828,23 @@ if($('.getcancion').length){
         console.log(navigator.userAgent);
         if(navigator.userAgent.indexOf("iPhone") != -1){
             
-        $('.wp-block-embed-youtube .wp-block-embed__wrapper iframe').each(function(t,el){
-            console.log($(this));   
-            //const ele = $(this).attr('id','el-'+t);     
-            $(this).on('click',function(){
+        qsa('.wp-block-embed-youtube .wp-block-embed__wrapper iframe').forEach((iframe) => {
+            console.log(iframe);   
+            iframe.addEventListener('click', function(){
                 const getstatus = playerstatus();
                 if( getstatus == 'radio-playing'){
                     radioStop();   
                     //hidebarra();
-                    $('#player').attr('data-status','video-playing');
+                    qs('#player')?.setAttribute('data-status','video-playing');
                 }
             });            
             
         });        
 
         }else{                      
-        $('.wp-block-embed-youtube .wp-block-embed__wrapper').each(function(){
-            console.log($(this).find('iframe'));            
-            const plyr = new Plyr($(this).find('iframe').parent(),{
+        qsa('.wp-block-embed-youtube .wp-block-embed__wrapper').forEach((wrapper) => {
+            console.log(wrapper.querySelector('iframe'));            
+            const plyr = new Plyr(wrapper.querySelector('iframe')?.parentElement || wrapper,{
                 debug:true,
                 controls:[
                     'play-large', // The large play button in the center
@@ -868,11 +873,11 @@ if($('.getcancion').length){
                 if( getstatus == 'radio-playing'){
                     radioStop();   
                     //hidebarra();
-                    $('#player').attr('data-status','video-playing');
+                    qs('#player')?.setAttribute('data-status','video-playing');
                 }
             });
             
-            $('#radiobutton').on('click', function(){
+            onAll('#radiobutton', 'click', 'pause-video', function(){
                 plyr.pause();
             });     
         }); 
@@ -882,8 +887,7 @@ if($('.getcancion').length){
         var yavoto = 0;
         var allowvote = 60;
 
-        $('.voto-pop').each(function(){    
-            $(this).on('click', function(){
+        onAll('.voto-pop', 'click', 'voto-pop', function(){
                 console.log(yavoto);
                 if (yavoto === 0){
                     yavoto = 1;        
@@ -902,8 +906,8 @@ if($('.getcancion').length){
                         
                     }, 1000);
     
-                    console.log($(this).attr('data-voto-id'));
-                    const id = $(this).attr('data-voto-id');                                                
+                    console.log(this.getAttribute('data-voto-id'));
+                    const id = this.getAttribute('data-voto-id');                                                
                     const params = {
                         "item_id":id,
                         "user_id":15,
@@ -930,8 +934,8 @@ if($('.getcancion').length){
                     })
                     .then((data) => { 
                             console.log(data);
-                            $(this).addClass('voted');
-                            $(this).find('svg').attr('fill','white');
+                            this.classList.add('voted');
+                            this.querySelector('svg')?.setAttribute('fill','white');
                             Toastify({
                                 text: "Gracias por tu voto",
                                 className: "info",
@@ -965,7 +969,6 @@ if($('.getcancion').length){
     
                 }   
                 
-            });            
         });   
 
 
@@ -975,12 +978,11 @@ if($('.getcancion').length){
     } 
 
     // === [/VOTOS] ===
-    $('.like-topten').off('click.vote').on('click.vote', function (e) {
+    onAll('.like-topten', 'click', 'vote', function (e) {
                     e.preventDefault();
-                    const artist = $(this).data('artist') || '';
-                    const cancion = $(this).data('song') || '';
-                    const $btn = $(this);
-                    window.registerVote('TopTen', artist, cancion, $btn)
+                    const artist = this.dataset.artist || '';
+                    const cancion = this.dataset.song || '';
+                    window.registerVote('TopTen', artist, cancion, this)
                         .then(() => {
                         // Hook opcional: aquí podrías disparar un toast/analytics
                         })
@@ -991,4 +993,3 @@ if($('.getcancion').length){
         
        
 });
-

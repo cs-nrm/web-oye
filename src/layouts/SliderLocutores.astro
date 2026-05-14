@@ -91,16 +91,17 @@ const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img
 </style>
 
 <script>
-	$('.meta-nav').parent().on('click',function(e){
-    	e.preventDefault();
-	});
-
-	$('.meta-nav').each(function(){
-		$(this).on('click',function(e){
+	document.querySelectorAll('.meta-nav').forEach((metaNav) => {
+		metaNav.parentElement?.addEventListener('click', function(e){
 			e.preventDefault();
-			var index = $(this).index();
-			
 		});
-		$(this).parent().html('->');
+
+		metaNav.addEventListener('click', function(e){
+			e.preventDefault();
+			const index = Array.from(metaNav.parentElement?.children || []).indexOf(metaNav);
+		});
+		if (metaNav.parentElement) {
+			metaNav.parentElement.innerHTML = '->';
+		}
 	});
 </script>
