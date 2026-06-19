@@ -218,7 +218,7 @@ if (document.getElementById('ad-slot-videonota')) googletag.display('ad-slot-vid
     if (document.getElementById('ad-slot-doublebox'))   adFallback(['ad-slot-doublebox'],   'ad-slot-doublebox-adsense');
 
     if (window._boxRefreshInterval) clearInterval(window._boxRefreshInterval);
-    window._boxRefreshInterval = setInterval(function() { googletag.pubads().refresh([window.slotBox]); }, 40000);
+    window._boxRefreshInterval = setInterval(function() { googletag.pubads().refresh([window.slotBox]); }, 180000);
   });
 }
 
