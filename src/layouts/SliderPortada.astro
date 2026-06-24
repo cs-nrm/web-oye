@@ -6,8 +6,11 @@ import SuperLeader from '../components/SuperLeader.astro';
 import { Image } from 'astro:assets';
 
 const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/beat/resources/img/img_beat-min.jpg';
-const res = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_fields=title,slug,yoast_head_json,acf&_embed&per_page=30&categories=13195");
-const posts = await res.json();
+let posts: any[] = [];
+try {
+  const res = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_fields=title,slug,yoast_head_json,acf&_embed&per_page=30&categories=13195");
+  if (res.ok) posts = await res.json();
+} catch (e) { console.error('[SliderPortada]', e); }
 
 ---
 <div class="slider-portada">

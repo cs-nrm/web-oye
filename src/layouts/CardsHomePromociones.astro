@@ -6,8 +6,11 @@ import SuperLeader from '../components/SuperLeader.astro';
 import { Image } from 'astro:assets';
 
 
-const res = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,content,excerpt,_links,_embedded&_embed&per_page=10&categories=1606&order_by=date&order=desc");
-const posts = await res.json();
+let posts: any[] = [];
+try {
+  const res = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_fields=date,title,slug,sticky,yoast_head_json,content,excerpt,_links,_embedded&_embed&per_page=10&categories=1606&order_by=date&order=desc");
+  if (res.ok) posts = await res.json();
+} catch (e) { console.error('[CardsHomePromociones]', e); }
 
 const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img_oye-min.jpg';
 ---

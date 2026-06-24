@@ -1,8 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 
-const res = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_embed&per_page=8&_fields=title,slug,excerpt,content,acf,yoast_head_json,_links,_embedded&categories=10680");
-const posts = await res.json();
+let posts: any[] = [];
+try {
+  const res = await fetch("https://playnrm.com/wp-json/wp/v2/posts?_embed&per_page=8&_fields=title,slug,excerpt,content,acf,yoast_head_json,_links,_embedded&categories=10680");
+  if (res.ok) posts = await res.json();
+} catch (e) { console.error('[SliderLocutores]', e); }
 
 const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img_oye-min.jpg';
 ---

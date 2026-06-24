@@ -1,0 +1,62 @@
+---
+import { PODCASTS } from '../consts';
+
+const activos = PODCASTS.filter(p =>
+  ['reset-con-kinky', 'la-regadera'].includes(p.link)
+);
+---
+
+<div class="section-podcast">
+  <h2 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl">
+    OYE EL PODCAST
+  </h2>
+  <div class="flex flex-wrap justify-center gap-6">
+    {activos.map(pod => (
+      <a href={`/podcast/${pod.link}`} class="podcast-card group">
+        <img
+          src={pod.imagen}
+          alt={pod.title}
+          width={280}
+          height={280}
+          class="podcast-img"
+        />
+        <p class="podcast-title">{pod.title}</p>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+.section-podcast {
+  width: 100%;
+}
+.podcast-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  text-decoration: none;
+  width: 280px;
+}
+.podcast-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  border: 2px solid #890000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.podcast-card:hover .podcast-img {
+  transform: scale(1.03);
+  box-shadow: 0 6px 24px rgba(226, 36, 26, 0.35);
+  border-color: #e2241a;
+}
+.podcast-title {
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: inherit;
+}
+</style>
