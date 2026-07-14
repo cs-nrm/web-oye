@@ -857,7 +857,43 @@ a.wp-block-file__button.wp-element-button {
 .ns-effect-bouncyflip .ns-close::after, .ns-effect-bouncyflip .ns-close::before{
 	background: #000!important;
 }
+/* La librería externa define .ns-close en 20x20px; 44px es el mínimo táctil (WCAG 2.5.8).
+   Los offsets van en positivo: la notificación está pegada al borde superior de la
+   pantalla y con valores negativos el botón se sale del viewport y se corta.
+   El círculo blanco no es cosmético: sin él la X negra se pierde sobre la imagen. */
 .ns-close {
-	right: -3px !important;
-	top: -3px !important;
+	width: 44px !important;
+	height: 44px !important;
+	right: 6px !important;
+	top: 6px !important;
+	border-radius: 50%;
+	background: #fff;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+	overflow: visible;
+}
+
+.ns-close::before,
+.ns-close::after {
+	width: 4px;
+	height: 40%;
+	border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+	.ns-close {
+		width: 52px !important;
+		height: 52px !important;
+		right: 8px !important;
+		top: 8px !important;
+	}
+}
+
+/* Red de seguridad: los contenedores de banner no deben desbordar el viewport. */
+.billboard,
+.leader,
+.super-leader,
+.boxbanner,
+.double-box {
+	max-width: 100%;
+	overflow-x: clip;
 }
