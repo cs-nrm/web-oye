@@ -907,3 +907,4 @@ a.wp-block-file__button.wp-element-button {
 	overflow-x: clip;
 }
 #ad-slot-leader iframe:hover, #ad-slot-leader3 iframe:hover, #ad-slot-leader2 iframe:hover{height:400px;z-index:10000;position:relative; cursor: pointer;}
+#ad-slot-doublebox iframe{margin: 0 auto;}
