@@ -21,7 +21,7 @@ const filteredPosts = posts.filter((post:any) => !post.acf?.fijo);
       <div class="container">
         <h1 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl ">Breaking News</h1>
 
-      {posts.length >= 3 && (
+      {posts.length >= 2 && (
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <!-- Noticia principal (66%) -->
         <div class="lg:col-span-2">
@@ -46,12 +46,13 @@ const filteredPosts = posts.filter((post:any) => !post.acf?.fijo);
             </a>
           </div>
           <div class="relative h-1/2">
-            <a href={`/breakingnews/${posts[2].slug}/`}>
+            <!--a href={`/breakingnews/${posts[2].slug}/`}>
               <img loading="lazy" class="rounded-xl w-full h-full object-cover" src={posts[2]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['medium_large']?.source_url || PLACEHOLDER_IMG} alt={posts[2]?._embedded?.['wp:featuredmedia']?.[0]?.alt_text || "Imagen Breaking News"}/>
               <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white p-3 w-full rounded-b-xl">
                 <p class="text-md font-semibold rounded-b-xl mb-0" set:html={posts[2].title.rendered}></p>
               </div>
-            </a>
+            </a-->
+            <BoxBanner />
           </div>
         </div>
       </div>

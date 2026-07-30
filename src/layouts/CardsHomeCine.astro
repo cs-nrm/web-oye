@@ -1,6 +1,6 @@
 ---
 import DoubleBox from '../components/DoubleBox.astro';
-import BoxBanner from '../components/BoxBanner.astro';
+import BoxBanner2 from '../components/BoxBanner2.astro';
 import LeaderBoard from'../components/LeaderBoard.astro';
 import SuperLeader from '../components/SuperLeader.astro';
 import { Image } from 'astro:assets';
@@ -17,6 +17,7 @@ const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img
       <div class="container">
         <h1 class="titulos rojo uppercase goodtime text-center p-4 my-4 text-2xl lg:text-3xl ">OYE DE CINE</h1>
         <div class="news-grid grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-16 xl:gap-16">
+          <BoxBanner2 />
           <!-- Article 1 -->
           <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
             <a href={`/cine/${posts[0].slug}/`}>
@@ -54,16 +55,14 @@ const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img
           </article>
 
           <!-- Article 4 -->
-          <article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
+          <!--article class="news-card transition duration-[0.2s] hover:translate-y-[-4px]">
             <a href={`/cine/${posts[3].slug}/`}>
               <div><img loading="lazy" class="rounded-xl inset-0 h-auto sm:h-64 md:h-80 w-full shadow-lg object-cover object-center" src={posts[3]?._embedded?.['wp:featuredmedia']?.[0]?.media_details?.sizes?.['small-feature']?.source_url || PLACEHOLDER_IMG} alt={posts[3]?._embedded?.['wp:featuredmedia']?.[0]?.alt_text || "Imagen Cine"}/></div>
               <div class="news-content">
                 <p set:html={posts[3].title.rendered}></p>
-                <!--div class="text-sm resumen" set:html={posts[3].excerpt.rendered}></div>
-                <span class="roboto font-bold text-xs mt-4">por {posts[3].yoast_head_json.author}</span-->
               </div>
             </a>  
-          </article>
+          </article-->
         </div>
       </div>
 
