@@ -488,7 +488,47 @@ onAll('.radio-link', 'click', 'radio', function(){
        playstopRadio();    
 });
 
+/* TONEFUSE APPLE MUSIC */
+function initAppleMusicAds() {
+  const slot142 = document.getElementById('amplified_100007147');
+  const slot145 = document.getElementById('amplified_100007145');
+  if (!slot142 && !slot145) return;
 
+  const runAppleMusicAds = () => {
+    window.amplified = window.amplified || { init: [] };
+
+    if (typeof window.amplified.setParams === 'function' &&
+        typeof window.amplified.pushAdUnit === 'function' &&
+        typeof window.amplified.run === 'function') {
+      window.amplified.setParams({ artist: '', song: '' });
+      window.amplified.pushAdUnit(100007147);
+      window.amplified.pushAdUnit(100007145);
+      window.amplified.run();
+      return true;
+    }
+
+    if (Array.isArray(window.amplified.init)) {
+      window.amplified.init.push(function() {
+        window.amplified.setParams({ artist: '', song: '' });
+        window.amplified.pushAdUnit(100007147);
+        window.amplified.pushAdUnit(100007145);
+        window.amplified.run();
+      });
+      return true;
+    }
+
+    return false;
+  };
+
+  if (runAppleMusicAds()) return;
+
+  window.setTimeout(() => {
+    if (!document.getElementById('amplified_100007147')) return;
+    runAppleMusicAds();
+    if (!document.getElementById('amplified_100007145')) return;
+    runAppleMusicAds();
+  }, 500);
+}
 
 // ===== [NAVIGATION + PAGE LOAD] =====
 document.addEventListener('astro:before-preparation', ev => {
@@ -552,6 +592,8 @@ if(getCancionEl){
         googletag.cmd.push(function() { window.initGPT(); });
     }
     
+        initAppleMusicAds();
+
    const getplayingstatus = playerstatus();
     document.querySelector('main').classList.remove('loading');    
     document.querySelector('.preloader').classList.remove('showpreloader');
