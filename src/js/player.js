@@ -490,9 +490,10 @@ onAll('.radio-link', 'click', 'radio', function(){
 
 /* TONEFUSE APPLE MUSIC */
 function initAppleMusicAds() {
-  const slot142 = document.getElementById('amplified_100007147');
+  const slot147 = document.getElementById('amplified_100007147');
   const slot145 = document.getElementById('amplified_100007145');
-  if (!slot142 && !slot145) return;
+  const slot143 = document.getElementById('amplified_100007143');
+  if (!slot147 && !slot145 && !slot143) return;
 
   const runAppleMusicAds = () => {
     window.amplified = window.amplified || { init: [] };
@@ -503,6 +504,7 @@ function initAppleMusicAds() {
       window.amplified.setParams({ artist: '', song: '' });
       window.amplified.pushAdUnit(100007147);
       window.amplified.pushAdUnit(100007145);
+      window.amplified.pushAdUnit(100007143);
       window.amplified.run();
       return true;
     }
@@ -512,6 +514,7 @@ function initAppleMusicAds() {
         window.amplified.setParams({ artist: '', song: '' });
         window.amplified.pushAdUnit(100007147);
         window.amplified.pushAdUnit(100007145);
+        window.amplified.pushAdUnit(100007143);
         window.amplified.run();
       });
       return true;
@@ -526,6 +529,8 @@ function initAppleMusicAds() {
     if (!document.getElementById('amplified_100007147')) return;
     runAppleMusicAds();
     if (!document.getElementById('amplified_100007145')) return;
+    runAppleMusicAds();
+    if (!document.getElementById('amplified_100007143')) return;
     runAppleMusicAds();
   }, 500);
 }
