@@ -16,7 +16,7 @@ const PLACEHOLDER_IMG = 'https://storage.googleapis.com/nrm-web/oye/recursos/img
 			<span class="text-8xl font-bold absolute bottom-2 left-4 lg:bottom-8 lg:left-8 rojo">1</span>
 			<a class="absolute text-center text-white bottom-2 right-4 lg:bottom-8 lg:right-8" href={`/topten/${posts[0].slug}/`}>
 				<div class="mb-8 sm:mb-2 lg:mb-8 rojo cursor-pointer" data-podcast-status="ready"> 
-					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler bg-[#e2241a] hover:bg-black rounded-[50%] p-[15px] m-auto icon-tabler-player-play" width="100" height="100" viewBox="0 0 24 24" stroke-width="2" stroke="#fff" fill="#fff" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8z" /></svg>
+					<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler bg-[var(--red-color)] hover:bg-black rounded-[50%] p-[15px] m-auto icon-tabler-player-play" width="100" height="100" viewBox="0 0 24 24" stroke-width="2" stroke="#fff" fill="#fff" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 4v16l13 -8z" /></svg>
 				</div> 
 	            <p class="text-xl font-bold text-right m-0" set:html={posts[0].title.rendered}></p>
 				<p class="text-xl text-right m-0" set:html={posts[0].acf.artista}></p>

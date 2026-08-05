@@ -60,7 +60,7 @@ const { page = [], pod } = Astro.props;
       {
         page.url.prev && (
           <a href={page.url.prev} class="text-white">
-            <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[#e2241a] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
+            <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[var(--red-color)] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
               <span>Anterior</span>
             </button>
           </a>
@@ -69,7 +69,7 @@ const { page = [], pod } = Astro.props;
       {
         page.url.next && (
           <a href={page.url.next} class="text-white">
-            <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[#e2241a] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
+            <button class="ver-mas roboto group relative h-8 w-36 m-4 rounded-sm overflow-hidden bg-[var(--red-color)] hover:bg-black uppercase text-xs font-bold tracking-[3px]">
               <span>Siguiente</span>
             </button>
           </a>

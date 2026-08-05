@@ -95,7 +95,7 @@ Sistema de UI: componentes visuales, layouts, design system (Tailwind + CSS), ti
 ## Design system
 
 ### Paleta de colores (CSS variables en global.css)
-- `--rojo` / accent rojo: `#e2241a` — color principal de acción
+- `--rojo` / accent rojo: `var(--red-color)` — color principal de acción
 - `--accent`: `#2337ff`
 - Gradientes: fondo oscuro del player (`rgb(45,45,45)` → `rgb(0,0,0)`)
 - Fondos de sección: `#201e1e` (oscuro), `#d6d8d7` (gris claro)

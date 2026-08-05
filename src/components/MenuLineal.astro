@@ -1,7 +1,7 @@
 ---
 const currentPath = Astro.url.pathname;
 ---
-<div class="menutres flex flex-nowrap bg-[#e2241a] w-full text-lg h16 items-center justify-between p-2 relative roboto">
+<div class="menutres flex flex-nowrap bg-[var(--red-color)] w-full text-lg h16 items-center justify-between p-2 relative roboto">
     <div class="logo main-logo h16 pl-[25px]"> <a href="/"><img src="https://storage.googleapis.com/nrm-web/oye/recursos/main-logo-header.svg" /></a></div>
     <div id="container" class="links-menu flex items-center m-auto gap-4 text-white order-3 lg:order-2 justify-center">
       <nav>
@@ -29,8 +29,8 @@ const currentPath = Astro.url.pathname;
             <li class="dd-menu-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.4 2.3 6.2 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"/></svg> Radio
               <ul>
-                <li class={`menu-section${currentPath.startsWith('/en-vivo') ? ' active' : ''}`}><a href="/en-vivo" class="text-xs sm:text-base !flex flex-nowrap flex-row items-center text-white gap-2 hover:text-#e2241a"><span class="live-icon"></span> <span class="min-w-[60px] sm:min-w-[85px]">En Vivo</span></a></li>
-                <li class={`menu-section${currentPath.startsWith('/programacion') ? ' active' : ''}`}><a href="/programacion" class="text-xs sm:text-base !flex flex-nowrap items-center text-white gap-2 hover:text-#e2241a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+                <li class={`menu-section${currentPath.startsWith('/en-vivo') ? ' active' : ''}`}><a href="/en-vivo" class="text-xs sm:text-base !flex flex-nowrap flex-row items-center text-white gap-2 hover:text-var(--red-color)"><span class="live-icon"></span> <span class="min-w-[60px] sm:min-w-[85px]">En Vivo</span></a></li>
+                <li class={`menu-section${currentPath.startsWith('/programacion') ? ' active' : ''}`}><a href="/programacion" class="text-xs sm:text-base !flex flex-nowrap items-center text-white gap-2 hover:text-var(--red-color)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
                   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
                   <path d="M16 3v4"></path>
                   <path d="M8 3v4"></path>
@@ -68,8 +68,8 @@ const currentPath = Astro.url.pathname;
 <div class="block menu-mobile-radio text-base roboto bg-[#1d1d1d] w-full h16 b-transparent items-center justify-end p-2 relative">
   <ul class="flex flex-row justify-end items-center">
     <li><a ><button class="radio-button font-bold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.4 2.3 6.2 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"/></svg> RADIO </button></a></li>
-    <li class={`menu-section${currentPath.startsWith('/en-vivo') ? ' active' : ''}`}><a href="/en-vivo" class="text-sm !flex flex-nowrap flex-row items-center text-white gap-1 hover:text-#e2241a"><span class="live-icon"></span> <span class="min-w-[60px] sm:min-w-[85px]">En Vivo</span></a></li>
-    <li class={`menu-section${currentPath.startsWith('/programacion') ? ' active' : ''}`}><a href="/programacion" class="text-sm !flex flex-nowrap items-center text-white gap-1 hover:text-#e2241a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+    <li class={`menu-section${currentPath.startsWith('/en-vivo') ? ' active' : ''}`}><a href="/en-vivo" class="text-sm !flex flex-nowrap flex-row items-center text-white gap-1 hover:text-var(--red-color)"><span class="live-icon"></span> <span class="min-w-[60px] sm:min-w-[85px]">En Vivo</span></a></li>
+    <li class={`menu-section${currentPath.startsWith('/programacion') ? ' active' : ''}`}><a href="/programacion" class="text-sm !flex flex-nowrap items-center text-white gap-1 hover:text-var(--red-color)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
       <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
       <path d="M16 3v4"></path>
       <path d="M8 3v4"></path>
@@ -188,7 +188,7 @@ nav a, .dd-menu, .dd-menu-2 {
 }
 
 .dd-menu ul li.ver-todos a {
-  color: #e2241a;
+  color: var(--red-color);
   font-weight: bold;
   font-size: 13px;
   border-bottom: 1px solid #333;
