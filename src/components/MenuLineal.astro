@@ -1,9 +1,9 @@
 ---
 const currentPath = Astro.url.pathname;
 ---
-<div class="menutres flex flex-nowrap bg-[var(--red-color)] w-full text-lg h16 items-center justify-between p-2 relative roboto">
-    <div class="logo main-logo h16 pl-[25px]"> <a href="/"><img src="https://storage.googleapis.com/nrm-web/oye/recursos/main-logo-header.svg" /></a></div>
-    <div id="container" class="links-menu flex items-center m-auto gap-4 text-white order-3 lg:order-2 justify-center">
+<div class="menutres flex flex-nowrap bg-[var(--red-color)] bg-[var(--verde-electrico)] text-black w-full text-lg h16 items-center justify-between p-2 relative roboto">
+    <div class="logo main-logo h16 pl-[25px]"> <a href="/"><img src="https://storage.googleapis.com/nrm-web/oye/recursos/main-logo-header-negro.svg" /></a></div>
+    <div id="container" class="links-menu flex items-center m-auto gap-4 text-black order-3 lg:order-2 justify-center">
       <nav>
         <ul>
             <li class={`menu-section${currentPath.startsWith('/breakingnews') ? ' active' : ''}`}><a href="/breakingnews">Breaking News</a></li>
@@ -134,7 +134,7 @@ const currentPath = Astro.url.pathname;
 
 /*nav::before {content:''; width: 100%; height: 100%; position: absolute; background:black; top:0; z-index: -1;}*/
 .link-menu{height: 39px;}
-.menu-mobile ul li a, .link-menu a {color:white;  font-size: 17px;}
+.menu-mobile ul li a, .link-menu a {color:black;  font-size: 17px;}
 
 button.radio-button {
     display: flex;
@@ -165,7 +165,7 @@ nav ul li {
 nav a, .dd-menu, .dd-menu-2 {
   display:block;
   padding:0 10px;
-  color:#FFF;
+  color:#000;
   font-size:17px;
   text-decoration:none;
   position: relative;
