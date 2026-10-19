@@ -13,8 +13,10 @@ try {
 } catch (e) { console.error('[SliderPortada]', e); }
 
 ---
-<div class="slider-portada">
-	<div class="carousel carousel-portada cards ">
+<div class="slider-portada relative md:p-4 bg-black">
+	<span class="roboto text-[8px] text-[#C7CFCB] bg-[#0507069e] absolute top-2 left-2 z-10 p-1 ">PUBLICIDAD</span>
+	<div class="carousel carousel-portada cards text-center m-auto">
+	
 
 	{
 	posts.map((post:any)=> (
@@ -31,6 +33,9 @@ try {
 </div>
 
 <style>
+.card article{
+	border-radius: 0px !important;
+}
 .cards img {
     mask-image: none !important;
 }
@@ -53,6 +58,9 @@ try {
 .carousel-cell {
   width: 100%;
   height: auto;
+  max-width: 970px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .carousel-cell img{
@@ -62,6 +70,8 @@ try {
 	/*border-radius: 0.5rem !important;*/
 	margin-top: 0px;
 	box-shadow: 0 0 6px 4px rgba(0,0,0,0.4);
+	max-width: 970px;
+	height: auto;
 }
 
 .carousel.carousel-nav{
