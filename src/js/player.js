@@ -705,7 +705,7 @@ if(getCancionEl){
         pauseAutoPlayOnHover: true,
         freeScroll: false,
         wrapAround: true,
-        autoPlay: 5000,
+        autoPlay: 8000,
         });
  
     }
