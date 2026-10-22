@@ -82,12 +82,12 @@
 </style>
 <script >
 	function initPreSiteHeader(){
-		document.querySelectorAll('.expand-radio-mobile .radio').forEach((radio) => {
+		document.querySelectorAll<HTMLElement & { __preSiteClick?: () => void }>('.expand-radio-mobile .radio').forEach((radio) => {
 			if (radio.__preSiteClick) {
 				radio.removeEventListener('click', radio.__preSiteClick);
 			}
 			radio.__preSiteClick = function(){
-				const station = document.querySelector('.expand-radio-mobile .pre-site-station');
+				const station = document.querySelector<HTMLElement>('.expand-radio-mobile .pre-site-station');
 				if (!station) return;
 				station.style.display = getComputedStyle(station).display === 'block' ? 'none' : 'block';
 			};
