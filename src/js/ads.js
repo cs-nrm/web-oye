@@ -12,6 +12,11 @@ function initGPT() {
       .addSize([0, 0], [320, 50])
       .build();
 
+    var mappingSuperLeader = googletag.sizeMapping()
+      .addSize([768, 0], [970, 90])
+      .addSize([0, 0], [320, 50])
+      .build();
+
     var mappingBox = googletag.sizeMapping()
       .addSize([768, 0], [300, 250])
       .addSize([0, 0], [300, 250])
@@ -28,7 +33,7 @@ function initGPT() {
     window.slotLeader      = googletag.defineSlot("/23349147378/Oye", [[728,  90], [320,  50]], 'ad-slot-leader').defineSizeMapping(mappingLeaderboard).addService(googletag.pubads());
     window.slotLeader2     = googletag.defineSlot("/23349147378/Oye", [[728,  90], [320,  50]], 'ad-slot-leader2').defineSizeMapping(mappingLeaderboard).addService(googletag.pubads());
     window.slotLeader3     = googletag.defineSlot("/23349147378/Oye", [[728,  90], [320,  50]], 'ad-slot-leader3').defineSizeMapping(mappingLeaderboard).addService(googletag.pubads());
-    window.slotSuperLeader = googletag.defineSlot("/23349147378/Oye", [[970,  90], [320,  50]], 'ad-slot-superleader').defineSizeMapping(mappingLeaderboard).addService(googletag.pubads());
+    window.slotSuperLeader = googletag.defineSlot("/23349147378/Oye", [[970,  90], [320,  50]], 'ad-slot-superleader').defineSizeMapping(mappingSuperLeader).addService(googletag.pubads());
     window.slotBox         = googletag.defineSlot("/23349147378/Oye", [300, 250],               'ad-slot-box').defineSizeMapping(mappingBox).addService(googletag.pubads());
     window.slotBox2        = googletag.defineSlot("/23349147378/Oye", [300, 250],               'ad-slot-box2').defineSizeMapping(mappingBox).addService(googletag.pubads());
     window.slotDoubleBox   = googletag.defineSlot("/23349147378/Oye", [300, 600],               'ad-slot-doublebox').defineSizeMapping(mappingDoubleBox).addService(googletag.pubads());
