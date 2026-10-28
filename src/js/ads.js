@@ -57,7 +57,7 @@ function initGPT() {
     if (document.getElementById('ad-slot-videonota'))   googletag.display('ad-slot-videonota');
 
     if (window._boxRefreshInterval) clearInterval(window._boxRefreshInterval);
-    window._boxRefreshInterval = setInterval(function() { googletag.pubads().refresh([window.slotBox]); }, 60000);
+    window._boxRefreshInterval = setInterval(function() { googletag.pubads().refresh([window.slotBox, window.slotLeader]); }, 60000);
   });
 }
 
