@@ -18,9 +18,9 @@ const currentPath = Astro.url.pathname;
                 <li class={currentPath.startsWith('/podcast/reset-con-kinky') ? 'active' : ''}>
                   <a href="/podcast/reset-con-kinky">Reset con Kinky</a>
                 </li>
-                <li class={currentPath.startsWith('/podcast/la-regadera') ? 'active' : ''}>
+                <!--li class={currentPath.startsWith('/podcast/la-regadera') ? 'active' : ''}>
                   <a href="/podcast/la-regadera">La Regadera</a>
-                </li>
+                </li-->
               </ul>
             </li>
             <li class={`menu-section${currentPath.startsWith('/entrevistas') ? ' active' : ''}`}><a href="/entrevistas">Entrevistas</a></li>
@@ -135,6 +135,7 @@ const currentPath = Astro.url.pathname;
 /*nav::before {content:''; width: 100%; height: 100%; position: absolute; background:black; top:0; z-index: -1;}*/
 .link-menu{height: 39px;}
 .menu-mobile ul li a, .link-menu a {color:black;  font-size: 17px;}
+.menu-mobile ul li.active a {color: white;}
 
 button.radio-button {
     display: flex;
