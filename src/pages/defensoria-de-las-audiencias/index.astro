@@ -64,8 +64,32 @@ import BoxBanner from "../../components/BoxBanner.astro";
 <br>
 <br>
 <br>
-<div><a target="_blank" href="https://storage.googleapis.com/nrm-web/nrm/CodigoEtica/CODIGO%20DE%20ETICA%202026%20AFILIADOS%20CIR%20T%20-%20RADIO%20PROYECCIO%CC%81N%20(XEOYE-FM).pdf"><p>Descarga Código de Ética.</p></a></div>
-<div><a target="_blank" href="https://storage.googleapis.com/nrm-web/nrm/CodigoEtica/Lineamientos%20Generales%20para%20la%20Proteccio%CC%81n%20de%20los%20Derechos%20de%20las%20Audiencias.pdf"><p>Descarga Lineamientos Generales para la Protección de los Derechos de las Audiencias.</p></a></div>
+<div class="download-list" aria-label="Documentos para descargar">
+    <a class="download-item" target="_blank" rel="noopener noreferrer" href="https://storage.googleapis.com/nrm-web/nrm/CodigoEtica/CODIGO%20DE%20ETICA%202026%20AFILIADOS%20CIR%20T%20-%20RADIO%20PROYECCIO%CC%81N%20(XEOYE-FM).pdf">
+        <span class="download-file-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg>
+        </span>
+        <span class="download-copy">
+            <span class="download-title">Código de Ética</span>
+            <span class="download-caption">Descargar PDF</span>
+        </span>
+        <span class="download-action" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></svg>
+        </span>
+    </a>
+    <a class="download-item" target="_blank" rel="noopener noreferrer" href="https://storage.googleapis.com/nrm-web/nrm/CodigoEtica/Lineamientos%20Generales%20para%20la%20Proteccio%CC%81n%20de%20los%20Derechos%20de%20las%20Audiencias.pdf">
+        <span class="download-file-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg>
+        </span>
+        <span class="download-copy">
+            <span class="download-title">Lineamientos Generales para la Protección de los Derechos de las Audiencias</span>
+            <span class="download-caption">Descargar PDF</span>
+        </span>
+        <span class="download-action" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></svg>
+        </span>
+    </a>
+</div>
                 </div>
 
 
@@ -124,6 +148,105 @@ a {
 .mail-action:focus-visible {
     outline: 2px solid #2563eb;
     outline-offset: 2px;
+}
+
+.download-list {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+}
+
+.download-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 5rem;
+    padding: 0.875rem 1.125rem;
+    border: 1px solid #d8dce2;
+    border-radius: 0.25rem;
+    background: #fff;
+    color: #202124;
+    text-decoration: none;
+    transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.download-item:hover {
+    border-color: var(--red-color);
+    background: #fffafa;
+}
+
+.download-item:focus-visible {
+    outline: 2px solid var(--red-color);
+    outline-offset: 3px;
+}
+
+.download-file-icon {
+    display: grid;
+    flex: 0 0 3rem;
+    width: 3rem;
+    height: 3rem;
+    place-items: center;
+    border-radius: 0.25rem;
+    background: var(--red-color);
+    color: #fff;
+}
+
+.download-file-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.download-copy {
+    display: grid;
+    flex: 1;
+    min-width: 0;
+    line-height: 1.3;
+}
+
+.download-title {
+    color: #202124;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.download-caption {
+    margin-top: 0.25rem;
+    color: var(--red-color);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.download-action {
+    display: grid;
+    flex: 0 0 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    place-items: center;
+    border: 1px solid #cbd0d7;
+    border-radius: 50%;
+    color: #202124;
+    transition: border-color 150ms ease, color 150ms ease;
+}
+
+.download-action svg {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+
+.download-item:hover .download-action {
+    border-color: var(--red-color);
+    color: var(--red-color);
+}
+
+@media (max-width: 480px) {
+    .download-item {
+        gap: 0.75rem;
+        padding: 0.75rem;
+    }
+
+    .download-title {
+        font-size: 0.95rem;
+    }
 }
 
 </style>
