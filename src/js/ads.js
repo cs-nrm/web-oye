@@ -64,9 +64,13 @@ function initGPT() {
       window._takeoverListener = true;
       googletag.pubads().addEventListener('slotRenderEnded', function (e) {
         var id = e.slot.getSlotElementId();
-        if ((id === 'ad-slot14' || id === 'ad-slot141') && !e.isEmpty && e.lineItemId) {
+        if (id !== 'ad-slot14' && id !== 'ad-slot141') return;
+        if (!e.isEmpty && e.lineItemId) {
           var modal = document.getElementById('modal');
           if (modal) modal.classList.add('con-anuncio');
+        } else if (window.startVideoIntersticial) {
+          // Sin takeover directo: intentar el video intersticial (deals de video, p. ej. KIA).
+          window.startVideoIntersticial();
         }
       });
     }
