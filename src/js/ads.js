@@ -55,13 +55,16 @@ function initGPT() {
     // Takeover (Modal.astro): pedir solo el tamano visible. El otro queda en display:none
     // y, si se pidiera, contaria una impresion que nadie ve. Mismo corte que el CSS del modal.
     var takeoverDesktop = window.matchMedia('(min-width: 621px)').matches;
-    // Mostrar el modal solo si el takeover trae anuncio. Los listeners de pubads sobreviven a
-    // destroySlots(), por eso se registra una sola vez aunque initGPT corra en cada navegacion.
+    // Mostrar el modal solo si el takeover trae una linea de GAM (venta directa o deal).
+    // trampa: el relleno de AdX tambien llena el 600x800 y abria el modal a pantalla completa;
+    // ese relleno trae lineItemId null. No usar sourceAgnosticLineItemId: en el relleno si trae valor.
+    // Los listeners de pubads sobreviven a destroySlots(), por eso se registra una sola vez
+    // aunque initGPT corra en cada navegacion.
     if (!window._takeoverListener) {
       window._takeoverListener = true;
       googletag.pubads().addEventListener('slotRenderEnded', function (e) {
         var id = e.slot.getSlotElementId();
-        if ((id === 'ad-slot14' || id === 'ad-slot141') && !e.isEmpty) {
+        if ((id === 'ad-slot14' || id === 'ad-slot141') && !e.isEmpty && e.lineItemId) {
           var modal = document.getElementById('modal');
           if (modal) modal.classList.add('con-anuncio');
         }
