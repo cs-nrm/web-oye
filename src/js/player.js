@@ -145,7 +145,10 @@ const onAll = (selector, eventName, key, handler, root = document) => {
       
       var start = function(){
         //console.log('trata la pub primero');    
-        streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/23349147378/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' } );
+        // trampa: el SDK de Triton no expande macros tipo [referrer_url]/[timestamp]; llegaban
+        // literales a GAM. Se arman aqui. plcmt=1: in-stream iniciado por el usuario (clic en Play).
+        var pageUrl = encodeURIComponent(location.href);
+        streaming.playAd( 'vastAd', { url:'https://pubads.g.doubleclick.net/gampad/ads?sz=600x360&iu=/23349147378/Oye/VASTPrueba&ciu_szs=600x360&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&plcmt=1&vpa=click&vpmute=0&url=' + pageUrl + '&description_url=' + pageUrl + '&correlator=' + Date.now() } );
       };
 
 

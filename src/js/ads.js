@@ -52,8 +52,23 @@ function initGPT() {
     if (document.getElementById('ad-slot-box'))         googletag.display('ad-slot-box');
     if (document.getElementById('ad-slot-box2'))        googletag.display('ad-slot-box2');
     if (document.getElementById('ad-slot-doublebox'))   googletag.display('ad-slot-doublebox');
-    if (document.getElementById('ad-slot14'))           googletag.display('ad-slot14');
-    if (document.getElementById('ad-slot141'))          googletag.display('ad-slot141');
+    // Takeover (Modal.astro): pedir solo el tamano visible. El otro queda en display:none
+    // y, si se pidiera, contaria una impresion que nadie ve. Mismo corte que el CSS del modal.
+    var takeoverDesktop = window.matchMedia('(min-width: 621px)').matches;
+    // Mostrar el modal solo si el takeover trae anuncio. Los listeners de pubads sobreviven a
+    // destroySlots(), por eso se registra una sola vez aunque initGPT corra en cada navegacion.
+    if (!window._takeoverListener) {
+      window._takeoverListener = true;
+      googletag.pubads().addEventListener('slotRenderEnded', function (e) {
+        var id = e.slot.getSlotElementId();
+        if ((id === 'ad-slot14' || id === 'ad-slot141') && !e.isEmpty) {
+          var modal = document.getElementById('modal');
+          if (modal) modal.classList.add('con-anuncio');
+        }
+      });
+    }
+    if (takeoverDesktop  && document.getElementById('ad-slot14'))  googletag.display('ad-slot14');
+    if (!takeoverDesktop && document.getElementById('ad-slot141')) googletag.display('ad-slot141');
     if (document.getElementById('ad-slot-videonota'))   googletag.display('ad-slot-videonota');
 
     if (window._boxRefreshInterval) clearInterval(window._boxRefreshInterval);
