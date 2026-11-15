@@ -7,6 +7,7 @@ import SuperLeader from '../../components/SuperLeader.astro';
 import MoreNews from '../../components/MoreNews.astro';
 import { any } from 'astro/zod';
 import { SITE_TITLE } from '../../consts';
+import SmartInline from '../../components/SmartInline.astro';
 
 const { post } = Astro.props as { post: any };
 
@@ -44,6 +45,7 @@ const contenidoFormateado = post.acf.letra_cancion.replace(/\n/g, '<br>');
         </figure-->
         <!--img class="text-center m-auto shadow-[0_5px_12px_10px_rgba(0,0,0,0.4)]" src={post.yoast_head_json.og_image[0].url} alt={post.title.rendered}/-->
         <Fragment set:html={post.content.rendered} />
+        <SmartInline />
       </div>
 
 
