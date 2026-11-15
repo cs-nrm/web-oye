@@ -8,6 +8,7 @@ import MoreNews from "../../components/MoreNews.astro";
 import { any } from "astro/zod";
 import { SITE_TITLE } from "../../consts";
 import LeaderBoard2 from "../../components/LeaderBoard2.astro";
+import SmartInline from "../../components/SmartInline.astro";
 
 const { post } = Astro.props as { post: any };
 
@@ -135,7 +136,8 @@ const PLACEHOLDER_IMG =
           </div>
           <div class="w-full pr-4">
             <Fragment set:html={post.content.rendered} />
-            <div id="ad-slot-videonota"></div>
+            <!-- <div id="ad-slot-videonota"></div> -->
+            <SmartInline />
           </div>
         </article>
         <div
