@@ -7,7 +7,7 @@ import SuperLeader from "../../components/SuperLeader.astro";
 import MoreGaming from "../../components/MoreGaming.astro";
 import { any } from "astro/zod";
 import { SITE_TITLE } from "../../consts";
-import SmartInline from "../../components/SmartInline.astro";
+// import SmartInline from "../../components/SmartInline.astro";
 
 const { post } = Astro.props as { post: any };
 
@@ -135,8 +135,8 @@ const PLACEHOLDER_IMG =
           </div>
           <div class="w-full pr-4">
             <Fragment set:html={post.content.rendered} />
-            <!-- <div id="ad-slot-videonota"></div> -->
-            <SmartInline />
+            <div id="ad-slot-videonota"></div>
+            {/* Medios Federales apagado, ver medios-federales.md: <SmartInline /> */}
           </div>
         </article>
         <div

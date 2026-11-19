@@ -27,7 +27,7 @@ function initGPT() {
       .addSize([0, 0], [300, 250])
       .build();
 
-    // var mappingVideoNota = googletag.sizeMapping().addSize([0, 0], [400, 311]).build();
+    var mappingVideoNota = googletag.sizeMapping().addSize([0, 0], [400, 311]).build();
 
     window.slotBillboard   = googletag.defineSlot("/23349147378/Oye", [[728,  90], [320,  50]], 'ad-slot-billboard').defineSizeMapping(mappingLeaderboard).addService(googletag.pubads());
     window.slotLeader      = googletag.defineSlot("/23349147378/Oye", [[728,  90], [320,  50]], 'ad-slot-leader').defineSizeMapping(mappingLeaderboard).addService(googletag.pubads());
@@ -39,7 +39,7 @@ function initGPT() {
     window.slotDoubleBox   = googletag.defineSlot("/23349147378/Oye", [300, 600],               'ad-slot-doublebox').defineSizeMapping(mappingDoubleBox).addService(googletag.pubads());
     window.slot14          = googletag.defineSlot("/23349147378/Oye", [600, 800],               'ad-slot14').addService(googletag.pubads());
     window.slot141         = googletag.defineSlot("/23349147378/Oye", [320, 480],               'ad-slot141').addService(googletag.pubads());
-    // window.slotVideoNota   = googletag.defineSlot("/23349147378/Oye", [400, 311],               'ad-slot-videonota').defineSizeMapping(mappingVideoNota).addService(googletag.pubads());
+    window.slotVideoNota   = googletag.defineSlot("/23349147378/Oye", [400, 311],               'ad-slot-videonota').defineSizeMapping(mappingVideoNota).addService(googletag.pubads());
 
     googletag.pubads().setTargeting("test", "responsive");
     googletag.enableServices();
@@ -76,7 +76,7 @@ function initGPT() {
     }
     if (takeoverDesktop  && document.getElementById('ad-slot14'))  googletag.display('ad-slot14');
     if (!takeoverDesktop && document.getElementById('ad-slot141')) googletag.display('ad-slot141');
-    // if (document.getElementById('ad-slot-videonota'))   googletag.display('ad-slot-videonota');
+    if (document.getElementById('ad-slot-videonota'))   googletag.display('ad-slot-videonota');
 
     if (window._boxRefreshInterval) clearInterval(window._boxRefreshInterval);
     window._boxRefreshInterval = setInterval(function() { googletag.pubads().refresh([window.slotBox, window.slotLeader]); }, 60000);
