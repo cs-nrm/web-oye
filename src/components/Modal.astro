@@ -107,11 +107,12 @@
   visibility: hidden;
   opacity: 0;
 }
-/* Contenido fijo: se muestra siempre hasta que el usuario cierre el modal. */
-#modal.modal-estatico .modals,
-#modal.modal-estatico #cerrar + label {
-  visibility: visible;
-  opacity: 1;
+/* Contenido fijo: visible durante 15 segundos o hasta que el usuario lo cierre. */
+#modal.modal-estatico:not(.con-anuncio):not(.con-video) .modals,
+#modal.modal-estatico:not(.con-anuncio):not(.con-video) #cerrar + label {
+  animation-name: modal;
+  animation-duration: 15s;
+  animation-delay: 0s;
 }
 #modal.modal-estatico .contenido {
   width: min(92vw, 600px);
@@ -219,3 +220,28 @@
     height: 100%;
 }
 </style>
+
+<script>
+  let modalTimer: ReturnType<typeof setTimeout> | undefined;
+
+  function iniciarCierreAutomatico() {
+    if (modalTimer) {
+      clearTimeout(modalTimer);
+    }
+
+    const modal = document.getElementById("modal");
+    const cerrar = document.getElementById("cerrar") as HTMLInputElement | null;
+    if (!modal || !cerrar || cerrar.checked) return;
+
+    modalTimer = setTimeout(() => {
+      cerrar.checked = true;
+      modal.classList.remove("con-anuncio", "con-video");
+    }, 15000);
+  }
+
+  iniciarCierreAutomatico();
+  document.addEventListener("astro:page-load", iniciarCierreAutomatico);
+  document.addEventListener("astro:before-swap", () => {
+    if (modalTimer) clearTimeout(modalTimer);
+  });
+</script>
